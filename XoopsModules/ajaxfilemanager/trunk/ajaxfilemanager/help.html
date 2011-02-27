@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+    
+        <meta http-equiv="content-type" content="text/html; charset=windows-1250"><title></title></head><body>
+        <h1>Help</h1>
+        <h2>Install</h2>
+        <h3>Xoops patches</h3>
+        <p>
+            This module uses Xoops Preload features.
+            <br>
+            It
+            <span id="result_box" class="short_text">
+                <span style="background-color: rgb(255, 255, 255);" title="sostituisce la versione ufficiale">
+                    replaces the official version of Image Manager.
+                    <br>
+                </span>
+            </span>
+            <span id="result_box" class="short_text">
+                <span style="background-color: rgb(255, 255, 255);" title="per far funzionare il modulo &egrave; necessario applicare alcune modifiche alla versione ufficiale (2.4.3) di Xoops">
+                    To run the module is 
+                    <span style="font-weight: bold;">
+                        necessary to apply some changes to the official version
+                    </span>
+                    (&gt;2.4.2) of Xoops.
+                    <br>
+                    In "extra/_PATCHED" directory there are patched xoops files.
+                    <br>
+                </span>
+            </span>
+        </p>
+        <ul>
+            <li>
+            <span style="font-weight: bold;">
+                image._PATCHED.php
+            </span>
+            <br>
+            overwrite "XOOPS_ROOT_PATH/image.php" Xoops file</li>
+            <li>
+            <span style="font-weight: bold;">
+                imagemanager._PATCHED.php
+            </span>
+            <br>
+            overwrite "XOOPS_ROOT_PATH/imagemanager.php" Xoops file</li>
+            <li>
+            <span style="font-weight: bold;">
+                modules.system.admin.images.main._PATCHED.php
+            </span>
+            <br>
+            overwrite "XOOPS_ROOT_PATH/modules/system/admin/images/main.php" Xoops file
+            <br></li>
+        </ul>
+        <h2>How to...</h2>
+        <h3>Image manager Admin</h3>
+        <p>
+            You can edit, clone, ...
+        </p>
+        <h3>Popup Image manager</h3>
+        <p>
+            You can choose (module options) 'standard' or 'enhanced' popup image manager.
+        </p>
+        <h3>Textsanitizer [newimg] tag</h3>
+        <p>
+            You can use [newimg] tag in any Xoops dhtmltextarea filed, if properly installed and activated.
+            <br>
+            Is possible to install this textsanitizer extention from Newimagemanager administrative menu.
+        </p>
+        <h4>Syntax</h4>
+        <p>
+            [newimg 
+            <span style="color: blue;">
+                options
+            </span>
+            ]
+            <span style="color: blue;">
+                image_id
+            </span>
+            [/newimg]
+        </p>
+        <p>
+            Where:
+        </p>
+        <ul>
+            <li>
+            <span style="color: blue;">
+                options
+            </span>
+            are image.php options</li>
+            <li>
+            <span style="color: blue;">
+                image_id
+            </span>
+            is New Image Manager image id</li>
+        </ul>
+        <h4>Exemples</h4>
+        <ul>
+            <li>[newimg 
+            <span style="color: blue;">
+                width=100
+            </span>
+            ]
+            <span style="color: blue;">
+                3
+            </span>
+            [/newimg] will insert a resized copy of New Image Manager image with id=3</li>
+            <li>[newimg
+            <span style="color: blue;">
+            </span>
+            ]
+            <span style="color: blue;">
+                5
+            </span>
+            [/newimg] will insert New Image Manager image with id=5</li>
+        </ul>
+        <h3>
+            <span style="color: blue;">
+            </span>
+            image.php</h3>
+        <p>
+This module uses an enhanced "image.php" script version. This enhanced
+version is very useful in many cases, for example when you need a
+smallest version of a uplaoded image. The new "image.php" script uses
+some "on fly" resize features... with a very interesting cache
+system.&nbsp; ;-) </p>
+        <p>
+            <span style="color: red; font-weight: bold;">
+                You MUST TRY IT!
+            </span>
+            <br>
+        </p>
+        <p>
+            Parameters need to be passed in through the URL's query string:
+        </p>
+        <ul>
+            <li>
+            <span style="color: blue;">
+                image_id
+            </span>
+            OR 
+            <span style="color: blue;">
+                id
+            </span>
+            New Image Manager Xoops module image id;</li>
+            <li>
+            <span style="color: blue;">
+                image
+            </span>
+            path relative to XOOPS_MAIN_PATH, path of local image starting with "/" (e.g. /images/toast.jpg);</li>
+            <li>
+            <span style="color: blue;">
+                width
+            </span>
+            maximum width of final image in pixels (e.g. 700);</li>
+            <li>
+            <span style="color: blue;">
+                heigh
+            </span>
+            t maximum height of final image in pixels (e.g. 700);</li>
+            <li>
+            <span style="color: blue;">
+                color
+            </span>
+            (optional) background hex color for filling transparent PNGs (e.g. 900 or 16a942);</li>
+            <li>
+            <span style="color: blue;">
+                cropratio
+            </span>
+            (optional) ratio of width to height to crop final image (e.g. 1:1 or 3:2);</li>
+            <li>
+            <span style="color: blue;">
+                nocache
+            </span>
+            (optional) does not read image from the cache;</li>
+            <li>
+            <span style="color: blue;">
+                noservercache
+            </span>
+            (optional); 
+            <span style="color: red;">
+                // STILL TO DO
+            </span></li>
+            <li>
+            <span style="color: blue;">
+                nobrowsercache
+            </span>
+            (optional); 
+            <span style="color: red;">
+                // STILL TO DO
+            </span></li>
+            <li>
+            <span style="color: blue;">
+                quality
+            </span>
+            (optional, 0-100, default: 90) quality of output image;</li>
+            <li>
+            <span style="color: blue;">
+                filter
+            </span>
+(optional, PHP5+ imagefilter 2nd, 3rd, 4th, 5th arguments, more info on
+php.net manual) a filter or an array of filters;</li>
+  <li><span style="color: blue;">radius</span> (optional, 1, 2, 3 or 4 integer values, CW) round corner radius<br>
+  </li>
+
+        </ul>
+        <h4>Examples</h4>
+        <span style="font-weight: bold;">
+            Resizing a JPEG
+        </span>
+        :
+        <br>
+        &lt;img src="/image.php?
+        <span style="color: blue;">
+            image
+        </span>
+        =image-name.jpg?
+        <span style="color: blue;">
+            width
+        </span>
+        =100&amp;
+        <span style="color: blue;">
+            height
+        </span>
+        =100" alt="Don't forget your alt text" /&gt; 
+        <br>
+        <span style="font-weight: bold;">
+            Resizing and cropping a JPEG into a square
+        </span>
+        :
+        <br>
+        &lt;img src="/image.php/image-name.jpg?
+        <span style="color: blue;">
+            width
+        </span>
+        =100&amp;
+        <span style="color: blue;">
+            height
+        </span>
+        =100&amp;
+        <span style="color: blue;">
+            cropratio
+        </span>
+        =1:1" alt="Don't forget your alt text" /&gt; 
+        <br>
+        <span style="font-weight: bold;">
+            Matting a PNG with #990000
+        </span>
+        :
+        <br>
+        &lt;img src="/image.php/image-name.png?
+        <span style="color: blue;">
+            color
+        </span>
+        =900&amp;
+        <span style="color: blue;">
+            image
+        </span>
+        =/path/to/image.png" alt="Don't forget your alt text" /&gt; 
+        <br>
+        <span style="font-weight: bold;">
+            Apply a filter
+        </span>
+        :
+        <br>
+        &lt;img src="/image.php?
+        <span style="color: blue;">
+            image
+        </span>
+        =/path/to/image.png&amp;
+        <span style="color: blue;">
+            filter
+        </span>
+        =IMG_FILTER_COLORIZE,128,60,256" alt="Don't forget your alt text" /&gt;
+        <br>
+        <span style="font-weight: bold;">
+            Apply more filters (array)
+        </span>
+        :
+        <br>
+        &lt;img src="/image.php?
+        <span style="color: blue;">
+            image
+        </span>
+        =/path/to/image.png&amp;
+        <span style="color: blue;">
+            filter[]
+        </span>
+        =IMG_FILTER_GRAYSCALE&amp;
+        <span style="color: blue;">
+            filter[]
+        </span>
+        =IMG_FILTER_COLORIZE,128,60,256" alt="Don't forget your alt text" /&gt;
+        <br>
+<span style="font-weight: bold;">Round the image corners </span>:
+        <br>
+<span style="font-style: italic;">All corners with same radius</span><br>
+&lt;img src="/image.php?
+        <span style="color: blue;">
+            image
+        </span>
+        =/path/to/image.png&amp; <span style="color: blue;">radius
+        </span>
+        =20" alt="Don't forget your alt text" /&gt;
+        <br>
+<span style="font-style: italic;">Left and right corners with different radius (20 for left corners and 40 for right corners)</span><br>
+
+&lt;img src="/image.php?
+        <span style="color: blue;">
+            image
+        </span>
+        =/path/to/image.png&amp; <span style="color: blue;">radius
+        </span>
+        =20,40" alt="Don't forget your alt text" /&gt;
+        <br>
+<span style="font-style: italic;">4 corners, 4 radius, clockwise order</span><br>
+
+
+&lt;img src="/image.php?
+        <span style="color: blue;">
+            image
+        </span>
+        =/path/to/image.png&amp; <span style="color: blue;">radius
+        </span>
+        =20,40,0,10" alt="Don't forget your alt text" /&gt;
+        <br>
+
+
+        <span style="font-weight: bold;"></span><br>
+</body></html>
