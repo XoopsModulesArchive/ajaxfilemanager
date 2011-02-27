@@ -17,12 +17,24 @@ if ( !is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php"))	{
 }
 
 // index menu
+// temp solution: why sometime $adminmenu is setted?
+if (isset($adminmenu)) {
+    $tempadminmenu = $adminmenu;
+    unset($adminmenu);
+}
+include (XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/admin/menu.php');
+
 include_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/class/menu.php';
 $menu = new moduleMenu();
-if (!isset($adminmenu)) include (XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/admin/menu.php');
 foreach ($adminmenu as $menuitem) {
     $menu->addItem($menuitem['name'], '../' . $menuitem['link'], '../' . $menuitem['icon'], $menuitem['title']);
 }
+
+if (isset($tempadminmenu)) {
+    $adminmenu = $tempadminmenu;
+    unset($tempadminmenu);
+}
+
 $menu->addItem('Preferences', '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule ->getVar('mid') . '&amp;&confcat_id=1', '../images/icons/32x32/prefs.png', _PREFERENCES);
 
 echo $menu->getCSS();

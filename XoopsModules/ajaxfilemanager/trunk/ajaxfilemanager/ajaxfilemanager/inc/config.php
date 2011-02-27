@@ -13,7 +13,7 @@
 	define('CONFIG_QUERY_STRING_ENABLE', true); //Enable passed query string to setting the system configuration
 	if(!isset($_SESSION))
 	{
-		//session_start();
+		session_start();
 	}
 	if(!headers_sent())
 	{

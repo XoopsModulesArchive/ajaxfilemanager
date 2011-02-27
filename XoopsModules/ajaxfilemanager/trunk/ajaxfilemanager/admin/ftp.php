@@ -13,6 +13,7 @@ if (!is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php")) {
     include_once XOOPS_ROOT_PATH.'/Frameworks/art/functions.admin.php';
     loadModuleAdminMenu (2, _AJAXFM_MI_ADMENU_FTP);
 }
+echo "IN_PROGRESS<br />";
 
 //-- SMTP Mail Function  By Aditya Bhatt
 if(isset($_POST['SubmitFile'])) {

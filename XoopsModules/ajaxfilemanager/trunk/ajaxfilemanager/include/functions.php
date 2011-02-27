@@ -68,9 +68,6 @@ function system_CleanVars( &$global, $key, $default = '', $type = 'int' ) {
 
 
 
-
-
-
 /**
  * This function will read the full structure of a directory.
  * It's recursive because it doesn't stop with the one directory,
@@ -105,27 +102,6 @@ function getDir($path = '.', $level = 0) {
     // Close the directory handle
     return $ret;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

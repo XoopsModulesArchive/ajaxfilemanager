@@ -44,6 +44,13 @@ $modversion['templates'][$i]['description'] = '';
 // Preferences
 $i = 0;
 $i++;
+$modversion['config'][$i]['name'] = 'website_document_root_path';
+$modversion['config'][$i]['title'] = '_AJAXFM_MI_ROOTPATH';
+$modversion['config'][$i]['description'] = '_AJAXFM_MI_ROOTPATH_DESC';
+$modversion['config'][$i]['formtype'] = 'textbox';
+$modversion['config'][$i]['valuetype'] = 'text';
+$modversion['config'][$i]['default'] = 'c:\\';
+$i++;
 $modversion['config'][$i]['name'] = 'upload_valid_exts';
 $modversion['config'][$i]['title'] = '_AJAXFM_MI_VALIDEXTS';
 $modversion['config'][$i]['description'] = '_AJAXFM_MI_VALIDEXTS_DESC';

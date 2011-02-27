@@ -28,8 +28,10 @@ function xoops_module_install_ajaxfilemanager(&$xoopsModule) {
     $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager";
     makeDir($dir);
     $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/uploaded";
+    if(!makeDir($dir)) return false;
+    $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/session";
     if(!is_dir($dir))
-    makeDir($dir);
+    if(!makeDir($dir)) return false;
     return true;
 }
 ?>

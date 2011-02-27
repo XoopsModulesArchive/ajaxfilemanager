@@ -1,6 +1,4 @@
 <?php
-// Turn off all error reporting
-error_reporting(0);
 	/**
 	 * file manager platform
 	 * @author Logan Cai (cailongqun [at] yahoo [dot] com [dot] cn)

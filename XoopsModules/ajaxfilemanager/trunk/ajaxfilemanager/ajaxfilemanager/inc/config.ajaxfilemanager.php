@@ -1,15 +1,22 @@
 <?php
-    /**
-     * Load Xoops mainfile.php
-     */
-    include_once('../../../mainfile.php');
-    include_once XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
-    $ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
-    if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
-        $ajaxfilemanagerModuleConfig = $config_handler->getConfigsByCat(0, $ajaxfilemanagerModule->getVar('mid'));
-    }
+/**
+ * Load Xoops mainfile.php
+ */
+$xoopsOption["nocommon"] = false;
+include ('../../../mainfile.php');
+/**
+ * Start Xoops kernel without starting a new session
+ */
+include ('common.ajaxfilemanager.php');
 
+include XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
 
+$ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
+if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
+    $ajaxfilemanagerModuleConfig = $config_handler->getConfigsByCat(0, $ajaxfilemanagerModule->getVar('mid'));
+}
+// Turn off all error reporting
+error_reporting(0);
 	/**
 	 * sysem base config setting
 	 * @author Logan Cai (cailongqun [at] yahoo [dot] com [dot] cn)
@@ -62,7 +69,7 @@
 	define('CONFIG_SYS_DEFAULT_PATH', '../../../uploads/ajaxfilemanager/uploaded/'); //accept relative path only
 	define('CONFIG_SYS_ROOT_PATH', '../../../uploads/ajaxfilemanager/uploaded/');	//accept relative path only
 	define('CONFIG_SYS_FOLDER_SHOWN_ON_TOP', true); //show your folders on the top of list if true or order by name 
-	define("CONFIG_SYS_DIR_SESSION_PATH", 'session/');
+	@define("CONFIG_SYS_DIR_SESSION_PATH", XOOPS_ROOT_PATH . '/uploads/ajaxfilemanager/session/');
 	define("CONFIG_SYS_PATTERN_FORMAT", 'list'); //three options: reg ,csv, list, this option define the parttern format for the following patterns
 		/**
 		 * reg => regulare expression
@@ -117,11 +124,13 @@
 		        
 		 * 		
 		 */
-
+        // IN PROGRESS
         $scriptName = str_replace (DIRECTORY_SEPARATOR . 'ajaxfilemanager.php', '', $_SERVER['SCRIPT_NAME']);
         $mainDirname = str_replace (DIRECTORY_SEPARATOR . 'inc', '', dirname(__FILE__));
         $rootPath = str_replace ($scriptName, '', $mainDirname);
-        define('CONFIG_WEBSITE_DOCUMENT_ROOT', $rootPath);
+        // IN PROGRESS
+        // TEMPORARY SOLUTION
+        define('CONFIG_WEBSITE_DOCUMENT_ROOT', $ajaxfilemanagerModuleConfig['website_document_root_path']);
 	//theme related setting
 			/*
 			*	options avaialbe for CONFIG_EDITOR_NAME are:
