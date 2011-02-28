@@ -16,12 +16,12 @@
  * @license         http://www.fsf.org/copyleft/gpl.html GNU public license
  * @package         class
  * @subpackage      textsanitizer
- * @since           2.3.0
- * @author          Taiwen Jiang <phppp@users.sourceforge.net>
- * @version         $Id: mp3.php 3575 2009-09-05 19:35:11Z trabis $
+ * @since           2.4.5
+ * @author          Lucio ROta <lucio.rota@gmail.com>
+ * @version         
  */
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
-xoops_loadLanguage('extention', 'newfilemanager');
+xoops_loadLanguage('extention', 'ajaxfilemanager');
 
 
 

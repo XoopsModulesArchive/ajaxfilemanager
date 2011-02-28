@@ -13,12 +13,12 @@
  * @license         http://www.fsf.org/copyleft/gpl.html GNU public license
  * @package         class
  * @subpackage      textsanitizer
- * @since           2.3.0
- * @author          Taiwen Jiang <phppp@users.sourceforge.net>
- * @version         $Id: youtube.php 4897 2010-06-19 02:55:48Z phppp $
+ * @since           2.4.5
+ * @author          Lucio ROta <lucio.rota@gmail.com>
+ * @version         
  */
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
-xoops_loadLanguage('extention', 'newfilemanager');
+xoops_loadLanguage('extention', 'ajaxfilemanager');
 
 
 
@@ -29,6 +29,7 @@ class MytsVideo extends MyTextSanitizerExtension
         $config = parent::loadConfig( dirname(__FILE__) );
         $code = "<img " .
                 "src='" . XOOPS_URL ."/class/textsanitizer/video/button_video.png' " . 
+                "title='" . _AJAXFM_AM_VIDEO_ALT . "' " .
                 "alt='" . _AJAXFM_AM_VIDEO_ALT . "' " .
                 "onclick='xoopsCodeVideo(\"{$textarea_id}\",\"" . htmlspecialchars(_AJAXFM_AM_VIDEO_ENTERURL, ENT_QUOTES) . "\",\"" . htmlspecialchars(_AJAXFM_AM_VIDEO_ENTERHEIGHT, ENT_QUOTES) . "\",\"" . htmlspecialchars(_AJAXFM_AM_VIDEO_ENTERWIDTH, ENT_QUOTES) . "\");' " .
                 "onmouseover='style.cursor=\"hand\"'/>" .
