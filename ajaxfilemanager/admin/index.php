@@ -6,6 +6,18 @@ $currentFile = basename(__FILE__);
 
 
 
+$op = (isset($_GET['op']))? $_GET['op'] : "";
+if ($op = 'createdir') {
+	if (isset($_GET['path'])) {
+        $path = $_GET['path'];
+        $msg = (makeDir($path)) ? _AJAXFM_AM_DIRCREATED : _AJAXFM_AM_DIRNOTCREATED;
+        redirect_header($currentFile, 2, sprintf($msg, htmlentities($path)));
+        exit();
+    }
+}
+
+
+
 xoops_cp_header();
 
 // main admin menu
@@ -42,20 +54,36 @@ echo $menu->getCSS();
 echo '<table width="100%" border="0" cellspacing="10" cellpadding="4">';
 echo '<tr><td>' . $menu->render() . '</td>';
 
-echo '<td valign="top" width="80%">';
+echo '<td valign="top" width="60%">';
 echo '<fieldset><legend class="CPmediumTitle">' . _AJAXFM_AM_INDEX_INFO . '</legend>';
-echo '<br/>';
-echo '<br/>';
-echo '</fieldset>';
+echo '<p>';
+echo _AJAXFM_MI_VALIDEXTS . ': ' . $xoopsModuleConfig['upload_valid_exts'];
+echo '</p>';
+echo '<p>';
+echo _AJAXFM_MI_MAXSIZE . ': ' . $xoopsModuleConfig['upload_max_size'] . _AJAXFM_MI_MAXSIZE_MB;
+echo '</p>';
 
-echo '<br/>';
-
-echo '<fieldset>';
-echo '<iframe style="width:100%;height:500px;border:none;" src="' . XOOPS_URL . '/modules/' . $xoopsModule->dirname() . '/ajaxfilemanager/ajaxfilemanager.php?editor=ajaxfilemanager&amp;config=ajaxfilemanager&amp;view=thumbnail' . '" >';
-echo '<p>' . _AJAXFM_AM_INDEX_NOIFRAME . '</p>';
-echo '</iframe>';
-echo '</fieldset>';
-echo '<br/>';
+$dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager";
+if (!file_exists($dir)) {
+    printf(_AJAXFM_AM_WARNING_DIRNOTEXIST, htmlentities($dir));
+    echo '<br/>';
+    echo "<a href='" . $currentFile ."?op=createdir&path=" . $dir . "'>" . _AJAXFM_AM_WARNING_DIRCREATEIT . "</a>";
+    echo '<br/>';
+}
+$dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/uploaded";
+if (!file_exists($dir)) {
+    printf(_AJAXFM_AM_WARNING_DIRNOTEXIST, htmlentities($dir));
+    echo '<br/>';
+    echo "<a href='" . $currentFile ."?op=createdir&path=" . $dir . "'>" . _AJAXFM_AM_WARNING_DIRCREATEIT . "</a>";
+    echo '<br/>';
+}
+$dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/session";
+if (!file_exists($dir)) {
+    printf(_AJAXFM_AM_WARNING_DIRNOTEXIST, htmlentities($dir));
+    echo '<br/>';
+    echo "<a href='" . $currentFile ."?op=createdir&path=" . $dir . "'>" . _AJAXFM_AM_WARNING_DIRCREATEIT . "</a>";
+    echo '<br/>';
+}
 
 echo '</fieldset>';
 echo '</td></tr>';

@@ -88,9 +88,9 @@ function getDir($path = '.', $level = 0) {
  * Create a new directory that contains the file index.html
  *
  */
-function makeDir($dir) {
+function makeDir($dir, $perm = 0777) {
     if (!is_dir($dir)){
-        if (!mkdir($dir)){
+        if (!@mkdir($dir, $perm)){
             return false;
         } else {
             if ($fileHandler = @fopen($dir . '/index.html', 'w'))
