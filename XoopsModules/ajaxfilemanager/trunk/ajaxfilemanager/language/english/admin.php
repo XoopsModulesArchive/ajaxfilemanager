@@ -1,10 +1,13 @@
 <?php
-// $Id: admin.php 2768 2009-02-05 02:40:31Z phppp $
-// _LANGCODE: en
-// _CHARSET : UTF-8
-// Translator: XOOPS Translation Team
+// admin/index.php
+define("_AJAXFM_AM_INDEX_INFO", "Informations");
+define("_AJAXFM_AM_INDEX_NOIFRAME", "Your browser does not support iframes.");
 
-//%%%%%%    File Name  admin.php    %%%%%
+define('_AJAXFM_AM_WARNING_DIRNOTEXIST', "<strong style='color:red;'>WARNING: %s directory not exist!</strong>");
+define('_AJAXFM_AM_WARNING_DIRCREATEIT', "Create it!");
+define('_AJAXFM_AM_DIRCREATED', "%s directory created!");
+define('_AJAXFM_AM_DIRNOTCREATED', "<strong style='color:red;'>WARNING: %s directory not created!</strong>");
+
 
 
 //admin/about.php
@@ -19,9 +22,6 @@ define("_AJAXFM_AM_ABOUT_STATUS","Status");
 define("_AJAXFM_AM_ABOUT_DESCRIPTION","Module Description &quot;description.html&quot;");
 define("_AJAXFM_AM_ABOUT_HELP","Module Help &quot;help.html&quot;");
 
-// admin/index.php
-define("_AJAXFM_AM_INDEX_INFO", "Statistic");
-define("_AJAXFM_AM_INDEX_NOIFRAME", "Your browser does not support iframes.");
 
 
 // admin/extention.php
@@ -34,8 +34,8 @@ define('_AJAXFM_AM_EXTENTION_NOT_ACTIVATED',"Extention not activated");
 define('_AJAXFM_AM_INSTALL_EXTENTION',"Install extention");
 define('_AJAXFM_AM_ACTIVATE_EXTENTION',"Activate extention");
 define('_AJAXFM_AM_EXTENTION_ACTIVATED',"Extention activated");
-define('_AJAXFM_AM_DESACTIVATE_EXTENTION',"Desactivate extention");
-define('_AJAXFM_AM_EXTENTION_DESACTIVATED',"Extention desactivated");
+define('_AJAXFM_AM_DISABLE_EXTENTION',"Disable extention");
+define('_AJAXFM_AM_EXTENTION_DISABLED',"Extention disabled");
 define('_AJAXFM_AM_EXTENTION_INSTALLED_OK',"Extention installed");
 define('_AJAXFM_AM_EXT_FILE_NOT_INSTALLABLE',"Extention not installable");
 define('_AJAXFM_AM_EXTENTION_ACTIVATED_OK',"Extention activated");

@@ -35,7 +35,7 @@ switch( $step ) {
         break;
     case 'desactivate':
         desactivateExtention($extention);
-        redirect_header($currentFile, 3, _AJAXFM_AM_EXTENTION_DESACTIVATED);
+        redirect_header($currentFile, 3, _AJAXFM_AM_EXTENTION_DISABLED);
         break;
     case 'install':
         $source = XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['xoopsModule']->getVar('dirname') . '/extra/textsanitizer.extension' .  '/' . $extention;
@@ -59,10 +59,10 @@ switch( $step ) {
         xoops_cp_header();
         // main admin menu
         if ( !is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php"))	{
-            moduleAdminMenu(3, _AJAXFM_MI_ADMENU_EXTENTION);
+            moduleAdminMenu(4, _AJAXFM_MI_ADMENU_EXTENTION);
         } else {
             include_once XOOPS_ROOT_PATH.'/Frameworks/art/functions.admin.php';
-            loadModuleAdminMenu (3, _AJAXFM_MI_ADMENU_EXTENTION);
+            loadModuleAdminMenu (4, _AJAXFM_MI_ADMENU_EXTENTION);
         }
         echo "<fieldset>";
         echo "<legend style='font-weight:bold; color:#990000;'>" . _AJAXFM_AM_EXTENTION_INFO . "</legend>";
@@ -116,7 +116,7 @@ switch( $step ) {
                     echo "  <form action='" . $currentFile . "' method='post'>";
                     echo "  <input type='hidden' name='step' value='desactivate' />";
                     echo "  <input type='hidden' name='extention' value='" . $extention . "' />";
-                    echo "  <input class='formButton' value='" . _AJAXFM_AM_DESACTIVATE_EXTENTION . "' type='submit' />";
+                    echo "  <input class='formButton' value='" . _AJAXFM_AM_DISABLE_EXTENTION . "' type='submit' />";
                     echo "</form>";
                     echo "</td>";
                 }

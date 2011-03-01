@@ -23,15 +23,24 @@ function xoops_module_pre_install_ajaxfilemanager(&$xoopsModule) {
 
 
 function xoops_module_install_ajaxfilemanager(&$xoopsModule) {
+    xoops_loadLanguage('modinfo', $xoopsModule->getVar('dirname'));
     include_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->getVar('dirname') . '/include/functions.php';
+
+    $ret = true;
+    $msg = '';
     // Create ajaxfilemanager main upload directory
     $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager";
-    makeDir($dir);
+	if (!makeDir($dir))
+        $msg.= sprintf(_AJAXFM_MI_WARNING_DIRNOTCREATED, $dir);
     $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/uploaded";
-    if(!makeDir($dir)) return false;
+	if (!makeDir($dir))
+        $msg.= sprintf(_AJAXFM_MI_WARNING_DIRNOTCREATED, $dir);
     $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/session";
-    if(!is_dir($dir))
-    if(!makeDir($dir)) return false;
-    return true;
+	if (!makeDir($dir))
+        $msg.= sprintf(_AJAXFM_MI_WARNING_DIRNOTCREATED, $dir);
+    if (empty($msg))
+        return $ret;
+    else
+        return $msg;
 }
 ?>
