@@ -16,7 +16,8 @@ define('_AJAXFM_MI_DESC', 'For administration of files/contents/images of the si
 define('_AJAXFM_MI_ADMENU_INDEX', 'Index');
 define('_AJAXFM_MI_ADMENU_FILEMANAGER', 'File Manager');
 define('_AJAXFM_MI_ADMENU_FTP', 'Ftp client');
-define('_AJAXFM_MI_ADMENU_EXTENTION', 'Extention Manager');
+define('_AJAXFM_MI_ADMENU_PERMISSIONS', 'Permissions Manager');
+define('_AJAXFM_MI_ADMENU_EXTENTIONS', 'Extentions Manager');
 define('_AJAXFM_MI_ADMENU_ABOUT', 'About');
 
 // for config
