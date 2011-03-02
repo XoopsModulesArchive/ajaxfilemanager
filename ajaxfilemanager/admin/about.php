@@ -8,10 +8,10 @@ $versionInfo =& $module_handler->get($xoopsModule->getVar('mid'));
 xoops_cp_header();
 
 if (!is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php")) {
-    moduleAdminMenu(5, _AJAXFM_MI_ADMENU_ABOUT);
+    moduleAdminMenu(6, _AJAXFM_MI_ADMENU_ABOUT);
 } else {
     include_once XOOPS_ROOT_PATH.'/Frameworks/art/functions.admin.php';
-    loadModuleAdminMenu (5, _AJAXFM_MI_ADMENU_ABOUT);
+    loadModuleAdminMenu (6, _AJAXFM_MI_ADMENU_ABOUT);
 }
 
 

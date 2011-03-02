@@ -16,7 +16,7 @@ $modversion['official'] = 0;
 $modversion['image'] = "images/filemanager_slogo.png";
 $modversion['dirname'] = "ajaxfilemanager";
 //extra informations
-$modversion['release'] = '01-03-2011';
+$modversion['release'] = '02-03-2011';
 $modversion['module_status'] = 'Stable';
 $modversion['support_site_url'] = 'http://www.xoops.org';
 $modversion['support_site_name'] = 'www.xoops.org';

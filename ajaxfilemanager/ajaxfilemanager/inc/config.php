@@ -1,4 +1,13 @@
 <?php
+    /**
+     * Load Xoops mainfile.php
+     */
+    $xoopsOption["nocommon"] = false;
+    include ('../../../mainfile.php');
+    include ('nocommon.xoops.php');
+    // Turn off all error reporting
+    error_reporting(0);
+
         /**
 	 * sysem  config setting
 	 * @author Logan Cai (cailongqun [at] yahoo [dot] com [dot] cn)
@@ -15,6 +24,7 @@
 	{
 		session_start();
 	}
+
 	if(!headers_sent())
 	{
 		header('Content-Type: text/html; charset=utf-8');
