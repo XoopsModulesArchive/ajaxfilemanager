@@ -159,39 +159,39 @@ function delDir($dir, $if_not_empty = true) {
 
 
 /**
- * Extention functions
+ * Extension functions
  *
  */
 
-function extentionInstalled($extention) {
-    return file_exists(XOOPS_ROOT_PATH . '/class/textsanitizer/' . $extention . '/' . $extention . '.php');
+function extensionInstalled($extension) {
+    return file_exists(XOOPS_ROOT_PATH . '/class/textsanitizer/' . $extension . '/' . $extension . '.php');
 }
-function extentionActivated($extention) {
+function extensionActivated($extension) {
     $conf = include XOOPS_ROOT_PATH . '/class/textsanitizer/config.php';
-    return $conf['extensions'][$extention];
+    return $conf['extensions'][$extension];
 }
-function activateExtention($extention) {
+function activateExtension($extension) {
     $conf = include XOOPS_ROOT_PATH . '/class/textsanitizer/config.php';
-    $conf['extensions'][$extention] = 1;
+    $conf['extensions'][$extension] = 1;
     file_put_contents(XOOPS_ROOT_PATH . '/class/textsanitizer/config.php', "<?php\rreturn \$config = " . var_export($conf, true) . "\r?>");
 }
-function desactivateExtention($extention) {
+function desactivateExtension($extension) {
     $conf = include XOOPS_ROOT_PATH . '/class/textsanitizer/config.php';
-    $conf['extensions'][$extention] = 0;
+    $conf['extensions'][$extension] = 0;
     file_put_contents(XOOPS_ROOT_PATH . '/class/textsanitizer/config.php', "<?php\rreturn \$config = " . var_export($conf, true) . "\r?>");
 }
-function listExtentions($source) {
+function listExtensions($source) {
     if (!$dir = opendir($source))
         return false;
-    $extentions = array();
+    $extensions = array();
     while(false !== ( $file = readdir($dir)) ) {
         if (( $file != '.' ) && ( $file != '..' )) {
             if ( is_dir($source . '/' . $file) ) {
-                $extentions[] = $file;
+                $extensions[] = $file;
             }
         }
     }
     closedir($dir);
-    return $extentions;
+    return $extensions;
 }
 ?>
