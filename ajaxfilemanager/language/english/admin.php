@@ -28,31 +28,31 @@ define('_AJAXFM_AM_PERM_EXTRA_128', "Image editor and Text editor");
 
 
 
-// admin/extentions.php
-define('_AJAXFM_AM_EXTENTION_WARNING1', "<span style='color:red;'>WARNING: Only if &quot;%s&quot; directory and &quot;config.php&quot; file in it are writable is possible to install, activate and disable extentions using this tool</span>");
-define('_AJAXFM_AM_EXTENTION_WARNING2', "<span style='color:red;'>In any other case you have to copy extentions in &quot;%s&quot; directory and edit &quot;config.php&quot; manually</span>");
+// admin/extensions.php
+define('_AJAXFM_AM_EXTENSION_WARNING1', "<span style='color:red;'>WARNING: Only if &quot;%s&quot; directory and &quot;config.php&quot; file in it are writable is possible to install, activate and disable extensions using this tool</span>");
+define('_AJAXFM_AM_EXTENSION_WARNING2', "<span style='color:red;'>In any other case you have to copy extensions in &quot;%s&quot; directory and edit &quot;config.php&quot; manually</span>");
 
-define('_AJAXFM_AM_EXTENTION', "Extention");
-define('_AJAXFM_AM_EXTENTION_STATUS', "Status");
-define('_AJAXFM_AM_EXTENTION_ACTION', "Action");
-define('_AJAXFM_AM_EXTENTION_INFO', "Default extentions information");
-define('_AJAXFM_AM_EXTENTION_INFO_DESC', "");
-define('_AJAXFM_AM_EXTRA_EXTENTION_INFO', "Extra extentions information");
-define('_AJAXFM_AM_EXTRA_EXTENTION_INFO_DESC', "");
-define('_AJAXFM_AM_EXTENTION_NOT_INSTALLED', "Extention not installed");
-define('_AJAXFM_AM_EXTENTION_NOT_ACTIVATED', "Extention not activated");
-define('_AJAXFM_AM_INSTALL_EXTENTION', "Install extention");
-define('_AJAXFM_AM_ACTIVATE_EXTENTION', "Activate extention");
-define('_AJAXFM_AM_EXTENTION_ACTIVATED', "Extention activated");
-define('_AJAXFM_AM_DISABLE_EXTENTION', "Disable extention");
-define('_AJAXFM_AM_EXTENTION_DISABLED', "Extention disabled");
-define('_AJAXFM_AM_EXTENTION_INSTALLED_OK', "Extention installed");
-define('_AJAXFM_AM_EXT_FILE_NOT_INSTALLABLE', "Extention not installable");
-define('_AJAXFM_AM_EXTENTION_ACTIVATED_OK', "Extention activated");
-define('_AJAXFM_AM_EXTENTION_NOTICE', "This extention allow you to display images on all the site just by adding a <b>video</b> tag to your text. A button (<img src=\"../images/image_button.png\" />) is displayed on XOOPS editor.");
-define('_AJAXFM_AM_EXT_FILE_DONT_EXIST', "Extention file don't exist on repository :<br /><b>Server : </b>%s<br /><b>File : </b>%s");
-define('_AJAXFM_AM_EXT_FILE_DONT_EXIST_SHORT', "Extention file don't exist");
-define('_AJAXFM_AM_EXTENTION_INSTALLED', "Extention installed");
+define('_AJAXFM_AM_EXTENSION', "Extension");
+define('_AJAXFM_AM_EXTENSION_STATUS', "Status");
+define('_AJAXFM_AM_EXTENSION_ACTION', "Action");
+define('_AJAXFM_AM_EXTENSION_INFO', "Default extensions information");
+define('_AJAXFM_AM_EXTENSION_INFO_DESC', "");
+define('_AJAXFM_AM_EXTRA_EXTENSION_INFO', "Extra extensions information");
+define('_AJAXFM_AM_EXTRA_EXTENSION_INFO_DESC', "");
+define('_AJAXFM_AM_EXTENSION_NOT_INSTALLED', "Extension not installed");
+define('_AJAXFM_AM_EXTENSION_NOT_ACTIVATED', "Extension not activated");
+define('_AJAXFM_AM_INSTALL_EXTENSION', "Install extension");
+define('_AJAXFM_AM_ACTIVATE_EXTENSION', "Activate extension");
+define('_AJAXFM_AM_EXTENSION_ACTIVATED', "Extension activated");
+define('_AJAXFM_AM_DISABLE_EXTENSION', "Disable extension");
+define('_AJAXFM_AM_EXTENSION_DISABLED', "Extension disabled");
+define('_AJAXFM_AM_EXTENSION_INSTALLED_OK', "Extension installed");
+define('_AJAXFM_AM_EXT_FILE_NOT_INSTALLABLE', "Extension not installable");
+define('_AJAXFM_AM_EXTENSION_ACTIVATED_OK', "Extension activated");
+define('_AJAXFM_AM_EXTENSION_NOTICE', "This extension allow you to display images on all the site just by adding a <b>video</b> tag to your text. A button (<img src=\"../images/image_button.png\" />) is displayed on XOOPS editor.");
+define('_AJAXFM_AM_EXT_FILE_DONT_EXIST', "Extension file don't exist on repository :<br /><b>Server : </b>%s<br /><b>File : </b>%s");
+define('_AJAXFM_AM_EXT_FILE_DONT_EXIST_SHORT', "Extension file don't exist");
+define('_AJAXFM_AM_EXTENSION_INSTALLED', "Extension installed");
 
 
 

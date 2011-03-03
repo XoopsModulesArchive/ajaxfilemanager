@@ -18,7 +18,7 @@
  * @version         
  */
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
-xoops_loadLanguage('extention', 'ajaxfilemanager');
+xoops_loadLanguage('extension', 'ajaxfilemanager');
 
 
 
