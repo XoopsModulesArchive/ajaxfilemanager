@@ -1,5 +1,5 @@
 <?php
-include XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
+include_once XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
 $ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
 xoops_loadLanguage('main', 'ajaxfilemanager');
 if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
@@ -67,7 +67,7 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
     define('CONFIG_SYS_DEFAULT_PATH', '../../../uploads/ajaxfilemanager/uploaded/'); //accept relative path only
     define('CONFIG_SYS_ROOT_PATH', '../../../uploads/ajaxfilemanager/uploaded/');	//accept relative path only
     define('CONFIG_SYS_FOLDER_SHOWN_ON_TOP', true); //show your folders on the top of list if true or order by name
-    @define("CONFIG_SYS_DIR_SESSION_PATH", XOOPS_ROOT_PATH . '/uploads/ajaxfilemanager/session/');
+    define("CONFIG_SYS_DIR_SESSION_PATH", XOOPS_ROOT_PATH . '/uploads/ajaxfilemanager/session/');
     define("CONFIG_SYS_PATTERN_FORMAT", 'list'); //three options: reg ,csv, list, this option define the parttern format for the following patterns
         /**
          * reg => regulare expression
@@ -81,19 +81,15 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
     define('CONFIG_SYS_INC_FILE_PATTERN', ''); //force listing of fiels with such pattern(s). separated by , if multiple
     define('CONFIG_SYS_EXC_FILE_PATTERN', ''); //will prevent listing of files with such pattern(s). separated by , if multiple
     define('CONFIG_SYS_DELETE_RECURSIVE', 1); //delete all contents within a specific folder if set to be 1
-        //print_r($ajaxfilemanagerModuleConfig);
+
     //UPLOAD OPTIONS CONFIG
-        @define('CONFIG_UPLOAD_MAXSIZE', $ajaxfilemanagerModuleConfig['upload_max_size'] * 1024);
-    //define('CONFIG_UPLOAD_MAXSIZE', 100000 * 1024 ); //by bytes
-    //define('CONFIG_UPLOAD_VALID_EXTS', 'txt');//
-
-    define('CONFIG_EDITABLE_VALID_EXTS', ''); //make you include all these extension in CONFIG_UPLOAD_VALID_EXTS if you want all valid
-
-    define('CONFIG_OVERWRITTEN', false); //overwirte when processing paste
-    @define('CONFIG_UPLOAD_VALID_EXTS', $ajaxfilemanagerModuleConfig['upload_valid_exts']);
-    //define('CONFIG_UPLOAD_VALID_EXTS', 'gif,jpg,png'); // DEFAULT
-    define("CONFIG_VIEWABLE_VALID_EXTS", 'gif,jpg,png');
+    define('CONFIG_UPLOAD_MAXSIZE', $ajaxfilemanagerModuleConfig['upload_max_size'] * 1024);
+    define('CONFIG_UPLOAD_VALID_EXTS', $ajaxfilemanagerModuleConfig['upload_valid_exts']); //define('CONFIG_UPLOAD_VALID_EXTS', 'gif,jpg,png,bmp,tif,zip,sit,rar,gz,tar,htm,html,mov,mpg,avi,asf,mpeg,wmv,aif,aiff,wav,mp3,swf,ppt,rtf,doc,pdf,xls,txt,xml,xsl,dtd');
     define('CONFIG_UPLOAD_INVALID_EXTS', '');
+
+    define('CONFIG_EDITABLE_VALID_EXTS', 'txt,htm,html,xml,js,css,php'); //make you include all these extension in CONFIG_UPLOAD_VALID_EXTS if you want all valid
+    define('CONFIG_OVERWRITTEN', false); //overwrite when processing paste
+    define("CONFIG_VIEWABLE_VALID_EXTS", 'gif,bmp,txt,jpg,png,tif,html,htm,js,css,xml,php,xsl,dtd,mp3,wav,wmv,wma,rm,rmvb,mov,swf');
 
     //Preview
     define('CONFIG_IMG_THUMBNAIL_MAX_X', 100);

@@ -16,8 +16,8 @@ body
 fieldset
 {
     border: 3px double #999;
-	padding: 2px 1em 8px;
-	margin: 0 0 0 12px;
+    padding: 2px 1em 8px;
+    margin: 0 0 0 12px;
 }
 fieldset p
 {
@@ -47,23 +47,23 @@ button
     color: #334D64;
 }
 .disabledButton{
-background-color:#cccccc;
-color:#FFFFFF;
-text-shadow:#999999;
-border:1px solid;
-border-bottom:2px;
-border-left-color:#ece9d8;
-border-bottom-color:#716f64;
+    background-color:#cccccc;
+    color:#FFFFFF;
+    text-shadow:#999999;
+    border:1px solid;
+    border-bottom:2px;
+    border-left-color:#ece9d8;
+    border-bottom-color:#716f64;
 
 }
 #modes{display: block;}
 #pageBody{
-position:relative;
-margin-top:5px;
-margin-left:12px;
-left:0;
-width:100%;
-height:100%;
+    position:relative;
+    margin-top:5px;
+    margin-left:12px;
+    left:0;
+    width:100%;
+    height:100%;
 }
 table.tableForm
 {
@@ -73,8 +73,8 @@ table.tableForm
     border-collapse: collapse;
 }
 #windowSaveClose{
-position:relative;
-left:360px;
+    position:relative;
+    left:360px;
 }
 table.tableForm thead th
 {
@@ -102,5 +102,3 @@ table.tableForm tbody th
 table.tableForm tbody td{padding: 4px 8px;}
 table.tableForm tfoot th{}
 table.tableForm tfoot td{padding: 4px 8px 12px;}
-
-	
