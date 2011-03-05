@@ -16,8 +16,8 @@ $modversion['official'] = 0;
 $modversion['image'] = "images/filemanager_slogo.png";
 $modversion['dirname'] = "ajaxfilemanager";
 //extra informations
-$modversion['release'] = '02-03-2011';
-$modversion['module_status'] = 'Stable';
+$modversion['release'] = '06-03-2011';
+$modversion['module_status'] = 'In progress';
 $modversion['support_site_url'] = 'http://www.xoops.org';
 $modversion['support_site_name'] = 'www.xoops.org';
 $modversion['author_website_url']	= 'http://xoops.org';
@@ -71,6 +71,19 @@ $modversion['config'][] = array(
     "valuetype"     => 'int',
     "default"       => 1000, //1MB
     );
+include_once (XOOPS_ROOT_PATH . '/class/xoopslists.php');
+$modversion['config'][] = array(
+    "name"          => 'text_editor',
+    "title"         => '_AJAXFM_MI_TEXTEDITOR',
+    "description"   => '_AJAXFM_MI_TEXTEDITOR_DESC',
+    "formtype"      => 'select',
+    "valuetype"     => 'text',
+    "default"       => 'dhtmltextarea',
+    "options"       => XoopsLists::getDirListAsArray(XOOPS_ROOT_PATH . '/class/xoopseditor'),
+    "category"       => 'global'
+    );
+
+
 
 // Comments
 $modversion["hasComments"] = 0;
