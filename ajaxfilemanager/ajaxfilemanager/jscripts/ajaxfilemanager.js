@@ -758,7 +758,8 @@ function enableContextMenu(jquerySelectors)
 																					param += ",left = 0,top=0" ;
 																				}		 
 																				var newWindow = window.open(url + ((url.lastIndexOf("?") > - 1)?"&":"?") + "path="  + files[num].path,'', param);
-																				newWindow.focus( );																						
+																				newWindow.focus( );
+                                                                                newWindow.onclose(function() {alert("pota");});
 	
 																				
 																		},

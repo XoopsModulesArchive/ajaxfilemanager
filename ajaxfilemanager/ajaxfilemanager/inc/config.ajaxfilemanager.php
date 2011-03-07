@@ -95,7 +95,7 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
     define('CONFIG_IMG_THUMBNAIL_MAX_X', 100);
     define('CONFIG_IMG_THUMBNAIL_MAX_Y', 100);
     define('CONFIG_THICKBOX_MAX_WIDTH', 700);
-    define('CONFIG_THICKBOX_MAX_HEIGHT', 430);
+    define('CONFIG_THICKBOX_MAX_HEIGHT', 500);
 
 
         /**

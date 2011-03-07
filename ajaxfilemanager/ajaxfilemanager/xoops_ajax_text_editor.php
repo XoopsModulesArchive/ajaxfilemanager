@@ -78,7 +78,7 @@ if(array_search(getFileExt($path), getValidTextEditorExts())=== false) {
 <link href="theme/<?php echo CONFIG_THEME_NAME; ?>/css/jqModal.css" type="text/css" rel="stylesheet" />
 <title>Xoops Ajax Text Editor</title>
 </head>
-<body>
+<body onunload="if(window.opener) window.opener.location.reload()">
 <?php
 xoops_load('XoopsCache');
 XoopsCache::delete('editorlist');
@@ -97,10 +97,32 @@ $editorConfigs["editor"] = $ajaxfilemanagerModuleConfig['text_editor'];
 $editor = new XoopsFormEditor('', "content", $editorConfigs);
 $form->addElement($editor, true);
 
+// MAMBA wrote: "use a patch", and so... here you are "the patch" ;-)
+// $getValueJS = $editor->renderGetValueJS();
+switch ($editorConfigs["editor"]) {
+case 'editarea' :
+    $getValueJS = "editAreaLoader.getValue(&quot;" . $editorConfigs["name"] ."&quot;)";
+    break;
+case 'codemirror' :
+    $getValueJS = "editor_" . $editorConfigs["name"] .".mirror.getCode()";
+    break;
+case 'tinymce' :
+    $getValueJS = "tinyMCE.get(&quot;" . $editorConfigs["name"] ."&quot;).getContent()";
+    break;
+case 'ckeditor' :
+    $getValueJS = "CKEDITOR.instances." . $editorConfigs["name"] .".getData()";
+    break;
+case 'dhtmltextarea' :
+case 'textarea' :
+default :
+    $getValueJS = "document.getElementById('" . $editorConfigs["name"] ."').value()";
+    }
+// MAMBA wrote: "use a patch", and so... here you are "the patch" ;-)
+
 $buttonSave = new XoopsFormButton ('', '_save', 'Save', 'button');
-$buttonSave->setExtra("onclick='javascript:save(\"content\", " . $editor->renderGetValueJS() .");'");
+$buttonSave->setExtra("onclick='javascript:save(\"" . $editorConfigs["name"] . "\", " . $getValueJS .");'");
 $buttonSaveAs = new XoopsFormButton ('', '_save_as', 'Save as', 'button');
-$buttonSaveAs->setExtra("onclick='javascript:save_as(\"content\", " . $editor->renderGetValueJS() .");'");
+$buttonSaveAs->setExtra("onclick='javascript:save_as(\"" . $editorConfigs["name"] . "\", " . $getValueJS .");'");
 $buttonCancel = new XoopsFormButton ('', '_cancel', 'Cancel', 'button');
 $buttonCancel->setExtra("onclick='javascript:window.close();'");
 $elementTray = new XoopsFormElementTray ('', "&nbsp;", '');
