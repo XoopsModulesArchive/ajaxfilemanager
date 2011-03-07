@@ -66,7 +66,7 @@ function do_save_as()
         jQuery('#folder').val(saveAs.options[saveAs.selectedIndex].value);
         jQuery('#save_as_request').val('1');
         jQuery('#windowSaveAs').jqmHide();
-        //do_save(true);
+        do_save(true);
     }
     return false;
 };

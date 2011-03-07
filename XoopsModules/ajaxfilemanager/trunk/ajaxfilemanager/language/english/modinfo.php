@@ -27,7 +27,7 @@ define('_AJAXFM_MI_MAXSIZE', 'Max upload size');
 define('_AJAXFM_MI_MAXSIZE_MB', 'MBytes');
 define('_AJAXFM_MI_MAXSIZE_DESC', 'KBytes (1000 = 1MB)');
 define('_AJAXFM_MI_TEXTEDITOR', 'Text editor');
-define('_AJAXFM_MI_TEXTEDITOR_DESC', 'Choose text editor');
+define('_AJAXFM_MI_TEXTEDITOR_DESC', 'Choose text editor<br />Only these editors are properly supported: editarea, codemirror, tinymce, ckeditor, dhtmltextarea, textarea');
 
 // for install/uninstall/update
 define('_AJAXFM_MI_WARNING_DIRNOTCREATED', '<strong><span style="color:red;">WARNING: %s directory not created!</span></strong><br />');

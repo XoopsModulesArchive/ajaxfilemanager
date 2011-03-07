@@ -111,15 +111,19 @@
     define('CONFIG_URL_LOAD_FOLDERS', '_ajax_load_folders.php');
 
     define('CONFIG_URL_DOWNLOAD', 'ajax_download.php');
-    xoops_load('XoopsEditorHandler');
-    $editor_handler = XoopsEditorHandler::getInstance();
-    $checkedEditor = $editor_handler->get($ajaxfilemanagerModuleConfig['text_editor']);
-    if (!method_exists($checkedEditor, 'renderGetValueJS')) {
-        define('CONFIG_URL_TEXT_EDITOR', 'ajax_text_editor.php');
-    } else {
+
+    // MAMBA wrote: "use a patch", and so... here you are "the patch" ;-)
+    //xoops_load('XoopsEditorHandler');
+    //$editor_handler = XoopsEditorHandler::getInstance();
+    //$checkedEditor = $editor_handler->get($ajaxfilemanagerModuleConfig['text_editor']);
+    //if (!method_exists($checkedEditor, 'renderGetValueJS')) {
+    if (in_array($ajaxfilemanagerModuleConfig['text_editor'], array('editarea', 'codemirror', 'tinymce', 'ckeditor', 'dhtmltextarea', 'textarea'))) {
         define('CONFIG_URL_TEXT_EDITOR', 'xoops_ajax_text_editor.php');
+    } else {
+        define('CONFIG_URL_TEXT_EDITOR', 'ajax_text_editor.php');
     }
-    unset($checkedEditor);
+    //unset($checkedEditor);
+    // MAMBA wrote: "use a patch", and so... here you are "the patch" ;-)
     define('CONFIG_URL_GET_FOLDER_LIST', 'ajax_get_folder_listing.php');
     define('CONFIG_URL_SAVE_TEXT', 'ajax_save_text.php');
     define('CONFIG_URL_LIST_LISTING', 'ajax_get_file_listing.php');
