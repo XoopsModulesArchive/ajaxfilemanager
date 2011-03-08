@@ -4,17 +4,14 @@ $currentFile = basename(__FILE__);
 
 // load classes
 
+// get/check parameters/post
 
-
+// render start here
 xoops_cp_header();
 
 // main admin menu
-if ( !is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php"))	{
-    moduleAdminMenu(2, _AJAXFM_MI_ADMENU_FILEMANAGER);
-} else {
-    include_once XOOPS_ROOT_PATH.'/Frameworks/art/functions.admin.php';
-    loadModuleAdminMenu (2, _AJAXFM_MI_ADMENU_FILEMANAGER);
-}
+include (XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/admin/menu.php');
+echo moduleAdminTabMenu($adminmenu, $currentFile);
 
 echo '<div style="clear:both"> </div>';
 echo '<fieldset>';

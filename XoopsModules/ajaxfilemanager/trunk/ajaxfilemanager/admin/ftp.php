@@ -7,12 +7,10 @@ $versionInfo =& $module_handler->get($xoopsModule->getVar('mid'));
 
 xoops_cp_header();
 
-if (!is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php")) {
-    moduleAdminMenu(3, _AJAXFM_MI_ADMENU_FTP);
-} else {
-    include_once XOOPS_ROOT_PATH.'/Frameworks/art/functions.admin.php';
-    loadModuleAdminMenu (3, _AJAXFM_MI_ADMENU_FTP);
-}
+// main admin menu
+include (XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/admin/menu.php');
+echo moduleAdminTabMenu($adminmenu, $currentFile);
+
 echo "IN_PROGRESS<br />";
 
 //-- SMTP Mail Function  By Aditya Bhatt

@@ -39,7 +39,7 @@ class MytsAjaxfilemanager extends MyTextSanitizerExtension
                     "src='" . XOOPS_URL ."/class/textsanitizer/ajaxfilemanager/button_ajaxfilemanager.png' " .
                     "title='" . _AJAXFM_AM_AJAXFILEMANAGER_ALT . "' " .
                     "alt='" . _AJAXFM_AM_AJAXFILEMANAGER_ALT . "' " .
-                    "onclick='openWithSelfMain(&quot;" . XOOPS_URL ."/modules/ajaxfilemanager/ajaxfilemanager/ajaxfilemanager.php?editor=ajaxfilemanager&amp;config=ajaxfilemanager&amp;view=thumbnail&amp;language=en&amp;elementId={$textarea_id}&quot;, &quot;ajaxfilemanager&quot;, 800, 600);' " .
+                    "onclick='openWithSelfMain(&quot;" . XOOPS_URL ."/modules/ajaxfilemanager/ajaxfilemanager/ajaxfilemanager.php?editor=ajaxfilemanager&amp;config=ajaxfilemanager&amp;view=thumbnail&amp;language=" . _LANGCODE . "&amp;elementId={$textarea_id}&quot;, &quot;ajaxfilemanager&quot;, 800, 600);' " .
                     "onmouseover='style.cursor=\"hand\"'/>" .
                     "&nbsp;";
             $javascript = "";

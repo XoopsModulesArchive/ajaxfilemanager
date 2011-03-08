@@ -8,7 +8,7 @@ $currentFile = basename(__FILE__);
 
 $op = (isset($_GET['op']))? $_GET['op'] : "";
 if ($op = 'createdir') {
-	if (isset($_GET['path'])) {
+    if (isset($_GET['path'])) {
         $path = $_GET['path'];
         $msg = (makeDir($path)) ? _AJAXFM_AM_DIRCREATED : _AJAXFM_AM_DIRNOTCREATED;
         redirect_header($currentFile, 2, sprintf($msg, htmlentities($path)));
@@ -21,31 +21,15 @@ if ($op = 'createdir') {
 xoops_cp_header();
 
 // main admin menu
-if ( !is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php"))	{
-    moduleAdminMenu(1, _AJAXFM_MI_ADMENU_INDEX);
-} else {
-    include_once XOOPS_ROOT_PATH.'/Frameworks/art/functions.admin.php';
-    loadModuleAdminMenu (1, _AJAXFM_MI_ADMENU_INDEX);
-}
+include (XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/admin/menu.php');
+echo moduleAdminTabMenu($adminmenu, $currentFile);
 
 // index menu
-// temp solution: why sometime $adminmenu is setted?
-if (isset($adminmenu)) {
-    $tempadminmenu = $adminmenu;
-    unset($adminmenu);
-}
-include (XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/admin/menu.php');
-
 include_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/class/menu.php';
 //$menu = new moduleMenu();
 $menu = new testMenu();
 foreach ($adminmenu as $menuitem) {
     $menu->addItem($menuitem['name'], '../' . $menuitem['link'], '../' . $menuitem['icon'], $menuitem['title']);
-}
-
-if (isset($tempadminmenu)) {
-    $adminmenu = $tempadminmenu;
-    unset($tempadminmenu);
 }
 
 $menu->addItem('Preferences', '../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $xoopsModule ->getVar('mid') . '&amp;&confcat_id=1', '../images/icons/32x32/prefs.png', _PREFERENCES);
