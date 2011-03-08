@@ -12,7 +12,7 @@ $groups = (is_object($xoopsUser)) ? $xoopsUser->getGroups() : array(XOOPS_GROUP_
 // $admin is true if user is an admin
 $admin = (is_object($xoopsUser) && $xoopsUser->isAdmin($GLOBALS['xoopsModule']->mid())) ? true : false;
 
-// get post
+// get/check parameters/post
 if(isset($_POST['step'])) {
     $step = $_POST['step'];
 } else {
@@ -24,7 +24,6 @@ if(isset($_POST['extension'])) {
 } else {
     $step = 'default';
 }
-
 
 
 
@@ -44,27 +43,23 @@ case 'install':
         redirect_header($currentFile, 3, _AJAXFM_AM_EXT_FILE_DONT_EXIST_SHORT);
         break;
     }
-
     // Copy extension
     if (!copyDir($source, $destination)) {
         redirect_header($currentFile, 3, _AJAXFM_AM_EXT_FILE_NOT_INSTALLABLE);
     }
-
     // Activate extension
     activateExtension($extension);
     redirect_header($currentFile, 3, _AJAXFM_AM_EXTENSION_INSTALLED . "<br />" . $extension . ' ' . _AJAXFM_AM_EXTENSION_ACTIVATED);
     break;
 default:
 case 'default':
+    // render start here
     xoops_cp_header();
-    // main admin menu
-    if ( !is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php"))	{
-        moduleAdminMenu(4, _AJAXFM_MI_ADMENU_EXTENSIONS);
-    } else {
-        include_once XOOPS_ROOT_PATH.'/Frameworks/art/functions.admin.php';
-        loadModuleAdminMenu (4, _AJAXFM_MI_ADMENU_EXTENSIONS);
-    }
 
+    // main admin menu
+    include (XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/admin/menu.php');
+    echo moduleAdminTabMenu($adminmenu, $currentFile);
+    // check if estansions path is writable
     $extensionsPath = XOOPS_ROOT_PATH . '/class/textsanitizer';
     if (!is_writable($extensionsPath) or !is_writable($extensionsPath . '/config.php')) {
         echo '<p>' . sprintf(_AJAXFM_AM_EXTENSION_WARNING1, $extensionsPath) . '</p>';

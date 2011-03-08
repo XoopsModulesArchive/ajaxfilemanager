@@ -2,28 +2,33 @@
 if (!defined('XOOPS_ROOT_PATH')) die('XOOPS root path not defined');
 $moduleDirname = basename( dirname( __FILE__ ) ) ;
 
-
-
 $modversion['name'] = _AJAXFM_MI_NAME;
 $modversion['version'] = 0.01;
 $modversion['description'] = _AJAXFM_MI_DESC;
-$modversion['author'] = "luciorota + Logan Cai - www.phpletter.com";
-$modversion['credits'] = "The XOOPS Project";
-$modversion['help'] = "help.html";
-$modversion['license'] = "GPL see LICENSE";
-$modversion['license_url'] = "http://www.gnu.org/licenses/gpl.html";
+$modversion['author'] = 'luciorota + Logan Cai - www.phpletter.com';
+$modversion['author_mail'] = 'lucio.rota@gmail.com';
+$modversion['author_website_url'] = 'http://luciorota.altervista.org';
+$modversion['author_website_name'] = 'http://luciorota.altervista.org';
+$modversion['credits'] = 'The XOOPS Project';
+$modversion['help'] = 'help.html';
+$modversion['license'] = 'GPL see LICENSE';
+$modversion['license_url'] = 'http://www.gnu.org/licenses/gpl.html';
 $modversion['official'] = 0;
-$modversion['image'] = "images/filemanager_slogo.png";
-$modversion['dirname'] = "ajaxfilemanager";
-//extra informations
-$modversion['release'] = '07-03-2011';
+$modversion['image'] = 'images/filemanager_slogo.png';
+$modversion['release_info'] = 'IN PROGRESS';
+$modversion['release_file'] = 'IN PROGRESS';
+$modversion['manual'] = 'Help';
+$modversion['manual_file'] = 'help.html';
+$modversion['dirname'] = '$dirname';
+//About
+$modversion['demo_site_url'] = 'IN PROGRESS';
+$modversion['demo_site_name'] = 'IN PROGRESS';
+$modversion['forum_site_url'] = 'IN PROGRESS';
+$modversion['forum_site_name'] = 'IN PROGRESS';
+$modversion['module_website_url'] = 'IN PROGRESS';
+$modversion['module_website_name'] = 'IN PROGRESS';
+$modversion['release'] = strtotime('2011/03/07'); // 'YYYY/MM/DD' format
 $modversion['module_status'] = 'In progress';
-$modversion['support_site_url'] = 'http://www.xoops.org';
-$modversion['support_site_name'] = 'www.xoops.org';
-$modversion['author_website_url']	= 'http://xoops.org';
-$modversion['author_website_name']	= 'XOOPS';
-
-
 
 // Admin things
 $modversion['hasAdmin'] = 1;

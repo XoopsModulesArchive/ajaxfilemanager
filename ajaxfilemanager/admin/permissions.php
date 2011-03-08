@@ -4,19 +4,17 @@ $currentFile = basename(__FILE__);
 
 // load classes
 
-
-
+// get/check parameters/post
 $op = isset($_REQUEST['op']) ? $_REQUEST['op'] : 'extra';
 
+
+
+// render start here
 xoops_cp_header();
 
 // main admin menu
-if ( !is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php"))	{
-    moduleAdminMenu(5, _AJAXFM_MI_ADMENU_PERMISSIONS);
-} else {
-    include_once XOOPS_ROOT_PATH.'/Frameworks/art/functions.admin.php';
-    loadModuleAdminMenu (5, _AJAXFM_MI_ADMENU_PERMISSIONS);
-}
+include (XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/admin/menu.php');
+echo moduleAdminTabMenu($adminmenu, $currentFile);
 /*
 include_once $GLOBALS['xoops']->path( '/class/xoopsformloader.php' );
 $opForm = new XoopsSimpleForm('', 'opform', $currentFile, 'get');
@@ -75,5 +73,6 @@ if ($op == 'extra') {
 }
 $permissionsForm->display();
 unset ($permissionsForm);
+
 xoops_cp_footer();
 ?>
