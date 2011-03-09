@@ -1,4 +1,22 @@
 <?php
+/**
+ * Ajax File Manager
+ *
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
+ * @package         ajaxfilemanager
+ * @since           0.1
+ * @author          luciorota <lucio.rota@gmail.com>
+ * @version         $Id$
+ */
+
 if (!defined('XOOPS_ROOT_PATH')) die('XOOPS root path not defined');
 $moduleDirname = basename( dirname( __FILE__ ) ) ;
 
@@ -19,7 +37,7 @@ $modversion['release_info'] = 'IN PROGRESS';
 $modversion['release_file'] = 'IN PROGRESS';
 $modversion['manual'] = 'Help';
 $modversion['manual_file'] = 'help.html';
-$modversion['dirname'] = '$dirname';
+$modversion['dirname'] = $dirname;
 //About
 $modversion['demo_site_url'] = 'IN PROGRESS';
 $modversion['demo_site_name'] = 'IN PROGRESS';
@@ -27,7 +45,7 @@ $modversion['forum_site_url'] = 'IN PROGRESS';
 $modversion['forum_site_name'] = 'IN PROGRESS';
 $modversion['module_website_url'] = 'IN PROGRESS';
 $modversion['module_website_name'] = 'IN PROGRESS';
-$modversion['release'] = strtotime('2011/03/07'); // 'YYYY/MM/DD' format
+$modversion['release'] = strtotime('2011/03/09'); // 'YYYY/MM/DD' format
 $modversion['module_status'] = 'In progress';
 
 // Admin things
@@ -66,7 +84,7 @@ $modversion['config'][1] = array(
     "description"   => '_AJAXFM_MI_VALIDEXTS_DESC',
     "formtype"      => 'textbox',
     "valuetype"     => 'text',
-    "default"       => 'gif,jpg,png,mp3,flv,kml,txt',
+    "default"       => 'gif,jpg,png,html,htm,mp3,flv,kml,txt,pdf',
     );
 $modversion['config'][] = array(
     "name"          => 'upload_max_size',
@@ -86,6 +104,26 @@ $modversion['config'][] = array(
     "default"       => 'dhtmltextarea',
     "options"       => XoopsLists::getDirListAsArray(XOOPS_ROOT_PATH . '/class/xoopseditor'),
     "category"       => 'global'
+    );
+$modversion['config'][] = array(
+    "name"          => 'navigation_mode',
+    "title"         => '_AJAXFM_MI_NAVIGATIONMODE',
+    "description"   => '_AJAXFM_MI_NAVIGATIONMODE_DESC',
+    "formtype"      => 'select',
+    "valuetype"     => 'text',
+    "default"       => 'secure',
+    "options"       => array('_AJAXFM_MI_NAVIGATIONMODE1' => 'secure', '_AJAXFM_MI_NAVIGATIONMODE2' => 'dangerous', '_AJAXFM_MI_NAVIGATIONMODE3' => 'kamikaze'),
+    "category"       => 'global'
+    );
+$modversion['config'][] = array(
+    "name"          => 'standard_imagemanager',
+    "title"         => '_AJAXFM_MI_XOOPSIMAGEMANAGER',
+    "description"   => '_AJAXFM_MI_XOOPSIMAGEMANAGER_DESC',
+    "formtype"      => 'select',
+    "valuetype"     => 'text',
+    "default"       => 'standard',
+    "options"       => array('_AJAXFM_MI_XOOPSIMAGEMANAGER1' => 'standard', '_AJAXFM_MI_XOOPSIMAGEMANAGER2' => 'enhanced', '_AJAXFM_MI_XOOPSIMAGEMANAGER3' => 'ajaxfilemanager'),
+    "category"       => 'extra'
     );
 
 

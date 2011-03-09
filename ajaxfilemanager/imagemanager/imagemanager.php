@@ -1,20 +1,47 @@
 <?php
+/**
+ * Ajax File Manager
+ *
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
+ * @package         ajaxfilemanager
+ * @since           0.1
+ * @author          luciorota <lucio.rota@gmail.com>
+ * @version         $Id$
+ */
+
+$currentFile = basename(__FILE__);
 include dirname(__FILE__) . '/../../../mainfile.php';
 include dirname(__FILE__) . '/../include/functions.php';
 
-xoops_loadLanguage('imagemanager', 'xaddresses');
+xoops_loadLanguage('imagemanager', 'ajaxfilemanager');
 
-if (!isset($_REQUEST['target'])) {
+if (isset($_REQUEST['target'])) {
+    $target = $_REQUEST['target'];
+} else {
     exit('Target not set');
 }
 
-$target = $_REQUEST['target'];
 $op = 'list';
 if (isset($_GET['op']) && $_GET['op'] == 'upload') {
     $op = 'upload';
 } elseif (isset($_POST['op']) && $_POST['op'] == 'doupload') {
     $op = 'doupload';
 }
+
+$editor = 'bbcode';
+if (isset($_REQUEST['editor'])) {
+    $editor = $_REQUEST['editor'];
+}
+
+
 
 if (!is_object($xoopsUser)) {
     $group = array(XOOPS_GROUP_ANONYMOUS);
@@ -28,6 +55,7 @@ if ($op == 'list') {
     $xoopsTpl->assign('sitename', htmlspecialchars($xoopsConfig['sitename'], ENT_QUOTES));
     $target = htmlspecialchars($target, ENT_QUOTES);
     $xoopsTpl->assign('target', $target);
+    $xoopsTpl->assign('editor', $editor);
     $imgcat_handler =& xoops_gethandler('imagecategory');
     $catlist =& $imgcat_handler->getList($group, 'imgcat_read', 1);
     $catcount = count($catlist);
@@ -103,13 +131,13 @@ if ($op == 'list') {
                 $xoopsTpl->assign('image_total', 0);
             }
         }
-        //$xoopsTpl->assign('xsize', 600);
-        //$xoopsTpl->assign('ysize', 400);
+        $xoopsTpl->assign('xsize', 800);
+        $xoopsTpl->assign('ysize', 600);
     } else {
-        //$xoopsTpl->assign('xsize', 400);
-        //$xoopsTpl->assign('ysize', 180);
+        $xoopsTpl->assign('xsize', 800);
+        $xoopsTpl->assign('ysize', 600);
     }
-    $xoopsTpl->display('db:xaddresses_imagemanager.html');
+    $xoopsTpl->display('db:ajaxfm_imagemanager.html');
     exit();
 }
 
@@ -160,7 +188,7 @@ if ($op == 'upload') {
     $form->addElement(new XoopsFormButton('', 'img_button', _SUBMIT, 'submit'));
     $form->assign($xoopsTpl);
     $xoopsTpl->assign('lang_close', _CLOSE);
-    $xoopsTpl->display('db:xaddresses_imagemanager2.html');
+    $xoopsTpl->display('db:ajaxfm_imagemanager2.html');
     exit();
 }
 
@@ -187,8 +215,7 @@ if ($op == 'doupload') {
                 }
             }
         }
-    }
-    else {
+    } else {
         $error = true;
     }
     if ($error != false) {
@@ -201,7 +228,6 @@ if ($op == 'doupload') {
         // calculates the available memory for upload // IN PROGRESS
         // temporary solution 
         $memoryAvailable = @round((letToNum(ini_get('memory_limit')) - memory_get_usage())/3);
-//error_log($memoryAvailable);
         $maxUploadSize = min(letToNum(ini_get('post_max_size')), letToNum(ini_get('upload_max_filesize')), $memoryAvailable);
         $maxFileSize = $maxUploadSize;
         $uploader = new XoopsMediaUploader(XOOPS_UPLOAD_PATH, array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'), $maxFileSize);
@@ -214,7 +240,7 @@ if ($op == 'doupload') {
             $err = $uploader->getErrors();
         } else {
             // resize image if too big using WideImage library // IN PROGRESS
-            require_once(XOOPS_ROOT_PATH . '/modules/xaddresses/imagemanager/libs/wideimage/WideImage.php');
+            require_once(XOOPS_ROOT_PATH . '/modules/ajaxfilemanager/imagemanager/libs/wideimage/WideImage.php');
             $in = WideImage::load($uploader->getSavedDestination());
             // Get the original geometry and calculate scales
             $width = $in->getWidth();
@@ -269,7 +295,7 @@ if ($op == 'doupload') {
         xoops_footer();
         exit();
     }
-    header('location: imagemanager.php?cat_id=' . $imgcat_id . '&target=' . $target);
+    header('location: ' . $currentFile . '?cat_id=' . $imgcat_id . '&target=' . $target . '&editor=' . $editor);
 }
 
 ?>
