@@ -1,7 +1,7 @@
 <?php
 /**
  * ****************************************************************************
- * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
+ * Module gï¿½nï¿½rï¿½ par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
  * test - MODULE FOR XOOPS AND IMPRESS CMS
  * Copyright (c) Mamba (www.xoops.org)
@@ -16,7 +16,7 @@
  * @copyright       Mamba (www.xoops.org)
  * @license         GPL
  * @package         test
- * @author 			Mamba (www.xoops.org)
+ * @author          Mamba (www.xoops.org)
  *
  * Version : 1.00:
  * ****************************************************************************

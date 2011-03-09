@@ -1,6 +1,6 @@
 <?php
 /**
- * File Manager
+ * Ajax File Manager
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -11,10 +11,10 @@
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
- * @package         imagemanager
- * @since           2.4.0
- * @author          trabis <lusopoemas@gmail.com>
- * @version         $Id: core.php 3333 2009-08-27 10:46:15Z trabis $
+ * @package         ajaxfilemanager
+ * @since           0.1
+ * @author          luciorota <lucio.rota@gmail.com>
+ * @version         $Id$
  */
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
@@ -24,16 +24,35 @@ defined('XOOPS_ROOT_PATH') or die('Restricted access');
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
- * @author          trabis <lusopoemas@gmail.com>
+ * @author          lucio rota <lucio.rota@gmail.com>
  */
 class AjaxfilemanagerCorePreload extends XoopsPreloadItem
 {
-
     function eventCoreClassXoopsformFormdhtmltextareaCodeicon($args)
     {
+        /**
+         * Load Module config
+         */
+        include_once XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
+        $ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
+        if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
+            $config_handler =& xoops_gethandler('config');
+            $ajaxfilemanagerModuleConfig = $config_handler->getConfigsByCat(0, $ajaxfilemanagerModule->getVar('mid'));
+        }
         if (AjaxfilemanagerCorePreload::isActive()) {
             $lang = _LANGCODE;
-            //$args[0] = str_replace('imagemanager.php?target=', 'modules/ajaxfilemanager/ajaxfilemanager/ajaxfilemanager.php?editor=xoops&amp;config=xoops&amp;view=thumbnail&amp;language=' . $lang . '&amp;elementId=', $args[0]);
+            switch($ajaxfilemanagerModuleConfig['standard_imagemanager']) {
+            case 'ajaxfilemanager' :
+                $args[0] = str_replace('imagemanager.php?target=', 'modules/ajaxfilemanager/ajaxfilemanager/ajaxfilemanager.php?editor=ajaxfilemanager&amp;config=ajaxfilemanager&amp;view=thumbnail&amp;language=' . _LANGCODE . '&amp;elementId=', $args[0]);
+                break;
+            case 'enhanced' :
+                $args[0] = str_replace('imagemanager.php?target=', 'modules/ajaxfilemanager/imagemanager/imagemanager.php?editor=bbcode&amp;target=', $args[0]);
+                break;
+            case 'standard' :
+            default:
+                $args[0] = $args[0];
+                break;
+            }
         }
     }
 

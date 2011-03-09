@@ -6,12 +6,23 @@
 <title><{$sitename}> <{$lang_imgmanager}></title>
 <script type="text/javascript">
 <!--//
-function appendCode(addCode) {
-	//var targetDom = window.opener.xoopsGetElementById('<{$target}>');
-	window.opener.xoopsGetElementById('<{$target}>').value = addCode;
-	window.opener.xoopsGetElementById('<{$target}>_image').src = addCode;
-	window.close();
-	return;
+function appendCode(addCode,appendToValue) {
+    var targetDom = window.opener.xoopsGetElementById('<{$target}>');
+    if (appendToValue == true) {
+        if (targetDom.createTextRange && targetDom.caretPos){
+            var caretPos = targetDom.caretPos;
+            caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? addCode + ' ' : addCode;
+        } else if (targetDom.getSelection && targetDom.caretPos) {
+            var caretPos = targetDom.caretPos;
+            caretPos.text = caretPos.text.charat(caretPos.text.length - 1) == ' ' ? addCode + ' ' : addCode;
+        } else {
+            targetDom.value = targetDom.value + addCode;
+        }
+    } else {
+        targetDom.value = addCode;
+    }
+    window.close();
+    return;
 }
 //-->
 </script>
@@ -47,11 +58,11 @@ echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"language/$
     <table cellspacing="0" id="imagenav">
       <tr>
         <td>
-          <select name="cat_id" onchange="location='imagemanager.php?target=<{$target}>&cat_id='+this.options[this.selectedIndex].value"><{$cat_options}></select> <input type="hidden" name="target" value="<{$target}>" /><input type="submit" value="<{$lang_go}>" />
+          <select name="cat_id" onchange="location='imagemanager.php?target=<{$target}>&amp;editor=<{$editor}>&amp;cat_id='+this.options[this.selectedIndex].value"><{$cat_options}></select> <input type="hidden" name="target" value="<{$target}>" /><input type="submit" value="<{$lang_go}>" />
         </td>
 
         <{if $show_cat > 0}>
-        <td align="right"><a href="imagemanager.php?target=<{$target}>&op=upload&imgcat_id=<{$show_cat}>" title="<{$lang_addimage}>"><{$lang_addimage}></a></td>
+        <td align="right"><a href="imagemanager.php?target=<{$target}>&amp;editor=<{$editor}>&amp;op=upload&amp;imgcat_id=<{$show_cat}>" title="<{$lang_addimage}>"><{$lang_addimage}></a></td>
         <{/if}>
 
       </tr>
@@ -74,8 +85,18 @@ echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"language/$
       <td><img src="<{$images[i].src}>" alt="" /></td>
       <td><{$images[i].mimetype}></td>
       <td>
-        <a href="#" title="" onclick="javascript:appendCode('<{$images[i].src}>');"><img src="<{$xoops_url}>/images/aligncenter.gif" alt="Center" /></a>
+  <{if ($editor == 'bbcode')}>
+        <a href="#" title="" onclick="javascript:appendCode('<{$images[i].lxcode}>', true);"><img src="<{$xoops_url}>/images/alignleft.gif" alt="Left" /></a>
+        &nbsp;
+        <a href="#" title="" onclick="javascript:appendCode('<{$images[i].xcode}>', true);"><img src="<{$xoops_url}>/images/aligncenter.gif" alt="Center" /></a>
+        &nbsp;
+        <a href="#" title="" onclick="javascript:appendCode('<{$images[i].rxcode}>', true);"><img src="<{$xoops_url}>/images/alignright.gif" alt="Right" /></a>
+  <{/if}>
+  <{if ($editor == 'src')}>
+        <a href="#" title="" onclick="javascript:appendCode('<{$images[i].src}>', false);"><img src="<{$xoops_url}>/images/aligncenter.gif" alt="Center" /></a>
+  <{/if}>
       </td>
+
     </tr>
     <{/section}>
   </table>

@@ -1,18 +1,32 @@
 <?php
 /**
- * Ajax image editor platform for xoops
- * @author Logan Cai (cailongqun [at] yahoo [dot] com [dot] cn)
- * @author Rota Lucio (lucio [dot[ rota [at] gmail [dot] com) 
- * @link www.phpletter.com
- * @since 22/May/2007
+ * Ajax File Manager
  *
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * @author          Logan Cai (cailongqun [at] yahoo [dot] com [dot] cn)
+ * @link            www.phpletter.com
+ * @since           22/May/2007
+ * @author          luciorota <lucio.rota@gmail.com>
+ * @package         ajaxfilemanager
+ * @since           0.1
+ * @version         $Id$
  */
-require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . "inc" . DIRECTORY_SEPARATOR . "config.php");
 
-include XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
-$ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
+require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . "inc" . DIRECTORY_SEPARATOR . "config.php");
+/**
+ * Load Module config
+ */
 xoops_loadLanguage('main', 'ajaxfilemanager');
+include_once XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
+$ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
 if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
+    $config_handler =& xoops_gethandler('config');
     $ajaxfilemanagerModuleConfig = $config_handler->getConfigsByCat(0, $ajaxfilemanagerModule->getVar('mid'));
 }
 
@@ -27,21 +41,28 @@ if(!empty($_GET['path']) && file_exists($_GET['path']) && is_file($_GET['path'])
 } else {
     die(TXT_FILE_NOT_FOUND);
 }
-if(file_exists(DIR_AJAX_EDIT_AREA . "reg_syntax" . DIRECTORY_SEPARATOR . getFileExt($path) . ".js")) {
-    $syntax = getFileExt($path);
-} else {
-    switch (getFileExt($path)) {
-    case 'php':
-        $syntax = 'php';
-        break;
-    case 'htm':
-    case 'html':
-        $syntax = 'html';
-        break;
-    default:
-        $syntax = 'basic';
-    }
+
+$syntax = getFileExt($path);
+
+switch (getFileExt($path)) {
+case 'htm':
+case 'html':
+    $syntax = 'html';
+    break;
+case 'js':
+    $syntax = 'js';
+    break;
+case 'kml':
+case 'xml':
+    $syntax = 'xml';
+    break;
+case 'php':
+    $syntax = 'php';
+    break;
+default:
+    break;
 }
+
 if(array_search(getFileExt($path), getValidTextEditorExts())=== false) {
     die(TXT_DISALLOWED_EXT);
 }
@@ -92,7 +113,7 @@ $editorConfigs["rows"] = 20;
 $editorConfigs["cols"] = 100;
 $editorConfigs["width"] = "100%";
 $editorConfigs["height"] = "400px";
-$editorConfigs["systax"] = $syntax;
+$editorConfigs["syntax"] = $syntax;
 $editorConfigs["editor"] = $ajaxfilemanagerModuleConfig['text_editor'];
 $editor = new XoopsFormEditor('', "content", $editorConfigs);
 $form->addElement($editor, true);

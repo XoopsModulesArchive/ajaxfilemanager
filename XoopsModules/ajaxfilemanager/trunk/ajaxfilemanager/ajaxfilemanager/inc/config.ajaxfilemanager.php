@@ -1,8 +1,30 @@
 <?php
+/**
+ * Ajax File Manager
+ *
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
+ * @package         ajaxfilemanager
+ * @since           0.1
+ * @author          luciorota <lucio.rota@gmail.com>
+ * @version         $Id$
+ */
+
+/**
+ * Load Module config
+ */
 include_once XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
-$ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
 xoops_loadLanguage('main', 'ajaxfilemanager');
+$ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
 if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
+    $config_handler =& xoops_gethandler('config');
     $ajaxfilemanagerModuleConfig = $config_handler->getConfigsByCat(0, $ajaxfilemanagerModule->getVar('mid'));
 }
     /**
@@ -64,8 +86,21 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
             these two paths accept relative path only, don't use absolute path
         */
 
-    define('CONFIG_SYS_DEFAULT_PATH', '../../../uploads/ajaxfilemanager/uploaded/'); //accept relative path only
-    define('CONFIG_SYS_ROOT_PATH', '../../../uploads/ajaxfilemanager/uploaded/');	//accept relative path only
+    $relativePath = '/uploads/ajaxfilemanager/uploaded/';
+    switch($ajaxfilemanagerModuleConfig['navigation_mode']) {
+    case 'kamikaze' :
+        $relativePath = '/';
+        break;
+    case 'dangerous' :
+        $relativePath = '/uploads/';
+        break;
+    case 'secure' :
+    default :
+        $relativePath = '/uploads/ajaxfilemanager/uploaded/';
+        break;
+    }
+    define('CONFIG_SYS_DEFAULT_PATH', '../../..' . $relativePath); //accept relative path only
+    define('CONFIG_SYS_ROOT_PATH', '../../..' . $relativePath);	//accept relative path only
     define('CONFIG_SYS_FOLDER_SHOWN_ON_TOP', true); //show your folders on the top of list if true or order by name
     define("CONFIG_SYS_DIR_SESSION_PATH", XOOPS_ROOT_PATH . '/uploads/ajaxfilemanager/session/');
     define("CONFIG_SYS_PATTERN_FORMAT", 'list'); //three options: reg ,csv, list, this option define the parttern format for the following patterns
@@ -84,7 +119,8 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
 
     //UPLOAD OPTIONS CONFIG
     define('CONFIG_UPLOAD_MAXSIZE', $ajaxfilemanagerModuleConfig['upload_max_size'] * 1024);
-    define('CONFIG_UPLOAD_VALID_EXTS', $ajaxfilemanagerModuleConfig['upload_valid_exts']); //define('CONFIG_UPLOAD_VALID_EXTS', 'gif,jpg,png,bmp,tif,zip,sit,rar,gz,tar,htm,html,mov,mpg,avi,asf,mpeg,wmv,aif,aiff,wav,mp3,swf,ppt,rtf,doc,pdf,xls,txt,xml,xsl,dtd');
+    define('CONFIG_UPLOAD_VALID_EXTS', $ajaxfilemanagerModuleConfig['upload_valid_exts']);
+    //define('CONFIG_UPLOAD_VALID_EXTS', 'gif,jpg,png,bmp,tif,zip,sit,rar,gz,tar,htm,html,mov,mpg,avi,asf,mpeg,wmv,aif,aiff,wav,mp3,swf,ppt,rtf,doc,pdf,xls,txt,xml,xsl,dtd');
     define('CONFIG_UPLOAD_INVALID_EXTS', '');
 
     define('CONFIG_EDITABLE_VALID_EXTS', 'txt,htm,html,xml,js,css,php'); //make you include all these extension in CONFIG_UPLOAD_VALID_EXTS if you want all valid

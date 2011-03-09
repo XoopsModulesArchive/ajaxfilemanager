@@ -1,5 +1,23 @@
 <?php
 /**
+ * Ajax File Manager
+ *
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
+ * @package         ajaxfilemanager
+ * @since           0.1
+ * @author          luciorota <lucio.rota@gmail.com>
+ * @version         $Id$
+ */
+
+/**
 * This function transforms a numerical size (like 2048) to a lettteral size (like 2MB)
 * @param   integer    $ret     numerical size
 * @return  string     $size    letteral size
@@ -142,17 +160,15 @@ function copyDir($source, $destination) {
  */
 function delDir($dir, $if_not_empty = true) {
     if (!file_exists($dir)) return true;
-
     if ($if_not_empty == true) {
         if (!is_dir($dir)) return unlink($dir);
         foreach (scandir($dir) as $item) {
             if ($item == '.' || $item == '..') continue;
             if (!delDir($dir . '/' . $item)) return false;
         }
+    } else {
+        // NOP
     }
-    else {
-    }
-
     return rmdir($dir);
 }
 
@@ -168,7 +184,11 @@ function extensionInstalled($extension) {
 }
 function extensionActivated($extension) {
     $conf = include XOOPS_ROOT_PATH . '/class/textsanitizer/config.php';
-    return $conf['extensions'][$extension];
+    if (!isset($conf['extensions'][$extension])) {
+        return false;
+    } else {
+        return $conf['extensions'][$extension];
+    }
 }
 function activateExtension($extension) {
     $conf = include XOOPS_ROOT_PATH . '/class/textsanitizer/config.php';
@@ -181,17 +201,17 @@ function desactivateExtension($extension) {
     file_put_contents(XOOPS_ROOT_PATH . '/class/textsanitizer/config.php', "<?php\rreturn \$config = " . var_export($conf, true) . "\r?>");
 }
 function listExtensions($source) {
-    if (!$dir = opendir($source))
+    if (!$dirHandler = opendir($source))
         return false;
     $extensions = array();
-    while(false !== ( $file = readdir($dir)) ) {
+    while(false !== ( $file = readdir($dirHandler)) ) {
         if (( $file != '.' ) && ( $file != '..' )) {
             if ( is_dir($source . '/' . $file) ) {
                 $extensions[] = $file;
             }
         }
     }
-    closedir($dir);
+    closedir($dirHandler);
     return $extensions;
 }
 ?>

@@ -28,6 +28,18 @@ define('_AJAXFM_MI_MAXSIZE_MB', 'MBytes');
 define('_AJAXFM_MI_MAXSIZE_DESC', 'KBytes (1000 = 1MB)');
 define('_AJAXFM_MI_TEXTEDITOR', 'Text editor');
 define('_AJAXFM_MI_TEXTEDITOR_DESC', 'Choose text editor<br />Only these editors are properly supported: editarea, codemirror, tinymce, ckeditor, dhtmltextarea, textarea');
+define('_AJAXFM_MI_NAVIGATIONMODE', 'Navigation mode');
+define('_AJAXFM_MI_NAVIGATIONMODE1', 'Secure');
+define('_AJAXFM_MI_NAVIGATIONMODE2', 'Dangerous');
+define('_AJAXFM_MI_NAVIGATIONMODE3', '<span style="color:red">Kamikaze</span>');
+define('_AJAXFM_MI_NAVIGATIONMODE_DESC', 'Selectables modes:<ul><li><b>Secure</b> You can surf only Ajax File Manager upload directory</li><li><b>Dangerous</b> You can surf all modules upload directories, YOU COULD DESTROY MODULE UPLOADS</li><li><b style="color:red;">Kamikaze</b> You can surf all Xoops site, YOU COULD DESTROY EVERYTHING AND KILL YOUR SITE</li>');
+define('_AJAXFM_MI_XOOPSIMAGEMANAGER', '[Extra] Xoops image manager');
+define('_AJAXFM_MI_XOOPSIMAGEMANAGER1', 'Default');
+define('_AJAXFM_MI_XOOPSIMAGEMANAGER2', 'Enhanced');
+define('_AJAXFM_MI_XOOPSIMAGEMANAGER3', 'Ajax File Manager');
+define('_AJAXFM_MI_XOOPSIMAGEMANAGER_DESC', 'Choose image manager for Xoops<br />Choose between: default, enhanced, ajaxfilemanager');
+
+
 
 // for install/uninstall/update
 define('_AJAXFM_MI_WARNING_DIRNOTCREATED', '<strong><span style="color:red;">WARNING: %s directory not created!</span></strong><br />');
