@@ -27,10 +27,11 @@ class MytsAjaxfilemanager extends MyTextSanitizerExtension
     function encode($textarea_id)
     {
         // use Ajax File Manager permission check
+        include_once XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
+        $ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
         $gpermHandler =& xoops_gethandler('groupperm');
         $groups = is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getGroups() : XOOPS_GROUP_ANONYMOUS;
-        $permAccess = ($gpermHandler->checkRight('ajaxfilemanager_extra', 1, $groups, $GLOBALS['xoopsModule']->getVar('mid'))) ? true : false ;
-
+        $permAccess = ($gpermHandler->checkRight('ajaxfilemanager_extra', 1, $groups, $ajaxfilemanagerModule->getVar('mid'))) ? true : false ;
         if ($permAccess) {
             $code = "<img " .
                     "src='" . XOOPS_URL ."/class/textsanitizer/ajaxfilemanager/button_ajaxfilemanager.png' " .
