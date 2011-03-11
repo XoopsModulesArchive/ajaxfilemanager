@@ -45,7 +45,7 @@ $modversion['forum_site_url'] = 'IN PROGRESS';
 $modversion['forum_site_name'] = 'IN PROGRESS';
 $modversion['module_website_url'] = 'IN PROGRESS';
 $modversion['module_website_name'] = 'IN PROGRESS';
-$modversion['release'] = strtotime('2011/03/09'); // 'YYYY/MM/DD' format
+$modversion['release'] = strtotime('2011/03/11'); // 'YYYY/MM/DD' format
 $modversion['module_status'] = 'In progress';
 
 // Admin things
@@ -71,6 +71,19 @@ $modversion['templates'][$i]['description'] = '';
 $i++;
 $modversion['templates'][$i]['file'] = 'ajaxfm_imagemanager2.html';
 $modversion['templates'][$i]['description'] = '';
+$i++;
+$modversion['templates'][$i]['file'] = 'ajaxfm_gmap.html';
+$modversion['templates'][$i]['description'] = '';
+$i++;
+$modversion['templates'][$i]['file'] = 'ajaxfm_gmap.js';
+$modversion['templates'][$i]['description'] = '';
+$i++;
+$modversion['templates'][$i]['file'] = 'ajaxfm_video.html';
+$modversion['templates'][$i]['description'] = '';
+$i++;
+$modversion['templates'][$i]['file'] = 'ajaxfm_video.js';
+$modversion['templates'][$i]['description'] = '';
+
 
 // Blocks
 
