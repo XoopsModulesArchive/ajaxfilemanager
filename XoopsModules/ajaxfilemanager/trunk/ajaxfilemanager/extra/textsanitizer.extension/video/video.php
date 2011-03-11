@@ -97,16 +97,26 @@ EOH;
             }
         }
 
-        $html = "<div id='{$parsArray['name']}' style='{$parsArray['style']}'>" . _AJAXFM_AM_VIDEO_LOADHERE . "</div>";
-        $js = "xoopsOnloadEvent(function(){\n" .
-              "    so = new SWFObject('" . XOOPS_URL . "/class/textsanitizer/video/jwplayer/player.swf', '{$parsArray['name']}', '{$parsArray['width']}', '{$parsArray['height']}', '9');\n" .
-              "    so.addParam('allowfullscreen', '{$parsArray['allowfullscreen']}');\n" .
-              "    so.addParam('allowscriptaccess', 'always');\n" .
-              "    so.addVariable('file', '{$url}');\n" .
-              "    so.addVariable('autostart', '{$parsArray['autostart']}');\n" .
-              "    so.write('{$parsArray['name']}');\n" .
-              "});\n";
-        $GLOBALS['xoTheme']->addScript('', '' ,$js);
+        require_once $GLOBALS['xoops']->path('class/template.php');
+
+        $xoopsJsTpl = new XoopsTpl();
+        $xoopsJsTpl->assign('video_id', $parsArray['name']);
+        $xoopsJsTpl->assign('video_width', $parsArray['width']);
+        $xoopsJsTpl->assign('video_height', $parsArray['height']);
+        $xoopsJsTpl->assign('video_allowfullscreen', $parsArray['allowfullscreen']);
+        $xoopsJsTpl->assign('video_url', $url);
+        $xoopsJsTpl->assign('video_autostart', $parsArray['autostart']);
+        $xoopsJsTpl->assign('video_parsArray', $parsArray); // array of parameters
+        $js = $xoopsJsTpl->fetch('db:ajaxfm_video.js');
+        unset($xoopsJsTpl);
+        $GLOBALS['xoTheme']->addScript('', '', $js);
+
+        $xoopsHtmlTpl = new XoopsTpl();
+        $xoopsHtmlTpl->assign('video_id', $parsArray['name']);
+        $xoopsHtmlTpl->assign('video_style', $parsArray['style']);
+        $xoopsHtmlTpl->assign('video_parsArray', $parsArray); // array of parameters
+        $html = $xoopsHtmlTpl->fetch('db:ajaxfm_video.html');
+        unset($xoopsHtmlTpl);
         return $html;
     }
 }

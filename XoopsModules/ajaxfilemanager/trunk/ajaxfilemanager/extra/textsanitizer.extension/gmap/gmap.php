@@ -97,19 +97,25 @@ EOH;
             }
         }
 
-        $html = "<div id='{$parsArray['name']}' style='{$parsArray['style']}'>GOOGLE MAP HERE...</div>";
-        $js = "xoopsOnloadEvent(function(){\n" .
-              "    var myLatlng = new google.maps.LatLng({$parsArray['lat']}, {$parsArray['lng']});\n" .
-              "    var myOptions = {\n" .
-              "        zoom: {$parsArray['zoom']},\n" .
-              "        center: myLatlng,\n" .
-              "        mapTypeId: google.maps.MapTypeId.ROADMAP\n" .
-              "    };\n" .
-              "    var map = new google.maps.Map(document.getElementById('{$parsArray['name']}'), myOptions);\n" .
-              "    var georssLayer = new google.maps.KmlLayer('{$url}');\n" .
-              "    georssLayer.setMap(map);\n" .
-              "});\n";
-        $GLOBALS['xoTheme']->addScript('', '' ,$js);
+        require_once $GLOBALS['xoops']->path('class/template.php');
+
+        $xoopsJsTpl = new XoopsTpl();
+        $xoopsJsTpl->assign('gmap_id', $parsArray['name']);
+        $xoopsJsTpl->assign('gmap_lat', $parsArray['lat']);
+        $xoopsJsTpl->assign('gmap_lng', $parsArray['lng']);
+        $xoopsJsTpl->assign('gmap_zoom', $parsArray['zoom']);
+        $xoopsJsTpl->assign('gmap_url', $url);
+        $xoopsJsTpl->assign('gmap_parsArray', $parsArray); // array of parameters
+        $js = $xoopsJsTpl->fetch('db:ajaxfm_gmap.js');
+        unset($xoopsJsTpl);        
+        $GLOBALS['xoTheme']->addScript('', '', $js);
+
+        $xoopsHtmlTpl = new XoopsTpl();
+        $xoopsHtmlTpl->assign('gmap_id', $parsArray['name']);
+        $xoopsHtmlTpl->assign('gmap_style', $parsArray['style']);
+        $xoopsHtmlTpl->assign('gmap_parsArray', $parsArray); // array of parameters
+        $html = $xoopsHtmlTpl->fetch('db:ajaxfm_gmap.html');
+        unset($xoopsHtmlTpl);
         return $html;
     }
 }
