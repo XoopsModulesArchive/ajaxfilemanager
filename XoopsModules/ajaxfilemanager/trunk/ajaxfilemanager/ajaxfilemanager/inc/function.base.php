@@ -111,7 +111,7 @@ function relToAbs($value)
 
 }
 
-
+/*
 function getRelativeFileUrl($value, $relativeTo)
 {
     $output = '';
@@ -124,7 +124,7 @@ function getRelativeFileUrl($value, $relativeTo)
         $output  = $urlprefix . substr($value, strlen($wwwroot)) . $urlsuffix;
     }
 }
-
+*/
 
 /**
  * replace slash with backslash
@@ -189,7 +189,7 @@ function transformFilePath($value)
     $rootPath = addTrailingSlash(backslashToSlash(getRealPath(CONFIG_SYS_ROOT_PATH)));
     $value = addTrailingSlash(backslashToSlash(getRealPath($value)));
     if(!empty($rootPath) && ($i = strpos($value, $rootPath)) !== false) {
-        $value = ($i == 0?substr($value, strlen($rootPath)):"/");
+        $value = ($i == 0 ? substr($value, strlen($rootPath)) : "/");
     }
     $value = prependSlash($value);
     return $value;
@@ -430,13 +430,13 @@ function myRealPath($path)
  * @param string $value a relative path
  * @return string absolute path of the input
  */
-function getRealPath($value)
+function getRealPath($relPath)
 {
     $output = '';
-    if(($path = realpath($value)) && $path != $value) {
+    if(($path = realpath($relPath)) && $path != $relPath) {
         $output = $path;
     } else {
-        $output = myRealPath($value);
+        $output = myRealPath($relPath);
     }
     return $output;
  }
@@ -445,26 +445,38 @@ function getRealPath($value)
 /**
  * get file url
  *
- * @param string $value
- * @return string
+ * @param string $relPath relative/absolute path
+ * @return string absolute url
  */
-function getFileUrl($value)
+function getFileUrl($path)
 {
+//error_log("PATH=" . $path);
     $output = '';
-    $wwwroot = removeTrailingSlash(backslashToSlash(getRootPath()));
+    //$wwwroot = removeTrailingSlash(backslashToSlash(getRootPath()));
 
     $urlprefix = "";
     $urlsuffix = "";
 
-    $value = backslashToSlash(getRealPath($value));
+    //$path = backslashToSlash(getRealPath($path));
+    $path = backslashToSlash($path);
 
-    $pos = stripos($value, $wwwroot);
-    if ($pos !== false && $pos == 0) {
-        $output  = $urlprefix . substr($value, strlen($wwwroot)) . $urlsuffix;
+    $posXoopsPath = stripos($path, XOOPS_ROOT_PATH);
+    $posXoopsRootPathRel = stripos($path, XOOPS_ROOT_PATH_REL);
+
+    if ($posXoopsPath !== false && $posXoopsPath == 0) {
+//error_log("IF");
+        $output  = $urlprefix . substr($path, strlen(XOOPS_ROOT_PATH)) . $urlsuffix;
+    } else if ($posXoopsRootPathRel !== false && $posXoopsRootPathRel == 0) {
+//error_log("ELSE IF");
+        $output  = $urlprefix . substr($path, strlen(XOOPS_ROOT_PATH_REL)) . $urlsuffix;
     } else {
-        $output = $value;
+//error_log("ELSE");
+        $output = $path;
     }
-    return "http://" .  addTrailingSlash(backslashToSlash($_SERVER['HTTP_HOST'])) . removeBeginingSlash(backslashToSlash($output));
+    //$url = "http://" .  addTrailingSlash(backslashToSlash($_SERVER['HTTP_HOST'])) . removeBeginingSlash(backslashToSlash($output));
+    $url = addTrailingSlash(backslashToSlash(XOOPS_URL)) . removeBeginingSlash(backslashToSlash($output));
+//error_log("URL=" . $url);
+    return $url;
 }
 
 

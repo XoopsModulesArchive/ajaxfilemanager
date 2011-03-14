@@ -7,42 +7,42 @@
  * @link www.phpletter.com
  * @since 4/August/2007
  */
-	class Auth
-	{
-		var $__loginIndexInSession = 'ajax_user';
-		function __construct()
-		{
-			
-		}
-		
-		function Auth()
-		{
-			$this->__construct();
-		}
-		/**
-		 * check if the user has logged
-		 *
-		 * @return boolean
-		 */
-		function isLoggedIn()
-		{
-			return (!empty($_SESSION[$this->__loginIndexInSession])?true:false);
-		}
-		/**
-		 * validate the username & password
-		 * @return boolean
-		 *
-		 */
-		function login()
-		{
-			if($_POST['username'] == CONFIG_LOGIN_USERNAME && $_POST['password'] == CONFIG_LOGIN_PASSWORD)
-			{
-				$_SESSION[$this->__loginIndexInSession] = true;
-				return true;
-			}else 
-			{
-				return false;
-			}
-		}
-	}
+class Auth
+{
+    var $__loginIndexInSession = 'ajax_user';
+    function __construct()
+    {
+        // NOP
+    }
+    
+    function Auth()
+    {
+        $this->__construct();
+    }
+
+    /**
+     * check if the user has logged
+     *
+     * @return boolean
+     */
+    function isLoggedIn()
+    {
+        return (!empty($_SESSION[$this->__loginIndexInSession])?true:false);
+    }
+
+    /**
+     * validate the username & password
+     * @return boolean
+     *
+     */
+    function login()
+    {
+        if($_POST['username'] == CONFIG_LOGIN_USERNAME && $_POST['password'] == CONFIG_LOGIN_PASSWORD) {
+            $_SESSION[$this->__loginIndexInSession] = true;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
 ?>

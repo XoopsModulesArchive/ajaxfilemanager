@@ -58,8 +58,8 @@ if(!empty($_GET['view'])) {
     window.resizeTo(800,600);
 -->
 </script>
-<script type="text/javascript" src="jscripts/ajaxfilemanager_c.js"></script>
-<!--<script type="text/javascript" src="jscripts/jquery.js"></script>
+<!--<script type="text/javascript" src="jscripts/ajaxfilemanager_c.js"></script>-->
+<script type="text/javascript" src="jscripts/jquery.js"></script>
 <script type="text/javascript" src="jscripts/form.js"></script>
 <script type="text/javascript" src="jscripts/select.js"></script>
 <script type="text/javascript" src="jscripts/thickbox.js"></script>
@@ -67,7 +67,7 @@ if(!empty($_GET['view'])) {
 <script type="text/javascript" src="jscripts/contextmenu.js"></script>
 <script type="text/javascript" src="jscripts/media.js"></script>
 <script type="text/javascript" src="jscripts/ajaxfileupload.js"></script>
-<script type="text/javascript" src="jscripts/ajaxfilemanager.js"></script>-->
+<script type="text/javascript" src="jscripts/ajaxfilemanager.js"></script>
 <script type="text/javascript">
     var globalSettings = {'upload_init':false};
     var queryString = '<?php echo makeQueryString(array('path')); ?>';
@@ -182,10 +182,16 @@ if(file_exists(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'jscripts' . DIRECTORY
 <body style="background-color:#E8E8E8;">
 <div id="wrapper">
 <div id="header">
+
+
+
 <dl id="currentFolderInfo">
-<dt><?php echo LBL_CURRENT_FOLDER_PATH; ?></dt>
-<dd id="currentFolderPath"><?php echo $folderInfo['path']; ?></dd>
+    <dt><?php echo LBL_CURRENT_FOLDER_PATH; ?></dt>
+    <dd id="currentFolderPath"><?php echo $folderInfo['path']; ?></dd>
 </dl>
+
+
+
 <div id="viewList">
 <label><?php echo LBL_BTN_VIEW_OPTIONS; ?></label>
 <?php 
@@ -194,35 +200,38 @@ foreach($views as $k=>$v) {
 }
 ?>
 </div>
+
+
+
 <ul id="actionHeader">
-<li><a href="#" id="actionRefresh" onclick="return windowRefresh();"><span><?php echo LBL_ACTION_REFRESH; ?></span></a></li>
-<li><a href="#" id="actionSelectAll" class="check_all" onclick="return checkAll(this);"><span><?php echo LBL_ACTION_SELECT_ALL; ?></span></a></li>
-<?php 
-if(CONFIG_OPTIONS_DELETE) {
-    echo '<li><a href="#" id="actionDelete" onclick="return deleteDocuments();"><span>' . LBL_ACTION_DELETE . '</span></a></li>';
-}
-if(CONFIG_OPTIONS_CUT) {
-    echo '<li><a href="#" id="actionCut" onclick="return cutDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_CUT . '\');"><span>' . LBL_ACTION_CUT . '</span></a></li>';
-}
-if(CONFIG_OPTIONS_COPY) {
-    echo '<li><a href="#" id="actionCopy" onclick="return copyDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_COPY . '\');"><span>' . LBL_ACTION_COPY . '</span></a></li>';
-}
-if(CONFIG_OPTIONS_CUT || CONFIG_OPTIONS_COPY) {
-    echo '<li><a href="#" id="actionPaste" onclick="return pasteDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_PASTE . '\');">' . LBL_ACTION_PASTE . '</span></a></li>';
-}
-if(CONFIG_OPTIONS_NEWFOLDER) {
-    echo '<li><a  id="actionNewFolder" href="#" onclick="return newFolderWin(this);"><span>' . LBL_BTN_NEW_FOLDER . '</span></a></li>';
-}
-if(CONFIG_OPTIONS_UPLOAD) {
-    echo '<li><a  id="actionUpload" href="#" onclick="return uploadFileWin(this);"><span>' .LBL_BTN_UPLOAD . '</span></a></li>';
-}
-?>
-<!--<li><a href="#" id="actionClose" onclick="closeWindow('<?php echo IMG_WARING_WIN_CLOSE; ?>');"><?php echo IMG_BTN_CLOSE; ?></a></li>-->
-<li><a href="#" class="thickbox" id="actionInfo" onclick="return infoWin(this);"><span>Info</span></a></li>
-<!-- thest functions will be added in the near future
-<li ><a href="#" id="actionZip"><span>Zip</span></a><li>
-<li ><a href="#" id="actionUnzip"><span>Unzip</span></a><li>-->
-</ul>    
+    <li><a href="#" id="actionRefresh" onclick="return windowRefresh();"><span><?php echo LBL_ACTION_REFRESH; ?></span></a></li>
+    <li><a href="#" id="actionSelectAll" class="check_all" onclick="return checkAll(this);"><span><?php echo LBL_ACTION_SELECT_ALL; ?></span></a></li>
+    <?php
+    if(CONFIG_OPTIONS_DELETE) {
+        echo '<li><a href="#" id="actionDelete" onclick="return deleteDocuments();"><span>' . LBL_ACTION_DELETE . '</span></a></li>';
+    }
+    if(CONFIG_OPTIONS_CUT) {
+        echo '<li><a href="#" id="actionCut" onclick="return cutDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_CUT . '\');"><span>' . LBL_ACTION_CUT . '</span></a></li>';
+    }
+    if(CONFIG_OPTIONS_COPY) {
+        echo '<li><a href="#" id="actionCopy" onclick="return copyDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_COPY . '\');"><span>' . LBL_ACTION_COPY . '</span></a></li>';
+    }
+    if(CONFIG_OPTIONS_CUT || CONFIG_OPTIONS_COPY) {
+        echo '<li><a href="#" id="actionPaste" onclick="return pasteDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_PASTE . '\');">' . LBL_ACTION_PASTE . '</span></a></li>';
+    }
+    if(CONFIG_OPTIONS_NEWFOLDER) {
+        echo '<li><a  id="actionNewFolder" href="#" onclick="return newFolderWin(this);"><span>' . LBL_BTN_NEW_FOLDER . '</span></a></li>';
+    }
+    if(CONFIG_OPTIONS_UPLOAD) {
+        echo '<li><a  id="actionUpload" href="#" onclick="return uploadFileWin(this);"><span>' .LBL_BTN_UPLOAD . '</span></a></li>';
+    }
+    ?>
+    <!--<li><a href="#" id="actionClose" onclick="closeWindow('<?php echo IMG_WARING_WIN_CLOSE; ?>');"><?php echo IMG_BTN_CLOSE; ?></a></li>-->
+    <li><a href="#" class="thickbox" id="actionInfo" onclick="return infoWin(this);"><span>Info</span></a></li>
+    <!-- thest functions will be added in the near future
+    <li ><a href="#" id="actionZip"><span>Zip</span></a><li>
+    <li ><a href="#" id="actionUnzip"><span>Unzip</span></a><li>-->
+</ul>
 <form action="" method="POST" name="formAction" id="formAction"><input type="hidden" name="currentFolderPath" id="currentFolderPathVal" value="" /><select name="selectedDoc[]" id="selectedDoc" style="display:none;" multiple="multiple"></select><input type="hidden" name="action_value" value="" id="action_value" /></form>				  
 </div>
     
@@ -231,195 +240,198 @@ if(CONFIG_OPTIONS_UPLOAD) {
 <?php
 if(CONFIG_LOAD_DOC_LATTER ) {
     $currentPath = getCurrentFolderPath();
-?>
-<script type="text/javascript">
-    parentFolder = {path:'<?php echo getParentFolderPath($currentPath); ?>'};
-    currentFolder = {'friendly_path':'<?php echo transformFilePath($currentPath); ?>'};
-    $(document).ready(
-        function() {
-            var url = getUrl('view', false, false, false);
-            $('#rightCol').empty();
-            ajaxStart('#rightCol');
+    ?>
+    <script type="text/javascript">
+        parentFolder = {path:'<?php echo getParentFolderPath($currentPath); ?>'};
+        currentFolder = {'friendly_path':'<?php echo transformFilePath($currentPath); ?>'};
+        $(document).ready(
+            function() {
+                var url = getUrl('view', false, false, false);
+                $('#rightCol').empty();
+                ajaxStart('#rightCol');
 
-            $('#rightCol').load(url,
-            {},
-            function(){
-                ajaxStop('#rightCol img.ajaxLoadingImg');
-                urls.present = getUrl('home', true, true);
-                initAfterListingLoaded();
-            });
-            }
-        );
-</script>
-<?php
+                $('#rightCol').load(url,
+                {},
+                function(){
+                    ajaxStop('#rightCol img.ajaxLoadingImg');
+                    urls.present = getUrl('home', true, true);
+                    initAfterListingLoaded();
+                });
+                }
+            );
+    </script>
+    <?php
 } else {
-include_once(CONFIG_URL_LIST_LISTING);
+    include_once(CONFIG_URL_LIST_LISTING);
 }
 ?>
 </div>
 
+
+
 <div id="leftCol">
-<fieldset id="folderFieldSet" >
-				<legend><?php echo LBL_FOLDER_INFO; ?></legend>
-				<table cellpadding="0" cellspacing="0" class="tableSummary" id="folderInfo">
-					<tbody>
-						<tr>
-							<th><?php echo LBL_FOLDER_PATH; ?></th>
-							<td colspan="3" id="folderPath"><?php echo transformFilePath($folderInfo['path']); ?></td>
-						</tr>
-						<tr>
-							<th><?php echo LBL_FOLDER_CREATED; ?></th>
-							<td colspan="3" id="folderCtime"><?php echo (!empty($folderInfo['ctime'])?date(DATE_TIME_FORMAT,$folderInfo['ctime']):'&nbsp;') ; ?></td>
-
-						</tr>
-						<tr>
-							<th><?php echo LBL_FOLDER_MODIFIED; ?></th>
-							<td colspan="3" id="folderMtime"><?php echo (!empty($folderInfo['mtime'])?date(DATE_TIME_FORMAT,$folderInfo['mtime']):'&nbsp;'); ?></td>
-						</tr>
-						<tr>
-							<th><?php echo LBL_FOLDER_SUDDIR; ?></th>
-							<td  colspan="3" id="folderSubdir"><?php echo (isset($folderInfo['subdir'])?$folderInfo['subdir']:"&nbsp;"); ?></td>
-
-						</tr>
-						<tr>
-							<th><?php echo LBL_FOLDER_FIELS; ?></th>
-							<td  colspan="3" id="folderFile"><?php echo (isset($folderInfo['file'])?$folderInfo['file']:'&nbsp;'); ?></td>						
-						</tr>
-						<tr>
-							<th><?php echo LBL_FOLDER_WRITABLE; ?></th>
-							<td id="folderWritable"><span class="<?php echo (isset($folderInfo['is_readable'])?($folderInfo['is_readable']?'flagYes':'flagNo'):'&nbsp;'); ?>">&nbsp;</span></td>
-							<th><?php echo LBL_FOLDER_READABLE; ?></th>
-							<td  id="folderReadable"><span class="<?php echo (isset($folderInfo['is_writable'])?($folderInfo['is_writable']?'flagYes':'flagNo'):'&nbsp;'); ?>">&nbsp;</span></td>						
-						</tr>
-					</tbody>
-				</table>
+<fieldset id="folderFieldSet">
+    <legend><?php echo LBL_FOLDER_INFO; ?></legend>
+    <table cellpadding="0" cellspacing="0" class="tableSummary" id="folderInfo">
+    <tbody>
+        <tr>
+            <th><?php echo LBL_FOLDER_PATH; ?></th>
+            <td colspan="3" id="folderPath"><?php echo transformFilePath($folderInfo['path']); ?></td>
+        </tr>
+        <tr>
+            <th><?php echo LBL_FOLDER_CREATED; ?></th>
+            <td colspan="3" id="folderCtime"><?php echo (!empty($folderInfo['ctime'])?date(DATE_TIME_FORMAT,$folderInfo['ctime']):'&nbsp;') ; ?></td>
+        </tr>
+        <tr>
+            <th><?php echo LBL_FOLDER_MODIFIED; ?></th>
+            <td colspan="3" id="folderMtime"><?php echo (!empty($folderInfo['mtime'])?date(DATE_TIME_FORMAT,$folderInfo['mtime']):'&nbsp;'); ?></td>
+        </tr>
+        <tr>
+            <th><?php echo LBL_FOLDER_SUDDIR; ?></th>
+            <td  colspan="3" id="folderSubdir"><?php echo (isset($folderInfo['subdir'])?$folderInfo['subdir']:"&nbsp;"); ?></td>
+        </tr>
+        <tr>
+            <th><?php echo LBL_FOLDER_FIELS; ?></th>
+            <td  colspan="3" id="folderFile"><?php echo (isset($folderInfo['file'])?$folderInfo['file']:'&nbsp;'); ?></td>
+        </tr>
+        <tr>
+            <th><?php echo LBL_FOLDER_WRITABLE; ?></th>
+            <td id="folderWritable"><span class="<?php echo (isset($folderInfo['is_readable'])?($folderInfo['is_readable']?'flagYes':'flagNo'):'&nbsp;'); ?>">&nbsp;</span></td>
+            <th><?php echo LBL_FOLDER_READABLE; ?></th>
+            <td  id="folderReadable"><span class="<?php echo (isset($folderInfo['is_writable'])?($folderInfo['is_writable']?'flagYes':'flagNo'):'&nbsp;'); ?>">&nbsp;</span></td>
+        </tr>
+    </tbody>
+    </table>
 </fieldset>
 
+
+
 <fieldset id="fileFieldSet" style="display:none" >
-<legend><?php echo LBL_FILE_INFO; ?></legend>
-<table cellpadding="0" cellspacing="0" class="tableSummary" id="fileInfo">
-<tbody>
-<tr>
-    <th><?php echo LBL_FILE_NAME; ?></th>
-    <td colspan="3" id="fileName"></td>
-</tr>
-<tr>
-    <th><?php echo LBL_FILE_CREATED; ?></th>
-    <td colspan="3" id="fileCtime"></td>
-</tr>
-<tr>
-    <th><?php echo LBL_FILE_MODIFIED; ?></th>
-    <td colspan="3" id="fileMtime"></td>
-</tr>
-<tr>
-    <th><?php echo LBL_FILE_SIZE; ?></th>
-    <td  colspan="3" id="fileSize"></td>
-</tr>
-<tr>
-    <th><?php echo LBL_FILE_TYPE; ?></th>
-    <td  colspan="3" id="fileType"></td>
-</tr>
-<tr>
-    <th><?php echo LBL_FILE_WRITABLE; ?></th>
-    <td id="fileWritable"><span class="flagYes">&nbsp;</span></td>
-    <th><?php echo LBL_FILE_READABLE; ?></th>
-    <td id="fileReadable"><span class="flagNo">&nbsp;</span></td>
-</tr>
-</tbody>
-</table>
-<p class="searchButtons" id="returnCurrentUrl">
-    <span class="right" id="linkSelect">
-    <input type="button" value="<?php echo MENU_SELECT; ?>"  id="selectCurrentUrl" class="button">
-    </span>
-</p>
+    <legend><?php echo LBL_FILE_INFO; ?></legend>
+    <table cellpadding="0" cellspacing="0" class="tableSummary" id="fileInfo">
+    <tbody>
+        <tr>
+            <th><?php echo LBL_FILE_NAME; ?></th>
+            <td colspan="3" id="fileName"></td>
+        </tr>
+        <tr>
+            <th><?php echo LBL_FILE_CREATED; ?></th>
+            <td colspan="3" id="fileCtime"></td>
+        </tr>
+        <tr>
+            <th><?php echo LBL_FILE_MODIFIED; ?></th>
+            <td colspan="3" id="fileMtime"></td>
+        </tr>
+        <tr>
+            <th><?php echo LBL_FILE_SIZE; ?></th>
+            <td  colspan="3" id="fileSize"></td>
+        </tr>
+        <tr>
+            <th><?php echo LBL_FILE_TYPE; ?></th>
+            <td  colspan="3" id="fileType"></td>
+        </tr>
+        <tr>
+            <th><?php echo LBL_FILE_WRITABLE; ?></th>
+            <td id="fileWritable"><span class="flagYes">&nbsp;</span></td>
+            <th><?php echo LBL_FILE_READABLE; ?></th>
+            <td id="fileReadable"><span class="flagNo">&nbsp;</span></td>
+        </tr>
+    </tbody>
+    </table>
+    <p class="searchButtons" id="returnCurrentUrl">
+        <span class="right" id="linkSelect">
+        <input type="button" value="<?php echo MENU_SELECT; ?>"  id="selectCurrentUrl" class="button">
+        </span>
+    </p>
 </fieldset>
 
 
 
 <fieldset class="boxSearch">
     <legend><?php echo LBL_SEARCH; ?></legend>
-          <table cellpadding="0" cellspacing="0" class="tableSearch">
-          	<tbody>
-	          <tr>
-	          	<td>
-	          		<b><?php echo LBL_SEARCH_NAME; ?></b> <br />
-	            	<input type="text" class="input inputSearch" name="search_name" id="search_name" />
-	          	</td>
-	         </tr>
-	          <tr>
-	          	<td >
-	          	<b><?php echo LBL_SEARCH_FOLDER; ?></b><br />
-	          	<span id="searchFolderContainer">
-	          	<?php
-	          		if(CONFIG_LOAD_DOC_LATTER)
-	          		{
-	          			?>
-	          			<script type="text/javascript">
-	          				$(document).ready(
-	          					function()
-	          					{
-	          						ajaxStart('#searchFolderContainer');		
-	          						$('#searchFolderContainer').load('<?php echo CONFIG_URL_LOAD_FOLDERS; ?>');
-	          					}
-	          				);
-	          			</script>
-	          			<?php
-	          		}else 
-	          		{
-	          	?>
-		            <select class="input inputSearch" name="search_folder" id="search_folder">
-		            	<?php 
-		            		
-										foreach(getFolderListing(CONFIG_SYS_ROOT_PATH) as $k=>$v)
-										{
-											?>
-		                  <option value="<?php echo $v; ?>" <?php echo (removeTrailingSlash(backslashToSlash(($folderInfo['path']))) == removeTrailingSlash(backslashToSlash(($v)))?' selected="selected"':''); ?>><?php echo shortenFileName($k, 30); ?></option>
-		                  <?php 
-										}
-		            		
-									?>
-		            </select>
-		      <?php
-	          		}
-		      ?></span>
-	          </td>
-	         </tr>  
-        		<tr>
-        			<td>
-        		<b><?php echo LBL_SEARCH_MTIME; ?></b><br />
-        		<input type="text" class="input inputMtime" name="search_mtime_from" id="search_mtime_from" value="<?php echo (!empty($_GET['search_mtime_from'])?$_GET['search_mtime_from']:''); ?>" /> 
-        		<span class="leftToRightArrow">&nbsp;</span>
-        		<input type="text" class="input inputMtime" name="search_mtime_to" id="search_mtime_to" value="<?php echo (!empty($_GET['search_mtime_to'])?$_GET['search_mtime_to']:''); ?>" />
-        	</td></tr>
+    <table cellpadding="0" cellspacing="0" class="tableSearch">
+    <tbody>
+        <tr>
+            <td>
+                <b><?php echo LBL_SEARCH_NAME; ?></b> <br />
+                <input type="text" class="input inputSearch" name="search_name" id="search_name" />
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <b><?php echo LBL_SEARCH_FOLDER; ?></b>
+                <br />
+                <span id="searchFolderContainer">
+                <?php
+                if(CONFIG_LOAD_DOC_LATTER) {
+                ?>
+                <script type="text/javascript">
+                $(document).ready(
+                    function() {
+                        ajaxStart('#searchFolderContainer');
+                        $('#searchFolderContainer').load('<?php echo CONFIG_URL_LOAD_FOLDERS; ?>');
+                    }
+                );
+                </script>
+                <?php
+                } else {
+                    ?>
+                    <select class="input inputSearch" name="search_folder" id="search_folder">
+                    <?php
+                    foreach(getFolderListing(CONFIG_SYS_ROOT_PATH) as $k=>$v) {
+                        ?>
+                        <option value="<?php echo $v; ?>" <?php echo (removeTrailingSlash(backslashToSlash(($folderInfo['path']))) == removeTrailingSlash(backslashToSlash(($v)))?' selected="selected"':''); ?>><?php echo shortenFileName($k, 30); ?></option>
+                        <?php
+                    }
+                    ?>
+                    </select>
+                    <?php
+                }
+                ?>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b><?php echo LBL_SEARCH_MTIME; ?></b>
+                <br />
+                <input type="text" class="input inputMtime" name="search_mtime_from" id="search_mtime_from" value="<?php echo (!empty($_GET['search_mtime_from'])?$_GET['search_mtime_from']:''); ?>" />
+                <span class="leftToRightArrow">&nbsp;</span>
+                <input type="text" class="input inputMtime" name="search_mtime_to" id="search_mtime_to" value="<?php echo (!empty($_GET['search_mtime_to'])?$_GET['search_mtime_to']:''); ?>" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <b><?php echo LBL_SEARCH_RECURSIVELY; ?></b>&nbsp;&nbsp;
+            <input type="radio" name="search_recursively" value="1" id="search_recursively_1" class="radio" <?php echo (!empty($_GET['search_recursively'])?'checked="checked"':''); ?> /> <?php echo LBL_RECURSIVELY_YES; ?>
+            <input type="radio" name="search_recursively" value="0" id="search_recursively_0" class="radio" <?php echo (empty($_GET['search_recursively'])?'checked="checked"':''); ?> /> <?php echo LBL_RECURSIVELY_NO; ?>
+            </td>
+        </tr>
+    </tbody>
+    </table>
 
-			<tr>
-				<td>
-          	<b><?php echo LBL_SEARCH_RECURSIVELY; ?></b>&nbsp;&nbsp;
-          	<input type="radio" name="search_recursively" value="1" id="search_recursively_1" class="radio" <?php echo (!empty($_GET['search_recursively'])?'checked="checked"':''); ?> /> <?php echo LBL_RECURSIVELY_YES; ?>
-          	<input type="radio" name="search_recursively" value="0" id="search_recursively_0" class="radio" <?php echo (empty($_GET['search_recursively'])?'checked="checked"':''); ?> /> <?php echo LBL_RECURSIVELY_NO; ?>
-          	</td>
-          </tr>	                	
-</tbody>
-</table>
-
-
-
-       	
-        <p class="searchButtons">
-        	<span class="left" id="linkClose" style="display:none">
-        		<input  type="button" value="<?php echo LBL_ACTION_CLOSE; ?>" onclick="return cancelSelectFile();"  class="button">
-        	</span>
-        	<span class="right" id="linkSearch">
-        		<input type="button" value="<?php echo BTN_SEARCH; ?>" onclick="return search();" class="button">
-        	</span>
-        	
-        </p>
-        </fieldset>
-  
-      </div>
-      <div class="clear"></div>
-    </div>
+    <p class="searchButtons">
+    <span class="left" id="linkClose" style="display:none">
+    <input  type="button" value="<?php echo LBL_ACTION_CLOSE; ?>" onclick="return cancelSelectFile();"  class="button">
+    </span>
+    <span class="right" id="linkSearch">
+    <input type="button" value="<?php echo BTN_SEARCH; ?>" onclick="return search();" class="button">
+    </span>
+    </p>
+</fieldset>
 </div>
+
+
+
+<div class="clear"></div>
+
+
+
+</div>
+</div>
+
+
+
 <div class="clear"></div>
 
 
