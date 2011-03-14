@@ -22,17 +22,23 @@ define('_AJAXFM_MI_ADMENU_ABOUT', 'About');
 
 // for config
 define('_AJAXFM_MI_VALIDEXTS', 'Upload valid extensions');
-define('_AJAXFM_MI_VALIDEXTS_DESC', 'extensions separated by comma (,)<br />For exemple: &quot;gif,jpg,png&quot;');
+define('_AJAXFM_MI_VALIDEXTS_DESC', 'extensions separated by comma (,)<br />For exemple: gif,jpg,png');
 define('_AJAXFM_MI_MAXSIZE', 'Max upload size');
 define('_AJAXFM_MI_MAXSIZE_MB', 'MBytes');
 define('_AJAXFM_MI_MAXSIZE_DESC', 'KBytes (1000 = 1MB)');
+define('_AJAXFM_MI_DEFAULTPAGINATIONLIMIT', 'Default items per page');
+define('_AJAXFM_MI_DEFAULTPAGINATIONLIMIT_DESC', '');
+define('_AJAXFM_MI_VIEW', 'Navigation mode');
+define('_AJAXFM_MI_VIEW1', 'Details');
+define('_AJAXFM_MI_VIEW2', 'Thumbnails');
+define('_AJAXFM_MI_VIEW_DESC', 'Selectables modes:<ul><li><b>Details</b> Detailed files list</li><li><b>Thumbnails</b> Small Thumbnails with images preview</li></ul>');
 define('_AJAXFM_MI_TEXTEDITOR', 'Text editor');
 define('_AJAXFM_MI_TEXTEDITOR_DESC', 'Choose text editor<br />Only these editors are properly supported: editarea, codemirror, tinymce, ckeditor, dhtmltextarea, textarea');
 define('_AJAXFM_MI_NAVIGATIONMODE', 'Navigation mode');
 define('_AJAXFM_MI_NAVIGATIONMODE1', 'Secure');
 define('_AJAXFM_MI_NAVIGATIONMODE2', 'Dangerous');
 define('_AJAXFM_MI_NAVIGATIONMODE3', '<span style="color:red">Kamikaze</span>');
-define('_AJAXFM_MI_NAVIGATIONMODE_DESC', 'Selectables modes:<ul><li><b>Secure</b> You can surf only Ajax File Manager upload directory</li><li><b>Dangerous</b> You can surf all modules upload directories, YOU COULD DESTROY MODULE UPLOADS</li><li><b style="color:red;">Kamikaze</b> You can surf all Xoops site, YOU COULD DESTROY EVERYTHING AND KILL YOUR SITE</li>');
+define('_AJAXFM_MI_NAVIGATIONMODE_DESC', 'Selectables modes:<ul><li><b>Secure</b> You can surf only Ajax File Manager upload directory</li><li><b>Dangerous</b> You can surf all modules upload directories, YOU COULD DESTROY MODULE UPLOADS</li><li><b style="color:red;">Kamikaze</b> You can surf all Xoops site, YOU COULD DESTROY EVERYTHING AND KILL YOUR SITE</li></ul>');
 define('_AJAXFM_MI_XOOPSIMAGEMANAGER', '[Extra] Xoops image manager');
 define('_AJAXFM_MI_XOOPSIMAGEMANAGER1', 'Default');
 define('_AJAXFM_MI_XOOPSIMAGEMANAGER2', 'Enhanced');

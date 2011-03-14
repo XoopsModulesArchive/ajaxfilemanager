@@ -99,8 +99,10 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
         $relativePath = '/uploads/ajaxfilemanager/uploaded/';
         break;
     }
-    define('CONFIG_SYS_DEFAULT_PATH', '../../..' . $relativePath); //accept relative path only
-    define('CONFIG_SYS_ROOT_PATH', '../../..' . $relativePath);	//accept relative path only
+    define('XOOPS_ROOT_PATH_REL', '../../..'); // relative xoops path form ajaxfilemanager.php
+
+    define('CONFIG_SYS_DEFAULT_PATH', XOOPS_ROOT_PATH_REL . $relativePath); //accept relative path only
+    define('CONFIG_SYS_ROOT_PATH', XOOPS_ROOT_PATH_REL . $relativePath);	//accept relative path only
     define('CONFIG_SYS_FOLDER_SHOWN_ON_TOP', true); //show your folders on the top of list if true or order by name
     define("CONFIG_SYS_DIR_SESSION_PATH", XOOPS_ROOT_PATH . '/uploads/ajaxfilemanager/session/');
     define("CONFIG_SYS_PATTERN_FORMAT", 'list'); //three options: reg ,csv, list, this option define the parttern format for the following patterns
@@ -143,16 +145,16 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
          * so what should you to do get it
          *   1. create a php script file (let's call it document_root.php)
          *   2. add the following codes in in
-         * 			<?php
+         * 			?php
          * 				echo dirname(__FILE__);
-         * 			?>
+         * 			?
          *   3. upload document_root.php to you website root folder which will only be reached when you visit http://www.domain-name.com or http://localhost/ at localhost computer
          *   4. run it via http://www.domain-name.com/document_root.php or http://localhost/docuent_root.php if localhost computer, the url has to be exactly like that
          *   5. the value shown on the screen is CONFIG_WEBSITE_DOCUMENT_ROOT should be
          *   6. enjoy it
          *
          */
-
+/*
         // IN PROGRESS
         //$scriptName = str_replace (DIRECTORY_SEPARATOR . 'ajaxfilemanager.php', '', $_SERVER['SCRIPT_NAME']);
         //$mainDirname = str_replace (DIRECTORY_SEPARATOR . 'inc', '', dirname(__FILE__));
@@ -169,7 +171,8 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
         $rootPath = str_replace ('/' ,DIRECTORY_SEPARATOR , $rootPath);
         define('CONFIG_WEBSITE_DOCUMENT_ROOT', $rootPath);
         // IN PROGRESS
-
+        //define('CONFIG_WEBSITE_DOCUMENT_ROOT', '');
+*/
     //theme related setting
             /*
             *   options availabe for CONFIG_EDITOR_NAME are:
@@ -182,8 +185,8 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
     //CONFIG_EDITOR_NAME replaced CONFIG_THEME_MODE since @version 0.8
     define('CONFIG_EDITOR_NAME', (CONFIG_QUERY_STRING_ENABLE && !empty($_GET['editor'])?secureFileName($_GET['editor']):'form'));
     define('CONFIG_THEME_NAME', (CONFIG_QUERY_STRING_ENABLE && !empty($_GET['theme'])?secureFileName($_GET['theme']):'default'));  //change the theme to your custom theme rather than default
-    define('CONFIG_DEFAULT_VIEW', (CONFIG_SYS_THUMBNAIL_VIEW_ENABLE?'detail':'detail')); //thumnail or detail
-    define('CONFIG_DEFAULT_PAGINATION_LIMIT', 10);
+    define('CONFIG_DEFAULT_VIEW', (CONFIG_SYS_THUMBNAIL_VIEW_ENABLE? $ajaxfilemanagerModuleConfig['default_view'] : 'detail')); //thumnail or detail
+    define('CONFIG_DEFAULT_PAGINATION_LIMIT', $ajaxfilemanagerModuleConfig['default_pagination_limit']);
     define('CONFIG_LOAD_DOC_LATTER', false); //all documents will be loaded up after the template has been loaded to the client
 
     //General Option Declarations

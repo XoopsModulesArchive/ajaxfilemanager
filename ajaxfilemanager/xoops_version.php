@@ -45,7 +45,7 @@ $modversion['forum_site_url'] = 'IN PROGRESS';
 $modversion['forum_site_name'] = 'IN PROGRESS';
 $modversion['module_website_url'] = 'IN PROGRESS';
 $modversion['module_website_name'] = 'IN PROGRESS';
-$modversion['release'] = strtotime('2011/03/11'); // 'YYYY/MM/DD' format
+$modversion['release'] = strtotime('2011/03/14'); // 'YYYY/MM/DD' format
 $modversion['module_status'] = 'In progress';
 
 // Admin things
@@ -98,6 +98,7 @@ $modversion['config'][1] = array(
     "formtype"      => 'textbox',
     "valuetype"     => 'text',
     "default"       => 'gif,jpg,png,html,htm,mp3,flv,kml,txt,pdf',
+    "category"       => 'global'
     );
 $modversion['config'][] = array(
     "name"          => 'upload_max_size',
@@ -106,6 +107,27 @@ $modversion['config'][] = array(
     "formtype"      => 'textbox',
     "valuetype"     => 'int',
     "default"       => 1000, //1MB
+    "category"       => 'global'
+    );
+$modversion['config'][] = array(
+    "name"          => 'default_pagination_limit',
+    "title"         => '_AJAXFM_MI_DEFAULTPAGINATIONLIMIT',
+    "description"   => '_AJAXFM_MI_DEFAULTPAGINATIONLIMIT_DESC',
+    "formtype"      => 'select',
+    "valuetype"     => 'int',
+    "default"       => 10,
+    "options"       => array(5 => 5, 10 => 10, 20 => 20, 30 => 30, 50 => 50, 80 => 80, 150 => 150, 999 => 999),
+    "category"       => 'global'
+    );
+$modversion['config'][] = array(
+    "name"          => 'default_view',
+    "title"         => '_AJAXFM_MI_VIEW',
+    "description"   => '_AJAXFM_MI_VIEW_DESC',
+    "formtype"      => 'select',
+    "valuetype"     => 'text',
+    "default"       => 'detail',
+    "options"       => array('_AJAXFM_MI_VIEW1' => 'detail', '_AJAXFM_MI_VIEW2' => 'thumbnail'),
+    "category"       => 'global'
     );
 include_once (XOOPS_ROOT_PATH . '/class/xoopslists.php');
 $modversion['config'][] = array(
