@@ -1,12 +1,28 @@
 <?php
 // admin/index.php
-define("_AJAXFM_AM_INDEX_INFO", "Informations");
-define("_AJAXFM_AM_INDEX_NOIFRAME", "Your browser does not support iframes.");
-
+define("_AJAXFM_AM_INDEX_INFO", "Module Informations");
+define("_AJAXFM_AM_INDEX_SCONFIG", "<b>Information taken from Module Preferences:</b>");
+define("_AJAXFM_AM_INDEX_NOIFRAME", "Sorry, your browser does not support iframes.");
 define('_AJAXFM_AM_WARNING_DIRNOTEXIST', "<strong style='color:red;'>WARNING: %s directory not exist!</strong>");
 define('_AJAXFM_AM_WARNING_DIRCREATEIT', "Create it!");
 define('_AJAXFM_AM_DIRCREATED', "%s directory created!");
 define('_AJAXFM_AM_DIRNOTCREATED', "<strong style='color:red;'>WARNING: %s directory not created!</strong>");
+
+define("_AJAXFM_AM_INDEX_SERVERSTATUS", "Server Status");
+define("_AJAXFM_AM_INDEX_SPHPINI", "<b>Information taken from PHP ini File:</b>");
+define("_AJAXFM_AM_INDEX_SERVERPATH", "Server Path to XOOPS Root: ");
+define("_AJAXFM_AM_INDEX_SAFEMODESTATUS", "Safe Mode Status: ");
+define("_AJAXFM_AM_INDEX_REGISTERGLOBALS", "Register Globals: ");
+define("_AJAXFM_AM_INDEX_SERVERUPLOADSTATUS", "Server Uploads Status: ");
+define("_AJAXFM_AM_INDEX_MAXUPLOADSIZE", "Max Upload Size Permitted: ");
+define("_AJAXFM_AM_INDEX_MAXPOSTSIZE", "Max Post Size Permitted: ");
+define("_AJAXFM_AM_INDEX_SAFEMODEPROBLEMS", " (This May Cause Problems)");
+define("_AJAXFM_AM_INDEX_GDLIBSTATUS", "GD Library Support: ");
+define("_AJAXFM_AM_INDEX_GDLIBVERSION", "GD Library Version: ");
+define("_AJAXFM_AM_INDEX_GDON", "<b>Enabled</b>");
+define("_AJAXFM_AM_INDEX_GDOFF", "<b>Disabled</b>");
+define("_AJAXFM_AM_INDEX_OFF", "<b>OFF</b>");
+define("_AJAXFM_AM_INDEX_ON", "<b>ON</b>");
 
 
 

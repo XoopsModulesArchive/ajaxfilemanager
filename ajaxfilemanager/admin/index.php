@@ -54,17 +54,23 @@ $menu->addItem('Preferences', '../../system/admin.php?fct=preferences&amp;op=sho
 
 echo $menu->getCSS();
 echo '<table width="100%" border="0" cellspacing="10" cellpadding="4">';
-echo '<tr><td>' . $menu->render() . '</td>';
+echo '<tr>';
+
+
+
+echo '<td>' . $menu->render() . '</td>';
+
+
 
 echo '<td valign="top" width="60%">';
 echo '<fieldset><legend class="CPmediumTitle">' . _AJAXFM_AM_INDEX_INFO . '</legend>';
+echo '<div>' . _AJAXFM_AM_INDEX_SCONFIG . '</div>';
 echo '<p>';
 echo _AJAXFM_MI_VALIDEXTS . ': ' . $xoopsModuleConfig['upload_valid_exts'];
 echo '</p>';
 echo '<p>';
 echo _AJAXFM_MI_MAXSIZE . ': ' . $xoopsModuleConfig['upload_max_size'] . _AJAXFM_MI_MAXSIZE_MB;
 echo '</p>';
-
 $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager";
 if (!file_exists($dir)) {
     printf(_AJAXFM_AM_WARNING_DIRNOTEXIST, htmlentities($dir));
@@ -86,11 +92,38 @@ if (!file_exists($dir)) {
     echo "<a href='" . $currentFile ."?op=createdir&path=" . $dir . "'>" . _AJAXFM_AM_WARNING_DIRCREATEIT . "</a>";
     echo '<br/>';
 }
-
 echo '</fieldset>';
+
+echo '<br/>';
+
+echo '<fieldset><legend class="CPmediumTitle">' . _AJAXFM_AM_INDEX_SERVERSTATUS . '</legend>';
+echo '<div>' . _AJAXFM_AM_INDEX_SPHPINI . '</div>';
+$safeMode = (ini_get('safe_mode')) ? _AJAXFM_AM_INDEX_ON . _AJAXFM_AM_INDEX_SAFEMODEPROBLEMS : _AJAXFM_AM_INDEX_OFF;
+$registerGlobals = (!ini_get('register_globals')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_OFF . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_ON . '</span>';
+$downloads = (ini_get('file_uploads')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_ON . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_OFF . '</span>';
+$gdLib = (function_exists('gd_info')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_GDON . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_GDOFF . '</span>';
+echo '<ul>';
+echo '<li>' . _AJAXFM_AM_INDEX_GDLIBSTATUS . $gdLib;
+if (function_exists('gd_info')) {
+    if (true == $gdLib = gd_info()) {
+        echo '<li>' . _AJAXFM_AM_INDEX_GDLIBVERSION . '<b>' . $gdLib['GD Version'] . '</b>';
+    }
+}
+echo '</ul>';
+echo '<ul>';
+echo '<li>' . _AJAXFM_AM_INDEX_SAFEMODESTATUS . $safeMode;
+echo '<li>' . _AJAXFM_AM_INDEX_REGISTERGLOBALS . $registerGlobals;
+echo '<li>' . _AJAXFM_AM_INDEX_SERVERUPLOADSTATUS . $downloads;
+echo '<li>' . _AJAXFM_AM_INDEX_MAXUPLOADSIZE . ' <b><span style="color: blue;">' . ini_get('upload_max_filesize') . '</span></b>';
+echo '<li>' . _AJAXFM_AM_INDEX_MAXPOSTSIZE . ' <b><span style="color: blue;">' . ini_get('post_max_size') . '</span></b>';
+echo '<li>' . _AJAXFM_AM_INDEX_SERVERPATH . ' <b>' . XOOPS_ROOT_PATH . '</b>';
+echo '</ul>';
+echo '</fieldset>';
+
+
+
 echo '</td></tr>';
 echo '</table>';
-
 
 xoops_cp_footer();
 ?>
