@@ -18,8 +18,8 @@
  */
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
-xoops_loadLanguage('formmultiplexoopsimage', 'xaddresses');
-xoops_load ('formxoopsimage', 'xaddresses'); // load custom form class
+xoops_loadLanguage('formmultiplexoopsimage', 'ajaxfilemanager');
+xoops_load ('formxoopsimage', 'ajaxfilemanager'); // load custom form class
 
 class FormMultipleXoopsImage extends XoopsFormElementTray
 {
@@ -30,7 +30,7 @@ class FormMultipleXoopsImage extends XoopsFormElementTray
      * @param mixed $name
      * @param array $values
      */
-    function FormMultipleXoopsImage($caption, $name, $values = NULL)
+    function FormMultipleXoopsImage($caption, $name, $values = array())
     {
         $this->XoopsFormElementTray($caption, '<hr />');
         foreach ($values as $key=>$value) {

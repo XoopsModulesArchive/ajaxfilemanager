@@ -18,7 +18,7 @@
  */
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
-xoops_loadLanguage('formxoopsimage', 'xaddresses');
+xoops_loadLanguage('formxoopsimage', 'ajaxfilemanager');
 
 class FormXoopsImage extends XoopsFormElementTray
 {
@@ -34,10 +34,10 @@ class FormXoopsImage extends XoopsFormElementTray
         $this->XoopsFormElementTray($caption, '<br />');
             $imageurltray = new XoopsFormElementTray('', '&nbsp;');
                 $element_text = new XoopsFormText(_FORMXOOPSIMAGE_IMAGEURL, $name, 70, 255, $value);
-                $element_text->setExtra ("onchange='window.xoopsGetElementById(\"" . $name . "_image\").src = this.value;'");
+                $element_text->setExtra ("onchange='xoopsGetElementById(\"" . $name . "_image\").src = this.value;'");
             $imageurltray->addElement($element_text);
-                $xoopsimagemanagerbutton = new XoopsFormButton ('', $name . 'button', _FORMXOOPSIMAGE_IMAGEMANAGER, "button");
-                $xoopsimagemanagerbutton->setExtra ("onclick='openWithSelfMain(&quot;" . XOOPS_URL . "/modules/xaddresses/imagemanager/imagemanager.php?target=" . $name . "&quot;,&quot;imagemanager&quot;,800,600);'");
+                $button_html = "<img src='" . XOOPS_URL . "/images/image.gif' alt='" . _FORMXOOPSIMAGE_IMAGEMANAGER . "' title='" . _FORMXOOPSIMAGE_IMAGEMANAGER . "' onclick='openWithSelfMain(&quot;" . XOOPS_URL . "/modules/ajaxfilemanager/imagemanager/imagemanager.php?target=" . $name . "&amp;editor=src&quot;,&quot;imagemanager&quot;,800,600);' onmouseover='style.cursor=\"hand\"'/>";
+                $xoopsimagemanagerbutton = new XoopsFormLabel ('', $button_html, $name . '_button');
             $imageurltray->addElement($xoopsimagemanagerbutton);
         $this->addElement($imageurltray);
             $preview_html = "<img title='" . "PREVIEW" . "' id='" . $name . "_image' alt='" . _FORMXOOPSIMAGE_IMAGENOTFOUND . "' src='" . $value . "' style='width:auto;height:200px;'>";
