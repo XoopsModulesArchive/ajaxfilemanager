@@ -45,13 +45,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="Logan Cai" />
 <meta name="website" content="http://www.phpletter.com" />
-<script type="text/javascript" src="jscripts/ajaxtexteditor_c.js"></script>
-<!--<script type="text/javascript" src="jscripts/jquery.js"></script>
-<script type="text/javascript" src="jscripts/form.js"></script>
+<!--<script type="text/javascript" src="jscripts/ajaxtexteditor_c.js"></script>-->
+<script type="text/javascript" src="jscripts/jquery.js"></script>
+<script type="text/javascript" src="jscripts/jquery.form.js"></script>
 <script type="text/javascript" src="jscripts/select.js"></script>
 <script type="text/javascript" src="jscripts/jqModal.js"></script>
+
 <script type="text/javascript" src="jscripts/ajaxtexteditor.js"></script>
--->
+
 <script type="text/javascript" src="jscripts/edit_area/edit_area_full.js"></script>
 <script type="text/javascript">
     var warningExtNotSelected = '<?php echo TXT_EXT_NOT_SELECTED; ?>';

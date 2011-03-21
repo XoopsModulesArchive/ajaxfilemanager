@@ -240,7 +240,8 @@ if ($op == 'doupload') {
             $err = $uploader->getErrors();
         } else {
             // resize image if too big using WideImage library // IN PROGRESS
-            require_once(XOOPS_ROOT_PATH . '/modules/ajaxfilemanager/imagemanager/libs/wideimage/WideImage.php');
+            //require_once(XOOPS_ROOT_PATH . '/modules/ajaxfilemanager/imagemanager/libs/wideimage/WideImage.php');
+            require_once(XOOPS_ROOT_PATH . '/modules/ajaxfilemanager/Frameworks/wideimage/wideimage/WideImage.php');
             $in = WideImage::load($uploader->getSavedDestination());
             // Get the original geometry and calculate scales
             $width = $in->getWidth();
