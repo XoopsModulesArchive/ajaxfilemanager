@@ -33,11 +33,63 @@ class FormMultipleXoopsImage extends XoopsFormElementTray
     function FormMultipleXoopsImage($caption, $name, $values = array())
     {
         $this->XoopsFormElementTray($caption, '<hr />');
+        $table_html = "
+        <table>
+        <tr>
+            <td colspan='2'>" . "Enter Your Information" . "</td>
+        </tr>";
+
         foreach ($values as $key=>$value) {
             $capt = sprintf(_FORMMULTIPLEXOOPSIMAGE, $key);
-            $this->addElement(new FormXoopsImage($capt . '<br />', $name . "[$key]", $value));
+            $element = new FormXoopsImage($capt, $name . "[$key]", $value);
+            $table_html.= "<tr>";
+            $table_html.= "<td>" . sprintf(_FORMMULTIPLEXOOPSIMAGE, $key) . "<br />"  . $element->render() . "</td>";
+            $table_html.= "<td><input type='button' class='delRow' value='" . _FORMMULTIPLEXOOPSIMAGE_DELETEBUTTON . "'/></td>";
+            $table_html.= "</tr>";
+            unset($element);
         }
-        $this->addElement(new FormXoopsImage(_FORMMULTIPLEXOOPSIMAGE_NEW . '<br />', $name . "[]", NULL));
+
+        $element = new FormXoopsImage($capt, $name . "[]", '');
+        $table_html.= "<tr>";
+        $table_html.= "<td>" . sprintf(_FORMMULTIPLEXOOPSIMAGE, " ") . "<br />" . $element->render() . "</td>";
+        $table_html.= "<td><input type='button' class='delRow' value='" . _FORMMULTIPLEXOOPSIMAGE_DELETEBUTTON . "'/></td>";
+        $table_html.= "</tr>";
+        unset($element);
+
+        $table_html.= "
+        <tr>
+            <td><input type='button' class='addRow' value='" . _FORMMULTIPLEXOOPSIMAGE_ADDBUTTON . "'/></td><td>&nbsp;</td>
+        </tr>
+        </table>
+        <script type='text/javascript'>
+        (function($){
+            $(document).ready(function(){
+                $('.addRow').btnAddRow();
+                $('.delRow').btnDelRow();
+            });
+        })(jQuery);
+        </script>";
+
+        $element_table = new XoopsFormLabel ('', $table_html, $name . '_table');
+        $this->addElement($element_table);
+    }
+
+    /**
+     * XFormMultipleXoopsImage::render()
+     *
+     * @return
+     */
+    function render()
+    {
+        if (isset($GLOBALS['xoTheme'])) {
+            $GLOBALS['xoTheme']->addScript('browse.php?Frameworks/jquery/jquery.js');
+            $GLOBALS['xoTheme']->addScript('browse.php?modules/ajaxfilemanager/class/jquery.table.addrow.js');
+            //$GLOBALS['xoTheme']->addScript('', '', $js);
+        } else {
+            echo '<script type="text/javascript" src="' . XOOPS_URL . '/Frameworks/jquery/jquery.js"></script>';
+            echo '<script type="text/javascript">' . $js . '</script>';
+        }
+        return parent::render();//  . "<input type='reset' value=' ... ' onclick=\"return TCP.popup('" . XOOPS_URL . "/include/',document.getElementById('" . $this->getName() . "'));\">" ;
     }
 }
 ?>

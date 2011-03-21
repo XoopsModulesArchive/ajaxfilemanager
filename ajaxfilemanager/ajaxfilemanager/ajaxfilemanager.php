@@ -60,12 +60,12 @@ if(!empty($_GET['view'])) {
 </script>
 <!--<script type="text/javascript" src="jscripts/ajaxfilemanager_c.js"></script>-->
 <script type="text/javascript" src="jscripts/jquery.js"></script>
-<script type="text/javascript" src="jscripts/form.js"></script>
+<script type="text/javascript" src="jscripts/jquery.form.js"></script>
 <script type="text/javascript" src="jscripts/select.js"></script>
 <script type="text/javascript" src="jscripts/thickbox.js"></script>
 <script type="text/javascript" src="jscripts/calendar.js"></script>
 <script type="text/javascript" src="jscripts/contextmenu.js"></script>
-<script type="text/javascript" src="jscripts/media.js"></script>
+<script type="text/javascript" src="jscripts/jquery.media.js"></script>
 <script type="text/javascript" src="jscripts/ajaxfileupload.js"></script>
 <script type="text/javascript" src="jscripts/ajaxfilemanager.js"></script>
 <script type="text/javascript">

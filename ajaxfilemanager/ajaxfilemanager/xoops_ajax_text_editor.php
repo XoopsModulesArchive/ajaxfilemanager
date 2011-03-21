@@ -75,10 +75,12 @@ if(array_search(getFileExt($path), getValidTextEditorExts())=== false) {
 <meta name="website" content="http://www.phpletter.com" />
 <!--<script type="text/javascript" src="jscripts/ajaxtexteditor_c.js"></script>-->
 <script type="text/javascript" src="jscripts/jquery.js"></script>
-<script type="text/javascript" src="jscripts/form.js"></script>
+<script type="text/javascript" src="jscripts/jquery.form.js"></script>
 <script type="text/javascript" src="jscripts/select.js"></script>
 <script type="text/javascript" src="jscripts/jqModal.js"></script>
+
 <script type="text/javascript" src="jscripts/ajaxtexteditor.js"></script>
+
 <script type="text/javascript">
     var warningExtNotSelected = '<?php echo TXT_EXT_NOT_SELECTED; ?>';
     var urlGetFolderList = '<?php echo appendQueryString(CONFIG_URL_GET_FOLDER_LIST, makeQueryString(array('path'))); ?>';

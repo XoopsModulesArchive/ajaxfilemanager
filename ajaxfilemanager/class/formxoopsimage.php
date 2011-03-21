@@ -19,30 +19,105 @@
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
 xoops_loadLanguage('formxoopsimage', 'ajaxfilemanager');
-
-class FormXoopsImage extends XoopsFormElementTray
+/**
+ * A simple text field
+ */
+class FormXoopsImage extends XoopsFormElement
 {
     /**
-     * FormXoopsImage::FormXoopsImage()
+     * Size
      *
-     * @param mixed $caption
-     * @param mixed $name
-     * @param string $value 
+     * @var int
+     * @access private
      */
-    function FormXoopsImage($caption, $name, $value = NULL)
+    var $_size;
+    
+    /**
+     * Maximum length of the text
+     *
+     * @var int
+     * @access private
+     */
+    var $_maxlength;
+    
+    /**
+     * Initial text
+     *
+     * @var string
+     * @access private
+     */
+    var $_value;
+    
+    /**
+     * Constructor
+     *
+     * @param string $caption Caption
+     * @param string $name "name" attribute
+     * @param string $value Initial text
+     */
+    function FormXoopsImage($caption, $name, $value = '')
     {
-        $this->XoopsFormElementTray($caption, '<br />');
-            $imageurltray = new XoopsFormElementTray('', '&nbsp;');
-                $element_text = new XoopsFormText(_FORMXOOPSIMAGE_IMAGEURL, $name, 70, 255, $value);
-                $element_text->setExtra ("onchange='xoopsGetElementById(\"" . $name . "_image\").src = this.value;'");
-            $imageurltray->addElement($element_text);
-                $button_html = "<img src='" . XOOPS_URL . "/images/image.gif' alt='" . _FORMXOOPSIMAGE_IMAGEMANAGER . "' title='" . _FORMXOOPSIMAGE_IMAGEMANAGER . "' onclick='openWithSelfMain(&quot;" . XOOPS_URL . "/modules/ajaxfilemanager/imagemanager/imagemanager.php?target=" . $name . "&amp;editor=src&quot;,&quot;imagemanager&quot;,800,600);' onmouseover='style.cursor=\"hand\"'/>";
-                $xoopsimagemanagerbutton = new XoopsFormLabel ('', $button_html, $name . '_button');
-            $imageurltray->addElement($xoopsimagemanagerbutton);
-        $this->addElement($imageurltray);
-            $preview_html = "<img title='" . "PREVIEW" . "' id='" . $name . "_image' alt='" . _FORMXOOPSIMAGE_IMAGENOTFOUND . "' src='" . $value . "' style='width:auto;height:200px;'>";
-            $element_preview = new XoopsFormLabel ('', $preview_html, $name . '_preview');
-        $this->addElement($element_preview);
+        $this->setCaption($caption);
+        $this->setName($name);
+        $this->setValue($value);
+    }
+    
+    /**
+     * Get size
+     *
+     * @return int
+     */
+    function getSize()
+    {
+        return $this->_size;
+    }
+    
+    /**
+     * Get maximum text length
+     *
+     * @return int
+     */
+    function getMaxlength()
+    {
+        return $this->_maxlength;
+    }
+    
+    /**
+     * Get initial content
+     *
+     * @param bool $encode To sanitizer the text? Default value should be "true"; however we have to set "false" for backward compat
+     * @return string
+     */
+    function getValue($encode = false)
+    {
+        return $encode ? htmlspecialchars($this->_value, ENT_QUOTES) : $this->_value;
+    }
+    
+    /**
+     * Set initial text value
+     *
+     * @param  $value string
+     */
+    function setValue($value)
+    {
+        $this->_value = $value;
+    }
+    
+    /**
+     * Prepare HTML for output
+     *
+     * @return string HTML
+     */
+    function render()
+    {
+        $html = "<div>";
+        $html.= "<input type='text' name='" . $this->getName() . "' title='" . $this->getTitle() . "' size='50' maxlength='255' value='" . $this->getValue() . "' />";
+        $html.= "<img src='" . XOOPS_URL . "/images/image.gif' alt='" . _FORMXOOPSIMAGE_IMAGEMANAGER . "' title='" . _FORMXOOPSIMAGE_IMAGEMANAGER . "' onclick='randomId = Math.random().toString(); this.parentNode.firstChild.id = \"input_\" + randomId; openWithSelfMain(&quot;" . XOOPS_URL . "/modules/ajaxfilemanager/imagemanager/imagemanager.php?target=input_&quot; + randomId + &quot;&amp;editor=src&quot;,&quot;imagemanager&quot;,800,600);' onmouseover='style.cursor=\"hand\"'/>";
+        $html.= "<div style='height:200px;'>";
+        $html.= "<img src='" . $this->getValue() . "' style='height:200px;' alt='" . _FORMXOOPSIMAGE_IMAGENOTFOUND . "' />";
+        $html.= "</div>";
+        $html.= "</div>";
+        return $html;
     }
 }
 ?>
