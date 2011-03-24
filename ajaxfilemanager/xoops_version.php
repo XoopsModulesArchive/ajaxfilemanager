@@ -45,7 +45,7 @@ $modversion['forum_site_url'] = 'IN PROGRESS';
 $modversion['forum_site_name'] = 'IN PROGRESS';
 $modversion['module_website_url'] = 'IN PROGRESS';
 $modversion['module_website_name'] = 'IN PROGRESS';
-$modversion['release'] = strtotime('2011/03/15'); // 'YYYY/MM/DD' format
+$modversion['release'] = strtotime('2011/03/24'); // 'YYYY/MM/DD' format
 $modversion['module_status'] = 'In progress';
 
 // Admin things
@@ -71,6 +71,10 @@ $modversion['templates'][$i]['description'] = '';
 $i++;
 $modversion['templates'][$i]['file'] = 'ajaxfm_imagemanager2.html';
 $modversion['templates'][$i]['description'] = '';
+$i++;
+$modversion['templates'][$i]['file'] = 'ajaxfm_imageeditor.html';
+$modversion['templates'][$i]['description'] = '';
+
 $i++;
 $modversion['templates'][$i]['file'] = 'ajaxfm_gmap.html';
 $modversion['templates'][$i]['description'] = '';
@@ -147,7 +151,7 @@ $modversion['config'][] = array(
     "formtype"      => 'select',
     "valuetype"     => 'text',
     "default"       => 'secure',
-    "options"       => array('_AJAXFM_MI_NAVIGATIONMODE1' => 'secure', '_AJAXFM_MI_NAVIGATIONMODE2' => 'dangerous', '_AJAXFM_MI_NAVIGATIONMODE3' => 'kamikaze'),
+    "options"       => array('_AJAXFM_MI_NAVIGATIONMODE1' => 'secure', '_AJAXFM_MI_NAVIGATIONMODE2' => 'dangerous', '_AJAXFM_MI_NAVIGATIONMODE4' => 'themes_directory', '_AJAXFM_MI_NAVIGATIONMODE3' => 'kamikaze'),
     "category"       => 'global'
     );
 $modversion['config'][] = array(
