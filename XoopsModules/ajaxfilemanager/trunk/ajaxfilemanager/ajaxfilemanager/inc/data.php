@@ -1,8 +1,9 @@
 <pre>Array
 (
-    [currentFolderPath] => ../../../uploads/ajaxfilemanager/uploaded/test/
-    [new_folder] => ass
+    [currentFilePath] => ../../../uploads/ajaxfilemanager/uploaded/new/
+    [new_file] => i
+    [ext] => mp3
 )
 </pre>
 
-23/Mar/2011 17:04:09
+26/Mar/2011 01:33:02

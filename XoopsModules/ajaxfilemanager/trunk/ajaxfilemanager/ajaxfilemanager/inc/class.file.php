@@ -140,6 +140,36 @@
 		return @touch(slashToBackslash($path), $time);
 	}
 
+/**
+ * create a new empty file
+ *
+ * @path the path for the new file
+ * @mask
+ * @fileOwner
+ * @return boolean
+ */
+function mkfile($path = null, $mask = null, $dirOwner='') 
+{
+    $path = is_null($path)?$this->filePath:$path;
+    if(!file_exists($path)) {
+        $mask = is_null($mask) ? $this->mask : $mask;
+        //$status = @mkdir(slashToBackslash($path));
+        $newfile = fopen($path, "w");
+        if (!$newfile) 
+            return false;
+        $status = @fclose($newfile);
+        if ($mask) {
+            @chmod(slashToBackslash($path), intval($mask, 8));
+        }
+        if($dirOwner) {
+            $this->chown(slashToBackslash($path), $dirOwner);
+        }
+        return $status;
+    }
+    return true;
+
+}
+
 		/**
 		 * create a new folder
 		 *
@@ -168,6 +198,8 @@
 			return true;
 
 		}	
+
+
 	/**
 	 * change the own of a file or folder
 	 *

@@ -140,7 +140,8 @@ case 'ckeditor' :
 case 'dhtmltextarea' :
 case 'textarea' :
 default :
-    $getValueJS = "function(){document.getElementById(\"" . $editorConfigs["name"] ."\").value();}";
+    //$getValueJS = "document.getElementById('" . $editorConfigs["name"] ."').value()";
+    $getValueJS = "$(\"#" . $editorConfigs["name"] ."\").val()"; // jQuery
     }
 // MAMBA wrote: "use a patch", and so... here you are "the patch" ;-)
 

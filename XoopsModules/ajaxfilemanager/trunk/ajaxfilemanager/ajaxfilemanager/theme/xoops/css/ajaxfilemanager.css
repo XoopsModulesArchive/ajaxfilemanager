@@ -87,7 +87,7 @@ margin-top:100px;
   margin-left: 265px;
 overflow: auto;
 overflow-x: hidden;	
-max-height:380px;
+/* max-height:380px; */
 }
  .pagination_content{
   margin-left: 265px;

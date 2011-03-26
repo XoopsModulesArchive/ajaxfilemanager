@@ -52,7 +52,7 @@
 			include_once(CLASS_IMAGE);
 			$image = new Image();
 			if($image->loadImage($originalImage))
-			{				
+			{
 				
 				switch($_POST['mode'])
 				{

@@ -1,13 +1,18 @@
-24/March/2011 V1.0 Final
+26/March/2011 V1.0 Final
 for Xoops by luciorota <lucio.rota@gmail.com>
 
 + Xoops Editors support
 + Xoops Preferences system support (Upload valid extensions, Max upload size, Default items per page, Navigation mode, Text editor)
 + added filetypes (.kml = GoogleMaps Kml, ...)
++ added create new file
++ fixed bug pasting files/filders
+
+
 
 added files:
     inc/nocommon.xoops.php
     inc/config.ajaxfilemanager.php
+    jscripts/ajaxfilemanager.js
     jscripts/for_ajaxfilemanager.js
     jscripts/for_xoops.js
     jscripts/jqModal.js
@@ -16,17 +21,21 @@ added files:
     jscripts/jquery.metadata.js
     theme/xoops
     theme/xoops/...
+    ajax_create_file.php (in progress)
     xoops_ajax_image_editor.php (in progress)
     xoops_ajax_text_editor.php
 
 changed files:
     inc/config.php
+    inc/class.file.php
     inc/class.manager.php
+    inc/function.base.php
     jscripts/ajaxtexteditor.js
     langs/en.php
     theme/default/css/ajaxfilemanager.css
     theme/default/css/form.css
     ajax_image_save.php
+    ajax_file_paste.php (fixed bug)
     ajax_save_as_form.php
     ajax_text_editor.php
     ajaxfilemanager.php
