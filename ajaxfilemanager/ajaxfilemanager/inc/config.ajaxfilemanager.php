@@ -64,7 +64,6 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
 
     $permAccess = ($gpermHandler->checkRight('ajaxfilemanager_extra', 1, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     if (!$permAccess) exit(_AJAXFM_MD_NO_PERMISSION);
-
     $permDelete = ($gpermHandler->checkRight('ajaxfilemanager_extra', 4, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_DELETE', $permDelete);
     $permCut = ($gpermHandler->checkRight('ajaxfilemanager_extra', 8, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
@@ -73,6 +72,8 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
     define('CONFIG_OPTIONS_COPY', $permCopy);
     $permNewfolder = ($gpermHandler->checkRight('ajaxfilemanager_extra', 32, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_NEWFOLDER', $permNewfolder);
+    $permNewfile = $permNewfolder;
+    define('CONFIG_OPTIONS_NEWFILE', $permNewfile);
     $permRename = ($gpermHandler->checkRight('ajaxfilemanager_extra', 64, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_RENAME', $permRename);
     $permUpload = ($gpermHandler->checkRight('ajaxfilemanager_extra', 2, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;

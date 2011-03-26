@@ -76,6 +76,7 @@ if(!empty($_GET['view'])) {
         'delete':'<?php echo CONFIG_URL_DELETE; ?>',
         'rename':'<?php echo CONFIG_URL_SAVE_NAME; ?>',
         'thumbnail':'<?php echo CONFIG_URL_IMG_THUMBNAIL;  ?>',
+        'create_file':'<?php echo CONFIG_URL_CREATE_FILE; ?>',
         'create_folder':'<?php echo CONFIG_URL_CREATE_FOLDER; ?>',
         'text_editor':'<?php echo  CONFIG_URL_TEXT_EDITOR; ?>',
         'image_editor':'<?php echo  CONFIG_URL_IMAGE_EDITOR; ?>',
@@ -213,6 +214,9 @@ foreach($views as $k=>$v) {
     }
     if(CONFIG_OPTIONS_CUT || CONFIG_OPTIONS_COPY) {
         echo '<li><a href="#" id="actionPaste" onclick="return pasteDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_PASTE . '\');">' . LBL_ACTION_PASTE . '</span></a></li>';
+    }
+    if(CONFIG_OPTIONS_NEWFILE) {
+        echo '<li><a  id="actionNewFile" href="#" onclick="return newFileWin(this);"><span>' . LBL_BTN_NEW_FILE . '</span></a></li>';
     }
     if(CONFIG_OPTIONS_NEWFOLDER) {
         echo '<li><a  id="actionNewFolder" href="#" onclick="return newFolderWin(this);"><span>' . LBL_BTN_NEW_FOLDER . '</span></a></li>';
@@ -486,6 +490,57 @@ if(CONFIG_OPTIONS_SEARCH) {
                 <tr>
                     <th>&nbsp;</th>
                 <td colspan="3"></td>
+                </tr>
+                </tfoot>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="winNewFile" style="display:none">
+    <div class="jqmContainer">
+        <div class="jqmHeader">
+            <a href="#" onclick="return tb_remove();"><?php echo LBL_ACTION_CLOSE; ?></a>
+        </div>
+        <div class="jqmBody">
+            <form id="formNewFile" name="formNewFile" method="POST" action="">
+                <input type="hidden" name="currentFilePath" value="" id="currentNewfilePath" />
+                <table class="tableForm" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th colspan="2" ><?php echo NEW_FILE_FORM_TITLE; ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th nowrap><label><?php echo NEW_FILE_LBL_TITLE; ?></label></th>
+                    <td >
+                    <input type="text" name="new_file" style="font-size:12px" id="new_file"  value="" class="input">
+                    &nbsp;.&nbsp;
+                    <select id="ext" name="ext">
+                    <?php
+                    foreach(getValidFileExts() as $v) {
+                        echo "<option value='" . $v . "' " . (strtolower($v) == strtolower(getFileExt($path))?'selected':'') . ">" . $v . "</option>";
+                    }
+                    ?>
+                    </select>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th >&nbsp;</th>
+                    <td nowrap>
+                        <table cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td width="99%">&nbsp;</td>
+                            <td nowrap width="1%"><a href="#" class="buttonLink" onclick="return doCreateFile();" ><span><?php echo NEW_FILE_CREATE; ?></span></a>		</td>
+                        </tr>
+                        </table>
+                    </td>
                 </tr>
                 </tfoot>
                 </table>

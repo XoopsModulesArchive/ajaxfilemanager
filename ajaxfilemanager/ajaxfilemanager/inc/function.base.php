@@ -131,19 +131,21 @@ function relToAbs($value)
 
 }
 
-	function getRelativeFileUrl($value, $relativeTo)
-	{
-		$output = '';
-		$wwwroot = removeTrailingSlash(backslashToSlash(getRootPath()));
-		$urlprefix = "";
-		$urlsuffix = "";
-		$value = backslashToSlash(getRealPath($value));
-		$pos = strpos($value, $wwwroot);
-		if ($pos !== false && $pos == 0)
-		{
-			$output  = $urlprefix . substr($value, strlen($wwwroot)) . $urlsuffix;
-		}
-	}
+/*
+function getRelativeFileUrl($value, $relativeTo)
+{
+    $output = '';
+    $wwwroot = removeTrailingSlash(backslashToSlash(getRootPath()));
+    $urlprefix = "";
+    $urlsuffix = "";
+    $value = backslashToSlash(getRealPath($value));
+    $pos = strpos($value, $wwwroot);
+    if ($pos !== false && $pos == 0) {
+
+        $output  = $urlprefix . substr($value, strlen($wwwroot)) . $urlsuffix;
+    }
+}
+*/
 /**
  * replace slash with backslash
  *
@@ -204,7 +206,7 @@ function transformFilePath($value) {
 	$value = addTrailingSlash(backslashToSlash(getRealPath($value)));
 	if(!empty($rootPath) && ($i = strpos($value, $rootPath)) !== false)
 	{
-		$value = ($i == 0?substr($value, strlen($rootPath)):"/");		
+		$value = ($i == 0?substr($value, strlen($rootPath)):"/");
 	}
 	$value = prependSlash($value);
 	return $value;
@@ -220,7 +222,7 @@ function prependSlash($value)
 		if (($value && $value[0] != '/') || !$value )
 		{
 			$value = "/" . $value;
-		}			
+		}
 		return $value;	
 }
 
@@ -335,7 +337,7 @@ function addNoCacheHeaders() {
 		{
 			return true;
 		}
-		return false;		
+		return false;
 	}
 	
 	
@@ -464,35 +466,37 @@ function myRealPath($path) {
  	 return $output;
  	
  }
-	/**
-	 * get file url
-	 *
-	 * @param string $value
-	 * @return string
-	 */
-	function getFileUrl($value)
-	{
-		$output = '';
-		$wwwroot = removeTrailingSlash(backslashToSlash(getRootPath()));
+/**
+ * get file url
+ *
+ * @param string $relPath relative/absolute path
+ * @return string absolute url
+ */
+function getFileUrl($path)
+{
+    $output = '';
+    //$wwwroot = removeTrailingSlash(backslashToSlash(getRootPath()));
 
-	
-		$urlprefix = "";
-		$urlsuffix = "";
+    $urlprefix = "";
+    $urlsuffix = "";
 
-		$value = backslashToSlash(getRealPath($value));
+    //$path = backslashToSlash(getRealPath($path));
+    $path = backslashToSlash($path);
 
+    $posXoopsPath = stripos($path, XOOPS_ROOT_PATH);
+    $posXoopsRootPathRel = stripos($path, XOOPS_ROOT_PATH_REL);
 
-		$pos = stripos($value, $wwwroot);
-		if ($pos !== false )
-		{
-			$output  = $urlprefix . substr($value, $pos + strlen($wwwroot)) . $urlsuffix;
-		}else 
-		{
-			$output = $value;
-		}
-		$protocol = (isset($_SERVER["HTTPS"]) &&  $_SERVER["HTTPS"] == 'on' ? 'https' : 'http');
-		return $protocol . "://" .  addTrailingSlash(backslashToSlash($_SERVER['HTTP_HOST'])) . removeBeginingSlash(backslashToSlash($output));
-	}
+    if ($posXoopsPath !== false && $posXoopsPath == 0) {
+        $output  = $urlprefix . substr($path, strlen(XOOPS_ROOT_PATH)) . $urlsuffix;
+    } else if ($posXoopsRootPathRel !== false && $posXoopsRootPathRel == 0) {
+        $output  = $urlprefix . substr($path, strlen(XOOPS_ROOT_PATH_REL)) . $urlsuffix;
+    } else {
+        $output = $path;
+    }
+    //$url = "http://" .  addTrailingSlash(backslashToSlash($_SERVER['HTTP_HOST'])) . removeBeginingSlash(backslashToSlash($output));
+    $url = addTrailingSlash(backslashToSlash(XOOPS_URL)) . removeBeginingSlash(backslashToSlash($output));
+    return $url;
+}
 	
 /**
  * 
@@ -538,6 +542,7 @@ function transformFileSize($size) {
  *
  * @return String.
  */
+ /*
 function getRootPath() {
 		$output = "";
 
@@ -565,7 +570,7 @@ function getRootPath() {
 
 	return null;
 }
-
+*/
 	
 	/**
 	 * add beginging slash
@@ -691,7 +696,7 @@ function getRootPath() {
                    $fh = @opendir($path);
                    if($fh)
                    {
-                            $count = 1;                          
+                            $count = 1;
                             while($file = @readdir($fh))
                             {
                                      $newPath = removeTrailingSlash(backslashToSlash($path . "/" . $file));
@@ -709,7 +714,7 @@ function getRootPath() {
                                                         getFolderListing($newPath, $count, $prefixNumber, $prefixName, $outputs);
                                                }
                                                $count++;
-                                     }                                    
+                                     }
                             }
                             @closedir($fh);
                    }
@@ -737,7 +742,7 @@ function getRootPath() {
          			{
          				unset($validEditorExts[$k]);
          			}
-         		}        		
+         		}
          	}
          	if(CONFIG_UPLOAD_INVALID_EXTS)
          	{//exlcude those exists in CONFIG_UPLOAD_INVALID_EXTS
@@ -750,8 +755,24 @@ function getRootPath() {
          			}
          		}
          	}
-         	return $validEditorExts;        	
+         	return $validEditorExts;
          	
+         }
+
+         /**
+          * get the valid file extension
+          * exclude those specified in CONFIG_UPLOAD_INVALID_EXTS
+          * and those are not specified in CONFIG_UPLOAD_VALID_EXTS
+          *
+          * @return array
+          */
+         function getValidFileExts()
+         {
+         	$validExts = array();
+         	$validUploadExts = explode(',', CONFIG_UPLOAD_VALID_EXTS);
+         	$invalidUploadExts = explode(',', CONFIG_UPLOAD_INVALID_EXTS);
+         	$validExts = array_diff($validUploadExts, $invalidUploadExts);
+         	return $validExts;
          }
     /**
      * check if file name or folder name is valid against a regular expression 
@@ -1040,7 +1061,7 @@ function getRootPath() {
 		
 			readfile($path);
 			exit();
-			// END ANDR� SILVA DOWNLOAD CODE												
+			// END ANDR� SILVA DOWNLOAD CODE
 				}
 		
 		}

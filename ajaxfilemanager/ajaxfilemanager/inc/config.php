@@ -119,6 +119,7 @@ addNoCacheHeaders();
 //URL Declartions
 define('CONFIG_URL_IMAGE_PREVIEW', 'ajax_image_preview.php');
 define('CONFIG_URL_CREATE_FOLDER', 'ajax_create_folder.php');
+define('CONFIG_URL_CREATE_FILE', 'ajax_create_file.php');
 define('CONFIG_URL_DELETE', 'ajax_delete_file.php');
 define('CONFIG_URL_HOME', 'ajaxfilemanager.php');
 define("CONFIG_URL_UPLOAD", 'ajax_file_upload.php');
