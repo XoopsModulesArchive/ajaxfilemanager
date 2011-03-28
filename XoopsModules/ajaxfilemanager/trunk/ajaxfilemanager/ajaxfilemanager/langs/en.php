@@ -23,6 +23,8 @@
 	define('MENU_DELETE', 'Delete');
 	define('MENU_PLAY', 'Play');
 	define('MENU_PASTE', 'Paste');
+	define('MENU_ZIP', 'Zip');
+	define('MENU_UNZIP', 'Unzip');
 	
 	//Label
 		//Top Action

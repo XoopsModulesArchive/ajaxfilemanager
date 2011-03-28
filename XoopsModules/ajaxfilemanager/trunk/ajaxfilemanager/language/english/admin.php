@@ -18,9 +18,12 @@ define("_AJAXFM_AM_INDEX_MAXUPLOADSIZE", "Max Upload Size Permitted: ");
 define("_AJAXFM_AM_INDEX_MAXPOSTSIZE", "Max Post Size Permitted: ");
 define("_AJAXFM_AM_INDEX_SAFEMODEPROBLEMS", " (This May Cause Problems)");
 define("_AJAXFM_AM_INDEX_GDLIBSTATUS", "GD Library Support: ");
+define("_AJAXFM_AM_INDEX_ZIPLIBSTATUS", "Zip Library Support (ZipArchive class): ");
 define("_AJAXFM_AM_INDEX_GDLIBVERSION", "GD Library Version: ");
 define("_AJAXFM_AM_INDEX_GDON", "<b>Enabled</b>");
 define("_AJAXFM_AM_INDEX_GDOFF", "<b>Disabled</b>");
+define("_AJAXFM_AM_INDEX_ZIPON", "<b>Enabled</b>");
+define("_AJAXFM_AM_INDEX_ZIPOFF", "<b>Disabled</b>");
 define("_AJAXFM_AM_INDEX_OFF", "<b>OFF</b>");
 define("_AJAXFM_AM_INDEX_ON", "<b>ON</b>");
 
