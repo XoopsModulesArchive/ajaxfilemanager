@@ -131,6 +131,8 @@ define('CONFIG_URL_IMAGE_RESET', 'ajax_editor_reset.php');
 define('CONFIG_URL_IMAGE_UNDO', 'ajax_image_undo.php');
 define('CONFIG_URL_CUT', 'ajax_file_cut.php');
 define('CONFIG_URL_COPY', 'ajax_file_copy.php');
+define('CONFIG_URL_ZIP', 'ajax_file_zip.php');
+define('CONFIG_URL_UNZIP', 'ajax_file_unzip.php');
 define('CONFIG_URL_LOAD_FOLDERS', '_ajax_load_folders.php');
 
 define('CONFIG_URL_DOWNLOAD', 'ajax_download.php');

@@ -83,7 +83,9 @@ if(!empty($_GET['view'])) {
         'download':'<?php echo CONFIG_URL_DOWNLOAD; ?>',
         'present':'<?php echo getCurrentUrl(); ?>',
         'home':'<?php echo CONFIG_URL_HOME; ?>',
-        'view':'<?php echo CONFIG_URL_LIST_LISTING; ?>'
+        'view':'<?php echo CONFIG_URL_LIST_LISTING; ?>',
+        'zip':'<?php echo CONFIG_URL_ZIP; ?>',
+        'unzip':'<?php echo CONFIG_URL_UNZIP; ?>'
     };
     var permits = {'del':<?php echo (CONFIG_OPTIONS_DELETE?1:0); ?>, 'cut':<?php echo (CONFIG_OPTIONS_CUT?'1':'0'); ?>, 'copy':<?php echo (CONFIG_OPTIONS_COPY?1:0); ?>, 'newfolder':<?php echo (CONFIG_OPTIONS_NEWFOLDER?1:0); ?>, 'rename':<?php echo (CONFIG_OPTIONS_RENAME?1:0); ?>, 'upload':<?php echo (CONFIG_OPTIONS_UPLOAD?1:0); ?>, 'edit':<?php echo (CONFIG_OPTIONS_EDITABLE?1:0); ?>, 'view_only':<?php echo (CONFIG_SYS_VIEW_ONLY?1:0); ?>};
     var currentFolder = {};
@@ -104,6 +106,8 @@ if(!empty($_GET['view'])) {
     var msgInvalidExt = '<?php echo ERR_FILE_TYPE_NOT_ALLOWED; ?>';
     var msgNotPreview = '<?php echo PREVIEW_NOT_PREVIEW; ?>';
 
+    var warningZip = '<?php echo WARNING_ZIP; ?>';
+    
     var warningCutPaste = '<?php echo WARNING_CUT_PASTE; ?>';
     var warningCopyPaste = '<?php echo WARNING_COPY_PASTE; ?>';
     var warningDel = '<?php echo WARNING_DELETE; ?>';
@@ -224,8 +228,12 @@ foreach($views as $k=>$v) {
     if(CONFIG_OPTIONS_UPLOAD) {
         echo '<li><a  id="actionUpload" href="#" onclick="return uploadFileWin(this);"><span>' .LBL_BTN_UPLOAD . '</span></a></li>';
     }
-    //echo '<li ><a href="#" id="actionZip"><span>' .LBL_BTN_ZIP . '</span></a><li>';
-    //echo '<li ><a href="#" id="actionUnzip"><span>' .LBL_BTN_UNZIP . '</span></a><li>';
+    if(CONFIG_OPTIONS_ZIP && class_exists('ZipArchive')) {
+        echo '<li ><a href="#" id="actionZip" onclick="return zipWin(this);"><span>' .LBL_BTN_ZIP . '</span></a><li>';
+    }
+    if(CONFIG_OPTIONS_UNZIP && class_exists('ZipArchive')) {
+        echo '<li ><a href="#" id="actionUnzip" onclick="return unzipDocument(this);"><span>' .LBL_BTN_UNZIP . '</span></a><li>';
+    }
     ?>
     <!--<li><a href="#" id="actionClose" onclick="closeWindow('<?php echo IMG_WARING_WIN_CLOSE; ?>');"><?php echo IMG_BTN_CLOSE; ?></a></li>-->
     <li><a href="#" class="thickbox" id="actionInfo" onclick="return infoWin(this);"><span>Info</span></a></li>
@@ -686,15 +694,23 @@ if(CONFIG_OPTIONS_SEARCH) {
 <div id="contextMenu" style="display:none">
     <ul>
         <li><a href="#" class="contentMenuItem" id="menuSelect"><?php echo MENU_SELECT; ?></a></li>
-        <li><a href="#" class="contentMenuItem"  id="menuPreview"><?php echo MENU_PREVIEW; ?></a></li>
-        <li><a href="#" class="contentMenuItem"  id="menuDownload"><?php echo MENU_DOWNLOAD; ?></a></li>
-        <li><a href="#" class="contentMenuItem"  id="menuRename"><?php echo MENU_RENAME; ?></a></li>
-        <li><a href="#" class="contentMenuItem"  id="menuEdit"><?php echo MENU_EDIT; ?></a></li>
-        <li><a href="#" class="contentMenuItem"  id="menuCut"><?php echo MENU_CUT; ?></a></li>
+        <li><a href="#" class="contentMenuItem" id="menuPreview"><?php echo MENU_PREVIEW; ?></a></li>
+        <li><a href="#" class="contentMenuItem" id="menuDownload"><?php echo MENU_DOWNLOAD; ?></a></li>
+        <li><a href="#" class="contentMenuItem" id="menuRename"><?php echo MENU_RENAME; ?></a></li>
+        <li><a href="#" class="contentMenuItem" id="menuEdit"><?php echo MENU_EDIT; ?></a></li>
+        <li><a href="#" class="contentMenuItem" id="menuCut"><?php echo MENU_CUT; ?></a></li>
         <li><a href="#" class="contentMenuItem" id="menuCopy"><?php echo MENU_COPY; ?></a></li>
-        <li><a href="#" class="contentMenuItem"  id="menuPaste"><?php echo MENU_PASTE; ?></a></li>
-        <li><a href="#" class="contentMenuItem"  id="menuDelete"><?php echo MENU_DELETE; ?></a></li>
-        <li><a href="#" class="contentMenuItem"  id="menuPlay"><?php echo MENU_PLAY; ?></a></li>
+        <li><a href="#" class="contentMenuItem" id="menuPaste"><?php echo MENU_PASTE; ?></a></li>
+        <li><a href="#" class="contentMenuItem" id="menuDelete"><?php echo MENU_DELETE; ?></a></li>
+        <li><a href="#" class="contentMenuItem" id="menuPlay"><?php echo MENU_PLAY; ?></a></li>
+        <?php
+        if(CONFIG_OPTIONS_ZIP && class_exists('ZipArchive')) {
+            echo '<li><a href="#" class="contentMenuItem" id="menuZip">' . MENU_ZIP . '</a></li>';
+        }
+        if(CONFIG_OPTIONS_UNZIP && class_exists('ZipArchive')) {
+            echo '<li><a href="#" class="contentMenuItem" id="menuUnzip">' . MENU_UNZIP . '</a></li>';
+        }
+        ?>
     </ul>
 </div>
 </body>

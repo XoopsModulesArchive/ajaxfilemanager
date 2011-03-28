@@ -102,6 +102,7 @@ $safeMode = (ini_get('safe_mode')) ? _AJAXFM_AM_INDEX_ON . _AJAXFM_AM_INDEX_SAFE
 $registerGlobals = (!ini_get('register_globals')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_OFF . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_ON . '</span>';
 $downloads = (ini_get('file_uploads')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_ON . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_OFF . '</span>';
 $gdLib = (function_exists('gd_info')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_GDON . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_GDOFF . '</span>';
+$zipLib = (class_exists('ZipArchive')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_ZIPON . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_ZIPOFF . '</span>';
 echo '<ul>';
 echo '<li>' . _AJAXFM_AM_INDEX_GDLIBSTATUS . $gdLib;
 if (function_exists('gd_info')) {
@@ -109,6 +110,7 @@ if (function_exists('gd_info')) {
         echo '<li>' . _AJAXFM_AM_INDEX_GDLIBVERSION . '<b>' . $gdLib['GD Version'] . '</b>';
     }
 }
+echo '<li>' . _AJAXFM_AM_INDEX_ZIPLIBSTATUS . $zipLib;
 echo '</ul>';
 echo '<ul>';
 echo '<li>' . _AJAXFM_AM_INDEX_SAFEMODESTATUS . $safeMode;
@@ -117,6 +119,7 @@ echo '<li>' . _AJAXFM_AM_INDEX_SERVERUPLOADSTATUS . $downloads;
 echo '<li>' . _AJAXFM_AM_INDEX_MAXUPLOADSIZE . ' <b><span style="color: blue;">' . ini_get('upload_max_filesize') . '</span></b>';
 echo '<li>' . _AJAXFM_AM_INDEX_MAXPOSTSIZE . ' <b><span style="color: blue;">' . ini_get('post_max_size') . '</span></b>';
 echo '<li>' . _AJAXFM_AM_INDEX_SERVERPATH . ' <b>' . XOOPS_ROOT_PATH . '</b>';
+
 echo '</ul>';
 echo '</fieldset>';
 
