@@ -1,62 +1,113 @@
 <?php
-// IN PROGRESS
-// IN PROGRESS
-// IN PROGRESS
 /**
  * zip selected files
  * @author Logan Cai (cailongqun [at] yahoo [dot] com [dot] cn)
  * @link www.phpletter.com
- * @since 22/April/2007
+ * @author Lucio Rota (lucio [dot] rota [at] gmail [dot] com)
+ * @since 28/March/2011
  *
  */
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . "inc" . DIRECTORY_SEPARATOR . "config.php");
 $error = "";
+error_log(print_r($_POST,true));
 if(CONFIG_SYS_VIEW_ONLY || !CONFIG_OPTIONS_ZIP) {
     $error = SYS_DISABLED;
-} elseif(!empty($_GET['zip'])) {
-    //zip  the selected file from context menu
-    if(!file_exists($_GET['zip'])) {
-        $error = ERR_FILE_NOT_AVAILABLE;
-    } elseif(!isUnderRoot($_GET['zip'])) {
-        $error = ERR_FOLDER_PATH_NOT_ALLOWED;
+} elseif(count($_POST['zip_name']) == 0) {
+    $error = ERR_NAME_EMPTY;
+} elseif(!preg_match("/^[a-zA-Z0-9 _\-.]+$/", $_POST['zip_name'])) {
+    $error = ERR_NAME_FORMAT;
+} elseif(file_exists(addTrailingSlash(getParentPath($_POST['zip_path'])) . DIRECTORY_SEPARATOR . $_POST['zip_name'] . '.zip')) {
+    $error = ERR_ZIP_EXIST;
+} elseif(!isset($_POST['zip_path']) || empty($_POST['zip_path'])) {
+    $error = ERR_NOT_FILE_SELECTED;
+}
+
+if($error == "") {
+    $filesToZip = array();
+    if (isset($_POST['zip_selected'])) {
+        $filesToZip = $_POST['zip_selected'];
     } else {
-            include_once(CLASS_FILE);
-            $file = new file();
-            if(is_dir($_GET['zip']) 
-                 &&  isValidPattern(CONFIG_SYS_INC_DIR_PATTERN, getBaseName($_GET['zip'])) 
-                 && !isInvalidPattern(CONFIG_SYS_EXC_DIR_PATTERN, getBaseName($_GET['zip'])))
-                {
-                $file->delete(addTrailingSlash(backslashToSlash($_GET['zip'])));
-            } elseif(is_file($_GET['zip']) 
-                && isValidPattern(CONFIG_SYS_INC_FILE_PATTERN, getBaseName($_GET['zip']))
-                && !isInvalidPattern(CONFIG_SYS_EXC_FILE_PATTERN, getBaseName($_GET['zip']))
-                )
-            {
-                    $file->zip(($_GET['zip']));
-                }
-        } 
-} else {
-    if(!isset($_POST['selectedDoc']) || !is_array($_POST['selectedDoc']) || sizeof($_POST['selectedDoc']) < 1) {
-        $error = ERR_NOT_FILE_SELECTED;
-    } else {
-        include_once(CLASS_FILE);
-        $file = new file();
-        foreach($_POST['selectedDoc'] as $doc) {
-            if(file_exists($doc) && isUnderRoot($doc)) {
-                if(is_dir($doc)
-                     &&  isValidPattern(CONFIG_SYS_INC_DIR_PATTERN, $doc) 
-                     && !isInvalidPattern(CONFIG_SYS_EXC_DIR_PATTERN, $doc))
-                    {
-                    $file->delete(addTrailingSlash(backslashToSlash($doc)));
-                } elseif(is_file($doc) 
-                     && isValidPattern(CONFIG_SYS_INC_FILE_PATTERN, $doc)
-                     && !isInvalidPattern(CONFIG_SYS_EXC_FILE_PATTERN, $doc))
-                {
-                    $file->zip($doc);
+        $filesToZip[] = $_POST['zip_path'];
+    }
+    // convert paths from relative to absolute
+    foreach ($filesToZip as $key => $value) {
+        $filesToZip[$key] = backslashToSlash(getRealPath($value));
+    }
+    $relativeTo = backslashToSlash(getParentPath(getRealPath($_POST['zip_path'])));
+    $zipFilePath = backslashToSlash((addTrailingSlash(getParentPath($_POST['zip_path'])) . DIRECTORY_SEPARATOR . $_POST['zip_name'] . '.zip'));
+
+    // get all files and sub files
+    function dir_tree($dir) {
+        $path = '';
+        $stack[] = $dir;
+        while ($stack) {
+            $thisdir = array_pop($stack);
+            if ($dircont = scandir($thisdir)) {
+                $i=0;
+                while (isset($dircont[$i])) {
+                    if ($dircont[$i] !== '.' && $dircont[$i] !== '..') {
+                        $current_file = "{$thisdir}/{$dircont[$i]}";
+                        if (is_file($current_file)) {
+                            $path[] = "{$thisdir}/{$dircont[$i]}";
+                        } elseif (is_dir($current_file)) {
+                            $path[] = "{$thisdir}/{$dircont[$i]}";
+                            $stack[] = $current_file;
+                        }
+                    }
+                    $i++;
                 }
             }
         }
+        return $path;
+    }
+    $allFilesToZip = array();
+    foreach ($filesToZip as $key => $value) {
+        if (is_dir()) {
+            $allFilesToZip = array_add($allFilesToZip, dir_tree($value));
+        } else {
+            $allFilesToZip[] = $value;
+        }
+    }
+
+    require_once('inc/pclzip.lib.php'); // PclZip library http://www.phpconcept.net/pclzip
+    $archive = new PclZip($zipFilePath);
+    foreach ($allFilesToZip as $key => $value) {
+        if(!$archive->add($value, PCLZIP_OPT_REMOVE_PATH, $relativeTo)) {
+            $error = ERR_ZIP_ADD_FILE;
+            break;
+        }
+    }
+
+    // get/return new file info
+    include_once(CLASS_FILE);
+    $objFile = new file($zipFilePath);
+    $fileType = $objFile->getFileInfo();
+    include_once(CLASS_MANAGER);
+    $manager = new manager($zipFilePath, false);
+    $pathInfo = $manager->getFolderInfo($zipFilePath);
+    $fileType = array_merge($fileType, $manager->getFileType($zipFilePath, false));
+
+    $info = '';
+    foreach($fileType as $k=>$v) {
+        switch ($k) {
+        case "ctime":
+        case "mtime":
+        case "atime":
+            $v = date(DATE_TIME_FORMAT, $v);
+            break;
+        case 'name':
+            $info .= sprintf(", %s:'%s'", 'short_name', shortenFileName($v));
+            break;
+        //case 'cssClass':
+            //$v = 'folderEmpty';
+            //break;
+        }
+        $info .= sprintf(", %s:'%s'", $k, $v);
     }
 }
-echo "{error:'" . $error . "'}";
+
+echo "{";
+echo "error:'" . $error . "'";
+echo $info;
+echo "}";
 ?>

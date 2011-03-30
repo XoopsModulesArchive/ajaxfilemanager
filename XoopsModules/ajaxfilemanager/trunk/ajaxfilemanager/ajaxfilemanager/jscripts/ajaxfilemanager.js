@@ -340,18 +340,16 @@ function initAfterListingLoaded()
                             case 'fileSwf':
                                 break;
                             case 'fileVideo':
-                                break;			
+                                break;
                             case 'fileMusic':
                                 break;
                             default:
-                            
-                                
                         }
                         enablePreview('#dt' + i, i);
                         enablePreview('#thumbUrl' + i, i);
                         enablePreview('#a' + i, i);
                     }
-					enableShowDocInfo( i);
+                    enableShowDocInfo( i);
                 }
                 break;
             case 'detail':
@@ -419,8 +417,9 @@ function enableFolderBrowsable(num, debug)
 
 function doEnableFolderBrowsable(elem, num)
 {
-         $(elem).click(function() {
-             {
+    $(elem).click(
+        function() {
+            {
                 searchRequired = false;
                 var typeNum = typeof(num);
                 if(typeNum.toUpperCase() == 'STRING') {
@@ -642,6 +641,8 @@ function enableContextMenu(jquerySelectors)
                 $('div#TB_window #renameName').val(files[num].name);
                 $('div#TB_window #original_path').val(files[num].path);
                 $('div#TB_window #renameNum').val(num);
+                //remove all options
+                $('div#TB_window #selectedToZip').removeOption(/./);
             },
             'menuEdit':function(t) {
                 var num = (getNum($(t).attr('id')));
@@ -672,32 +673,31 @@ function enableContextMenu(jquerySelectors)
             'menuPaste':function(t) {
                 // NOP
             },
-            'menuUnzip':function(t) { // IN PROGRESS
-                // NOP
-            },
-            'menuZip':function(t) {
+            'menuZip':function(t) { // IN PROGRESS
                 var num = (getNum($(t).attr('id')));
-                if(window.confirm(warningZip)) {
-                    $.getJSON(appendQueryString(getUrl('zip', false,false), 'zip=' + files[num].path, ['zip']), 
+                showThickBox($('#a' + num).get(0), appendQueryString('#TB_inline', 'height=100' + '&width=350' + '&inlineId=winZip&modal=true'));
+                $('div#TB_window #zipName').val('');
+                $('div#TB_window #zipPath').val(files[num].path);
+                $('div#TB_window #zipNum').val(num);
+                $('div#TB_window #zipSelected').removeOption(/./);
+            },
+            'menuUnzip':function(t) { // IN PROGRESS
+                var num = (getNum($(t).attr('id')));
+                if(window.confirm(warningUnzip)) {
+                    ajaxStart('#rightCol');
+                    $.getJSON(appendQueryString(getUrl('unzip', false, false), 'unzip=' + files[num].path, ['unzip']), 
                         function(data) {
                             if(typeof(data.error) == 'undefined') {
+                                ajaxStop('#rightCol img.ajaxLoadingImg');
                                 alert('Unexpected Error.');
                             } else if(data.error != '') {
+                                ajaxStop('#rightCol img.ajaxLoadingImg');
                                 alert(data.error);
                             } else {
-/*
-                                // add zipped file // TO DO
-                                //remove deleted files
-                                switch(getView()) {
-                                    case 'thumbnail':
-                                        $('#dl' + num ).remove();
-                                        break;
-                                    case 'detail':
-                                    default:
-                                        $('#row' + num).remove();
-                                }
+                                //refresh content
+                                windowRefresh();
+                                ajaxStop('#rightCol img.ajaxLoadingImg');
                                 files[num] = null;
-*/
                             }
                         }
                     );
@@ -706,7 +706,7 @@ function enableContextMenu(jquerySelectors)
             'menuDelete':function(t) {
                 var num = (getNum($(t).attr('id')));
                 if(window.confirm(warningDelete)) {
-                    $.getJSON(appendQueryString(getUrl('delete', false,false), 'delete=' + files[num].path, ['delete']), 
+                    $.getJSON(appendQueryString(getUrl('delete', false, false), 'delete=' + files[num].path, ['delete']), 
                         function(data) {
                             if(typeof(data.error) == 'undefined') {
                                 alert('Unexpected Error.');
@@ -773,6 +773,7 @@ function enableContextMenu(jquerySelectors)
                     menusToRemove[menusToRemove.length] = '#menuEdit';		
                     menusToRemove[menusToRemove.length] = '#menuPlay';
                     menusToRemove[menusToRemove.length] = '#menuDownload';
+                    menusToRemove[menusToRemove.length] = '#menuUnzip';
                     break;
                 default:
                     var isSupportedExt = false;
@@ -1151,13 +1152,24 @@ function doCreateFolder()
 // IN PROGRESS
 // IN PROGRESS
 /**
+ * bring up a zip window
+ */
+function zipWin(linkElem)
+{
+    showThickBox(linkElem, appendQueryString('#TB_inline', 'height=100'  + '&width=350' + '&inlineId=winZip&modal=true'));
+    $('div#TB_window #zipName').val('');
+    $('div#TB_window #zipPath').val('');
+    $('div#TB_window #zipNum').val('');
+    return false;
+};
+// IN PROGRESS
+// IN PROGRESS
+// IN PROGRESS
+/**
  * select documents and fire an ajax call to delete them
  */
-function zipDocuments()
+function doZip()
 {
-    if(!window.confirm(warningZip)) {
-        return false;
-    }
     switch(getView()) {
         case 'thumbnail':
             var selectedDoc = $('#rightCol dl.thumbnailListing input[@type=checkbox][@checked]');
@@ -1166,19 +1178,24 @@ function zipDocuments()
         default:
             var selectedDoc = $('#fileList input[@type=checkbox][@checked]');
     }
-    var hiddenSelectedDoc = document.getElementById('selectedDoc');
+    //$('div#TB_window #zipPath').val('');
+    //$('div#TB_window #zipNum').val('');
     var selectedOptions;
     var isSelected = false;
     //remove all options
-    $(hiddenSelectedDoc).removeOption(/./);
+    $('div#TB_window #zipSelected').removeOption(/./);
     $(selectedDoc).each(
         function(i) {
-            $(hiddenSelectedDoc).addOption($(this).val(), getNum($(this).attr('id')), true);
+            num = (getNum($(this).attr('id')));
+            $('div#TB_window #zipSelected').addOption($(this).val(), num, true);
             isSelected = true;
+            $('div#TB_window #zipPath').val($(this).val());
+            $('div#TB_window #zipNum').val(num);
         }
     );
-    if(isSelected) {
-        //remove them via ajax call
+    if(isSelected == isSelected) { // IN PROGRESS
+    //if(isSelected) {
+        //zip them via ajax call
         var options = { 
             dataType: 'json',
             url:getUrl('zip'),
@@ -1192,24 +1209,19 @@ function zipDocuments()
                     alert(data.error);
                 } else {
                     // IN PROGRESS
-                    // add zipped file // TO DO
-/*
-                    //remove all files
-                    for(var i =0; i < hiddenSelectedDoc.options.length; i++) {
-                        switch(getView()) {
-                            case 'thumbnail':
-                                $('#dl' + hiddenSelectedDoc.options[i].text).remove();
-                                break;
-                            case 'detail':
-                            default:
-                                $('#row' + hiddenSelectedDoc.options[i].text).remove();
+                    numRows++;
+                    files[numRows] = {};
+                    for(var i in data) {
+                        if(i != 'error') {
+                            files[numRows][i] =  data[i];
                         }
                     }
-*/
+                    addDocumentHtml(numRows);
+                    tb_remove();
                 }
             } 
         }; 
-        $('#formAction').ajaxSubmit(options);
+        $('div#TB_window #formZip').ajaxSubmit(options);
     }
     return false;
 };
