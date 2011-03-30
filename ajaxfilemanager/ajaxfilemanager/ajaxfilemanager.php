@@ -90,6 +90,7 @@ if(!empty($_GET['view'])) {
     var permits = {'del':<?php echo (CONFIG_OPTIONS_DELETE?1:0); ?>, 'cut':<?php echo (CONFIG_OPTIONS_CUT?'1':'0'); ?>, 'copy':<?php echo (CONFIG_OPTIONS_COPY?1:0); ?>, 'newfolder':<?php echo (CONFIG_OPTIONS_NEWFOLDER?1:0); ?>, 'rename':<?php echo (CONFIG_OPTIONS_RENAME?1:0); ?>, 'upload':<?php echo (CONFIG_OPTIONS_UPLOAD?1:0); ?>, 'edit':<?php echo (CONFIG_OPTIONS_EDITABLE?1:0); ?>, 'view_only':<?php echo (CONFIG_SYS_VIEW_ONLY?1:0); ?>};
     var currentFolder = {};
     var warningDelete = '<?php echo WARNING_DELETE; ?>';
+    var warningUnzip = '<?php echo WARNING_UNZIP; ?>';
     var newFile = {'num':1, 'label':'<?php echo FILE_LABEL_SELECT; ?>', 'upload':'<?php echo FILE_LBL_UPLOAD; ?>'};
     var counts = {'new_file':1};
     var thickbox = {
@@ -232,7 +233,7 @@ foreach($views as $k=>$v) {
         echo '<li ><a href="#" id="actionZip" onclick="return zipWin(this);"><span>' .LBL_BTN_ZIP . '</span></a><li>';
     }
     if(CONFIG_OPTIONS_UNZIP && class_exists('ZipArchive')) {
-        echo '<li ><a href="#" id="actionUnzip" onclick="return unzipDocument(this);"><span>' .LBL_BTN_UNZIP . '</span></a><li>';
+        //echo '<li ><a href="#" id="actionUnzip" onclick="return unzipDocument(this);"><span>' .LBL_BTN_UNZIP . '</span></a><li>';
     }
     ?>
     <!--<li><a href="#" id="actionClose" onclick="closeWindow('<?php echo IMG_WARING_WIN_CLOSE; ?>');"><?php echo IMG_BTN_CLOSE; ?></a></li>-->
@@ -241,7 +242,11 @@ foreach($views as $k=>$v) {
     <li ><a href="#" id="actionZip"><span>Zip</span></a><li>
     <li ><a href="#" id="actionUnzip"><span>Unzip</span></a><li>-->
 </ul>
-<form action="" method="POST" name="formAction" id="formAction"><input type="hidden" name="currentFolderPath" id="currentFolderPathVal" value="" /><select name="selectedDoc[]" id="selectedDoc" style="display:none;" multiple="multiple"></select><input type="hidden" name="action_value" value="" id="action_value" /></form>
+<form action="" method="POST" name="formAction" id="formAction">
+    <input type="hidden" name="currentFolderPath" id="currentFolderPathVal" value="" />
+    <select name="selectedDoc[]" id="selectedDoc" style="display:none;" multiple="multiple"></select>
+    <input type="hidden" name="action_value" value="" id="action_value" />
+</form>
 </div><!--</div id="header">-->
 
 
@@ -530,7 +535,7 @@ if(CONFIG_OPTIONS_SEARCH) {
                     &nbsp;.&nbsp;
                     <select id="ext" name="ext">
                     <?php
-                    foreach(getValidFileExts() as $v) {
+                    foreach(getValidTextEditorExts() as $v) {
                         echo "<option value='" . $v . "' " . (strtolower($v) == strtolower(getFileExt($path))?'selected':'') . ">" . $v . "</option>";
                     }
                     ?>
@@ -641,7 +646,51 @@ if(CONFIG_OPTIONS_SEARCH) {
                         <table cellpadding="0" cellspacing="0" border="0">
                         <tr>
                             <td width="99%">&nbsp;</td>
-                            <td nowrap width="1%"><a href="#" class="buttonLink" onclick="return doRename();" ><span><?php echo RENAME_LBL_RENAME; ?></span></a>	</td>
+                            <td nowrap width="1%"><a href="#" class="buttonLink" onclick="return doRename();" ><span><?php echo RENAME_LBL_RENAME; ?></span></a></td>
+                        </tr>
+                        </table>
+                    </td>
+                </tr>
+                </tfoot>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="winZip" style="display:none">
+    <div class="jqmContainer">
+        <div class="jqmHeader">
+            <a href="#" onclick="return tb_remove();"><?php echo LBL_ACTION_CLOSE; ?></a>
+        </div>
+        <div class="jqmBody">
+            <form id="formZip" name="formZip" method="POST" action="">
+                <input type="hidden" name="zip_path" id="zipPath" />
+                <input type="hidden" name="zip_num" id="zipNum" value="" />
+                <select name="zip_selected[]" id="zipSelected" style="display:none;" multiple="multiple"></select>
+
+                <table class="tableForm" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th colspan="2"><?php echo ZIP_FORM_TITLE; ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th nowrap><label><?php echo ZIP_NEW_NAME; ?></label></th>
+                    <td ><input type="name" id="zipName" style="font-size:12px"  class="input" name="zip_name" style="width:250px" /></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>&nbsp;</th>
+                    <td nowrap>
+                        <table cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td width="99%">&nbsp;</td>
+                            <td nowrap width="1%"><a href="#" class="buttonLink" onclick="return doZip();" ><span><?php echo LBL_BTN_ZIP; ?></span></a></td>
                         </tr>
                         </table>
                     </td>

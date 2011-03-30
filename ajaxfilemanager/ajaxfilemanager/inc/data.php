@@ -1,9 +1,8 @@
 <pre>Array
 (
-    [currentFilePath] => ../../../uploads/ajaxfilemanager/uploaded/
-    [new_file] => qqq
-    [ext] => gif
+    [currentFolderPath] => ../../../themes/
+    [new_folder] => TEMP
 )
 </pre>
 
-28/Mar/2011 10:08:37
+30/Mar/2011 15:04:21

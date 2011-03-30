@@ -38,8 +38,11 @@ if(CONFIG_SYS_VIEW_ONLY || !CONFIG_OPTIONS_NEWFILE) {
         $manager = new manager(addTrailingSlash($_POST['currentFilePath']) . $_POST['new_file'] . '.' . $_POST['ext'], false);
         $pathInfo = $manager->getFolderInfo(addTrailingSlash($_POST['currentFilePath']) . $_POST['new_file'] . '.' . $_POST['ext']);
         $filePath = addTrailingSlash($_POST['currentFilePath']) . $_POST['new_file'] . '.' . $_POST['ext'];
-        $fileType = $manager->getFileType($filePath, (is_dir($filePath) ? true : false));
+        $fileType = $manager->getFileType($filePath, false);
         $fileType['name'] = $_POST['new_file'] . '.' . $_POST['ext']; // IN PROGRESS
+        $fileType['is_writable'] = true;
+        $fileType['is_readable'] = true;
+        $fileType['type'] = 'file';
         foreach($fileType as $k=>$v) {
             switch ($k) {
             case "ctime";

@@ -74,9 +74,9 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
     define('CONFIG_OPTIONS_NEWFOLDER', $permNewfolder);
     $permNewfile = $permNewfolder;
     define('CONFIG_OPTIONS_NEWFILE', $permNewfile);
-    $permZip = false; // IN PROGRESS
+    $permZip = true; // IN PROGRESS
     define('CONFIG_OPTIONS_ZIP', $permZip);
-    $permUnzip = false; // IN PROGRESS
+    $permUnzip = true; // IN PROGRESS
     define('CONFIG_OPTIONS_UNZIP', $permUnzip);
     $permRename = ($gpermHandler->checkRight('ajaxfilemanager_extra', 64, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_RENAME', $permRename);
