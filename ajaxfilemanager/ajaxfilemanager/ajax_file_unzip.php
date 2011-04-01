@@ -7,6 +7,7 @@
  */
 
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . "inc" . DIRECTORY_SEPARATOR . "config.php");
+
 $error = "";
 if(CONFIG_SYS_VIEW_ONLY || !CONFIG_OPTIONS_unzip) {
     $error = SYS_DISABLED;
@@ -65,8 +66,8 @@ if($error == "") {
 
 // TO IMPROVE: REFRESH FILES LIST
 
-echo "{";
-echo "error:'" . $error . "'";
-//echo $info;
-echo "}";
+// append error
+$ret['error'] = $error;
+
+echo json_encode($ret);
 ?>

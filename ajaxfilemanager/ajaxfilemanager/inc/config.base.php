@@ -60,7 +60,7 @@ error_reporting(E_ALL);
 		 * list => a list of comma spearated vague file/folder name (partially match the specified file/folders)
 		 *
 		 */
-	//more details about regular expression please visit http://nz.php.net/manual/en/function.eregi.php
+	//more details about regular expression please visit http://nz.php.net/manual/en/function.preg-match.php
 	define('CONFIG_SYS_INC_DIR_PATTERN', ''); //force listing of folders with such pattern(s). separated by , if multiple
 	define('CONFIG_SYS_EXC_DIR_PATTERN', ''); //will prevent listing of folders with such pattern(s). separated by , if multiple
 	define('CONFIG_SYS_INC_FILE_PATTERN', ''); //force listing of fiels with such pattern(s). separated by , if multiple

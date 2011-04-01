@@ -106,7 +106,7 @@ $.fn.media.mapFormat = function(format, player) {
 	$.fn.media[format+'_player'] = $.fn.media.defaults.players[player];
 };
 
-// global defautls; override as needed
+// global defaults; override as needed
 $.fn.media.defaults = {
 	standards:  false,      // use object tags only (no embeds for non-IE browsers)
 	canUndo:    true,       // tells plugin to store the original markup so it can be reverted via: $(sel).mediaUndo()

@@ -388,18 +388,18 @@ switch ( $op ) {
 
         $text_value = str_replace("<", "&lt;", $text_value);
 
-        if(eregi("\.sql$",$$text_type))      {$syntax = "sql";}
-        else if(eregi("\js$",$$text_type))   {$syntax = "js";}
-        else if(eregi("\html$",$text_type))  {$syntax = "html";}
-        else if(eregi("\htm$",$text_type))   {$syntax = "html";}
-        else if(eregi("\pl$",$text_type))    {$syntax = "perl";}
-        else if(eregi("\py$",$text_type))    {$syntax = "python";}
-        else if(eregi("\php$",$text_type))   {$syntax = "php";}
-        else if(eregi("\php3$",$text_type))  {$syntax = "php";}
-        else if(eregi("\phtml$",$text_type)) {$syntax = "php";}
-        else if(eregi("\xml$",$text_type))   {$syntax = "xml";}
-        else if(eregi("\css$",$text_type))   {$syntax = "css";}
-        else                            {$syntax = "";}
+        if(preg_match('/\.sql$/i',$$text_type))      {$syntax = 'sql';}
+        else if(preg_match('/\js$/i',$$text_type))   {$syntax = 'js';}
+        else if(preg_match('/\html$/i',$text_type))  {$syntax = 'html';}
+        else if(preg_match('/\htm$/i',$text_type))   {$syntax = 'html';}
+        else if(preg_match('/\pl$/i',$text_type))    {$syntax = 'perl';}
+        else if(preg_match('/\py$/i',$text_type))    {$syntax = 'python';}
+        else if(preg_match('/\php$/i',$text_type))   {$syntax = 'php';}
+        else if(preg_match('/\php3$/i',$text_type))  {$syntax = 'php';}
+        else if(preg_match('/\phtml$/i',$text_type)) {$syntax = 'php';}
+        else if(preg_match('/\xml$/i',$text_type))   {$syntax = 'xml';}
+        else if(preg_match('/\css$/i',$text_type))   {$syntax = 'css';}
+        else                            {$syntax = '';}
 
         xoops_load('XoopsFormEditor');
         $options['editor'] = $xoopsModuleConfig['text_editor'];

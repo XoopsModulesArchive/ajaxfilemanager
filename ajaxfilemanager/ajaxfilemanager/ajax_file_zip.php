@@ -1,15 +1,13 @@
 <?php
 /**
  * zip selected files
- * @author Logan Cai (cailongqun [at] yahoo [dot] com [dot] cn)
- * @link www.phpletter.com
  * @author Lucio Rota (lucio [dot] rota [at] gmail [dot] com)
  * @since 28/March/2011
  *
  */
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . "inc" . DIRECTORY_SEPARATOR . "config.php");
+
 $error = "";
-error_log(print_r($_POST,true));
 if(CONFIG_SYS_VIEW_ONLY || !CONFIG_OPTIONS_ZIP) {
     $error = SYS_DISABLED;
 } elseif(count($_POST['zip_name']) == 0) {
@@ -81,33 +79,29 @@ if($error == "") {
     // get/return new file info
     include_once(CLASS_FILE);
     $objFile = new file($zipFilePath);
-    $fileType = $objFile->getFileInfo();
+    $fileInfo = $objFile->getFileInfo();
     include_once(CLASS_MANAGER);
     $manager = new manager($zipFilePath, false);
     $pathInfo = $manager->getFolderInfo($zipFilePath);
-    $fileType = array_merge($fileType, $manager->getFileType($zipFilePath, false));
+    $fileInfo = array_merge($pathInfo, $manager->getFileType($zipFilePath, false));
 
-    $info = '';
-    foreach($fileType as $k=>$v) {
+    foreach($fileInfo as $k=>$v) {
         switch ($k) {
         case "ctime":
         case "mtime":
         case "atime":
-            $v = date(DATE_TIME_FORMAT, $v);
+            $fileInfo[$k] = date(DATE_TIME_FORMAT, $v);
             break;
         case 'name':
-            $info .= sprintf(", %s:'%s'", 'short_name', shortenFileName($v));
+            $fileInfo['short_name'] = shortenFileName($v);
             break;
-        //case 'cssClass':
-            //$v = 'folderEmpty';
-            //break;
         }
-        $info .= sprintf(", %s:'%s'", $k, $v);
     }
 }
 
-echo "{";
-echo "error:'" . $error . "'";
-echo $info;
-echo "}";
+$ret = $fileInfo;
+// append error
+$ret['error'] = $error;
+
+echo json_encode($ret);
 ?>
