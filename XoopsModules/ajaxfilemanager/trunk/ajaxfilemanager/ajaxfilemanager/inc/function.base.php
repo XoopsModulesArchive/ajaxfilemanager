@@ -1,11 +1,11 @@
 <?php
-	/**
-	 * function avaialble to the file manager
-	 * @author Logan Cai (cailongqun [at] yahoo [dot] com [dot] cn)
-	 * @link www.phpletter.com
-	 * @since 22/April/2007
-	 *
-	 */
+/**
+ * function avaialble to the file manager
+ * @author Logan Cai (cailongqun [at] yahoo [dot] com [dot] cn)
+ * @link www.phpletter.com
+ * @since 22/April/2007
+ *
+ */
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . "config.php");
 /**
  * force to ensure existence of stripos
@@ -792,13 +792,13 @@ function getRootPath() {
                 $regExps = explode(',', $pattern);
                 foreach ($regExps as $regExp => $value)
                 {
-                    if(eregi($value, $string))
+                    if(preg_match('/' . $value . '/i', $string))
                     {
                         return true;
                     }
                 }               
             }
-            else if(eregi($pattern, $string))
+            else if(preg_match('/' . $pattern . '/i', $string))
             {
                 return true;
             }
@@ -825,13 +825,13 @@ function getRootPath() {
                 $regExps = explode(',', $pattern);
                 foreach ($regExps as $regExp => $value)
                 {
-                    if(eregi($value, $string))
+                    if(preg_match('/' . $value . '/i', $string))
                     {
                         return true;
                     }
                 }               
             }
-            else if(eregi($pattern, $string))
+            else if(preg_match('/' . $pattern . '/i', $string))
             {
                 return true;
             }
