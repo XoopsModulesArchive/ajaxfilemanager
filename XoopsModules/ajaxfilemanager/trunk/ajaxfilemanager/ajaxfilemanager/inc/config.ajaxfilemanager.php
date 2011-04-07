@@ -72,16 +72,18 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
     define('CONFIG_OPTIONS_COPY', $permCopy);
     $permNewfolder = ($gpermHandler->checkRight('ajaxfilemanager_extra', 32, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_NEWFOLDER', $permNewfolder);
-    $permNewfile = $permNewfolder;
+    $permNewfile = ($gpermHandler->checkRight('ajaxfilemanager_extra', 512, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_NEWFILE', $permNewfile);
-    $permZip = true; // IN PROGRESS
+    $permZip = ($gpermHandler->checkRight('ajaxfilemanager_extra', 1024, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_ZIP', $permZip);
-    $permUnzip = true; // IN PROGRESS
+    $permUnzip = ($gpermHandler->checkRight('ajaxfilemanager_extra', 2048, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_UNZIP', $permUnzip);
     $permRename = ($gpermHandler->checkRight('ajaxfilemanager_extra', 64, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_RENAME', $permRename);
     $permUpload = ($gpermHandler->checkRight('ajaxfilemanager_extra', 2, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_UPLOAD', $permUpload);
+    $permUploadftp = ($ajaxfilemanagerModuleConfig['ftp_enabled'] && function_exists('ftp_connect') && $permUpload); // IN PROGRESS
+    define('CONFIG_OPTIONS_UPLOADFTP', $permUploadftp);
     $permEdit = ($gpermHandler->checkRight('ajaxfilemanager_extra', 128, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_EDITABLE', $permEdit); //disable image editor and text editor
     //FILESYSTEM CONFIG

@@ -71,6 +71,43 @@ echo '</p>';
 echo '<p>';
 echo _AJAXFM_MI_MAXSIZE . ': ' . $xoopsModuleConfig['upload_max_size'] . _AJAXFM_MI_MAXSIZE_MB;
 echo '</p>';
+
+// check if ftp server exists and module can log to it
+$useFtp = false;
+if($xoopsModuleConfig['ftp_enabled'] && function_exists('ftp_connect') && !empty($xoopsModuleConfig['ftp_serverhost'])) {
+    // set up basic connection
+    switch ($xoopsModuleConfig['ftp_connectiontype']) {
+        case 'ssl':
+            // Opens an Secure SSL-FTP connection
+            $connId = ftp_ssl_connect ($xoopsModuleConfig['ftp_serverhost'], $xoopsModuleConfig['ftp_serverport'], $xoopsModuleConfig['ftp_servertimeout']);        
+            break;
+        case 'ftp':
+        default:
+            // Opens an FTP connection
+            $connId = ftp_connect($xoopsModuleConfig['ftp_serverhost'], $xoopsModuleConfig['ftp_serverport'], $xoopsModuleConfig['ftp_servertimeout']);
+            break;
+    }
+    if ($connId) {
+        $loginResult = ftp_login($connId, $xoopsModuleConfig['ftp_username'], $xoopsModuleConfig['ftp_password']);
+        if ($loginResult) {
+            $pasiveResult = ftp_pasv($connId, $xoopsModuleConfig['ftp_connectionpassive']);
+            if ($pasiveResult) {
+                if (is_array(ftp_nlist($connId, "."))) {
+                $useFtp = true;  
+                
+                }
+            }
+        }
+        ftp_close($connId);
+    }
+}
+echo '<p>';
+echo _AJAXFM_MI_FTPSUPPORT . ': ' . ($useFtp ? _AJAXFM_AM_INDEX_ON : _AJAXFM_AM_INDEX_OFF);
+echo '</p>';
+
+
+
+
 $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager";
 if (!file_exists($dir)) {
     printf(_AJAXFM_AM_WARNING_DIRNOTEXIST, htmlentities($dir));

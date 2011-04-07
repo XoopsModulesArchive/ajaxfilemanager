@@ -893,6 +893,36 @@ function addMoreFile()
 
 
 
+var fileUploadftpElemIds = new Array(); //keep track of the file element ids
+/**
+ * add more file type of input file for multiple uploads ftp
+ */
+function addMoreFileftp()
+{
+    var newFileUploadftp = $($('div#TB_window #fileUploadftpBody  tr').get(0)).clone();
+    do {
+        var elementId = 'uploadftp' + generateUniqueId(10);
+    } while(fileUploadftpElemIds.inArray(elementId));
+    fileUploadftpElemIds[fileUploadftpElemIds.length] = elementId;
+    $(newFileUploadftp).appendTo('div#TB_window #fileUploadftpBody');
+    $('input[@type=file]', newFileUploadftp).attr('id', elementId);
+    $('span.uploadProcessing', newFileUploadftp).attr('id', 'ajax' + elementId);
+    $('a.buttonLink', newFileUploadftp).click(
+        function() {
+            uploadftpFile(elementId);
+        }
+    );
+    $('a.action', newFileUploadftp).show().click(
+        function() {
+            cancelFileUpload(elementId);
+        }
+    );
+    $(newFileUploadftp).show();
+    return false;
+};
+
+
+
 /**
  * cancel uploading file
  * remove hidden upload frame
@@ -904,6 +934,23 @@ function cancelFileUpload(elementId)
     //ensure there is at least one visible upload element
     while($('div#TB_window #fileUploadBody tr').length < 2) {
         addMoreFile();
+    }
+    return false;
+};
+
+
+
+/**
+ * cancel uploading file ftp
+ * remove hidden upload frame
+ * remove hidden upload form
+ */
+function cancelFileUploadftp(elementId)
+{
+    $('div#TB_window #' + elementId).parent().parent().remove();
+    //ensure there is at least one visible upload element
+    while($('div#TB_window #fileUploadftpBody tr').length < 2) {
+        addMoreFileftp();
     }
     return false;
 };
@@ -977,6 +1024,75 @@ function uploadFile(elementId)
 
 
 /**
+ * upload ftp file
+ */
+function uploadftpFile(elementId)
+{
+    var ext = getFileExtension($('#' + elementId).val());
+    //alert($('#' + elementId).val());
+    if(ext == '') {
+        alert(noFileSelected );
+        return false;
+    }
+    var supportedExts = supportedUploadExts.split(",");
+    var isSupportedExt = false;
+    
+    for (i in supportedExts) {
+        //alert(typeof(supportedExts[i]));
+        if(typeof(supportedExts[i]) == 'string') {
+            isSupportedExt = true;
+            break;
+        }
+    }
+        
+    if(!isSupportedExt) {
+        alert(msgInvalidExt);
+        return false;
+    }
+    $('#ajax' + elementId).hide();
+    $('#ajax' + elementId).show();
+    $.ajaxFileUpload (
+        {
+            url:appendQueryString(getUrl('uploadftp', false, false), 'folder=' + currentFolder.path, ['folder']),
+            secureuri:false,
+            fileElementId:elementId,
+            dataType: 'json',
+            success: function (data, status)
+            {
+                
+                if(typeof(data.error) != 'undefined') {
+                    if(data.error != '') {
+                        alert(data.error);
+                        $('#ajax' + elementId).hide();
+                    } else {
+                        //remove the file type of input
+                        cancelFileUploadftp(elementId);
+                        numRows++;
+                        files[numRows] = {};
+
+                        for(var i in data) {
+                            if(i != 'error') {
+                                files[numRows][i] =  data[i];
+                            }
+                        }
+                        addDocumentHtml(numRows);
+                    }
+                }
+            },
+            error: function (data, status, e) {
+                $('#ajax' + elementId).hide();
+                alert(e);
+            }
+        }
+    )
+    return false;
+};
+
+
+
+
+
+/**
  * generate unique id
  */
 function generateUniqueId(leng)
@@ -1029,7 +1145,21 @@ function uploadFileWin(linkElem)
 {
     showThickBox(linkElem, appendQueryString('#TB_inline', 'height=200' + '&width=450' + '&inlineId=winUpload&modal=true'));
     if($('#fileUploadBody tr').length <= 1) {
-    addMoreFile();
+        addMoreFile();
+    }
+    return false;
+};
+
+
+
+/**
+ * bring up a file upload ftp window
+ */
+function uploadftpFileWin(linkElem)
+{
+    showThickBox(linkElem, appendQueryString('#TB_inline', 'height=200' + '&width=450' + '&inlineId=winUploadftp&modal=true'));
+    if($('#fileUploadftpBody tr').length <= 1) {
+        addMoreFileftp();
     }
     return false;
 };

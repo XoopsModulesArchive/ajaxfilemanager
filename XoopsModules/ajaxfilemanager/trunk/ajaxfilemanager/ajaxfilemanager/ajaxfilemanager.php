@@ -69,6 +69,7 @@ if(!empty($_GET['view'])) {
     var parentFolder = {};
     var urls = {
         'upload':'<?php echo CONFIG_URL_UPLOAD; ?>',
+        'uploadftp':'<?php echo CONFIG_URL_UPLOADFTP; ?>',
         'preview':'<?php echo CONFIG_URL_PREVIEW; ?>',
         'cut':'<?php echo CONFIG_URL_CUT; ?>',
         'copy':'<?php echo CONFIG_URL_COPY; ?>',
@@ -209,31 +210,31 @@ foreach($views as $k=>$v) {
     <li><a href="#" id="actionSelectAll" class="check_all" onclick="return checkAll(this);"><span><?php echo LBL_ACTION_SELECT_ALL; ?></span></a></li>
     <?php
     if(CONFIG_OPTIONS_DELETE) {
-        echo '<li><a href="#" id="actionDelete" onclick="return deleteDocuments();"><span>' . LBL_ACTION_DELETE . '</span></a></li>';
+        echo '<li><a href="#" id="actionDelete" onclick="return deleteDocuments();"><span>' . LBL_ACTION_DELETE . '</span></a></li>' . "\n";
     }
     if(CONFIG_OPTIONS_CUT) {
-        echo '<li><a href="#" id="actionCut" onclick="return cutDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_CUT . '\');"><span>' . LBL_ACTION_CUT . '</span></a></li>';
+        echo '<li><a href="#" id="actionCut" onclick="return cutDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_CUT . '\');"><span>' . LBL_ACTION_CUT . '</span></a></li>' . "\n";
     }
     if(CONFIG_OPTIONS_COPY) {
-        echo '<li><a href="#" id="actionCopy" onclick="return copyDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_COPY . '\');"><span>' . LBL_ACTION_COPY . '</span></a></li>';
+        echo '<li><a href="#" id="actionCopy" onclick="return copyDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_COPY . '\');"><span>' . LBL_ACTION_COPY . '</span></a></li>' . "\n";
     }
     if(CONFIG_OPTIONS_CUT || CONFIG_OPTIONS_COPY) {
-        echo '<li><a href="#" id="actionPaste" onclick="return pasteDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_PASTE . '\');">' . LBL_ACTION_PASTE . '</span></a></li>';
+        echo '<li><a href="#" id="actionPaste" onclick="return pasteDocuments(\'' . ERR_NOT_DOC_SELECTED_FOR_PASTE . '\');">' . LBL_ACTION_PASTE . '</span></a></li>' . "\n";
     }
     if(CONFIG_OPTIONS_NEWFILE) {
-        echo '<li><a  id="actionNewFile" href="#" onclick="return newFileWin(this);"><span>' . LBL_BTN_NEW_FILE . '</span></a></li>';
+        echo '<li><a href="#" id="actionNewFile" onclick="return newFileWin(this);"><span>' . LBL_BTN_NEW_FILE . '</span></a></li>' . "\n";
     }
     if(CONFIG_OPTIONS_NEWFOLDER) {
-        echo '<li><a  id="actionNewFolder" href="#" onclick="return newFolderWin(this);"><span>' . LBL_BTN_NEW_FOLDER . '</span></a></li>';
+        echo '<li><a href="#" id="actionNewFolder" onclick="return newFolderWin(this);"><span>' . LBL_BTN_NEW_FOLDER . '</span></a></li>' . "\n";
     }
     if(CONFIG_OPTIONS_UPLOAD) {
-        echo '<li><a  id="actionUpload" href="#" onclick="return uploadFileWin(this);"><span>' .LBL_BTN_UPLOAD . '</span></a></li>';
+        echo '<li><a href="#" id="actionUpload" onclick="return uploadFileWin(this);"><span>' .LBL_BTN_UPLOAD . '</span></a></li>' . "\n";
+    }
+    if(CONFIG_OPTIONS_UPLOADFTP) {
+        echo '<li><a href="#" id="actionUploadftp" onclick="return uploadftpFileWin(this);"><span>' .LBL_BTN_UPLOADFTP . '</span></a></li>' . "\n";
     }
     if(CONFIG_OPTIONS_ZIP && class_exists('ZipArchive')) {
-        echo '<li ><a href="#" id="actionZip" onclick="return zipWin(this);"><span>' .LBL_BTN_ZIP . '</span></a><li>';
-    }
-    if(CONFIG_OPTIONS_UNZIP && class_exists('ZipArchive')) {
-        //echo '<li ><a href="#" id="actionUnzip" onclick="return unzipDocument(this);"><span>' .LBL_BTN_UNZIP . '</span></a><li>';
+        echo '<li><a href="#" id="actionZip" onclick="return zipWin(this);"><span>' .LBL_BTN_ZIP . '</span></a><li>' . "\n";
     }
     ?>
     <!--<li><a href="#" id="actionClose" onclick="closeWindow('<?php echo IMG_WARING_WIN_CLOSE; ?>');"><?php echo IMG_BTN_CLOSE; ?></a></li>-->
@@ -492,11 +493,48 @@ if(CONFIG_OPTIONS_SEARCH) {
                 <tbody id="fileUploadBody">
                 <tr style="display:none">
                     <th><label><?php echo FILE_LABEL_SELECT; ?></label></th>
-                    <td><input type="file" style="font-size:12px" name="file"  /> </td>
+                    <td><input type="file" style="font-size:12px" name="file" /> </td>
                     <td>
                         <a href="#" class="buttonLink"><span><?php echo FILE_LBL_UPLOAD; ?></span></a>
                     </td>
-                    <td> <a href="#" class="action" title="Cancel" style="display:none" ><span class="cancel">&nbsp;</span></a>  <span class="uploadProcessing" style="display:none">&nbsp;<span></td>
+                    <td> <a href="#" class="action" title="Cancel" style="display:none"><span class="cancel">&nbsp;</span></a>  <span class="uploadProcessing" style="display:none">&nbsp;<span></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>&nbsp;</th>
+                <td colspan="3"></td>
+                </tr>
+                </tfoot>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="winUploadftp" style="display:none">
+    <div class="jqmContainer">
+        <div class="jqmHeader">
+            <a href="#" onclick="tb_remove();"><?php echo LBL_ACTION_CLOSE; ?></a>
+        </div>
+        <div class="jqmBody">
+            <form id="formUploadftp" name="formUploadftp" method="POST" enctype="multipart/form-data" action="">
+                <table class="tableForm" cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th colspan="4"><?php echo FILEFTP_FORM_TITLE; ?><a class="action" href="#" title="<?php echo FILE_LBL_MORE;  ?>" onclick="return addMoreFileftp();"><span class="addMore">&nbsp;</span></a></th>
+                </tr>
+                </thead>
+                <tbody id="fileUploadftpBody">
+                <tr style="display:none">
+                    <th><label><?php echo FILE_LABEL_SELECT; ?></label></th>
+                    <td><input type="file" style="font-size:12px" name="file" /> </td>
+                    <td>
+                        <a href="#" class="buttonLink"><span><?php echo FILE_LBL_UPLOADFTP; ?></span></a>
+                    </td>
+                    <td> <a href="#" class="action" title="Cancel" style="display:none"><span class="cancel">&nbsp;</span></a>  <span class="uploadProcessing" style="display:none">&nbsp;<span></td>
                 </tr>
                 </tbody>
                 <tfoot>

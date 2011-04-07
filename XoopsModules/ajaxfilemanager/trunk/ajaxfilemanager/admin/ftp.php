@@ -41,17 +41,36 @@ if(isset($_POST['SubmitFile'])) {
 
     $myFileName = basename($_FILES['txt_file']['name']); //Retrieve filename out of file path
 
-    $destinationFile = $_REQUEST['filepath'].$myFileName;
+    $destinationFile = $_REQUEST['filepath'] . $myFileName;
     #"/developers/uploadftp/aditya/".$myFileName;  //where you want to throw the file on the webserver (relative to your login dir)
 
     // connection settings
     $ftpServer = trim($_REQUEST['serverip']);  //address of ftp server.
+    $ftpPort = isset($_REQUEST['serverport']) ? trim($_REQUEST['serverport']) : 21;
+    $ftpTimeout = isset($_REQUEST['servertimeout']) ? trim($_REQUEST['servertimeout']) : 90;
     $ftpUserName = trim($_REQUEST['username']); // Username
     $ftpUserPass = trim($_REQUEST['password']);   // Password
+    $ftpPassive = isset($_REQUEST['passive']) ? $_REQUEST['passive'] : true;
+    
+    // set up basic connection
+    switch ($_REQUEST['connectiontype']) {
+    case 'ssl':
+        // Opens an Secure SSL-FTP connection
+        $connId = ftp_ssl_connect ($ftpServer, $ftpPort, $ftpTimeout) or die("<span style='color:#FF0000'><h2>Couldn't connect to $ftpServer</h2></span>");        
+        break;
+    case 'ftp':
+    default:
+        // Opens an FTP connection
+        $connId = ftp_connect($ftpServer, $ftpPort, $ftpTimeout) or die("<span style='color:#FF0000'><h2>Couldn't connect to $ftpServer</h2></span>");
+        break;
+    }
 
-    $connId = ftp_connect($ftpServer) or die("<span style='color:#FF0000'><h2>Couldn't connect to $ftpServer</h2></span>");        // set up basic connection
     #print_r($conn_id);
-    $loginResult = ftp_login($connId, $ftpUserName, $ftpUserPass) or die("<span style='color:#FF0000'><h2>You do not have access to this ftp server!</h2></span>");   // login with username and password, or give invalid user message
+    // login with username and password, or give invalid user message
+    $loginResult = ftp_login($connId, $ftpUserName, $ftpUserPass) or die("<span style='color:#FF0000'><h2>You do not have access to this ftp server!</h2></span>");
+
+    // turn passive mode on/off
+    ftp_pasv($connId, $ftpPassive);
     if ((!$connId) || (!$loginResult)) {  // check connection
         // wont ever hit this, b/c of the die call on ftp_login
         echo "<span style='color:#FF0000'><h2>FTP connection has failed! <br />";
@@ -71,11 +90,22 @@ if(isset($_POST['SubmitFile'])) {
   ftp_close($conn_id); // close the FTP stream
 } else {
     include_once $GLOBALS['xoops']->path( '/class/xoopsformloader.php' );
-    $ftpForm = new XoopsSimpleForm('', 'ftpform', $currentFile, 'post');
+    $ftpForm = new XoopsThemeForm('', 'ftpform', $currentFile, 'post');
     $ftpForm->setExtra("enctype='multipart/form-data'");
-    $ftpForm->addElement(new XoopsFormText ('Server IP Address:', 'serverip', 15, 15, ''));
-    $ftpForm->addElement(new XoopsFormText ('Server Username:', 'username', 15, 15, ''));
-    $ftpForm->addElement(new XoopsFormText ('Server Password:', 'password', 15, 15, ''));
+        $ftpSelectConnection = new XoopsFormSelect ('Please choose a connection type:', 'connectiontype', 'ftp', 1, false);
+        $ftpSelectConnection->addOption('ftp', 'Open an FTP connection');
+        $ftpSelectConnection->addOption('ssl', 'Open an Secure SSL-FTP connection');
+    $ftpForm->addElement($ftpSelectConnection);
+    $ftpForm->addElement(new XoopsFormText ('Server Address:', 'serverip', 50, 255, ''));
+    $ftpForm->addElement(new XoopsFormText ('Server Port:', 'serverport', 4, 4, '21'));
+    $ftpForm->addElement(new XoopsFormText ('Server Timeput:', 'servertimeput', 3, 3, '90'));
+    $ftpForm->addElement(new XoopsFormText ('Server Username:', 'username', 50, 255, ''));
+    $ftpForm->addElement(new XoopsFormPassword ('Server Password:', 'password', 50, 255, ''));
+        $ftpSelectPassive = new XoopsFormSelect ('Please choose a connection mode:', 'passive', '1', 1, false);
+        $ftpSelectPassive->setDescription('In passive mode, data connections are initiated by the client, rather than by the server. It may be needed if the client is behind firewall');
+        $ftpSelectPassive->addOption('1', 'Passive');
+        $ftpSelectPassive->addOption('0', 'Active');
+    $ftpForm->addElement($ftpSelectPassive);
     $ftpForm->addElement(new XoopsFormText ('Server File Path:', 'filepath', 35, 35, ''));
         $ftpFormFile = new XoopsFormFile ('Please choose a file:', 'txt_file');
         $ftpFormFile->setExtra("onChange='txt_fileName.value=txt_file.value'");

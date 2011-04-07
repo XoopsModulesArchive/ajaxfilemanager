@@ -67,14 +67,22 @@ case 'extra':
     $permName = 'ajaxfilemanager_extra';
     $permDesc = _AJAXFM_AM_PERM_EXTRA_DESC;
     $globalPermsArray = array(
-    '1' => _AJAXFM_AM_PERM_EXTRA_1 , // Use Ajax File Manager
-    '2' => _AJAXFM_AM_PERM_EXTRA_2 , // Upload Files
-    '4' => _AJAXFM_AM_PERM_EXTRA_4 , // Delete Files
-    '8' => _AJAXFM_AM_PERM_EXTRA_8 , // Cut Files
-    '16' => _AJAXFM_AM_PERM_EXTRA_16 , // Copy Files
-    '32' => _AJAXFM_AM_PERM_EXTRA_32 , // Create New Folder
-    '64' => _AJAXFM_AM_PERM_EXTRA_64 , // Rename
-    '128' => _AJAXFM_AM_PERM_EXTRA_128 , // Edit
+    '1'     => _AJAXFM_AM_PERM_EXTRA_1 ,    // Use Ajax File Manager
+
+    '512'   => _AJAXFM_AM_PERM_EXTRA_512 ,  // Create new files
+    '2'     => _AJAXFM_AM_PERM_EXTRA_2 ,    // Upload files
+    '256'   => _AJAXFM_AM_PERM_EXTRA_256 ,  // Upload files by FTP
+
+    '32'    => _AJAXFM_AM_PERM_EXTRA_32 ,   // Create new folder
+
+    '4'     => _AJAXFM_AM_PERM_EXTRA_4 ,    // Delete files/folders
+    '8'     => _AJAXFM_AM_PERM_EXTRA_8 ,    // Cut files/folders
+    '16'    => _AJAXFM_AM_PERM_EXTRA_16 ,   // Copy files/folders
+    '64'    => _AJAXFM_AM_PERM_EXTRA_64 ,   // Rename files/folders
+
+    '128'   => _AJAXFM_AM_PERM_EXTRA_128 ,  // Edit files
+    '1024'  => _AJAXFM_AM_PERM_EXTRA_1024 , // Zip files/folders
+    '2048'  => _AJAXFM_AM_PERM_EXTRA_2048 , // Unzip files
     );
     $anonymous = true;
     break;

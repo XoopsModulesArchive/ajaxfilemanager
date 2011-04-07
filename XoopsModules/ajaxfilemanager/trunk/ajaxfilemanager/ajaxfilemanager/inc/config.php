@@ -123,6 +123,7 @@ define('CONFIG_URL_CREATE_FILE', 'ajax_create_file.php');
 define('CONFIG_URL_DELETE', 'ajax_delete_file.php');
 define('CONFIG_URL_HOME', 'ajaxfilemanager.php');
 define("CONFIG_URL_UPLOAD", 'ajax_file_upload.php');
+define("CONFIG_URL_UPLOADFTP", 'ajax_file_uploadftp.php');
 define('CONFIG_URL_PREVIEW', 'ajax_preview.php');
 define('CONFIG_URL_SAVE_NAME', 'ajax_save_name.php');
 define('CONFIG_URL_IMAGE_EDITOR', 'ajax_image_editor.php');

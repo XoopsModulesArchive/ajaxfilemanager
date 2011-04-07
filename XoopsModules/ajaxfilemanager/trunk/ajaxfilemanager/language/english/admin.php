@@ -8,6 +8,8 @@ define('_AJAXFM_AM_WARNING_DIRCREATEIT', "Create it!");
 define('_AJAXFM_AM_DIRCREATED', "%s directory created!");
 define('_AJAXFM_AM_DIRNOTCREATED', "<strong style='color:red;'>WARNING: %s directory not created!</strong>");
 
+define('_AJAXFM_MI_FTPSUPPORT', "FTP support");
+
 define("_AJAXFM_AM_INDEX_SERVERSTATUS", "Server Status");
 define("_AJAXFM_AM_INDEX_SPHPINI", "<b>Information taken from PHP ini File:</b>");
 define("_AJAXFM_AM_INDEX_SERVERPATH", "Server Path to XOOPS Root: ");
@@ -37,19 +39,23 @@ define("_AJAXFM_AM_INDEX_ON", "<b>ON</b>");
 define('_AJAXFM_AM_PERM_EXTRA',"Module Permissions");
 define('_AJAXFM_AM_PERM_EXTRA_DESC', "Webmasters CAN ALWAYS DO EVERYTHING");
 define('_AJAXFM_AM_PERM_EXTRA_1', "<b>Use Ajax File Manager</b>");
-define('_AJAXFM_AM_PERM_EXTRA_2', "Upload Files");
-define('_AJAXFM_AM_PERM_EXTRA_4', "Delete Files");
-define('_AJAXFM_AM_PERM_EXTRA_8', "Cut Files");
-define('_AJAXFM_AM_PERM_EXTRA_16', "Copy Files");
-define('_AJAXFM_AM_PERM_EXTRA_32', "Create New Folder");
-define('_AJAXFM_AM_PERM_EXTRA_64', "Rename");
-define('_AJAXFM_AM_PERM_EXTRA_128', "Image editor and Text editor");
+define('_AJAXFM_AM_PERM_EXTRA_2', "Upload files");
+define('_AJAXFM_AM_PERM_EXTRA_4', "Delete files/folders");
+define('_AJAXFM_AM_PERM_EXTRA_8', "Cut files/folders");
+define('_AJAXFM_AM_PERM_EXTRA_16', "Copy files/folders");
+define('_AJAXFM_AM_PERM_EXTRA_32', "Create new folder");
+define('_AJAXFM_AM_PERM_EXTRA_64', "Rename files/folders");
+define('_AJAXFM_AM_PERM_EXTRA_128', "Image editor and text editor");
+define('_AJAXFM_AM_PERM_EXTRA_256', "Upload files by FTP");
+define('_AJAXFM_AM_PERM_EXTRA_512', "Create new file");
+define('_AJAXFM_AM_PERM_EXTRA_1024', "Zip files/folders");
+define('_AJAXFM_AM_PERM_EXTRA_2048', "Unzip files");
 
 
 
 // admin/extensions.php
-define('_AJAXFM_AM_EXTENSION_WARNING1', "<span style='color:red;'>WARNING: Only if &quot;%s&quot; directory and &quot;config.php&quot; file in it are writable is possible to install, activate and disable extensions using this tool</span>");
-define('_AJAXFM_AM_EXTENSION_WARNING2', "<span style='color:red;'>In any other case you have to copy extensions in &quot;%s&quot; directory and edit &quot;config.php&quot; manually</span>");
+define('_AJAXFM_AM_EXTENSION_WARNING1', "<span style='color:red;'>WARNING: <br />Is possible to install, activate and disable extensions using this tool only if &quot;%s&quot; directory and &quot;%s/config.php&quot; file are writable.</span>");
+define('_AJAXFM_AM_EXTENSION_WARNING2', "<span style='color:red;'>In any other case you have to copy extensions in &quot;%s&quot; directory and edit &quot;%s/config.php&quot; manually.</span>");
 
 define('_AJAXFM_AM_EXTENSION', "Extension");
 define('_AJAXFM_AM_EXTENSION_STATUS', "Status");

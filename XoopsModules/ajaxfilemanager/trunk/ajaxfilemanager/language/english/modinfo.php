@@ -44,9 +44,42 @@ define('_AJAXFM_MI_XOOPSIMAGEMANAGER', '[Extra] Xoops image manager');
 define('_AJAXFM_MI_XOOPSIMAGEMANAGER1', 'Default');
 define('_AJAXFM_MI_XOOPSIMAGEMANAGER2', 'Enhanced');
 define('_AJAXFM_MI_XOOPSIMAGEMANAGER3', 'Ajax File Manager');
-define('_AJAXFM_MI_XOOPSIMAGEMANAGER_DESC', 'Choose image manager for Xoops<br />Choose between: default, enhanced, ajaxfilemanager');
+define('_AJAXFM_MI_XOOPSIMAGEMANAGER_DESC', 'Choose image manager for Xoops<br />Choose between: default, enhanced, ajaxfilemanager.');
 
+define('_AJAXFM_MI_FTPENABLED', '[ftp] Enable FTP mode');
+define('_AJAXFM_MI_FTPENABLED_DESC', 'If set to Yes is possible to execute ftp operations, like ftp upload, ...');
+define('_AJAXFM_MI_FTPSERVERHOST', '[ftp] FTP server address');
+define('_AJAXFM_MI_FTPSERVERHOST_DESC', "This parameter shouldn't have any trailing slashes and shouldn't be prefixed with ftp://");
+define('_AJAXFM_MI_FTPSERVERPORT', '[ftp] FTP server port');
+define('_AJAXFM_MI_FTPSERVERPORT_DESC', "This parameter specifies an alternate port to connect to. If it is omitted or set to zero, then the default FTP port, 21, will be use.");
+define('_AJAXFM_MI_FTPSERVERTIMEOUT', '[ftp] FTP server timeout');
+define('_AJAXFM_MI_FTPSERVERTIMEOUT_DESC', "This parameter specifies the timeout for all subsequent network operations. If omitted, the default value is 90 seconds.");
+define('_AJAXFM_MI_FTPCONNECTIONTYPE', '[ftp] FTP connection type');
+define('_AJAXFM_MI_FTPCONNECTIONTYPE_DESC', "Selectables modes:<ul><li><b>ftp</b> opens a standard FTP connection;</li><li><b>ssl</b> opens a secure SSL-FTP connection.</li></ul><br /><i>NOTE: SSL-FTP connection is only available if both the ftp module and the OpenSSL support is built statically into php, this means that on Windows this function will be undefined in the official PHP builds. To make this function available on Windows you must compile your own PHP binaries.</i>");
+define('_AJAXFM_MI_FTPCONNECTIONTYPE1', 'ftp');
+define('_AJAXFM_MI_FTPCONNECTIONTYPE2', 'ssl');
+define('_AJAXFM_MI_FTPCONNECTIONPASSIVE', '[ftp] Use passive mode');
+define('_AJAXFM_MI_FTPCONNECTIONPASSIVE_DESC', "In passive mode, data connections are initiated by the client, rather than by the server. It may be needed if the client is behind firewall.");
+define('_AJAXFM_MI_FTPUSERNAME', '[ftp] FTP Login username');
+define('_AJAXFM_MI_FTPUSERNAME_DESC', 'The username (USER)'); 
+define('_AJAXFM_MI_FTPPASSWORD', '[ftp] FTP login password');
+define('_AJAXFM_MI_FTPPASSWORD_DESC', 'The password (PASS)');
+define('_AJAXFM_MI_FTPXOOPSROOTPATH', '[ftp] Xoops Rooth Path for ftp connection');
+define('_AJAXFM_MI_FTPXOOPSROOTPATH_DESC', ''); 
 
+define('_AJAXFM_MI_FTPPROXY', '[ftp] Proxy');
+define('_AJAXFM_MI_FTPPROXY_DESC', "// TO DO");
+define('_AJAXFM_MI_FTPPROXY1', 'none');
+define('_AJAXFM_MI_FTPPROXY2', 'HTTP/1.1');
+define('_AJAXFM_MI_FTPPROXY3', 'SOCK5');
+define('_AJAXFM_MI_FTPPROXYADDRESS', '[ftp] Proxy address');
+define('_AJAXFM_MI_FTPPROXYADDRESS_DESC', "// TO DO<br />This parameter shouldn't have any trailing slashes:");
+define('_AJAXFM_MI_FTPPROXYPORT', '[ftp] Proxy port');
+define('_AJAXFM_MI_FTPPROXYPORT_DESC', "// TO DO<br />");
+define('_AJAXFM_MI_FTPPROXYUSERNAME', '[ftp] Proxy Login username');
+define('_AJAXFM_MI_FTPPROXYUSERNAME_DESC', '// TO DO'); 
+define('_AJAXFM_MI_FTPPROXYPASSWORD', '[ftp] Proxy login password');
+define('_AJAXFM_MI_FTPPROXYPASSWORD_DESC', '// TO DO');
 
 // for install/uninstall/update
 define('_AJAXFM_MI_WARNING_DIRNOTCREATED', '<strong><span style="color:red;">WARNING: %s directory not created!</span></strong><br />');
