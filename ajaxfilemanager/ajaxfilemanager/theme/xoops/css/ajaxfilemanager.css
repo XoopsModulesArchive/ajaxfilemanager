@@ -242,6 +242,7 @@ top:36px;
 #actionRefresh{background-image:url(../images/refresh.png);}
 #actionUnzip{background-image:url(../images/unzip.png);}
 #actionUpload{background-image:url(../images/action/upload.png);}
+#actionUploadftp{background-image:url(../images/action/uploadftp.png);}
 #actionClose{background-image:url(../images/action/cross.png);}
 #actionNewFolder{background-image:url(../images/action/folder_add.png);}
 #actionNewFile{background-image:url(../images/action/page_add.png);}

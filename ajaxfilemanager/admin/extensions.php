@@ -80,8 +80,8 @@ case 'default':
     // check if estansions path is writable
     $extensionsPath = XOOPS_ROOT_PATH . '/class/textsanitizer';
     if (!is_writable($extensionsPath) or !is_writable($extensionsPath . '/config.php')) {
-        echo '<p>' . sprintf(_AJAXFM_AM_EXTENSION_WARNING1, $extensionsPath) . '</p>';
-        echo '<p>' . sprintf(_AJAXFM_AM_EXTENSION_WARNING2, $extensionsPath) . '</p>';
+        echo '<p>' . sprintf(_AJAXFM_AM_EXTENSION_WARNING1, $extensionsPath, $extensionsPath) . '</p>';
+        echo '<p>' . sprintf(_AJAXFM_AM_EXTENSION_WARNING2, $extensionsPath, $extensionsPath) . '</p>';
     }
 
     echo "<fieldset>";

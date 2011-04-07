@@ -1,4 +1,4 @@
-01/April/2011 V1.0 Final
+06/April/2011 V1.0 Final
 for Xoops by luciorota <lucio.rota@gmail.com>
 
 + Xoops Editors support
@@ -7,7 +7,8 @@ for Xoops by luciorota <lucio.rota@gmail.com>
 + added create new file (create empty editable files)
 + fixed bug pasting files/folders
 + added zip/unzip support (beta)
-+ eregi->preg_match/i for better php v5.3> compatibility
++ eregi->preg_match/i for better php v5.3+ compatibility
++ added ftp upload support (in progress)
 
 
 
@@ -23,9 +24,10 @@ added files:
     jscripts/jquery.metadata.js
     theme/xoops
     theme/xoops/...
-    ajax_create_file.php (in progress)
-    ajax_file_unzip.php (in progress)
-    ajax_file_zip.php (in progress)
+    ajax_create_file.php (beta)
+    ajax_file_unzip.php (beta)
+    ajax_file_uploadftp.php (in progress)
+    ajax_file_zip.php (beta)
     xoops_ajax_image_editor.php (in progress)
     xoops_ajax_text_editor.php
 

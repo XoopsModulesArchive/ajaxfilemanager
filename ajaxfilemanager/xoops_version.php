@@ -45,7 +45,7 @@ $modversion['forum_site_url'] = 'IN PROGRESS';
 $modversion['forum_site_name'] = 'IN PROGRESS';
 $modversion['module_website_url'] = 'IN PROGRESS';
 $modversion['module_website_name'] = 'IN PROGRESS';
-$modversion['release'] = strtotime('2011/03/31'); // 'YYYY/MM/DD' format
+$modversion['release'] = strtotime('2011/04/06'); // 'YYYY/MM/DD' format
 $modversion['module_status'] = 'In progress';
 
 // Admin things
@@ -101,7 +101,7 @@ $modversion['config'][1] = array(
     "description"   => '_AJAXFM_MI_VALIDEXTS_DESC',
     "formtype"      => 'textbox',
     "valuetype"     => 'text',
-    "default"       => 'gif,jpg,png,html,htm,mp3,flv,kml,txt,pdf',
+    "default"       => 'gif,jpg,png,html,htm,mp3,flv,kml,txt,pdf,zip',
     "category"       => 'global'
     );
 $modversion['config'][] = array(
@@ -110,7 +110,7 @@ $modversion['config'][] = array(
     "description"   => '_AJAXFM_MI_MAXSIZE_DESC',
     "formtype"      => 'textbox',
     "valuetype"     => 'int',
-    "default"       => 1000, //1MB
+    "default"       => 1000, // 1MB
     "category"       => 'global'
     );
 $modversion['config'][] = array(
@@ -129,7 +129,7 @@ $modversion['config'][] = array(
     "description"   => '_AJAXFM_MI_VIEW_DESC',
     "formtype"      => 'select',
     "valuetype"     => 'text',
-    "default"       => 'detail',
+    "default"       => 'thumbnail',
     "options"       => array('_AJAXFM_MI_VIEW1' => 'detail', '_AJAXFM_MI_VIEW2' => 'thumbnail'),
     "category"       => 'global'
     );
@@ -164,8 +164,199 @@ $modversion['config'][] = array(
     "options"       => array('_AJAXFM_MI_XOOPSIMAGEMANAGER1' => 'standard', '_AJAXFM_MI_XOOPSIMAGEMANAGER2' => 'enhanced', '_AJAXFM_MI_XOOPSIMAGEMANAGER3' => 'ajaxfilemanager'),
     "category"       => 'extra'
     );
+// FTP CONFIG
+ if (function_exists('ftp_connect')) {
+    $modversion['config'][] = array(
+        "name"          => 'ftp_enabled',
+        "title"         => '_AJAXFM_MI_FTPENABLED',
+        "description"   => '_AJAXFM_MI_FTPENABLED_DESC',
+        "formtype"      => 'yesno',
+        "valuetype"     => 'int',
+        "default"       => false, // ftp not enabled
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_serverhost',
+        "title"         => '_AJAXFM_MI_FTPSERVERHOST',
+        "description"   => '_AJAXFM_MI_FTPSERVERHOST_DESC',
+        "formtype"      => 'textbox',
+        "valuetype"     => 'text',
+        "default"       => '',
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_serverport',
+        "title"         => '_AJAXFM_MI_FTPSERVERPORT',
+        "description"   => '_AJAXFM_MI_FTPSERVERPORT_DESC',
+        "formtype"      => 'textbox',
+        "valuetype"     => 'int',
+        "default"       => 21, // default ftp port
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_servertimeout',
+        "title"         => '_AJAXFM_MI_FTPSERVERTIMEOUT',
+        "description"   => '_AJAXFM_MI_FTPSERVERTIMEOUT_DESC',
+        "formtype"      => 'textbox',
+        "valuetype"     => 'int',
+        "default"       => 90,
+        "category"       => 'ftp'
+        );
+    if (function_exists('ftp_ssl_connect')) {
+        $ftp_connectiontype_options = array('_AJAXFM_MI_FTPCONNECTIONTYPE1' => 'ftp', '_AJAXFM_MI_FTPCONNECTIONTYPE2' => 'ssl');
+    }else {
+        $ftp_connectiontype_options = array('_AJAXFM_MI_FTPCONNECTIONTYPE1' => 'ftp');
+    }
+    $modversion['config'][] = array(
+        "name"          => 'ftp_connectiontype',
+        "title"         => '_AJAXFM_MI_FTPCONNECTIONTYPE',
+        "description"   => '_AJAXFM_MI_FTPCONNECTIONTYPE_DESC',
+        "formtype"      => 'select',
+        "valuetype"     => 'text',
+        "default"       => 'ftp',
+        "options"       => $ftp_connectiontype_options,
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_connectionpassive',
+        "title"         => '_AJAXFM_MI_FTPCONNECTIONPASSIVE',
+        "description"   => '_AJAXFM_MI_FTPCONNECTIONPASSIVE_DESC',
+        "formtype"      => 'yesno',
+        "valuetype"     => 'int',
+        "default"       => true,
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_username',
+        "title"         => '_AJAXFM_MI_FTPUSERNAME',
+        "description"   => '_AJAXFM_MI_FTPUSERNAME_DESC',
+        "formtype"      => 'textbox',
+        "valuetype"     => 'text',
+        "default"       => '',
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_password',
+        "title"         => '_AJAXFM_MI_FTPPASSWORD',
+        "description"   => '_AJAXFM_MI_FTPPASSWORD_DESC',
+        "formtype"      => 'password',
+        "valuetype"     => 'text',
+        "default"       => '',
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_xoopsrootpath',
+        "title"         => '_AJAXFM_MI_FTPXOOPSROOTPATH',
+        "description"   => '_AJAXFM_MI_FTPXOOPSROOTPATH_DESC',
+        "formtype"      => 'textbox',
+        "valuetype"     => 'text',
+        "default"       => XOOPS_ROOT_PATH,
+        "category"       => 'ftp'
+        );
+    // FTP THROUGH PROXY CONFIG
+    /*
+    $modversion['config'][] = array(
+        "name"          => 'ftp_proxy',
+        "title"         => '_AJAXFM_MI_FTPPROXY',
+        "description"   => '_AJAXFM_MI_FTPPROXY_DESC',
+        "formtype"      => 'select',
+        "valuetype"     => 'text',
+        "default"       => 'none',
+        "options"       => array(_AJAXFM_MI_FTPPROXY1 => 'none', _AJAXFM_MI_FTPPROXY2 => 'http', _AJAXFM_MI_FTPPROXY3 => 'sock5'),
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_proxyaddress',
+        "title"         => '_AJAXFM_MI_FTPPROXYADDRESS',
+        "description"   => '_AJAXFM_MI_FTPPROXYADDRESS_DESC',
+        "formtype"      => 'textbox',
+        "valuetype"     => 'text',
+        "default"       => '',
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_proxyport',
+        "title"         => '_AJAXFM_MI_FTPPROXYPORT',
+        "description"   => '_AJAXFM_MI_FTPPROXYPORT_DESC',
+        "formtype"      => 'textbox',
+        "valuetype"     => 'int',
+        "default"       => null,
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_proxyusername',
+        "title"         => '_AJAXFM_MI_FTPPROXYUSERNAME',
+        "description"   => '_AJAXFM_MI_FTPPROXYUSERNAME_DESC',
+        "formtype"      => 'textbox',
+        "valuetype"     => 'text',
+        "default"       => '',
+        "category"       => 'ftp'
+        );
+    $modversion['config'][] = array(
+        "name"          => 'ftp_proxypassword',
+        "title"         => '_AJAXFM_MI_FTPPROXYPASSWORD',
+        "description"   => '_AJAXFM_MI_FTPPROXYPASSWORD_DESC',
+        "formtype"      => 'password',
+        "valuetype"     => 'text',
+        "default"       => '',
+        "category"       => 'ftp'
+        );
+    */
+    /*
+     * ftp_login does not support ftp trough proxy authentication. 
+     * So think about using the new PHP5 function ftp_raw() that's allow you 
+     * to send directly FTP commands. ftp_raw() allow you to send commands 
+     * prior to be connected (unlike ftp_exec()).
+     * I've writen this piece of code that's allow you to connect through 
+     * a "remoteid@remotehost proxyid" proxy.
 
+    function ftp_parse_response($response, &$errstr) {
+        if(!is_array($response)) {
+            $errstr    = 'Parameter \$response must be an array';
+            return false;
+        }
+        foreach($response as $r) {
+            $code    = substr(trim($r),0,3);
 
+            if(!is_numeric($code)) {
+                $errstr    = "$code is not a valid FTP code",$code);
+            }
+            if($code > 400) {
+                $errstr    = $r;
+                return false;
+            }
+        }
+        return true;
+    }
+    $user = "user";
+    $pass = "password";
+    $host = "ftp.example.com";
+    $proxyuser = "proxyuser";
+    $proxypass = "proxypass";
+    $proxyhost = "ftp.proxy.com";
+
+    $conn_id = ftp_connect($proxyhost);
+
+    if(!$conn_id) {
+        die("cannot connect to proxy");
+    }
+    $commands   = array(
+        "USER ".$user."@".$host." ".$proxyuser,
+        "PASS ".$pass,
+        "PASS ".$proxypass
+    );
+    foreach($commands as $c) {
+        $ret    = ftp_raw($conn_id,$c);
+        //you can write your own ftp_parse_response func that
+        //use an array of string as input
+        if(!ftp_parse_response($ret,$errstr)) {
+            ftp_close($conn_id);
+            die("cannot login to $host");
+        }
+    }
+    echo "ok, now connected";
+    */
+}
 
 // Comments
 $modversion["hasComments"] = 0;
@@ -173,6 +364,4 @@ $modversion["hasComments"] = 0;
 // Notification
 $modversion["hasNotification"] = 0;
 $modversion["notification"] = array();
-
-
 ?>

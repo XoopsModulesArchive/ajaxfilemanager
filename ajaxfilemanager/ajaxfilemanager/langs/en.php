@@ -65,6 +65,7 @@ define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
     define('LBL_BTN_SELECT', 'Select');
     define('LBL_BTN_CANCEL', 'Cancel');
     define('LBL_BTN_UPLOAD', 'Upload');
+    define('LBL_BTN_UPLOADFTP', 'Upload Ftp');
     define('LBL_BTN_CREATE', 'Create');
     define('LBL_BTN_CLOSE', 'Close');
     define('LBL_BTN_NEW_FOLDER', 'New Folder');
@@ -213,6 +214,11 @@ define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
     define('FILE_LBL_MORE', 'Add File Uploader');
     define('FILE_CANCEL_UPLOAD', 'Cancel File Upload');
     define('FILE_LBL_UPLOAD', 'Upload');
+    //file uploadftp
+    define('FILEFTP_FORM_TITLE', 'File Ftp Upload Form');
+    define('FILE_CANCEL_UPLOADFTP', 'Cancel File Upload');
+    define('FILE_LBL_UPLOADFTP', 'Upload Ftp');
+
     //file download
     define('ERR_DOWNLOAD_FILE_NOT_FOUND', 'No files selected for download.');
     //Rename
