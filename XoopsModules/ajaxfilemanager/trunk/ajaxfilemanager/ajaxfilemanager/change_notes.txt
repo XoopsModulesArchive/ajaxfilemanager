@@ -1,4 +1,4 @@
-06/April/2011 V1.0 Final
+08/April/2011 V1.0 Final
 for Xoops by luciorota <lucio.rota@gmail.com>
 
 + Xoops Editors support

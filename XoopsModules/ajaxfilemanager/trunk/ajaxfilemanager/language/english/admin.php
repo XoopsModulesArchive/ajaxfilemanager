@@ -94,5 +94,9 @@ define("_AJAXFM_AM_ABOUT_AUTHOREMAIL", "Email");
 define("_AJAXFM_AM_ABOUT_RELEASEDATE", "Date of launch");
 define("_AJAXFM_AM_ABOUT_STATUS", "Status");
 define("_AJAXFM_AM_ABOUT_DESCRIPTION", "Module Description &quot;description.html&quot;");
+
+
+
+//admin/help.php
 define("_AJAXFM_AM_ABOUT_HELP", "Module Help &quot;help.html&quot;");
 ?>
