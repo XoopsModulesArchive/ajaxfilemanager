@@ -14,11 +14,19 @@ define('_AJAXFM_MI_DESC', 'For administration of files/contents/images of the si
 
 // Names of admin menu items
 define('_AJAXFM_MI_ADMENU_INDEX', 'Index');
+define('_AJAXFM_MI_ADMENU_INDEX_DESC', 'Index');
 define('_AJAXFM_MI_ADMENU_FILEMANAGER', 'File Manager');
+define('_AJAXFM_MI_ADMENU_FILEMANAGER_DESC', 'File Manager');
 define('_AJAXFM_MI_ADMENU_FTP', 'Ftp client');
+define('_AJAXFM_MI_ADMENU_FTP_DESC', 'Ftp client');
 define('_AJAXFM_MI_ADMENU_PERMISSIONS', 'Permissions Manager');
+define('_AJAXFM_MI_ADMENU_PERMISSIONS_DESC', 'Permissions Manager');
 define('_AJAXFM_MI_ADMENU_EXTENSIONS', 'Extensions Manager');
+define('_AJAXFM_MI_ADMENU_EXTENSIONS_DESC', 'Extensions Manager');
 define('_AJAXFM_MI_ADMENU_ABOUT', 'About');
+define('_AJAXFM_MI_ADMENU_ABOUT_DESC', 'About');
+define('_AJAXFM_MI_ADMENU_HELP', 'Help');
+define('_AJAXFM_MI_ADMENU_HELP_DESC', 'Help');
 
 // for config
 define('_AJAXFM_MI_VALIDEXTS', 'Upload valid extensions');

@@ -23,12 +23,13 @@ $moduleDirname = basename( dirname( __FILE__ ) ) ;
 $modversion['name'] = _AJAXFM_MI_NAME;
 $modversion['version'] = 0.01;
 $modversion['description'] = _AJAXFM_MI_DESC;
-$modversion['author'] = 'luciorota + Logan Cai - www.phpletter.com';
+$modversion['author'] = 'Rota Lucio';
 $modversion['author_mail'] = 'lucio.rota@gmail.com';
 $modversion['author_website_url'] = 'http://luciorota.altervista.org';
 $modversion['author_website_name'] = 'http://luciorota.altervista.org';
 $modversion['credits'] = 'The XOOPS Project';
-$modversion['help'] = 'help.html';
+//$modversion['help'] = 'help.html';
+$modversion['help'] = 'page=help';
 $modversion['license'] = 'GPL see LICENSE';
 $modversion['license_url'] = 'http://www.gnu.org/licenses/gpl.html';
 $modversion['official'] = 0;
@@ -38,15 +39,24 @@ $modversion['release_file'] = 'IN PROGRESS';
 $modversion['manual'] = 'Help';
 $modversion['manual_file'] = 'help.html';
 $modversion['dirname'] = $dirname;
-//About
+
+$modversion['system_menu'] = 0;
+
+//about
+$modversion['status_version'] = 'RC';
+$modversion['release_date'] = '2011/04/13';
+$modversion['release'] = strtotime('2011/04/13'); // 'YYYY/MM/DD' format
 $modversion['demo_site_url'] = 'IN PROGRESS';
 $modversion['demo_site_name'] = 'IN PROGRESS';
 $modversion['forum_site_url'] = 'IN PROGRESS';
 $modversion['forum_site_name'] = 'IN PROGRESS';
 $modversion['module_website_url'] = 'IN PROGRESS';
 $modversion['module_website_name'] = 'IN PROGRESS';
-$modversion['release'] = strtotime('2011/04/06'); // 'YYYY/MM/DD' format
 $modversion['module_status'] = 'In progress';
+$modversion["author_website_url"] = "http://luciorota.altervista.org/xoops/";
+$modversion["author_website_name"] = "luciorota.altervista.org/xoops";
+$modversion['min_php']=5.2;
+$modversion['min_xoops']="XOOPS 2.4.5";
 
 // Admin things
 $modversion['hasAdmin'] = 1;
@@ -101,7 +111,7 @@ $modversion['config'][1] = array(
     "description"   => '_AJAXFM_MI_VALIDEXTS_DESC',
     "formtype"      => 'textbox',
     "valuetype"     => 'text',
-    "default"       => 'gif,jpg,png,html,htm,mp3,flv,kml,txt,pdf,zip',
+    "default"       => 'jpg,png,gif,html,htm,js,mp3,flv,kml,txt,pdf,zip',
     "category"       => 'global'
     );
 $modversion['config'][] = array(
@@ -119,7 +129,7 @@ $modversion['config'][] = array(
     "description"   => '_AJAXFM_MI_DEFAULTPAGINATIONLIMIT_DESC',
     "formtype"      => 'select',
     "valuetype"     => 'int',
-    "default"       => 10,
+    "default"       => 20,
     "options"       => array(5 => 5, 10 => 10, 20 => 20, 30 => 30, 50 => 50, 80 => 80, 150 => 150, 999 => 999),
     "category"       => 'global'
     );
