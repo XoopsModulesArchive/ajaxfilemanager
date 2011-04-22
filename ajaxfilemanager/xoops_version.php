@@ -44,8 +44,8 @@ $modversion['system_menu'] = 0;
 
 //about
 $modversion['status_version'] = 'RC';
-$modversion['release_date'] = '2011/04/13';
-$modversion['release'] = strtotime('2011/04/13'); // 'YYYY/MM/DD' format
+$modversion['release_date'] = '2011/04/18';
+$modversion['release'] = strtotime('2011/04/18'); // 'YYYY/MM/DD' format
 $modversion['demo_site_url'] = 'IN PROGRESS';
 $modversion['demo_site_name'] = 'IN PROGRESS';
 $modversion['forum_site_url'] = 'IN PROGRESS';
@@ -104,8 +104,17 @@ $modversion['templates'][$i]['description'] = '';
 
 
 // Configs
-$modversion['config'] = array();
-$modversion['config'][1] = array(
+/* XOOPS 2.5.0+
+$modversion['config'][] = array(
+    'name'      => 'break', 
+    'title'         => '_AJAXFM_MI_PREFERENCE_BREAK_GLOBAL', 
+    'description'   => '', 
+    'formtype'      => 'line_break', 
+    'valuetype'     => 'textbox', 
+    'default'       => 'head'
+    );
+*/
+$modversion['config'][] = array(
     "name"          => 'upload_valid_exts',
     "title"         => '_AJAXFM_MI_VALIDEXTS',
     "description"   => '_AJAXFM_MI_VALIDEXTS_DESC',
@@ -164,6 +173,16 @@ $modversion['config'][] = array(
     "options"       => array('_AJAXFM_MI_NAVIGATIONMODE1' => 'secure', '_AJAXFM_MI_NAVIGATIONMODE2' => 'dangerous', '_AJAXFM_MI_NAVIGATIONMODE4' => 'themes_directory', '_AJAXFM_MI_NAVIGATIONMODE3' => 'kamikaze'),
     "category"       => 'global'
     );
+/* XOOPS 2.5.0+
+$modversion['config'][] = array(
+    'name'      => 'break', 
+    'title'         => '_AJAXFM_MI_PREFERENCE_BREAK_EXTRA', 
+    'description'   => '', 
+    'formtype'      => 'line_break', 
+    'valuetype'     => 'textbox', 
+    'default'       => 'head'
+    );
+*/
 $modversion['config'][] = array(
     "name"          => 'standard_imagemanager',
     "title"         => '_AJAXFM_MI_XOOPSIMAGEMANAGER',
@@ -176,6 +195,16 @@ $modversion['config'][] = array(
     );
 // FTP CONFIG
  if (function_exists('ftp_connect')) {
+/* XOOPS 2.5.0+
+    $modversion['config'][] = array(
+        'name'      => 'break', 
+        'title'         => '_AJAXFM_MI_PREFERENCE_BREAK_FTP', 
+        'description'   => '', 
+        'formtype'      => 'line_break', 
+        'valuetype'     => 'textbox', 
+        'default'       => 'head'
+        );
+*/
     $modversion['config'][] = array(
         "name"          => 'ftp_enabled',
         "title"         => '_AJAXFM_MI_FTPENABLED',
