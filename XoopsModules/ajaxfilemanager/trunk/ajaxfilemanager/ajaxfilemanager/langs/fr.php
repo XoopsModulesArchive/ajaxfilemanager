@@ -9,8 +9,8 @@
 		define('DATE_TIME_FORMAT', "d/M/Y H:i:s");
 		//Common
 		//Menu
-		define('MENU_SELECT', "Selectionne");
-		define('MENU_DOWNLOAD', "Transferer");
+		define('MENU_SELECT', "Sélectionner");
+		define('MENU_DOWNLOAD', "Transférer");
 		define('MENU_PREVIEW', "Aperçu");
 		define('MENU_RENAME', "Renommer");
 		define('MENU_EDIT', "Editer");
@@ -22,7 +22,7 @@
 
     //Label
     //Top Action
-		define('LBL_ACTION_REFRESH', "Rafraichir");
+		define('LBL_ACTION_REFRESH', "Rafraîchir");
 		define('LBL_ACTION_DELETE', "Supprimer");
 		define('LBL_ACTION_CUT', "Couper");
 		define('LBL_ACTION_COPY', "Copier");
@@ -59,7 +59,7 @@
     
 			//Preview
     define('LBL_PREVIEW', "Aperçu");
-    define('LBL_CLICK_PREVIEW', "Cliquer ici pour avoir un aperçu.");
+    define('LBL_CLICK_PREVIEW', "Cliquez ici pour avoir un aperçu.");
     
 			//Buttons
     define('LBL_BTN_SELECT', "Choisir");
@@ -70,8 +70,8 @@
     define('LBL_BTN_NEW_FOLDER', "Nouveau Dossier");
     define('LBL_BTN_EDIT_IMAGE', "Modifier");
 		define('LBL_BTN_NEW_FILE', "Nouveau fichier");
-		define('LBL_BTN_VIEW', "Selectionne Vu");
-		define('LBL_BTN_VIEW_TEXT', "Text");
+		define('LBL_BTN_VIEW', "Sélectionner la vue");
+		define('LBL_BTN_VIEW_TEXT', "Texte");
 		define('LBL_BTN_VIEW_DETAILS', "Détails");
 		define('LBL_BTN_VIEW_THUMBNAIL', "Miniatures");
 		define('LBL_BTN_VIEW_OPTIONS', "Regarde dans :");
@@ -88,21 +88,21 @@
     define('SYS_DISABLED', "Permission refusée: Le système est désactivé.");
 
     //Cut
-    define('ERR_NOT_DOC_SELECTED_FOR_CUT', "Aucun document(s) selectionné pour couper.");
+    define('ERR_NOT_DOC_SELECTED_FOR_CUT', "Aucun document selectionné pour couper.");
 
     //Copy
-    define('ERR_NOT_DOC_SELECTED_FOR_COPY', "Aucun document(s) selectionné pour copier.");
+    define('ERR_NOT_DOC_SELECTED_FOR_COPY', "Aucun document selectionné pour copier.");
 
     //Paste
-    define('ERR_NOT_DOC_SELECTED_FOR_PASTE', "Aucun document(s) selectionné pour coller.");
+    define('ERR_NOT_DOC_SELECTED_FOR_PASTE', "Aucun document selectionné pour coller.");
     define('WARNING_CUT_PASTE', "Voulez-vous vraiment déplacer les documents selectionnés dans le dossier courant ?");
     define('WARNING_COPY_PASTE', "Voulez-vous vraiment copier les documents selectionnés dans le dossier courant ?");
 		define('ERR_NOT_DEST_FOLDER_SPECIFIED', "Aucun dossier cible spécifié.");
 		define('ERR_DEST_FOLDER_NOT_FOUND', "Aucun dossier cible trouvé.");
 		define('ERR_DEST_FOLDER_NOT_ALLOWED', "Vous n'êtes pas autorisé à déplacer des fichiers dans ce dossier");
 		define('ERR_UNABLE_TO_MOVE_TO_SAME_DEST', "Impossible de déplacer ce fichier (%s): Le dossier source est identique au dossier cible.");
-		define('ERR_UNABLE_TO_MOVE_NOT_FOUND', "Impossible de déplacer ce fichier (%s): Le fichier d\'origine n\'existe pas.");
-		define('ERR_UNABLE_TO_MOVE_NOT_ALLOWED', "Impossible de déplacer ce fichier (%s): Accès refusé au fichier d\'origine.");
+		define('ERR_UNABLE_TO_MOVE_NOT_FOUND', "Impossible de déplacer ce fichier (%s): Le fichier d'origine n'existe pas.");
+		define('ERR_UNABLE_TO_MOVE_NOT_ALLOWED', "Impossible de déplacer ce fichier (%s): Accès refusé au fichier d'origine.");
 		define('ERR_NOT_FILES_PASTED', "Aucun fichier collé.");
 
 		//Search
@@ -171,48 +171,48 @@
 		//ERROR MESSAGES
 		//Suppresion
     define('ERR_NOT_FILE_SELECTED', "Il faut choisir un fichier.");
-    define('ERR_NOT_DOC_SELECTED', "Aucun document(s) selectionné pour la suppression.");
-    define('ERR_DELTED_FAILED', "Impossible de supprimer le(s) document(s) selectionné.");
-    define('ERR_FOLDER_PATH_NOT_ALLOWED', "Le chemin du dossier n\'est pas autorisé.");
+    define('ERR_NOT_DOC_SELECTED', "Aucun document selectionné pour la suppression.");
+    define('ERR_DELTED_FAILED', "Impossible de supprimer le(s) document(s) selectionné(s).");
+    define('ERR_FOLDER_PATH_NOT_ALLOWED', "Le chemin du dossier n'est pas autorisé.");
 
 		//class manager
     define('ERR_FOLDER_NOT_FOUND', "Impossible de trouver le dossier spécifié : ");
 
 		//rename
     define('ERR_RENAME_FORMAT', "Il faut saisir un nom qui contient uniquement des lettres, chiffres, espaces, tirets et tirets-bas.");
-    define('ERR_RENAME_EXISTS', "Il faut saisir un nom qui n\'est pas déjà pris dans ce dossier.");
-    define('ERR_RENAME_FILE_NOT_EXISTS', "Le fichier/dossier n\'existe pas.");
+    define('ERR_RENAME_EXISTS', "Il faut saisir un nom qui n'est pas déjà pris dans ce dossier.");
+    define('ERR_RENAME_FILE_NOT_EXISTS', "Le fichier/dossier n'existe pas.");
     define('ERR_RENAME_FAILED', "Impossible de le renommer, merci de recommencer.");
     define('ERR_RENAME_EMPTY', "Il faut préciser un nom.");
-    define('ERR_NO_CHANGES_MADE', "Aucun changement n\'a été effectué.");
-    define('ERR_RENAME_FILE_TYPE_NOT_PERMITED', "Vous n\'êtes pas autorisé à changer de la sorte l\'extension du fichier.");
+    define('ERR_NO_CHANGES_MADE', "Aucun changement n'a été effectué.");
+    define('ERR_RENAME_FILE_TYPE_NOT_PERMITED', "Vous n'êtes pas autorisé à changer de la sorte l'extension du fichier.");
 
 		//folder creation
     define('ERR_FOLDER_FORMAT', "Il faut saisir un nom qui contient uniquement des lettres, chiffres, espaces, tirets et tirets-bas.");
-    define('ERR_FOLDER_EXISTS', "Il faut saisir un nom qui n\'est pas déjà pris dans ce dossier.");
+    define('ERR_FOLDER_EXISTS', "Il faut saisir un nom qui n'est pas déjà pris dans ce dossier.");
     define('ERR_FOLDER_CREATION_FAILED', "Impossible de créer un dossier, merci de recommencer.");
     define('ERR_FOLDER_NAME_EMPTY', "Il faut préciser un nom.");
-    define('FOLDER_FORM_TITLE', "Nouvueau répertoire");
-		define('FOLDER_LBL_TITLE', "Titre répertoire:");
-		define('FOLDER_LBL_CREATE', "Créer répertoire");
+    define('FOLDER_FORM_TITLE', "Nouveau répertoire");
+		define('FOLDER_LBL_TITLE', "Titre du répertoire :");
+		define('FOLDER_LBL_CREATE', "Créer un répertoire");
 
 		//New File
 		define('NEW_FILE_FORM_TITLE', "Nouveau fichier");
-		define('NEW_FILE_LBL_TITLE', "Nom du fichier:");
-		define('NEW_FILE_CREATE', "Créer fichier");
+		define('NEW_FILE_LBL_TITLE', "Nom du fichier :");
+		define('NEW_FILE_CREATE', "Créer un fichier");
 
 		//file upload
     define('ERR_FILE_NAME_FORMAT', "Il faut saisir un nom qui contient uniquement des lettres, chiffres, espaces, tirets et tirets-bas.");
-    define('ERR_FILE_NOT_UPLOADED', "Aucun fichier n\'a été selectionné pour être transféré.");
-    define('ERR_FILE_TYPE_NOT_ALLOWED', "Vous n\'êtes pas autorisé à transférer ce type de fichier.");
+    define('ERR_FILE_NOT_UPLOADED', "Aucun fichier n'a été selectionné pour être transféré.");
+    define('ERR_FILE_TYPE_NOT_ALLOWED', "Vous n'êtes pas autorisé à transférer ce type de fichier.");
     define('ERR_FILE_MOVE_FAILED', "Le déplacement du fichier a échoué.");
     define('ERR_FILE_NOT_AVAILABLE', "Le fichier est indisponible.");
     define('ERROR_FILE_TOO_BID', "Le fichier est trop lourd. (max : %s)");
     define('FILE_FORM_TITLE', "Transferer Fichier");
 		define('FILE_LABEL_SELECT', "Select. le fichier");
-		define('FILE_LBL_MORE', "Ajoute fichier à transferer");
-		define('FILE_CANCEL_UPLOAD', "Annule transfert fichier");
-		define('FILE_LBL_UPLOAD', "Transferer");
+		define('FILE_LBL_MORE', "Ajoutez un fichier à transferer");
+		define('FILE_CANCEL_UPLOAD', "Annule le transfert du fichier");
+		define('FILE_LBL_UPLOAD', "Transférer");
 
 		//file download
     define('ERR_DOWNLOAD_FILE_NOT_FOUND', "Aucun fichier selectionné pour être téléchargé.");
@@ -223,9 +223,9 @@
 		define('RENAME_LBL_RENAME', "Renommer");
 
 		//Tips
-    define('TIP_FOLDER_GO_DOWN', "Cliquer pour aller dans ce dossier ...");
-    define('TIP_DOC_RENAME', "Double cliquer pour modifier ...");
-    define('TIP_FOLDER_GO_UP', "Cliquer pour aller au dossier parent...");
+    define('TIP_FOLDER_GO_DOWN', "Cliquez pour aller dans ce dossier ...");
+    define('TIP_DOC_RENAME', "Double cliquez pour modifier ...");
+    define('TIP_FOLDER_GO_UP', "Cliquez pour aller au dossier parent...");
     define('TIP_SELECT_ALL', "Tout selectionner");
     define('TIP_UNSELECT_ALL', "Tout déselectionner");
 
@@ -237,12 +237,12 @@
 
     //Preview
     define('PREVIEW_NOT_PREVIEW', "Aucun aperçu disponible.");
-    define('PREVIEW_OPEN_FAILED', "Impossible d\'ouvrir le fichier.");
-    define('PREVIEW_IMAGE_LOAD_FAILED', "Impossible de charger l\'image");
+    define('PREVIEW_OPEN_FAILED', "Impossible d'ouvrir le fichier.");
+    define('PREVIEW_IMAGE_LOAD_FAILED', "Impossible de charger l'image");
 
 		//Login
-    define('LOGIN_PAGE_TITLE', "Ajax File Manager : Formulaire d\'authentification");
-    define('LOGIN_FORM_TITLE', "Formulaire d\'authentification");
+    define('LOGIN_PAGE_TITLE', "Ajax File Manager : Formulaire d'authentification");
+    define('LOGIN_FORM_TITLE', "Formulaire d'authentification");
     define('LOGIN_USERNAME', "Utilisateur :");
     define('LOGIN_PASSWORD', "Mot de passe :");
     define('LOGIN_FAILED', "Utilisateur/Mot de passe erroné.");
@@ -250,16 +250,16 @@
 		//88888888888  Below for Image Editor  888888888888888888888
 
 		//Warning 
-		define('IMG_WARNING_NO_CHANGE_BEFORE_SAVE', "L\'image n\'a pas ete modifiee.");
+		define('IMG_WARNING_NO_CHANGE_BEFORE_SAVE', "L'image n'a pas été modifiée.");
 
 		//General
-		define('IMG_GEN_IMG_NOT_EXISTS', "L\'image n\'existe pas");
-		define('IMG_WARNING_LOST_CHANAGES', "Toutes les modifications qui n\'ont pas ete sauvegardees seront perdues, voulez-vous vraiment continuer ?");
-		define('IMG_WARNING_REST', "Toutes les modifications qui n\'ont pas ete sauvegardees seront perdues, voulez-vous vraiment remettre a zero ?");
-		define('IMG_WARNING_EMPTY_RESET', "L\'image n\'a pas encore ete modifiee");
-		define('IMG_WARING_WIN_CLOSE', "Voulez-vous vraiment fermer la fenetre ?");
-		define('IMG_WARING_FLIP_H', "Voulez-vous vraiment basculer l\'image horizontalement ?");
-		define('IMG_WARING_FLIP_V', "Voulez-vous vraiment à basculer l\'image verticalement ?");
+		define('IMG_GEN_IMG_NOT_EXISTS', "L'image n'existe pas");
+		define('IMG_WARNING_LOST_CHANAGES', "Toutes les modifications qui n'ont pas été sauvegardées seront perdues, voulez-vous vraiment continuer ?");
+		define('IMG_WARNING_REST', "Toutes les modifications qui n'ont pas été sauvegardées seront perdues, voulez-vous vraiment remettre à zéro ?");
+		define('IMG_WARNING_EMPTY_RESET', "L'image n'a pas encore été modifiée");
+		define('IMG_WARING_WIN_CLOSE', "Voulez-vous vraiment fermer la fenêtre ?");
+		define('IMG_WARING_FLIP_H', "Voulez-vous vraiment basculer l'image horizontalement ?");
+		define('IMG_WARING_FLIP_V', "Voulez-vous vraiment basculer l'image verticalement ?");
 		define('IMG_INFO', "Information sur l'image");
 
 		//Mode
@@ -297,31 +297,31 @@
 		
 		//Editor
 		//Save as 
-		define('IMG_NEW_NAME_COMMENTS', "Ne pas mettre l\'extension de l\'image.");
+		define('IMG_NEW_NAME_COMMENTS', "Ne pas mettre l'extension de l'image.");
 		define('IMG_SAVE_AS_ERR_NAME_INVALID', "Il faut saisir un nom qui contient uniquement des lettres, chiffres, espaces, tirets et tirets-bas.");
 		define('IMG_SAVE_AS_NOT_FOLDER_SELECTED', "Il faut préciser le dossier de destination.");
 		define('IMG_SAVE_AS_FOLDER_NOT_FOUND', "Le dossier de destination existe déjà.");
 		define('IMG_SAVE_AS_NEW_IMAGE_EXISTS', "Des images portent le même nom.");
 
 		//Save
-		define('IMG_SAVE_EMPTY_PATH', "Le chemin de l\'image est vide.");
-		define('IMG_SAVE_NOT_EXISTS', "L\'image n\'existe pas.");
-		define('IMG_SAVE_PATH_DISALLOWED', "Vous n\'êtes pas autorisé à accéder à ce fichier.");
-		define('IMG_SAVE_UNKNOWN_MODE', "Mode inattendu d\'opération d\'image");
-		define('IMG_SAVE_RESIZE_FAILED', "Echec du redimensionnement de l\'image.");
-		define('IMG_SAVE_CROP_FAILED', "Echec du découpage de l\'image.");
-		define('IMG_SAVE_FAILED', "Echec de la sauvegarde de l\'image.");
-		define('IMG_SAVE_BACKUP_FAILED', "Impossible de sauvegarder l\'image originale.");
-		define('IMG_SAVE_ROTATE_FAILED', "Impossible d\'effectuer la rotation de l\'image.");
-		define('IMG_SAVE_FLIP_FAILED', "Impossible de basculer l\'image.");
-		define('IMG_SAVE_SESSION_IMG_OPEN_FAILED', "Impossible d\'ouvrir l\'image de session.");
- 		define('IMG_SAVE_IMG_OPEN_FAILED', "Impossible d\'ouvrir l\'image");
+		define('IMG_SAVE_EMPTY_PATH', "Le chemin de l'image est vide.");
+		define('IMG_SAVE_NOT_EXISTS', "L'image n'existe pas.");
+		define('IMG_SAVE_PATH_DISALLOWED', "Vous n'êtes pas autorisé à accéder à ce fichier.");
+		define('IMG_SAVE_UNKNOWN_MODE', "Mode inattendu d'opération d'image");
+		define('IMG_SAVE_RESIZE_FAILED', "Echec du redimensionnement de l'image.");
+		define('IMG_SAVE_CROP_FAILED', "Echec du découpage de l\image.");
+		define('IMG_SAVE_FAILED', "Echec de la sauvegarde de l'image.");
+		define('IMG_SAVE_BACKUP_FAILED', "Impossible de sauvegarder l'image originale.");
+		define('IMG_SAVE_ROTATE_FAILED', "Impossible d\effectuer la rotation de l'image.");
+		define('IMG_SAVE_FLIP_FAILED', "Impossible de basculer l'image.");
+		define('IMG_SAVE_SESSION_IMG_OPEN_FAILED', "Impossible d'ouvrir l'image de session.");
+ 		define('IMG_SAVE_IMG_OPEN_FAILED', "Impossible d'ouvrir l'image");
 
 
 		//UNDO
-		define('IMG_UNDO_NO_HISTORY_AVAIALBE', "Aucun historique d\'annulation.");
- 		define('IMG_UNDO_COPY_FAILED', "Impossible de restaurer l\'image.");
- 		define('IMG_UNDO_DEL_FAILED', "Impossible de supprimer l\'image de session");
+		define('IMG_UNDO_NO_HISTORY_AVAIALBE', "Aucun historique d\annulation.");
+ 		define('IMG_UNDO_COPY_FAILED', "Impossible de restaurer l'image.");
+ 		define('IMG_UNDO_DEL_FAILED', "Impossible de supprimer l'image de session");
  		
  		define('IMG_WARNING_UNDO', "Voulez-vous annuler la dernière modification ?");
 
@@ -330,21 +330,21 @@
 
 		//88888888888   Session   888888888888888888888
 		define('SESSION_PERSONAL_DIR_NOT_FOUND', "Impossible de trouver le dossier dédié qui aurait dû être créé dans le dossier session");
-		define('SESSION_COUNTER_FILE_CREATE_FAILED', "Impossible d\'ouvrir le fichier de comptage de session.");
-		define('SESSION_COUNTER_FILE_WRITE_FAILED', "Impossible d\'écrire dans le fichier de comptage de session.");
+		define('SESSION_COUNTER_FILE_CREATE_FAILED', "Impossible d'ouvrir le fichier de comptage de session.");
+		define('SESSION_COUNTER_FILE_WRITE_FAILED', "Impossible d'écrire dans le fichier de comptage de session.");
 		//88888888888   Session   888888888888888888888
 
 		//88888888888   Below for Text Editor   888888888888888888888
-		define('TXT_FILE_NOT_FOUND', "Le fichier n\'a pas été trouvé.");
+		define('TXT_FILE_NOT_FOUND', "Le fichier n'a pas été trouvé.");
 		define('TXT_EXT_NOT_SELECTED', "Merci de choisir une extension au fichier.");
 		define('TXT_DEST_FOLDER_NOT_SELECTED', "Merci de choisir un dossier de destination.");
 		define('TXT_UNKNOWN_REQUEST', "Requête inconnue.");
-		define('TXT_DISALLOWED_EXT', "Vous n\'êtes pas autorisé à modifier/ajouter ce type de fichier.");
+		define('TXT_DISALLOWED_EXT', "Vous n'êtes pas autorisé à modifier/ajouter ce type de fichier.");
 		define('TXT_FILE_EXIST', "Ce fichier existe déjà.");
-		define('TXT_FILE_NOT_EXIST', "Ce fichier n\'existe pas.");	
+		define('TXT_FILE_NOT_EXIST', "Ce fichier n''existe pas.");	
 		define('TXT_CREATE_FAILED', "Echec de la création du fichier.");
-		define('TXT_CONTENT_WRITE_FAILED', "Echec de l\'écriture du contenu dans le fichier.");
-		define('TXT_FILE_OPEN_FAILED', "Echec de l\'ouverture du fichier.");
+		define('TXT_CONTENT_WRITE_FAILED', "Echec de l'écriture du contenu dans le fichier.");
+		define('TXT_FILE_OPEN_FAILED', "Echec de l'ouverture du fichier.");
 		define('TXT_CONTENT_UPDATE_FAILED', "Echec de la mise à jour du contenu du fichier.");
 		define('TXT_SAVE_AS_ERR_NAME_INVALID', "Il faut saisir un nom qui contient uniquement des lettres, chiffres, espaces, tirets et tirets-bas.");
 		//88888888888   Above for Text Editor   888888888888888888888

@@ -5,9 +5,9 @@ define("_FORMMULTIPLEAJAXFILEMANAGER", "Fichier[%s]");
 define("_FORMMULTIPLEAJAXFILEMANAGER_NEW", "Ajouter un nouveau fichier");
 
 /**
- * @translation     CommunautÃ© Francophone des Utilisateurs de Xoops
+ * @translation     Communauté Francophone des Utilisateurs de Xoops
  * @specification   _LANGCODE: fr
- * @specification   _CHARSET: UTF-8 sans Bom
+ * @specification   _CHARSET: ISO-8859-1
  *
  * @Translator      fdeconiac (francoisdeconiac@gmail.com)
  *
