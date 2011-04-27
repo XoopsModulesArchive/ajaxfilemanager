@@ -48,6 +48,17 @@ function moduleAdminTabMenu($adminmenu = array(), $currentFile = 0, $breadcrumb 
         #buttonbar .current a span { background-position:100% -150px; padding-bottom:5px; color:#333; }
         #buttonbar a:hover { background-position:0% -150px; }
         #buttonbar a:hover span { background-position:100% -150px; }
+        div.CPbigTitle{
+            font-size: 12px;
+            color: #606060;
+            background: no-repeat left top;
+            font-weight: bold;
+            height: 30px;
+            vertical-align: middle;
+            padding: 10px 0 0 40px;
+            /*border-bottom: 3px solid #393e41;*/
+            border-bottom: none;
+        }
         </style>
     ";
     
