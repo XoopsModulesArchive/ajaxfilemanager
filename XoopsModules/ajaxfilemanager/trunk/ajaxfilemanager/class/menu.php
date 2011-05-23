@@ -174,6 +174,7 @@ class testMenu
 	            -khtml-border-radius: 6px;
 	            border-radius: 6px;
 			}
+            /*
 			div.CPbigTitle{
 	            font-size: 12px;
 	            color: #606060;
@@ -183,7 +184,9 @@ class testMenu
 	            vertical-align: middle;
 	            padding: 10px 0 0 40px;
 	            border-bottom: 3px solid #393e41;
-			}";
+			}
+            */
+            ";
 
 
 		if ($ws) $csscode .= "\n-->\n</style>";

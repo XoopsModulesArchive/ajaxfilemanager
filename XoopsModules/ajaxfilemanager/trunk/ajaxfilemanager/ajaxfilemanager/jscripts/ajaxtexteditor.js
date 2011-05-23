@@ -1,6 +1,8 @@
 function save(id, text)
 {
+//alert("[" + text + "]"); // DEBUG
     jQuery('#text').val(text);
+//alert(jQuery('#text').val()); // DEBUG
     jQuery('#save_as_request').val('0');
     jQuery('#name').val(currentName);
     jQuery('#folder').val(currentFolder);

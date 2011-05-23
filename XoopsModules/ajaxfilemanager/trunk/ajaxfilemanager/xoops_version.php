@@ -44,8 +44,8 @@ $modversion['system_menu'] = 0;
 
 //about
 $modversion['status_version'] = 'RC';
-$modversion['release_date'] = '2011/04/18';
-$modversion['release'] = strtotime('2011/04/18'); // 'YYYY/MM/DD' format
+$modversion['release_date'] = '2011/05/31';
+$modversion['release'] = strtotime('2011/05/31'); // 'YYYY/MM/DD' format
 $modversion['demo_site_url'] = 'IN PROGRESS';
 $modversion['demo_site_name'] = 'IN PROGRESS';
 $modversion['forum_site_url'] = 'IN PROGRESS';
