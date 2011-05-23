@@ -5,6 +5,11 @@
  * @link www.phpletter.com
  * @since 22/April/2007
  *
+ * XOOPS Ajax File Manager Module
+ * @author Rota Lucio (lucio [dot]rota [at] gmail [dot] com)
+ * @link www.xoops.org
+ * @since 30/april/2011
+ *
  */
 define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
 
@@ -21,8 +26,8 @@ define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
     define('MENU_DELETE', 'Delete');
     define('MENU_PLAY', 'Play');
     define('MENU_PASTE', 'Paste');
-    define('MENU_ZIP', 'Zip');
-    define('MENU_UNZIP', 'Unzip');
+define('MENU_ZIP', 'Zip'); // XOOPS Ajax File Manager Module
+define('MENU_UNZIP', 'Unzip'); // XOOPS Ajax File Manager Module
 
 //Label
 
@@ -65,7 +70,7 @@ define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
     define('LBL_BTN_SELECT', 'Select');
     define('LBL_BTN_CANCEL', 'Cancel');
     define('LBL_BTN_UPLOAD', 'Upload');
-    define('LBL_BTN_UPLOADFTP', 'Upload Ftp');
+define('LBL_BTN_UPLOADFTP', 'Upload Ftp'); // XOOPS Ajax File Manager Module
     define('LBL_BTN_CREATE', 'Create');
     define('LBL_BTN_CLOSE', 'Close');
     define('LBL_BTN_NEW_FOLDER', 'New Folder');
@@ -76,8 +81,8 @@ define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
     define('LBL_BTN_VIEW_DETAILS', 'Details');
     define('LBL_BTN_VIEW_THUMBNAIL', 'Thumbnails');
     define('LBL_BTN_VIEW_OPTIONS', 'View In:');
-    define('LBL_BTN_ZIP', 'Zip');
-    define('LBL_BTN_UNZIP', 'Unzip');
+define('LBL_BTN_ZIP', 'Zip'); // XOOPS Ajax File Manager Module
+define('LBL_BTN_UNZIP', 'Unzip'); // XOOPS Ajax File Manager Module
     //pagination
     define('PAGINATION_NEXT', 'Next');
     define('PAGINATION_PREVIOUS', 'Previous');
@@ -85,9 +90,9 @@ define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
     define('PAGINATION_FIRST', 'First');
     define('PAGINATION_ITEMS_PER_PAGE', 'Display %s items per page');
     define('PAGINATION_GO_PARENT', 'Go Parent Folder');
-    //Zip
-    define('ZIP_FORM_TITLE', 'Zip File/s Form');
-    define('ZIP_NEW_NAME', 'Zip File Name:');
+//Zip
+define('ZIP_FORM_TITLE', 'Zip File/s Form'); // XOOPS Ajax File Manager Module
+define('ZIP_NEW_NAME', 'Zip File Name:'); // XOOPS Ajax File Manager Module
     //System
     define('SYS_DISABLED', 'Permission denied: The system is disabled.');
     //Cut
@@ -131,7 +136,7 @@ define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
     define('SEARCH_TYPE_PDF', 'PDF');
     define('SEARCH_TYPE_EXCEL', 'Excel');
     define('SEARCH_TYPE_TEXT', 'Text');
-    define('SEARCH_TYPE_KML', 'GoogleMaps Kml');
+define('SEARCH_TYPE_KML', 'GoogleMaps Kml'); // XOOPS Ajax File Manager Module
     define('SEARCH_TYPE_UNKNOWN', 'Unknown');
     define('SEARCH_TYPE_XML', 'XML');
     define('SEARCH_ALL_FILE_TYPES', 'All File Types');
@@ -197,10 +202,10 @@ define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
     define('NEW_FILE_FORM_TITLE', 'New File Form');
     define('NEW_FILE_LBL_TITLE', 'File Name:');
     define('NEW_FILE_CREATE', 'Create File');
-    //unzip
-    define('ERR_UNZIP_NOT_POSSIBLE_OVERWRITE', 'For security reasons is not possible overwrite files.');
-    //zip
-    define('ERR_ZIP_EXIST', 'Please give it a name which is unique under the folder.');
+//unzip
+define('ERR_UNZIP_NOT_POSSIBLE_OVERWRITE', 'For security reasons is not possible overwrite files.'); // XOOPS Ajax File Manager Module
+//zip
+define('ERR_ZIP_EXIST', 'Please give it a name which is unique under the folder.'); // XOOPS Ajax File Manager Module
 
     //file upload
     define('ERR_FILE_NAME_FORMAT', 'Please give it a name which only contain letters, digits, space, hyphen and underscore.');
@@ -214,11 +219,10 @@ define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
     define('FILE_LBL_MORE', 'Add File Uploader');
     define('FILE_CANCEL_UPLOAD', 'Cancel File Upload');
     define('FILE_LBL_UPLOAD', 'Upload');
-    //file uploadftp
-    define('FILEFTP_FORM_TITLE', 'File Ftp Upload Form');
-    define('FILE_CANCEL_UPLOADFTP', 'Cancel File Upload');
-    define('FILE_LBL_UPLOADFTP', 'Upload Ftp');
-
+//file uploadftp
+define('FILEFTP_FORM_TITLE', 'File Ftp Upload Form'); // XOOPS Ajax File Manager Module
+define('FILE_CANCEL_UPLOADFTP', 'Cancel File Upload'); // XOOPS Ajax File Manager Module
+define('FILE_LBL_UPLOADFTP', 'Upload Ftp'); // XOOPS Ajax File Manager Module
     //file download
     define('ERR_DOWNLOAD_FILE_NOT_FOUND', 'No files selected for download.');
     //Rename
@@ -233,7 +237,7 @@ define('DATE_TIME_FORMAT', 'd/M/Y H:i:s');
     define('TIP_SELECT_ALL', 'Select All');
     define('TIP_UNSELECT_ALL', 'Unselect All');
     //WARNING
-    define('WARNING_UNZIP', 'Are you sure to unzip selected document?');
+define('WARNING_UNZIP', 'Are you sure to unzip selected document?'); // XOOPS Ajax File Manager Module
     define('WARNING_DELETE', 'Are you sure to delete selected document(s)?');
     define('WARNING_IMAGE_EDIT', 'Please select an image for edit.');
     define('WARNING_NOT_FILE_EDIT', 'Please select a file for edit.');

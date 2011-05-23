@@ -1,8 +1,8 @@
+Version 0.01 2011/05/31:
+=================================
+- fixed bug when saving edited text file (if gpc_magic_quotes)
+- fixed traslation bug in ialian
 
--------------------------------------------------
-Version: 0.01
-Date:    06/04/2011
--------------------------------------------------
- - IN PROGRESS
-
-
+Version 0.01 2011/04/30:
+=================================
+- beta

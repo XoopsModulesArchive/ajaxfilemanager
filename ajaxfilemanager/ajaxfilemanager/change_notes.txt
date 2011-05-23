@@ -1,4 +1,4 @@
-08/April/2011 V1.0 Final
+30/April/2011 V1.0 Final
 for Xoops by luciorota <lucio.rota@gmail.com>
 
 + Xoops Editors support
@@ -6,7 +6,7 @@ for Xoops by luciorota <lucio.rota@gmail.com>
 + added filetypes (.kml = GoogleMaps Kml, ...)
 + added create new file (create empty editable files)
 + fixed bug pasting files/folders
-+ added zip/unzip support (beta)
++ added zip/unzip support
 + eregi->preg_match/i for better php v5.3+ compatibility
 + added ftp upload support (in progress)
 

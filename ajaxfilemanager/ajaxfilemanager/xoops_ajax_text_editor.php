@@ -118,6 +118,7 @@ $editorConfigs["cols"] = 100;
 $editorConfigs["width"] = "100%";
 $editorConfigs["height"] = "400px";
 $editorConfigs["syntax"] = $syntax;
+$editorConfigs["noHtml"] = false;
 $editorConfigs["editor"] = $ajaxfilemanagerModuleConfig['text_editor'];
 $editor = new XoopsFormEditor('', "content", $editorConfigs);
 $form->addElement($editor, true);
@@ -140,8 +141,8 @@ case 'ckeditor' :
 case 'dhtmltextarea' :
 case 'textarea' :
 default :
-    //$getValueJS = "document.getElementById('" . $editorConfigs["name"] ."').value()";
-    $getValueJS = "$(\"#" . $editorConfigs["name"] ."\").val()"; // jQuery
+    $getValueJS = "document.getElementById(\"" . $editorConfigs["name"] ."\").value"; // DEBUG
+    //$getValueJS = "$(\"#" . $editorConfigs["name"] ."\").val()"; // jQuery // DEBUG
     }
 // MAMBA wrote: "use a patch", and so... here you are "the patch" ;-)
 
