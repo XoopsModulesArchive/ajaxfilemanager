@@ -15,6 +15,7 @@ define("_AJAXFM_AM_INDEX_SPHPINI", "<b>Informazioni ottenute da configurazione P
 define("_AJAXFM_AM_INDEX_SERVERPATH", "Percorso assoluto di XOOPS sul server (XOOPS_ROOT_PATH): ");
 define("_AJAXFM_AM_INDEX_SAFEMODESTATUS", "Stato 'Safe Mode': ");
 define("_AJAXFM_AM_INDEX_REGISTERGLOBALS", "Stato 'Register Globals': ");
+define("_AJAXFM_AM_INDEX_MAGICQUOTESGPC", "Stato 'magic_quotes_gpc': ");
 define("_AJAXFM_AM_INDEX_SERVERUPLOADSTATUS", "Stato 'Server Uploads': ");
 define("_AJAXFM_AM_INDEX_MAXUPLOADSIZE", "Dimensioni massime Upload ('upload_max_filesize'): ");
 define("_AJAXFM_AM_INDEX_MAXPOSTSIZE", "Dimensioni massime Post ('post_max_size'): ");

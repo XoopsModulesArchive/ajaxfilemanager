@@ -10,7 +10,7 @@
 define('_AJAXFM_MI_NAME', 'AjaxFileManager');
 
 // A brief description of this module
-define('_AJAXFM_MI_DESC', 'PEr amministrare i file, i contenuti, le immagini del sito.');
+define('_AJAXFM_MI_DESC', 'Per amministrare i file, i contenuti, le immagini del sito.');
 
 // Names of admin menu items
 define('_AJAXFM_MI_ADMENU_INDEX', 'Indice');

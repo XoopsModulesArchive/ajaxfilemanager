@@ -60,16 +60,36 @@ echo '<tr>';
 
 echo '<td>' . $menu->render() . '</td>';
 
-
-
 echo '<td valign="top" width="60%">';
 echo '<fieldset><legend class="CPmediumTitle">' . _AJAXFM_AM_INDEX_INFO . '</legend>';
-echo '<div>' . _AJAXFM_AM_INDEX_SCONFIG . '</div>';
-echo '<p>';
-echo _AJAXFM_MI_VALIDEXTS . ': ' . $xoopsModuleConfig['upload_valid_exts'];
+echo '<h3>' . _AJAXFM_AM_INDEX_SCONFIG . '</h3>';
+
+echo '<p class="caption-text">' . _AJAXFM_MI_VALIDEXTS . ': ' . $xoopsModuleConfig['upload_valid_exts'];
+echo '<br />';
+echo '<br />';
+echo '<span style="font-weight: normal;">' . _AJAXFM_MI_VALIDEXTS_DESC . '</span>';
 echo '</p>';
-echo '<p>';
-echo _AJAXFM_MI_MAXSIZE . ': ' . $xoopsModuleConfig['upload_max_size'] . _AJAXFM_MI_MAXSIZE_MB;
+
+echo '<p class="caption-text">' . _AJAXFM_MI_MAXSIZE . ': ' . $xoopsModuleConfig['upload_max_size'] . _AJAXFM_MI_MAXSIZE_MB;
+echo '<br />';
+echo '<br />';
+echo '<span style="font-weight: normal;">' . _AJAXFM_MI_MAXSIZE_DESC . '</span>';
+echo '</p>';
+
+$config_handler =& xoops_gethandler('config');
+$criteria = new CriteriaCompo();
+$criteria->add(new Criteria('conf_modid', $xoopsModule->id()));
+$criteria->add(new Criteria('conf_name', 'navigation_mode'));
+$config = $config_handler->getConfigs($criteria);
+$navigation_mode_config = $config[0];
+$navigation_mode_options = $config_handler->getConfigOptions(new Criteria('conf_id', $navigation_mode_config->getVar('conf_id')));
+foreach ($navigation_mode_options as $option) {
+    $options[$option->getVar('confop_value')] = $option->getVar('confop_name');
+}
+echo '<p class="caption-text">' . _AJAXFM_MI_NAVIGATIONMODE . ': ' . constant($options[$navigation_mode_config->getVar('conf_value')]);
+echo '<br />';
+echo '<br />';
+echo '<span style="font-weight: normal;">' . _AJAXFM_MI_NAVIGATIONMODE_DESC . '</span>';
 echo '</p>';
 
 // check if ftp server exists and module can log to it
@@ -101,10 +121,7 @@ if($xoopsModuleConfig['ftp_enabled'] && function_exists('ftp_connect') && !empty
         ftp_close($connId);
     }
 }
-echo '<p>';
-echo _AJAXFM_MI_FTPSUPPORT . ': ' . ($useFtp ? _AJAXFM_AM_INDEX_ON : _AJAXFM_AM_INDEX_OFF);
-echo '</p>';
-
+echo '<p class="caption-text">' . _AJAXFM_MI_FTPSUPPORT . ': ' . ($useFtp ? _AJAXFM_AM_INDEX_ON : _AJAXFM_AM_INDEX_OFF). '</p>';
 
 
 
@@ -134,9 +151,10 @@ echo '</fieldset>';
 echo '<br/>';
 
 echo '<fieldset><legend class="CPmediumTitle">' . _AJAXFM_AM_INDEX_SERVERSTATUS . '</legend>';
-echo '<div>' . _AJAXFM_AM_INDEX_SPHPINI . '</div>';
+echo '<h3>' . _AJAXFM_AM_INDEX_SPHPINI . '</h3>';
 $safeMode = (ini_get('safe_mode')) ? _AJAXFM_AM_INDEX_ON . _AJAXFM_AM_INDEX_SAFEMODEPROBLEMS : _AJAXFM_AM_INDEX_OFF;
 $registerGlobals = (!ini_get('register_globals')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_OFF . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_ON . '</span>';
+$magicQuotesGpc = (get_magic_quotes_gpc()) ? _AJAXFM_AM_INDEX_ON : _AJAXFM_AM_INDEX_OFF;
 $downloads = (ini_get('file_uploads')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_ON . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_OFF . '</span>';
 $gdLib = (function_exists('gd_info')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_GDON . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_GDOFF . '</span>';
 $zipLib = (class_exists('ZipArchive')) ? '<span style="color: green;">' . _AJAXFM_AM_INDEX_ZIPON . '</span>' : '<span style="color: red;">' . _AJAXFM_AM_INDEX_ZIPOFF . '</span>';
@@ -152,6 +170,7 @@ echo '</ul>';
 echo '<ul>';
 echo '<li>' . _AJAXFM_AM_INDEX_SAFEMODESTATUS . $safeMode;
 echo '<li>' . _AJAXFM_AM_INDEX_REGISTERGLOBALS . $registerGlobals;
+echo '<li>' . _AJAXFM_AM_INDEX_MAGICQUOTESGPC . $magicQuotesGpc;
 echo '<li>' . _AJAXFM_AM_INDEX_SERVERUPLOADSTATUS . $downloads;
 echo '<li>' . _AJAXFM_AM_INDEX_MAXUPLOADSIZE . ' <b><span style="color: blue;">' . ini_get('upload_max_filesize') . '</span></b>';
 echo '<li>' . _AJAXFM_AM_INDEX_MAXPOSTSIZE . ' <b><span style="color: blue;">' . ini_get('post_max_size') . '</span></b>';
