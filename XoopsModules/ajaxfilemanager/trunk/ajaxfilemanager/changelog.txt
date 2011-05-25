@@ -1,7 +1,9 @@
 Version 0.01 2011/05/31:
 =================================
-- fixed bug when saving edited text file (if gpc_magic_quotes)
-- fixed traslation bug in ialian
+- fixed bug when saving edited text files (if gpc_magic_quotes)
+- fixed traslation bug in italian language
+- added info to admin index page
+- added language definition: admin.php/_AJAXFM_AM_INDEX_MAGICQUOTESGPC
 
 Version 0.01 2011/04/30:
 =================================

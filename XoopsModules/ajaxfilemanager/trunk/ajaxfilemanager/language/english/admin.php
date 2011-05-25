@@ -15,6 +15,7 @@ define("_AJAXFM_AM_INDEX_SPHPINI", "<b>Information taken from PHP ini File:</b>"
 define("_AJAXFM_AM_INDEX_SERVERPATH", "Server Path to XOOPS Root: ");
 define("_AJAXFM_AM_INDEX_SAFEMODESTATUS", "Safe Mode Status: ");
 define("_AJAXFM_AM_INDEX_REGISTERGLOBALS", "Register Globals: ");
+define("_AJAXFM_AM_INDEX_MAGICQUOTESGPC", "'magic_quotes_gpc' Status: ");
 define("_AJAXFM_AM_INDEX_SERVERUPLOADSTATUS", "Server Uploads Status: ");
 define("_AJAXFM_AM_INDEX_MAXUPLOADSIZE", "Max Upload Size Permitted: ");
 define("_AJAXFM_AM_INDEX_MAXPOSTSIZE", "Max Post Size Permitted: ");
