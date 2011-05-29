@@ -234,7 +234,7 @@ function changeView()
 {
     var url = getUrl('view', true, true);
     $('#rightCol').empty();
-    ajaxStart('#rightCol');
+	ajaxStart('#rightCol');
     $('#rightCol').load(url, 
         {},
         function(){
@@ -1487,7 +1487,9 @@ function doRename()
  */
 function windowRefresh()
 {
+	ajaxStart('#rightCol');
     document.location.href = urls.present;
+	//ajaxStop('#rightCol img.ajaxLoadingImg');
     return false;
     //document.location.reload();
 };
