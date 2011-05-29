@@ -79,6 +79,20 @@ define('_AJAXFM_AM_EXTENSION_ACTIVATED_OK', "Estensione attivata");
     define('_AJAXFM_AM_EXT_FILE_DONT_EXIST', "Extension file don't exist on repository :<br /><b>Server : </b>%s<br /><b>File : </b>%s");
 define('_AJAXFM_AM_EXT_FILE_DONT_EXIST_SHORT', "I file dell'estensione non esistono");
 define('_AJAXFM_AM_EXTENSION_INSTALLED', "Estensione installata");
+// added v0.1 - 2011/05/31
+define('_AJAXFM_AM_EDITORPLUGIN_INFO', "Plugin Ajax File Manager per gli editor");
+define('_AJAXFM_AM_EDITORPLUGIN_INFO_DESC', "");
+define('_AJAXFM_AM_EDITOR', "Editor");
+define('_AJAXFM_AM_EDITOR_STATUS', "Stato");
+define('_AJAXFM_AM_EDITOR_ACTION', "Azione");
+define('_AJAXFM_AM_INSTALL_EDITORPLUGIN', "Installa plugin");
+define('_AJAXFM_AM_UNINSTALL_EDITORPLUGIN', "Disinstalla plugin");
+define('_AJAXFM_AM_EDITORPLUGIN_INSTALLED', "Plugin installato");
+define('_AJAXFM_AM_EDITORPLUGIN_NOT_INSTALLED', "Plugin non installato");
+define('_AJAXFM_AM_EDITORPLUGIN_INSTALLED_OK', "Plugin installato");
+define('_AJAXFM_AM_EDITORPLUGIN_UNINSTALLED_OK', "Plugin disinstallato");
+define('_AJAXFM_AM_EDITORTINYMCE', "Tinymce");
+define('_AJAXFM_AM_EDITORTINYMCE_DESC', "<span style='color:red;'>ATTENZIONE: <br />Se la procedura automatica di installazione non funziona, copiare il file di impostazioni di Tinymce &quot;%s&quot; in &quot;%s&quot;.</span>");
 
 
 
