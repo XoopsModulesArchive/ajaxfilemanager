@@ -79,7 +79,20 @@ define('_AJAXFM_AM_EXTENSION_NOTICE', "This extension allow you to display image
 define('_AJAXFM_AM_EXT_FILE_DONT_EXIST', "Extension file don't exist on repository :<br /><b>Server : </b>%s<br /><b>File : </b>%s");
 define('_AJAXFM_AM_EXT_FILE_DONT_EXIST_SHORT', "Extension file don't exist");
 define('_AJAXFM_AM_EXTENSION_INSTALLED', "Extension installed");
-
+// added v0.1 - 2011/05/31
+define('_AJAXFM_AM_EDITORPLUGIN_INFO', "Editors plugins information");
+define('_AJAXFM_AM_EDITORPLUGIN_INFO_DESC', "");
+define('_AJAXFM_AM_EDITOR', "Editor");
+define('_AJAXFM_AM_EDITOR_STATUS', "Status");
+define('_AJAXFM_AM_EDITOR_ACTION', "Action");
+define('_AJAXFM_AM_INSTALL_EDITORPLUGIN', "Install plugin");
+define('_AJAXFM_AM_UNINSTALL_EDITORPLUGIN', "Uninstall plugin");
+define('_AJAXFM_AM_EDITORPLUGIN_INSTALLED', "Plugin installed");
+define('_AJAXFM_AM_EDITORPLUGIN_NOT_INSTALLED', "Plugin not installed");
+define('_AJAXFM_AM_EDITORPLUGIN_INSTALLED_OK', "Plugin installed");
+define('_AJAXFM_AM_EDITORPLUGIN_UNINSTALLED_OK', "Plugin uninstalled");
+define('_AJAXFM_AM_EDITORTINYMCE', "Tinymce");
+define('_AJAXFM_AM_EDITORTINYMCE_DESC', "<span style='color:red;'>WARNING: <br />If automatic installation faults, please copy tinymce settings file &quot;%s&quot; to &quot;%s&quot;.</span>");
 
 
 //admin/about.php
