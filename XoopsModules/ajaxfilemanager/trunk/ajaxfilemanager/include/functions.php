@@ -214,4 +214,65 @@ function listExtensions($source) {
     closedir($dirHandler);
     return $extensions;
 }
+
+function installCustomTinymceSettings() {
+	// load Tinymce settings
+	if (!($conf = @include( $GLOBALS['xoops']->path('var/configs/tinymce.php')))) {
+		$conf = include XOOPS_ROOT_PATH . '/class/xoopseditor/tinymce/settings.php';
+	}
+	// backup old settings
+	$bakconf = array();
+	if (isset($conf['file_browser_callback'])) {$bakconf['file_browser_callback'] = $conf['file_browser_callback'];}
+	if (isset($conf['callback'])) {$bakconf['callback'] = $conf['callback'];}
+	// set new settings
+    $conf['file_browser_callback'] = "ajaxfilemanager";
+	$conf['callback'] = "function ajaxfilemanager(field_name, url, type, win) {
+			var ajaxfilemanagerurl = '" . XOOPS_URL . "/modules/ajaxfilemanager/ajaxfilemanager/ajaxfilemanager.php?editor=tinymce&config=ajaxfilemanager&language=" . _LANGCODE . "';
+			var view = 'detail';
+			switch (type) {
+				case 'image':
+				view = 'thumbnail';
+					break;
+				case 'media':
+					break;
+				case 'flash': 
+					break;
+				case 'file':
+					break;
+				default:
+					return false;
+			}
+            tinyMCE.activeEditor.windowManager.open({
+                url: '" . XOOPS_URL . "/modules/ajaxfilemanager/ajaxfilemanager/ajaxfilemanager.php?editor=tinymce&config=ajaxfilemanager&language=" . _LANGCODE . "',
+                width: 782,
+                height: 440,
+                inline : 'yes',
+                close_previous : 'no'
+            },{
+                window : win,
+                input : field_name
+            });
+		}";
+    file_put_contents(XOOPS_VAR_PATH . '/configs/tinymce.php', "<?php\rreturn \$config = " . var_export($conf, true) . "\r?>");
+    if (!empty($bakconf))
+		file_put_contents(XOOPS_VAR_PATH . '/configs/tinymce.bak.php', "<?php\rreturn \$config = " . var_export($bakconf, true) . "\r?>");
+	return true;
+}
+function uninstallCustomTinymceSettings() {
+    // TO DO
+	$conf = include XOOPS_VAR_PATH . '/configs/tinymce.php';
+    $conf['extensions'][$extension] = 0;
+    file_put_contents(XOOPS_VAR_PATH . '/configs/tinymce.php', "<?php\rreturn \$config = " . var_export($conf, true) . "\r?>");
+}
+function installedCustomTinymceSettings() {
+	if (!($conf = @include( $GLOBALS['xoops']->path('var/configs/tinymce.php'))))
+		return false;
+	if (!isset($conf['file_browser_callback']))
+		return false;
+	if (!($conf['file_browser_callback'] == "ajaxfilemanager"))
+		return false;
+	if (!isset($conf['callback']))
+		return false;
+	return true;
+}
 ?>
