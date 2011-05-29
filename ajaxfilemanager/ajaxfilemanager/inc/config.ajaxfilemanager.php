@@ -82,9 +82,12 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
     define('CONFIG_OPTIONS_RENAME', $permRename);
     $permUpload = ($gpermHandler->checkRight('ajaxfilemanager_extra', 2, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_UPLOAD', $permUpload);
-    $permUploadftp = ($ajaxfilemanagerModuleConfig['ftp_enabled'] && function_exists('ftp_connect') && $permUpload); // IN PROGRESS
-    define('CONFIG_OPTIONS_UPLOADFTP', $permUploadftp);
-    $permEdit = ($gpermHandler->checkRight('ajaxfilemanager_extra', 128, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
+    // FTP SUPPORT IN NEXT RELEASES, MAYBE...
+	//$permUploadftp = ($ajaxfilemanagerModuleConfig['ftp_enabled'] && function_exists('ftp_connect') && $permUpload); // IN PROGRESS
+    //define('CONFIG_OPTIONS_UPLOADFTP', $permUploadftp);
+	define('CONFIG_OPTIONS_UPLOADFTP', false);
+    // FTP SUPPORT IN NEXT RELEASES, MAYBE...
+	$permEdit = ($gpermHandler->checkRight('ajaxfilemanager_extra', 128, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_EDITABLE', $permEdit); //disable image editor and text editor
     //FILESYSTEM CONFIG
         /*
