@@ -34,8 +34,8 @@ $modversion['license'] = 'GPL see LICENSE';
 $modversion['license_url'] = 'http://www.gnu.org/licenses/gpl.html';
 $modversion['official'] = 0;
 $modversion['image'] = 'images/filemanager_slogo.png';
-$modversion['release_info'] = 'IN PROGRESS';
-$modversion['release_file'] = 'IN PROGRESS';
+$modversion['release_info'] = 'RC';
+$modversion['release_file'] = 'RC';
 $modversion['manual'] = 'Help';
 $modversion['manual_file'] = 'help.html';
 $modversion['dirname'] = $dirname;
@@ -193,9 +193,10 @@ $modversion['config'][] = array(
     "options"       => array('_AJAXFM_MI_XOOPSIMAGEMANAGER1' => 'standard', '_AJAXFM_MI_XOOPSIMAGEMANAGER2' => 'enhanced', '_AJAXFM_MI_XOOPSIMAGEMANAGER3' => 'ajaxfilemanager'),
     "category"       => 'extra'
     );
+// FTP SUPPORT IN NEXT RELEASES, MAYBE...
+/*
 // FTP CONFIG
  if (function_exists('ftp_connect')) {
-/* XOOPS 2.5.0+
     $modversion['config'][] = array(
         'name'      => 'break', 
         'title'         => '_AJAXFM_MI_PREFERENCE_BREAK_FTP', 
@@ -204,7 +205,6 @@ $modversion['config'][] = array(
         'valuetype'     => 'textbox', 
         'default'       => 'head'
         );
-*/
     $modversion['config'][] = array(
         "name"          => 'ftp_enabled',
         "title"         => '_AJAXFM_MI_FTPENABLED',
@@ -293,7 +293,6 @@ $modversion['config'][] = array(
         "category"       => 'ftp'
         );
     // FTP THROUGH PROXY CONFIG
-    /*
     $modversion['config'][] = array(
         "name"          => 'ftp_proxy',
         "title"         => '_AJAXFM_MI_FTPPROXY',
@@ -340,62 +339,9 @@ $modversion['config'][] = array(
         "default"       => '',
         "category"       => 'ftp'
         );
-    */
-    /*
-     * ftp_login does not support ftp trough proxy authentication. 
-     * So think about using the new PHP5 function ftp_raw() that's allow you 
-     * to send directly FTP commands. ftp_raw() allow you to send commands 
-     * prior to be connected (unlike ftp_exec()).
-     * I've writen this piece of code that's allow you to connect through 
-     * a "remoteid@remotehost proxyid" proxy.
-
-    function ftp_parse_response($response, &$errstr) {
-        if(!is_array($response)) {
-            $errstr    = 'Parameter \$response must be an array';
-            return false;
-        }
-        foreach($response as $r) {
-            $code    = substr(trim($r),0,3);
-
-            if(!is_numeric($code)) {
-                $errstr    = "$code is not a valid FTP code",$code);
-            }
-            if($code > 400) {
-                $errstr    = $r;
-                return false;
-            }
-        }
-        return true;
-    }
-    $user = "user";
-    $pass = "password";
-    $host = "ftp.example.com";
-    $proxyuser = "proxyuser";
-    $proxypass = "proxypass";
-    $proxyhost = "ftp.proxy.com";
-
-    $conn_id = ftp_connect($proxyhost);
-
-    if(!$conn_id) {
-        die("cannot connect to proxy");
-    }
-    $commands   = array(
-        "USER ".$user."@".$host." ".$proxyuser,
-        "PASS ".$pass,
-        "PASS ".$proxypass
-    );
-    foreach($commands as $c) {
-        $ret    = ftp_raw($conn_id,$c);
-        //you can write your own ftp_parse_response func that
-        //use an array of string as input
-        if(!ftp_parse_response($ret,$errstr)) {
-            ftp_close($conn_id);
-            die("cannot login to $host");
-        }
-    }
-    echo "ok, now connected";
-    */
-}
+	}
+*/
+// FTP SUPPORT IN NEXT RELEASES, MAYBE...
 
 // Comments
 $modversion["hasComments"] = 0;
