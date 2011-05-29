@@ -71,7 +71,9 @@ case 'extra':
 
     '512'   => _AJAXFM_AM_PERM_EXTRA_512 ,  // Create new files
     '2'     => _AJAXFM_AM_PERM_EXTRA_2 ,    // Upload files
-    '256'   => _AJAXFM_AM_PERM_EXTRA_256 ,  // Upload files by FTP
+    // FTP SUPPORT IN NEXT RELEASES, MAYBE...
+	//'256'   => _AJAXFM_AM_PERM_EXTRA_256 ,  // Upload files by FTP
+	// FTP SUPPORT IN NEXT RELEASES, MAYBE...
 
     '32'    => _AJAXFM_AM_PERM_EXTRA_32 ,   // Create new folder
 

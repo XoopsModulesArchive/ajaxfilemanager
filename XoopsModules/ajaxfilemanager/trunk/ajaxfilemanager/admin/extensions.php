@@ -46,6 +46,14 @@ if(isset($_POST['extension'])) {
 
 
 switch( $step ) {
+case 'installtinymce':
+    installCustomTinymceSettings();
+    redirect_header($currentFile, 3, _AJAXFM_AM_EDITORPLUGIN_INSTALLED_OK);
+    break;
+case 'uninstalltinymce':
+    uninstallCustomTinymceSettings();
+    redirect_header($currentFile, 3, _AJAXFM_AM_EDITORPLUGIN_UNINSTALLED_OK);
+    break;
 case 'activate':
     activateExtension($extension);
     redirect_header($currentFile, 3, _AJAXFM_AM_EXTENSION_ACTIVATED);
@@ -55,7 +63,7 @@ case 'desactivate':
     redirect_header($currentFile, 3, _AJAXFM_AM_EXTENSION_DISABLED);
     break;
 case 'install':
-    $source = XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['xoopsModule']->getVar('dirname') . '/extra/textsanitizer.extension' .  '/' . $extension;
+    $source = XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['xoopsModule']->getVar('dirname') . '/install/textsanitizer.extension' .  '/' . $extension;
     $destination = XOOPS_ROOT_PATH . '/class/textsanitizer/' . $extension;
     if(!file_exists($source)) {
         redirect_header($currentFile, 3, _AJAXFM_AM_EXT_FILE_DONT_EXIST_SHORT);
@@ -84,9 +92,10 @@ case 'default':
         echo '<p>' . sprintf(_AJAXFM_AM_EXTENSION_WARNING2, $extensionsPath, $extensionsPath) . '</p>';
     }
 
-    echo "<fieldset>";
+    // Ajax File Manager extensions
+	echo "<fieldset>";
     echo "<legend style='font-weight:bold; color:#990000;'>" . _AJAXFM_AM_EXTRA_EXTENSION_INFO . "</legend>";
-    $source = XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['xoopsModule']->getVar('dirname') . '/extra/textsanitizer.extension';
+    $source = XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['xoopsModule']->getVar('dirname') . '/install/textsanitizer.extension';
     $extraExtensions = listExtensions($source);
 
     echo _AJAXFM_AM_EXTRA_EXTENSION_INFO_DESC;
@@ -151,6 +160,55 @@ case 'default':
 
     echo "<br />";
 
+    // Ajax File Manager editors plugins
+	echo "<fieldset>";
+    echo "<legend style='font-weight:bold; color:#990000;'>" . _AJAXFM_AM_EDITORPLUGIN_INFO . "</legend>";
+    echo "<table class=''>";
+    echo "<tbody>";
+    echo "<tr>";
+    echo "<th>" . _AJAXFM_AM_EDITOR . "</th>";
+    echo "<th>" . _AJAXFM_AM_EDITOR_STATUS . "</th>";
+    echo "<th>" . _AJAXFM_AM_EDITOR_ACTION . "</th>";
+    echo "</tr>";
+	echo "<tr class='odd'>";
+	echo "<td>";
+	echo "<h3>" . _AJAXFM_AM_EDITORTINYMCE . "</h3>";
+	$source = XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['xoopsModule']->getVar('dirname') . '/install/tinymce.plugin/tinymce.php';
+	$destination = $GLOBALS['xoops']->path('var/configs/tinymce.php');
+	echo sprintf(_AJAXFM_AM_EDITORTINYMCE_DESC, $source , $destination);
+	echo "</td>";
+	if(!installedCustomTinymceSettings()) {
+		echo "<td>";
+		echo "  <span style='color:red;'>" . _AJAXFM_AM_EDITORPLUGIN_NOT_INSTALLED . "</span>";
+		echo "</td>";
+		echo "<td>";
+		echo "  <form action='" . $currentFile . "' method='post'>";
+		echo "  <input type='hidden' name='step' value='installtinymce' />";
+		echo "  <input type='hidden' name='extension' value='" . $extension . "' />";
+		echo "  <input class='formButton' value='" . _AJAXFM_AM_INSTALL_EDITORPLUGIN . "'' type='submit' />";
+		echo "  </form>";
+		echo "</td>";
+	} else {
+		echo "<td>";
+		echo "  <span style='color:green;'>" . _AJAXFM_AM_EDITORPLUGIN_INSTALLED . "</span>";
+		echo "</td>";
+		echo "<td>";
+		echo "  <form action='" . $currentFile . "' method='post'>";
+		echo "  <input type='hidden' name='step' value='uninstalltinymce' />";
+		echo "  <input type='hidden' name='extension' value='" . $extension . "' />";
+		echo "  <input class='formButton' value='" . _AJAXFM_AM_UNINSTALL_EDITORPLUGIN . "' type='submit' />";
+		echo "</form>";
+		echo "</td>";
+	}
+	echo "</tr>";
+    echo "</tbody>";
+    echo "</table>";
+
+    echo "</fieldset>";
+
+    echo "<br />";
+
+	// Standard or extra Xoops extensions
     echo "<fieldset>";
     echo "<legend style='font-weight:bold; color:#990000;'>" . _AJAXFM_AM_EXTENSION_INFO . "</legend>";
     $extensionsPath = XOOPS_ROOT_PATH . '/class/textsanitizer';
@@ -201,7 +259,7 @@ case 'default':
     echo "</tbody>";
     echo "</table>";
     echo "</fieldset>";
-
+	
     xoops_cp_footer();
     break;
 } // switch ( $step )
