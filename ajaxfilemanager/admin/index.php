@@ -92,6 +92,8 @@ echo '<br />';
 echo '<span style="font-weight: normal;">' . _AJAXFM_MI_NAVIGATIONMODE_DESC . '</span>';
 echo '</p>';
 
+// FTP SUPPORT IN NEXT RELEASES, MAYBE...
+/*
 // check if ftp server exists and module can log to it
 $useFtp = false;
 if($xoopsModuleConfig['ftp_enabled'] && function_exists('ftp_connect') && !empty($xoopsModuleConfig['ftp_serverhost'])) {
@@ -122,9 +124,10 @@ if($xoopsModuleConfig['ftp_enabled'] && function_exists('ftp_connect') && !empty
     }
 }
 echo '<p class="caption-text">' . _AJAXFM_MI_FTPSUPPORT . ': ' . ($useFtp ? _AJAXFM_AM_INDEX_ON : _AJAXFM_AM_INDEX_OFF). '</p>';
+*/
+// FTP SUPPORT IN NEXT RELEASES, MAYBE...
 
-
-
+// check if ajaxfilemanager upload directories exist
 $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager";
 if (!file_exists($dir)) {
     printf(_AJAXFM_AM_WARNING_DIRNOTEXIST, htmlentities($dir));
@@ -148,7 +151,9 @@ if (!file_exists($dir)) {
 }
 echo '</fieldset>';
 
+
 echo '<br/>';
+
 
 echo '<fieldset><legend class="CPmediumTitle">' . _AJAXFM_AM_INDEX_SERVERSTATUS . '</legend>';
 echo '<h3>' . _AJAXFM_AM_INDEX_SPHPINI . '</h3>';

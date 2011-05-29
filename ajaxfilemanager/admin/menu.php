@@ -31,6 +31,7 @@ $adminmenu[$i]['title'] = _AJAXFM_MI_ADMENU_FILEMANAGER;
 $adminmenu[$i]['link'] = "admin/filemanager.php";
 $adminmenu[$i]['desc'] = _AJAXFM_MI_ADMENU_FILEMANAGER_DESC;
 $adminmenu[$i]['icon'] = "images/icons/32x32/installer_box.png";
+// FTP SUPPORT IN NEXT RELEASES
 /*
 $i++;
 $adminmenu[$i]['name'] = 'Ftp';
@@ -39,6 +40,7 @@ $adminmenu[$i]['link'] = "admin/ftp.php";
 $adminmenu[$i]['desc'] = _AJAXFM_MI_ADMENU_FTP_DESC;
 $adminmenu[$i]['icon'] = "images/icons/32x32/ftp.png";
 */
+// FTP SUPPORT IN NEXT RELEASES
 $i++;
 $adminmenu[$i]['name'] = 'Extension';
 $adminmenu[$i]['title'] = _AJAXFM_MI_ADMENU_EXTENSIONS;
