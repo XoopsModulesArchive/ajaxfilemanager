@@ -1347,6 +1347,8 @@ function doZip()
                         }
                     }
                     addDocumentHtml(numRows);
+                    //refresh content
+                    windowRefresh();
                     tb_remove();
                 }
             } 
