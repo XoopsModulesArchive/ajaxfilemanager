@@ -1347,8 +1347,6 @@ function doZip()
                         }
                     }
                     addDocumentHtml(numRows);
-                    //refresh content
-                    windowRefresh();
                     tb_remove();
                 }
             } 
@@ -1489,9 +1487,9 @@ function doRename()
  */
 function windowRefresh()
 {
-	ajaxStart('#rightCol');
+    ajaxStart('#rightCol');
     document.location.href = urls.present;
-	//ajaxStop('#rightCol img.ajaxLoadingImg');
+    //ajaxStop('#rightCol img.ajaxLoadingImg');
     return false;
     //document.location.reload();
 };
@@ -1693,7 +1691,7 @@ function addDocumentHtml(num)
     }
     switch(getView()) {
         case 'thumbnail':
-            $('<dl class="thumbnailListing" id="dl' + num + '" ><dt id="dt' + num + '" class="' + files[num].cssClass + '"></dt><dd id="dd' + num + '" class="thumbnailListing_info"><span id="flag' + num + '" class="' + files[num].flag + '">&nbsp;</span><input id="cb' + num + '" type="checkbox"  class="radio" ' + strDisabled +' name="check[]" class="input" value="' + files[num].path + '" /><a href="' + files[num].path + '" title="' + files[num].name + '" id="a' + num + '">' + (typeof(files[num].short_name) != 'undefined'?files[num].short_name:files[num].name) + '</a></dd></dl>').appendTo('#content');
+            $('<dl class="thumbnailListing" id="dl' + num + '" ><dt id="dt' + num + '" class="' + files[num].cssClass + '"></dt><dd id="dd' + num + '" class="thumbnailListing_info"><span id="flag' + num + '" class="' + files[num].flag + '">&nbsp;</span><input id="cb' + num + '" type="checkbox"  class="radio" ' + strDisabled +' name="check[]" class="input" value="' + files[num].path + '" />&nbsp;<a href="' + files[num].path + '" title="' + files[num].name + '" id="a' + num + '">' + (typeof(files[num].short_name) != 'undefined'?files[num].short_name:files[num].name) + '</a></dd></dl>').appendTo('#content');
             if(files[num].type == 'folder') {
                 //this is foder item
                 enableFolderBrowsable(num);
@@ -1741,7 +1739,7 @@ function addDocumentHtml(num)
                     default:
                 }
             enablePreview('#row' + num + ' td a', num);
-        }	
+        }
         enableContextMenu('#row' + num);
         enableShowDocInfo(num);
         break;
