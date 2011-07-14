@@ -81,9 +81,9 @@ if($error == "") {
     $objFile = new file($zipFilePath);
     $fileInfo = $objFile->getFileInfo();
     include_once(CLASS_MANAGER);
-    $manager = new manager($zipFilePath, false);
-    $pathInfo = $manager->getFolderInfo($zipFilePath);
-    $fileInfo = array_merge($pathInfo, $manager->getFileType($zipFilePath, false));
+    //$manager = new manager($zipFilePath, false);
+    //$pathInfo = $manager->getFolderInfo($zipFilePath);
+    //$fileInfo = array_merge($pathInfo, $manager->getFileType($zipFilePath, false));
 
     foreach($fileInfo as $k=>$v) {
         switch ($k) {
@@ -95,9 +95,18 @@ if($error == "") {
         case 'name':
             $fileInfo['short_name'] = shortenFileName($v);
             break;
+        case 'size':
+            $fileInfo['size'] = transformFileSize($v);
+            break;
         }
     }
 }
+
+$fileInfo['cssClass'] = 'fileZip';
+$fileInfo['type'] = "file";
+    //$fileInfo['type'] = 'folder';
+    //$fileInfo['flag'] = 'noFlag';
+
 
 $ret = $fileInfo;
 // append error

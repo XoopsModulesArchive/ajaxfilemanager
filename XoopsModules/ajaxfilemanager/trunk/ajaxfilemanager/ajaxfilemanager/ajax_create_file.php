@@ -62,7 +62,7 @@ if(CONFIG_SYS_VIEW_ONLY || !CONFIG_OPTIONS_NEWFILE) {
     } else {
         $error = ERR_FILE_CREATION_FAILED;
     }
-	//$error = "For security reason, file creation function has been disabled.";
+    //$error = "For security reason, file creation function has been disabled.";
 }
 
 echo "{";

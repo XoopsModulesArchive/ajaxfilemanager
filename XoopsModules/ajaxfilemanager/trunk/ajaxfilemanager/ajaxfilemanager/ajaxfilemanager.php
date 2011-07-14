@@ -377,84 +377,84 @@ if(CONFIG_OPTIONS_SEARCH) {
 
 
 <fieldset id="folderFieldSet" >
-<legend><?php echo LBL_FOLDER_INFO; ?></legend>
-<table cellpadding="0" cellspacing="0" class="tableSummary" id="folderInfo">
-<tbody>
-<tr>
-<th><?php echo LBL_FOLDER_PATH; ?></th>
-<td colspan="3" id="folderPath"><?php echo transformFilePath($folderInfo['path']); ?></td>
-</tr>
-<tr>
-<th><?php echo LBL_FOLDER_CREATED; ?></th>
-<td colspan="3" id="folderCtime"><?php echo (!empty($folderInfo['ctime'])?date(DATE_TIME_FORMAT,$folderInfo['ctime']):'&nbsp;') ; ?></td>
-</tr>
-<tr>
-<th><?php echo LBL_FOLDER_MODIFIED; ?></th>
-<td colspan="3" id="folderMtime"><?php echo (!empty($folderInfo['mtime'])?date(DATE_TIME_FORMAT,$folderInfo['mtime']):'&nbsp;'); ?></td>
-</tr>
-<tr>
-<th><?php echo LBL_FOLDER_SUDDIR; ?></th>
-<td colspan="3" id="folderSubdir"><?php echo (isset($folderInfo['subdir'])?$folderInfo['subdir']:"&nbsp;"); ?></td>
-</tr>
-<tr>
-<th><?php echo LBL_FOLDER_FIELS; ?></th>
-<td colspan="3" id="folderFile"><?php echo (isset($folderInfo['file'])?$folderInfo['file']:'&nbsp;'); ?></td>
-</tr>
-<tr>
-<th><?php echo LBL_FOLDER_WRITABLE; ?></th>
-<td id="folderWritable"><span class="<?php echo (isset($folderInfo['is_readable'])?($folderInfo['is_readable']?'flagYes':'flagNo'):'&nbsp;'); ?>">&nbsp;</span></td>
-<th><?php echo LBL_FOLDER_READABLE; ?></th>
-<td  id="folderReadable"><span class="<?php echo (isset($folderInfo['is_writable'])?($folderInfo['is_writable']?'flagYes':'flagNo'):'&nbsp;'); ?>">&nbsp;</span></td>						
-</tr>
-</tbody>
-</table>
+    <legend><?php echo LBL_FOLDER_INFO; ?></legend>
+    <table cellpadding="0" cellspacing="0" class="tableSummary" id="folderInfo">
+    <tbody>
+    <tr>
+        <th><?php echo LBL_FOLDER_PATH; ?></th>
+        <td colspan="3" id="folderPath"><?php echo transformFilePath($folderInfo['path']); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo LBL_FOLDER_CREATED; ?></th>
+        <td colspan="3" id="folderCtime"><?php echo (!empty($folderInfo['ctime'])?date(DATE_TIME_FORMAT,$folderInfo['ctime']):'&nbsp;') ; ?></td>
+    </tr>
+    <tr>
+        <th><?php echo LBL_FOLDER_MODIFIED; ?></th>
+        <td colspan="3" id="folderMtime"><?php echo (!empty($folderInfo['mtime'])?date(DATE_TIME_FORMAT,$folderInfo['mtime']):'&nbsp;'); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo LBL_FOLDER_SUDDIR; ?></th>
+        <td colspan="3" id="folderSubdir"><?php echo (isset($folderInfo['subdir'])?$folderInfo['subdir']:"&nbsp;"); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo LBL_FOLDER_FIELS; ?></th>
+        <td colspan="3" id="folderFile"><?php echo (isset($folderInfo['file'])?$folderInfo['file']:'&nbsp;'); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo LBL_FOLDER_WRITABLE; ?></th>
+        <td id="folderWritable"><span class="<?php echo (isset($folderInfo['is_readable'])?($folderInfo['is_readable']?'flagYes':'flagNo'):'&nbsp;'); ?>">&nbsp;</span></td>
+        <th><?php echo LBL_FOLDER_READABLE; ?></th>
+        <td  id="folderReadable"><span class="<?php echo (isset($folderInfo['is_writable'])?($folderInfo['is_writable']?'flagYes':'flagNo'):'&nbsp;'); ?>">&nbsp;</span></td>
+    </tr>
+    </tbody>
+    </table>
 </fieldset>
 
 
 
 <fieldset id="fileFieldSet" style="display:none" >
-<legend><?php echo LBL_FILE_INFO; ?></legend>
-<table cellpadding="0" cellspacing="0" class="tableSummary" id="fileInfo">
-<tbody>
-<tr>
-<th><?php echo LBL_FILE_NAME; ?></th>
-<td colspan="3" id="fileName"></td>
-</tr>
-<tr>
-<th><?php echo LBL_FILE_CREATED; ?></th>
-<td colspan="3" id="fileCtime"></td>
-</tr>
-<tr>
-<th><?php echo LBL_FILE_MODIFIED; ?></th>
-<td colspan="3" id="fileMtime"></td>
-</tr>
-<tr>
-<th><?php echo LBL_FILE_SIZE; ?></th>
-<td  colspan="3" id="fileSize"></td>
-</tr>
-<tr>
-<th><?php echo LBL_FILE_TYPE; ?></th>
-<td  colspan="3" id="fileType"></td>
-</tr>
-<tr>
-<th><?php echo LBL_FILE_WRITABLE; ?></th>
-<td id="fileWritable"><span class="flagYes">&nbsp;</span></td>
-<th><?php echo LBL_FILE_READABLE; ?></th>
-<td id="fileReadable"><span class="flagNo">&nbsp;</span></td>
-</tr>
-</tbody>
-</table>
-<p class="searchButtons" id="returnCurrentUrl">
-<table border="0" cellpadding="0" cellspacing="0" >
-<tr>
-<td width="99%">&nbsp;</td>
-<td width="1%" nowrap style="padding-right:16px;">
-<a href="#" id="selectCurrentUrl"  class="buttonLink"><span><?php echo MENU_SELECT; ?></span></a>
-</td>
-</tr>
-</table>
-<div class="clear"></div>
-</p>
+    <legend><?php echo LBL_FILE_INFO; ?></legend>
+    <table cellpadding="0" cellspacing="0" class="tableSummary" id="fileInfo">
+    <tbody>
+    <tr>
+        <th><?php echo LBL_FILE_NAME; ?></th>
+        <td colspan="3" id="fileName"></td>
+    </tr>
+    <tr>
+        <th><?php echo LBL_FILE_CREATED; ?></th>
+        <td colspan="3" id="fileCtime"></td>
+    </tr>
+    <tr>
+        <th><?php echo LBL_FILE_MODIFIED; ?></th>
+        <td colspan="3" id="fileMtime"></td>
+    </tr>
+    <tr>
+        <th><?php echo LBL_FILE_SIZE; ?></th>
+        <td colspan="3" id="fileSize"></td>
+    </tr>
+    <tr>
+        <th><?php echo LBL_FILE_TYPE; ?></th>
+        <td colspan="3" id="fileType"></td>
+    </tr>
+    <tr>
+        <th><?php echo LBL_FILE_WRITABLE; ?></th>
+        <td id="fileWritable"><span class="flagYes">&nbsp;</span></td>
+        <th><?php echo LBL_FILE_READABLE; ?></th>
+        <td id="fileReadable"><span class="flagNo">&nbsp;</span></td>
+    </tr>
+    </tbody>
+    </table>
+    <p>
+    <table border="0" cellpadding="0" cellspacing="0" >
+    <tr>
+        <td width="99%">&nbsp;</td>
+        <td width="1%" nowrap style="padding-right:16px;">
+            <a href="#" id="selectCurrentUrl"  class="buttonLink"><span><?php echo MENU_SELECT; ?></span></a>
+        </td>
+    </tr>
+    </table>
+    <div class="clear"></div>
+    </p>
 </fieldset>
 
 

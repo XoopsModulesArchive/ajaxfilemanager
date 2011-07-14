@@ -43,7 +43,7 @@ define('MENU_UNZIP', 'Decomprimi(unzip)'); // XOOPS Ajax File Manager Module
     define('LBL_FILE_NAME', 'Nome:');
     define('LBL_FILE_CREATED', 'Creato:');
     define('LBL_FILE_MODIFIED', 'Modificato:');
-    define('LBL_FILE_SIZE', 'Dimensione File:');
+    define('LBL_FILE_SIZE', 'Dimensione:');
     define('LBL_FILE_TYPE', 'Tipo File:');
     define('LBL_FILE_WRITABLE', 'Scrivibile?');
     define('LBL_FILE_READABLE', 'Leggibile?');
@@ -89,7 +89,7 @@ define('LBL_BTN_UNZIP', 'Decomprimi(unzip)'); // XOOPS Ajax File Manager Module
 define('ZIP_FORM_TITLE', 'Comprimi file'); // XOOPS Ajax File Manager Module
 define('ZIP_NEW_NAME', 'Nome file compresso:'); // XOOPS Ajax File Manager Module
     //System
-    define('SYS_DISABLED', 'Permesso negato: Il sistema è disabilitato.');
+    define('SYS_DISABLED', 'Permesso negato: Il sistema &egrave; disabilitato.');
     //Cut
     define('ERR_NOT_DOC_SELECTED_FOR_CUT', 'Nessun file selezionato da tagliare.');
     //Copy
@@ -100,8 +100,8 @@ define('ZIP_NEW_NAME', 'Nome file compresso:'); // XOOPS Ajax File Manager Modul
     define('WARNING_COPY_PASTE', 'Sei sicuro di copiare i file selezionati nella directory attuale?');
     define('ERR_NOT_DEST_FOLDER_SPECIFIED', 'Nessuna directory di destinazione specificata.');
     define('ERR_DEST_FOLDER_NOT_FOUND', 'Directory di destinazione non trovata.');
-    define('ERR_DEST_FOLDER_NOT_ALLOWED', 'Non ti è consentito spostare file in questa directory');
-    define('ERR_UNABLE_TO_MOVE_TO_SAME_DEST', 'Spostamento fallito per questo file (%s): Percorso originale è lo stesso di quello di destinazione.');
+    define('ERR_DEST_FOLDER_NOT_ALLOWED', 'Non ti &egrave; consentito spostare file in questa directory');
+    define('ERR_UNABLE_TO_MOVE_TO_SAME_DEST', 'Spostamento fallito per questo file (%s): Percorso originale &egrave; lo stesso di quello di destinazione.');
     define('ERR_UNABLE_TO_MOVE_NOT_FOUND', 'Spostamento fallito per questo file (%s): Il file originale non esiste.');
     define('ERR_UNABLE_TO_MOVE_NOT_ALLOWED', 'Spostamento fallito per questo file (%s): Accesso negato per il file originale.');
 
@@ -126,7 +126,7 @@ define('ZIP_NEW_NAME', 'Nome file compresso:'); // XOOPS Ajax File Manager Modul
     define('SEARCH_TYPE_MUSIC', 'Musica');
     define('SEARCH_TYPE_FLASH', 'Flash');
     define('SEARCH_TYPE_PPT', 'PowerPoint');
-    define('SEARCH_TYPE_DOC', 'Documento');
+    define('SEARCH_TYPE_DOC', 'File');
     define('SEARCH_TYPE_WORD', 'Word');
     define('SEARCH_TYPE_PDF', 'PDF');
     define('SEARCH_TYPE_EXCEL', 'Excel');
@@ -172,22 +172,22 @@ define('SEARCH_TYPE_KML', 'GoogleMaps Kml'); // XOOPS Ajax File Manager Module
 //ERROR MESSAGES
     //deletion
     define('ERR_NOT_FILE_SELECTED', 'Per favore seleziona un file.');
-    define('ERR_NOT_DOC_SELECTED', 'Nessun documento selezionato per l\\\'eliminazione.');
+    define('ERR_NOT_DOC_SELECTED', 'Nessun file selezionato per l\\\'eliminazione.');
     define('ERR_DELTED_FAILED', 'Impossibile cancellare i file selezionati.');
-    define('ERR_FOLDER_PATH_NOT_ALLOWED', 'Il percorso della directory non è consentito.');
+    define('ERR_FOLDER_PATH_NOT_ALLOWED', 'Il percorso della directory non &egrave; consentito.');
     //class manager
     define('ERR_FOLDER_NOT_FOUND', 'Impossibile accedere alla directory specificata: ');
     //rename
     define('ERR_RENAME_FORMAT', 'Si prega di dare un nome che contenga solo lettere, cifre, spazio, trattino e underscore (_).');
-    define('ERR_RENAME_EXISTS', 'Si prega di dare un nome che è unico nella directory.');
+    define('ERR_RENAME_EXISTS', 'Si prega di dare un nome che &egrave; unico nella directory.');
     define('ERR_RENAME_FILE_NOT_EXISTS', 'Il file/directory non esiste.');
     define('ERR_RENAME_FAILED', 'Impossibile rinominarlo, per favore riprova.');
     define('ERR_RENAME_EMPTY', 'Si prega di dare un nome.');
-    define('ERR_NO_CHANGES_MADE', 'Nessuna modifica è stata fatta.');
-    define('ERR_RENAME_FILE_TYPE_NOT_PERMITED', 'Non ti è permesso di modificare i file di tale estensione.');
+    define('ERR_NO_CHANGES_MADE', 'Nessuna modifica &egrave; stata fatta.');
+    define('ERR_RENAME_FILE_TYPE_NOT_PERMITED', 'Non ti &egrave; permesso di modificare i file di tale estensione.');
     //folder creation
     define('ERR_FOLDER_FORMAT', 'Si prega di dare un nome che contenga solo lettere, cifre, spazio, trattino e underscore.');
-    define('ERR_FOLDER_EXISTS', 'Si prega di dare un nome che è unico nella directory.');
+    define('ERR_FOLDER_EXISTS', 'Si prega di dare un nome che &egrave; unico nella directory.');
     define('ERR_FOLDER_CREATION_FAILED', 'Impossibile creare una directory, per favore riprova.');
     define('ERR_FOLDER_NAME_EMPTY', 'Si prega di dare un nome.');
     define('FOLDER_FORM_TITLE', 'Modulo Nuova Directory');
@@ -198,16 +198,16 @@ define('SEARCH_TYPE_KML', 'GoogleMaps Kml'); // XOOPS Ajax File Manager Module
     define('NEW_FILE_LBL_TITLE', 'Nome File:');
     define('NEW_FILE_CREATE', 'Crea File');
 //unzip
-define('ERR_UNZIP_NOT_POSSIBLE_OVERWRITE', 'Non è possibile sovrascrivere file.'); // XOOPS Ajax File Manager Module
+define('ERR_UNZIP_NOT_POSSIBLE_OVERWRITE', 'Non &egrave; possibile sovrascrivere file.'); // XOOPS Ajax File Manager Module
 //zip
 define('ERR_ZIP_EXIST', 'Prego inserire un nome inesistente.'); // XOOPS Ajax File Manager Module
 
     //file upload
     define('ERR_FILE_NAME_FORMAT', 'Si prega di dare un nome che contenga solo lettere, cifre, spazio, trattino e underscore.');
-    define('ERR_FILE_NOT_UPLOADED', 'Nessun file è stato selezionato per l\\\'upload.');
-    define('ERR_FILE_TYPE_NOT_ALLOWED', 'Non ti è permesso di caricare questo tipo di file.');
+    define('ERR_FILE_NOT_UPLOADED', 'Nessun file &egrave; stato selezionato per l\\\'upload.');
+    define('ERR_FILE_TYPE_NOT_ALLOWED', 'Non ti &egrave; permesso di caricare questo tipo di file.');
     define('ERR_FILE_MOVE_FAILED', 'Impossibile spostare il file.');
-    define('ERR_FILE_NOT_AVAILABLE', 'Il file non è disponibile.');
+    define('ERR_FILE_NOT_AVAILABLE', 'Il file non &egrave; disponibile.');
     define('ERROR_FILE_TOO_BID', 'File troppo grande. (max: %s)');
     define('FILE_FORM_TITLE', 'Modulo Upload File');
     define('FILE_LABEL_SELECT', 'Seleziona File');
@@ -232,8 +232,8 @@ define('FILE_LBL_UPLOADFTP', 'Upload Ftp'); // XOOPS Ajax File Manager Module
     define('TIP_SELECT_ALL', 'Seleziona Tutto');
     define('TIP_UNSELECT_ALL', 'Deseleziona Tutto');
     //WARNING
-define('WARNING_UNZIP', 'Sei sicuro di volere scompattare(unzip) il documento selezionato?'); // XOOPS Ajax File Manager Module
-    define('WARNING_DELETE', 'Sei sicuro di voler cancellare il documento selezionato?');
+define('WARNING_UNZIP', 'Sei sicuro di volere scompattare(unzip) il file selezionato?'); // XOOPS Ajax File Manager Module
+    define('WARNING_DELETE', 'Sei sicuro di voler cancellare il file selezionato?');
     define('WARNING_IMAGE_EDIT', 'Si prega di selezionare un\\\'immagine da modificare.');
     define('WARNING_NOT_FILE_EDIT', 'Si prega di selezionare un file da modificare.');
     define('WARING_WINDOW_CLOSE', 'Sei sicuro di chiudere la finestra?');
@@ -258,7 +258,7 @@ define('WARNING_UNZIP', 'Sei sicuro di volere scompattare(unzip) il documento se
         define('IMG_GEN_IMG_NOT_EXISTS', 'L\\\'Immagine non esiste');
         define('IMG_WARNING_LOST_CHANAGES', 'Tutte le modifiche non salvate apportate all\\\'immagine verranno perse, sei sicuro di voler continuare?');
         define('IMG_WARNING_REST', 'Tutte le modifiche non salvate apportate all\\\'immagine andranno perse, sei sicuro di voler reimpostare?');
-        define('IMG_WARNING_EMPTY_RESET', 'Nessuna modifica è stata fatta a immagine fino ad ora');
+        define('IMG_WARNING_EMPTY_RESET', 'Nessuna modifica &egrave; stata fatta a immagine fino ad ora');
         define('IMG_WARING_WIN_CLOSE', 'Sei sicuro di chiudere la finestra?');
         define('IMG_WARNING_UNDO', 'Sei sicuro di voler ripristinare l\\\'immagine allo stato precedente?');
         define('IMG_WARING_FLIP_H', 'Sei sicuro di voler capovolgere l\\\'immagine orizzontalmente?');
@@ -307,7 +307,7 @@ define('WARNING_UNZIP', 'Sei sicuro di volere scompattare(unzip) il documento se
         define('IMG_SAVE_EMPTY_PATH', 'Percorso immagine vuoto.');
         define('IMG_SAVE_NOT_EXISTS', 'Immagine non esiste.');
         define('IMG_SAVE_PATH_DISALLOWED', 'Non sei abilitato ad accedere a questo file.');
-        define('IMG_SAVE_UNKNOWN_MODE', 'imprevisto Modalità di funzionamento Immagine');
+        define('IMG_SAVE_UNKNOWN_MODE', 'imprevisto Modalit&agrave; di funzionamento Immagine');
         define('IMG_SAVE_RESIZE_FAILED', 'Impossibile ridimensionare l\\\'immagine.');
         define('IMG_SAVE_CROP_FAILED', 'Impossibile ritagliare l\\\'immagine.');
         define('IMG_SAVE_FAILED', 'Impossibile salvare l\\\'immagine.');
@@ -337,7 +337,7 @@ define('WARNING_UNZIP', 'Sei sicuro di volere scompattare(unzip) il documento se
         define('TXT_DEST_FOLDER_NOT_SELECTED', 'Si prega di selezionare la directory di destinazione');
         define('TXT_UNKNOWN_REQUEST', 'Richiesta Sconosciuta.');
         define('TXT_DISALLOWED_EXT', 'Hai il permesso di modificare/aggiungere questo tipo di file.');
-        define('TXT_FILE_EXIST', 'Il File già esiste.');
+        define('TXT_FILE_EXIST', 'Il File gi&agrave; esiste.');
         define('TXT_FILE_NOT_EXIST', 'Nessun file trovato.');
         define('TXT_CREATE_FAILED', 'Impossibile creare un nuovo file.');
         define('TXT_CONTENT_WRITE_FAILED', 'Impossibile scrivere il contenuto del file.');

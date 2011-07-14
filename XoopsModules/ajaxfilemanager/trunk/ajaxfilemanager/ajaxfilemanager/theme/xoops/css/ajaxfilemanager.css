@@ -114,55 +114,54 @@ overflow-x: hidden;
 	vertical-align:bottom;
 }
 table.tableSearch{
-padding:0;
-margin:0;
+    padding:0;
+    margin:0;
 }
 .boxSearch{
-padding:0;
-margin:0;
+    padding:0;
+    margin:0;
 }
 .boxSearchItems{
-margin:0;
-padding:0;
+    margin:0;
+    padding:0;
 }
 .boxSearchItems td{
-text-align:left;
-margin-left:5px;
+    text-align:left;
+    margin-left:5px;
 }
 .boxSearchItems dt{
-text-align:left;
-font-size:14px;
-margin:0;
-padding:0;
-margin-left:5px;
+    text-align:left;
+    font-size:14px;
+    margin:0;
+    padding:0;
+    margin-left:5px;
 }
 .boxSearchItems dd{
-display:block;
-margin:0;
-padding:0;
-margin-left:20px;
+    display:block;
+    margin:0;
+    padding:0;
+    margin-left:20px;
 }
 .boxSearchItems dd b{
-margin:0;
-display:block;
+    margin:0;
+    display:block;
 }
 
 #linkSearch{
-float:right;
-padding-right:8px;
-display:block;
-border:1px solid red;
+    float:right;
+    padding-right:8px;
+    display:block;
+    border:1px solid red;
 }
 .tableSearch{
-margin:0;
+    margin:0;
 }
 p.searchButtons{
-padding-top:5px;
+    padding-top:5px;
 }
 #linkSelect{
-float:right;
-padding-right:8px;
-
+    float:right;
+    padding-right:8px;
 }
 #fileName{overflow:hidden;}
 #header
@@ -358,80 +357,87 @@ dt.fileHtml{background-image:url(../images/big_icon/fileHtml.png);} /* for Xoops
 dt.fileZip{background-image:url(../images/big_icon/fileZip.png);}
 
 table.tableSummary{
-border-collapse:collapse;
-width:100%;
+    border-collapse:collapse;
+    width:100%;
+	color:#000;
+    table-layout:fixed;
+    overflow:hidden;
 }
 table.tableSummary tbody td
 {
 	border:none;
-	padding:2px 6px;
+	padding:1px 4px;
 	text-align:left;
+	overflow:hidden;
+    word-wrap:break-word;
 }
 table.tableSummary tbody th{
 	border:none;
-	color:#000;
-	white-space:nowrap;
-	padding:1px 6px ;
+	padding:1px 4px ;
 	text-align:left;
+	overflow:hidden;
+	white-space:normal;
 }
 
 /*  text listing*/
 #textListing{
-list-style:none;
+    list-style:none;
 }
 #textListing li{
-width:150px;
-border:solid #999999 1px;
-display:block;
-float:left;
-margin: 4px 4px;
-padding:2px 2px;
+    width:150px;
+    border:solid #999999 1px;
+    display:block;
+    float:left;
+    margin: 4px 4px;
+    padding:2px 2px;
 }
 /** thumbnail listing */
 .thumbnailListing{
-border:solid #ccc 1px;
-display:block;
-float:left;
-margin: 3px 3px;
-padding:1px;
-background-color:#f4f4f4;
+    border:solid #ccc 1px;
+    display:block;
+    float:left;
+    margin: 3px 3px;
+    padding:1px;
+    background-color:#f4f4f4;
 }
 .thumbnailListing dt{
-width:120px;
-height:110px;
-text-align:center;
-margin:2px 2px;
-padding:0;
-border:solid #ccc 1px;
+    width:120px;
+    height:110px;
+    text-align:center;
+    margin:2px 2px;
+    padding:0;
+    border:solid #ccc 1px;
 }
 
 .thumbnailListing dt img{
-vertical-align:middle;
+    vertical-align:middle;
 }
+
 .thumbnailListing_info{
-width:125px;
-display:block;
-height:25px;
-text-align:center;
-margin:0px;
+    width:125px;
+    display:block;
+    height:25px;
+    text-align:center;
+    margin:0px;
 }
+
 dd.thumbnailListing_info span, dd.thumbnailListing_info input, dd.thumbnailListing_info a{
-vertical-align:middle;
+    vertical-align:middle;
 }
 
 .buttonLink{
-height:24px;
-background:url(../images/button/grey_lc.png) 0 0% no-repeat;
-display:block;
-padding-left:12px;
-font-weight:bold;
+    height:24px;
+    background:url(../images/button/grey_lc.png) 0 0% no-repeat;
+    display:block;
+    padding-left:12px;
+    font-weight:bold;
 }
 .buttonLink span{
-height:24px;
-line-height:24px;
-display:block;
-padding-right:12px;
-background:url(../images/button/grey_rc.png) 100% 0 no-repeat;
+    height:24px;
+    line-height:24px;
+    display:block;
+    padding-right:12px;
+    background:url(../images/button/grey_rc.png) 100% 0 no-repeat;
 }
 /* ~~~ === PAGINATION ===================================================== ~~~ */
 .pagination_summany
