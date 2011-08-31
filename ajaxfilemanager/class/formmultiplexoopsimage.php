@@ -30,37 +30,47 @@ class FormMultipleXoopsImage extends XoopsFormElementTray
      * @param mixed $name
      * @param array $values
      */
-    function FormMultipleXoopsImage($caption, $name, $values = array())
+    function FormMultipleXoopsImage($caption, $name, $size, $maxlength, $values = array(), $previewformat = null)
     {
         $this->XoopsFormElementTray($caption, '<hr />');
-        $table_html = "
-        <table>
-        <tr>
-            <td colspan='2'>" . "Enter Your Information" . "</td>
-        </tr>";
+        $table_html = "<table>";
 
         foreach ($values as $key=>$value) {
             $capt = sprintf(_FORMMULTIPLEXOOPSIMAGE, $key);
-            $element = new FormXoopsImage($capt, $name . "[$key]", $value);
+            $element = new FormXoopsImage($capt, $name . "[$key]", $size, $maxlength, $value, $previewformat);
             $table_html.= "<tr>";
-            $table_html.= "<td>" . sprintf(_FORMMULTIPLEXOOPSIMAGE, $key) . "<br />"  . $element->render() . "</td>";
-            $table_html.= "<td><input type='button' class='delRow' value='" . _FORMMULTIPLEXOOPSIMAGE_DELETEBUTTON . "'/></td>";
+            $table_html.= "<td>";
+            //$table_html.= sprintf(_FORMMULTIPLEXOOPSIMAGE, $key);
+            //$table_html.= "<br />";
+            $table_html.= $element->render();
+            $table_html.= "</td>";
+            $table_html.= "<td>";
+            $table_html.= "<input type='button' class='delRow' value='" . _FORMMULTIPLEXOOPSIMAGE_DELETE . "'/>";
+            $table_html.= "</td>";
             $table_html.= "</tr>";
             unset($element);
         }
 
-        $element = new FormXoopsImage($capt, $name . "[]", '');
+        $capt = sprintf(_FORMMULTIPLEXOOPSIMAGE, '');
+        $element = new FormXoopsImage($capt, $name . "[]", $size, $maxlength, '');
         $table_html.= "<tr>";
-        $table_html.= "<td>" . sprintf(_FORMMULTIPLEXOOPSIMAGE, " ") . "<br />" . $element->render() . "</td>";
-        $table_html.= "<td><input type='button' class='delRow' value='" . _FORMMULTIPLEXOOPSIMAGE_DELETEBUTTON . "'/></td>";
+        $table_html.= "<td>";
+        $table_html.= sprintf(_FORMMULTIPLEXOOPSIMAGE, " ");
+        //$table_html.= "<br />";
+        $table_html.= $element->render();
+        $table_html.= "</td>";
+        $table_html.= "<td>";
+        $table_html.= "<input type='button' class='delRow' value='" . _FORMMULTIPLEXOOPSIMAGE_DELETE . "'/>";
+        $table_html.= "</td>";
         $table_html.= "</tr>";
         unset($element);
 
+        $table_html.= "<tr>";
+        $table_html.= "<td>&nbsp;</td>";
+        $table_html.= "<td><input type='button' class='addRow' value='" . _FORMMULTIPLEXOOPSIMAGE_NEW . "'/></td>";
+        $table_html.= "</tr>";
+        $table_html.= "</table>";
         $table_html.= "
-        <tr>
-            <td><input type='button' class='addRow' value='" . _FORMMULTIPLEXOOPSIMAGE_ADDBUTTON . "'/></td><td>&nbsp;</td>
-        </tr>
-        </table>
         <script type='text/javascript'>
         (function($){
             $(document).ready(function(){
@@ -82,11 +92,11 @@ class FormMultipleXoopsImage extends XoopsFormElementTray
     function render()
     {
         if (isset($GLOBALS['xoTheme'])) {
-            $GLOBALS['xoTheme']->addScript('browse.php?Frameworks/jquery/jquery.js');
+            $GLOBALS['xoTheme']->addScript('http://code.jquery.com/jquery.min.js');
             $GLOBALS['xoTheme']->addScript('browse.php?modules/ajaxfilemanager/class/jquery.table.addrow.js');
             //$GLOBALS['xoTheme']->addScript('', '', $js);
         } else {
-            echo '<script type="text/javascript" src="' . XOOPS_URL . '/Frameworks/jquery/jquery.js"></script>';
+            echo '<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>';
             echo '<script type="text/javascript">' . $js . '</script>';
         }
         return parent::render();//  . "<input type='reset' value=' ... ' onclick=\"return TCP.popup('" . XOOPS_URL . "/include/',document.getElementById('" . $this->getName() . "'));\">" ;

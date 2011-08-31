@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Ajax File Manager
@@ -44,8 +45,8 @@ $modversion['system_menu'] = 0;
 
 //about
 $modversion['status_version'] = 'RC';
-$modversion['release_date'] = '2011/05/31';
-$modversion['release'] = strtotime('2011/05/31'); // 'YYYY/MM/DD' format
+$modversion['release_date'] = '2011/07/26';
+$modversion['release'] = strtotime('2011/07/26'); // 'YYYY/MM/DD' format
 $modversion['demo_site_url'] = 'IN PROGRESS';
 $modversion['demo_site_name'] = 'IN PROGRESS';
 $modversion['forum_site_url'] = 'IN PROGRESS';
@@ -53,10 +54,10 @@ $modversion['forum_site_name'] = 'IN PROGRESS';
 $modversion['module_website_url'] = 'IN PROGRESS';
 $modversion['module_website_name'] = 'IN PROGRESS';
 $modversion['module_status'] = 'In progress';
-$modversion["author_website_url"] = "http://luciorota.altervista.org/xoops/";
-$modversion["author_website_name"] = "luciorota.altervista.org/xoops";
+$modversion["author_website_url"] = 'http://luciorota.altervista.org/xoops/';
+$modversion["author_website_name"] = 'luciorota.altervista.org/xoops';
 $modversion['min_php']=5.2;
-$modversion['min_xoops']="XOOPS 2.4.5";
+$modversion['min_xoops']= 'XOOPS 2.4.5';
 
 // Admin things
 $modversion['hasAdmin'] = 1;

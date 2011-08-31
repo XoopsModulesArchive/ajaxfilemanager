@@ -49,10 +49,10 @@ if (isset($_REQUEST['FormMultipleXoopsImage'])) {
 $sample_form = new XoopsThemeForm('', 'sample_form', $currentFile);
 $sample_form->setExtra('enctype="multipart/form-data"');
 
-$sample_form->addElement(new FormAjaxFileManager('FormAjaxFileManager', 'FormAjaxFileManager', $FormAjaxFileManager), true);
-$sample_form->addElement(new FormMultipleAjaxFileManager('FormMultipleAjaxFileManager', 'FormMultipleAjaxFileManager', $FormMultipleAjaxFileManager), true);
-$sample_form->addElement(new FormXoopsImage('FormXoopsImage', 'FormXoopsImage', $FormXoopsImage), true);
-$sample_form->addElement(new FormMultipleXoopsImage('FormMultipleXoopsImage', 'FormMultipleXoopsImage', $FormMultipleXoopsImage), true);
+$sample_form->addElement(new FormAjaxFileManager('FormAjaxFileManager', 'FormAjaxFileManager', 40, 255), true);
+$sample_form->addElement(new FormMultipleAjaxFileManager('FormMultipleAjaxFileManager', 'FormMultipleAjaxFileManager', 40, 255, $FormMultipleAjaxFileManager), true);
+$sample_form->addElement(new FormXoopsImage('FormXoopsImage', 'FormXoopsImage', 40, 255, $FormXoopsImage), true);
+$sample_form->addElement(new FormMultipleXoopsImage('FormMultipleXoopsImage', 'FormMultipleXoopsImage', 40, 255, $FormMultipleXoopsImage), true);
 
 $sample_form->addElement(new XoopsFormButton('', 'save', _SUBMIT, 'submit'));
 $sample_form->display();

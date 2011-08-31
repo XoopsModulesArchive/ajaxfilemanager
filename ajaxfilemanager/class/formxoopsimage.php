@@ -47,19 +47,25 @@ class FormXoopsImage extends XoopsFormElement
      * @access private
      */
     var $_value;
-    
+    var $_previewformat;
     /**
      * Constructor
      *
      * @param string $caption Caption
      * @param string $name "name" attribute
+     * @param int    $size Size
+     * @param int    $maxlength Maximum length of text
      * @param string $value Initial text
+     * @param string $previewformat Initial text
      */
-    function FormXoopsImage($caption, $name, $value = '')
+    function FormXoopsImage($caption, $name, $size, $maxlength, $value = '', $previewformat = null)
     {
         $this->setCaption($caption);
         $this->setName($name);
+        $this->_size = intval($size);
+        $this->_maxlength = intval($maxlength);
         $this->setValue($value);
+        $this->_previewformat = (is_null($previewformat) ? "<div style='height:100px;'><img src='%s' style='height:100px;' alt='" . _FORMXOOPSIMAGE_IMAGENOTFOUND . "' /></div>" : $previewformat);
     }
     
     /**
@@ -92,6 +98,15 @@ class FormXoopsImage extends XoopsFormElement
     {
         return $encode ? htmlspecialchars($this->_value, ENT_QUOTES) : $this->_value;
     }
+    function getSrc($encode = false)
+    {
+        return $encode ? htmlspecialchars($this->_value, ENT_QUOTES) : $this->_value;
+    }
+
+    function getPreviewformat()
+    {
+        return $this->_previewformat;
+    }
     
     /**
      * Set initial text value
@@ -102,7 +117,7 @@ class FormXoopsImage extends XoopsFormElement
     {
         $this->_value = $value;
     }
-    
+
     /**
      * Prepare HTML for output
      *
@@ -111,11 +126,9 @@ class FormXoopsImage extends XoopsFormElement
     function render()
     {
         $html = "<div>";
-        $html.= "<input type='text' name='" . $this->getName() . "' title='" . $this->getTitle() . "' size='50' maxlength='255' value='" . $this->getValue() . "' />";
+        $html.= "<input type='text' name='" . $this->getName() . "' title='" . $this->getTitle() . "' size='" . $this->getSize() ."' maxlength='" . $this->getMaxlength() ."' value='" . $this->getValue() . "' />";
         $html.= "<img src='" . XOOPS_URL . "/images/image.gif' alt='" . _FORMXOOPSIMAGE_IMAGEMANAGER . "' title='" . _FORMXOOPSIMAGE_IMAGEMANAGER . "' onclick='randomId = Math.random().toString(); this.parentNode.firstChild.id = \"input_\" + randomId; openWithSelfMain(&quot;" . XOOPS_URL . "/modules/ajaxfilemanager/imagemanager/imagemanager.php?target=input_&quot; + randomId + &quot;&amp;editor=src&quot;,&quot;imagemanager&quot;,800,600);' onmouseover='style.cursor=\"hand\"'/>";
-        $html.= "<div style='height:200px;'>";
-        $html.= "<img src='" . $this->getValue() . "' style='height:200px;' alt='" . _FORMXOOPSIMAGE_IMAGENOTFOUND . "' />";
-        $html.= "</div>";
+        $html.= sprintf($this->getPreviewformat(), $this->getSrc());
         $html.= "</div>";
         return $html;
     }

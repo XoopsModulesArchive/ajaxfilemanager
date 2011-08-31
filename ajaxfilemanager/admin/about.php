@@ -94,7 +94,12 @@ echo "</div>";
 echo "</fieldset>";
 echo "<br clear=\"all\" />";
 
-$file = XOOPS_ROOT_PATH. "/modules/" . $xoopsModule->getVar('dirname') . "/description.html";
+// get language 'description.html' file 
+if (file_exists(XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar('dirname') . "/language/" . $xoopsConfig['language'] . "/description.html")) {
+    $file = XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar('dirname') . "/language/" . $xoopsConfig['language'] . "/description.html";
+} else {
+    $file = XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar('dirname') . "/language/english/description.html";
+}
 if (is_readable($file)) {
     echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AJAXFM_AM_ABOUT_DESCRIPTION . "</legend>";
     echo "<div style='padding: 8px;'>";
@@ -104,6 +109,7 @@ if (is_readable($file)) {
     echo "<br clear=\"all\" />";
 }
 
+// get language 'changelog.txt' file 
 if (file_exists(XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar('dirname') . "/language/" . $xoopsConfig['language'] . "/changelog.txt")) {
     $file = XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar('dirname') . "/language/" . $xoopsConfig['language'] . "/changelog.txt";
 } else {
