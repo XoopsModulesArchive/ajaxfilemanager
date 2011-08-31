@@ -37,15 +37,27 @@ if(isset($_POST['step'])) {
     $step = 'default';
 }
 
+/*
 if(isset($_POST['extension'])) {
     $extension = $_POST['extension'];
 } else {
     $step = 'default';
 }
-
+*/
 
 
 switch( $step ) {
+case 'dump_images_cache':
+    if (delDir(XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/imagecache", true)) {
+        if (makeDir(XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/imagecache")) {
+            redirect_header($currentFile, 3, _AJAXFM_AM_DUMP_IMAGES_CACHE_OK);
+        } else {
+            redirect_header($currentFile, 3, _AJAXFM_AM_DUMP_IMAGES_CACHE_NOT_OK);
+        }
+    } else {
+        redirect_header($currentFile, 3, _AJAXFM_AM_DUMP_IMAGES_CACHE_NOT_OK);
+    }
+    break;
 case 'installtinymce':
     installCustomTinymceSettings();
     redirect_header($currentFile, 3, _AJAXFM_AM_EDITORPLUGIN_INSTALLED_OK);
@@ -258,6 +270,34 @@ case 'default':
     }
     echo "</tbody>";
     echo "</table>";
+    echo "</fieldset>";
+
+	// Standard or enhanced image.php in xoops root path?
+    echo "<fieldset>";
+    echo "<legend style='font-weight:bold; color:#990000;'>" . _AJAXFM_AM_IMAGE_PHP_INFO . "</legend>";
+    $extensionsPath = XOOPS_ROOT_PATH . '/class/textsanitizer';
+
+    $originalImagePhp = XOOPS_ROOT_PATH . '/image.php';
+    $enhancedImagePhp = XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['xoopsModule']->getVar('dirname') . '/image.php';
+    $crcOriginalImagePhp = strtoupper(dechex(crc32(file_get_contents($originalImagePhp))));
+    $crcEnhancedImagePhp = strtoupper(dechex(crc32(file_get_contents($enhancedImagePhp))));
+
+    if ($crcOriginalImagePhp != $crcEnhancedImagePhp) {
+        // files not the same
+        echo _AJAXFM_AM_IMAGE_PHP_NO_SMART;
+        echo "<br />";
+        echo _AJAXFM_AM_IMAGE_PHP_NO_SMART_DESC;
+    } else {
+        // files the same
+        echo _AJAXFM_AM_IMAGE_PHP_SMART;
+        echo "<br />";
+        echo _AJAXFM_AM_IMAGE_PHP_SMART_DESC;
+        echo "<br />";
+        echo "<form action='" . $currentFile . "' method='post'>";
+        echo "<input type='hidden' name='step' value='dump_images_cache' />";
+        echo "<input class='formButton' value='" . _AJAXFM_AM_DUMP_IMAGES_CACHE . "'' type='submit' />";
+        echo "</form>";
+    }
     echo "</fieldset>";
 	
     xoops_cp_footer();

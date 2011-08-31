@@ -93,6 +93,14 @@ define('_AJAXFM_AM_EDITORPLUGIN_INSTALLED_OK', "Plugin installato");
 define('_AJAXFM_AM_EDITORPLUGIN_UNINSTALLED_OK', "Plugin disinstallato");
 define('_AJAXFM_AM_EDITORTINYMCE', "Tinymce");
 define('_AJAXFM_AM_EDITORTINYMCE_DESC', "<span style='color:red;'>ATTENZIONE: <br />Se la procedura automatica di installazione non funziona, copiare il file di impostazioni di Tinymce &quot;%s&quot; in &quot;%s&quot;.</span>");
+// added v0.1 - 2011/07/17
+// added v0.1 - 2011/07/17
+define('_AJAXFM_AM_IMAGE_PHP_INFO', "Xoops Smart Image Resizer - image.php");
+define('_AJAXFM_AM_IMAGE_PHP_DEMO', "<h3>Demo</h3>Original image<br /><img src='' /><br />src=''");
+define('_AJAXFM_AM_IMAGE_PHP_SMART', XOOPS_URL . "/image.php\" is Xoops Smart Image Resizer");
+define('_AJAXFM_AM_IMAGE_PHP_SMART_DESC', "");
+define('_AJAXFM_AM_IMAGE_PHP_NO_SMART', "\"" . XOOPS_URL . "/image.php\" is not Xoops Smart Image Resizer");
+define('_AJAXFM_AM_IMAGE_PHP_NO_SMART_DESC', "<span style=\"color:red;\">If you want to use Xoops Smart Image Resizer functions, please copy \"" . XOOPS_ROOT_PATH . "modules/ajaxfilemanager/image.php\" in \"" . XOOPS_ROOT_PATH . "\" and overwrite existing (original) image.php</span>");
 
 
 

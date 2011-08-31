@@ -93,7 +93,17 @@ define('_AJAXFM_AM_EDITORPLUGIN_INSTALLED_OK', "Plugin installed");
 define('_AJAXFM_AM_EDITORPLUGIN_UNINSTALLED_OK', "Plugin uninstalled");
 define('_AJAXFM_AM_EDITORTINYMCE', "Tinymce");
 define('_AJAXFM_AM_EDITORTINYMCE_DESC', "<span style='color:red;'>WARNING: <br />If automatic installation faults, please copy tinymce settings file &quot;%s&quot; to &quot;%s&quot;.</span>");
-
+// added v0.1 - 2011/07/17
+define('_AJAXFM_AM_IMAGE_PHP_INFO', "Xoops Smart Image Resizer - image.php");
+define('_AJAXFM_AM_IMAGE_PHP_DEMO', "<h3>Demo</h3>Immagine originale<br /><img src='' /><br />src=''");
+define('_AJAXFM_AM_IMAGE_PHP_SMART', XOOPS_URL . "/image.php\" is Xoops Smart Image Resizer");
+define('_AJAXFM_AM_IMAGE_PHP_SMART_DESC', "");
+define('_AJAXFM_AM_IMAGE_PHP_NO_SMART', "\"" . XOOPS_URL . "/image.php\" is not Xoops Smart Image Resizer");
+define('_AJAXFM_AM_IMAGE_PHP_NO_SMART_DESC', "<span style=\"color:red;\">If you want to use Xoops Smart Image Resizer functions, please copy \"" . XOOPS_ROOT_PATH . "modules/ajaxfilemanager/image.php\" in \"" . XOOPS_ROOT_PATH . "\" and overwrite existing (original) image.php</span>");
+// added v0.1 - 2011/07/26
+define('_AJAXFM_AM_DUMP_IMAGES_CACHE', "Dump images cache");
+define('_AJAXFM_AM_DUMP_IMAGES_CACHE_OK', "Images cache dumped");
+define('_AJAXFM_AM_DUMP_IMAGES_CACHE_NTO_OK', "Warning: images cache not dumped");
 
 //admin/about.php
 define("_AJAXFM_AM_ABOUT_AUTHOR", "Author");

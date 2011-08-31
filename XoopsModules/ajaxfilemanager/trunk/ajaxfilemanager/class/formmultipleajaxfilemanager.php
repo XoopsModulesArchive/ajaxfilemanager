@@ -27,17 +27,82 @@ class FormMultipleAjaxFileManager extends XoopsFormElementTray
      * FormMultipleAjaxFileManager::FormMultipleAjaxFileManager()
      *
      * @param mixed $caption
-     * @param mixed $name
+     * @param mixed $name "name" attribute
+     * @param int   $size Size
+     * @param int   $maxlength Maximum length of text
      * @param array $values
      */
-    function FormMultipleAjaxFileManager($caption, $name, $values = array())
+    function FormMultipleAjaxFileManager($caption, $name, $size, $maxlength, $values = array())
     {
         $this->XoopsFormElementTray($caption, '<hr />');
+        $table_html = "";
+        $table_html.= "<table>";
+
         foreach ($values as $key=>$value) {
             $capt = sprintf(_FORMMULTIPLEAJAXFILEMANAGER, $key);
-            $this->addElement(new FormAjaxFileManager($capt . '<br />', $name . "[$key]", $value));
+            $element = new FormAjaxFileManager($capt, $name . "[$key]", $size, $maxlength, $value);
+            $table_html.= "<tr>";
+            $table_html.= "<td>";
+            //$table_html.= sprintf(_FORMMULTIPLEAJAXFILEMANAGER, $key);
+            //$table_html.= "<br />";
+            $table_html.= $element->render();
+            $table_html.= "</td>";
+            $table_html.= "<td>";
+            $table_html.= "<input type='button' class='delRow' value='" . _FORMMULTIPLEAJAXFILEMANAGER_DELETE . "' />";
+            $table_html.= "</td>";
+            $table_html.= "</tr>";
+            unset($element);
         }
-        $this->addElement(new FormAjaxFileManager(_FORMMULTIPLEAJAXFILEMANAGER_NEW . '<br />', $name . "[]", NULL));
+
+        $capt = sprintf(_FORMMULTIPLEAJAXFILEMANAGER, '');
+        $element = new FormAjaxFileManager($capt, $name . "[]", $size, $maxlength, NULL);
+        $table_html.= "<tr>";
+        $table_html.= "<td>";
+        $table_html.= sprintf(_FORMMULTIPLEAJAXFILEMANAGER, "");
+        //$table_html.= "<br />";
+        $table_html.= $element->render();
+        $table_html.= "</td>";
+        $table_html.= "<td>";
+        $table_html.= "<input type='button' class='delRow' value='" . _FORMMULTIPLEAJAXFILEMANAGER_DELETE . "' />";
+        $table_html.= "</td>";
+        $table_html.= "</tr>";
+        unset($element);
+
+        $table_html.= "<tr>";
+        $table_html.= "<td>&nbsp;</td>";
+        $table_html.= "<td><input type='button' class='addRow' value='" . _FORMMULTIPLEAJAXFILEMANAGER_NEW . "' /></td>";
+        $table_html.= "</tr>";
+        $table_html.= "</table>";
+        $table_html.= "
+        <script type='text/javascript'>
+        (function($){
+            $(document).ready(function(){
+                $('.addRow').btnAddRow();
+                $('.delRow').btnDelRow();
+            });
+        })(jQuery);
+        </script>";
+
+        $element_table = new XoopsFormLabel ('', $table_html, $name . '_table');
+        $this->addElement($element_table);
+    }
+
+    /**
+     * FormMultipleAjaxFileManager::render()
+     *
+     * @return
+     */
+    function render()
+    {
+        if (isset($GLOBALS['xoTheme'])) {
+            $GLOBALS['xoTheme']->addScript('http://code.jquery.com/jquery.min.js');
+            $GLOBALS['xoTheme']->addScript('browse.php?modules/ajaxfilemanager/class/jquery.table.addrow.js');
+            //$GLOBALS['xoTheme']->addScript('', '', $js);
+        } else {
+            echo '<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>';
+            echo '<script type="text/javascript">' . $js . '</script>';
+        }
+        return parent::render();//  . "<input type='reset' value=' ... ' onclick=\"return TCP.popup('" . XOOPS_URL . "/include/',document.getElementById('" . $this->getName() . "'));\">" ;
     }
 }
 ?>
