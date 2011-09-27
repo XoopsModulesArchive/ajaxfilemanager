@@ -31,22 +31,19 @@ $groups = (is_object($xoopsUser)) ? $xoopsUser->getGroups() : array(XOOPS_GROUP_
 $admin = (is_object($xoopsUser) && $xoopsUser->isAdmin($GLOBALS['xoopsModule']->mid())) ? true : false;
 
 // get/check parameters/post
-if(isset($_POST['step'])) {
-    $step = $_POST['step'];
+if(isset($_POST['op'])) {
+    $op = $_POST['op'];
 } else {
-    $step = 'default';
+    $op = 'default';
 }
 
-/*
+
 if(isset($_POST['extension'])) {
     $extension = $_POST['extension'];
-} else {
-    $step = 'default';
 }
-*/
 
 
-switch( $step ) {
+switch( $op ) {
 case 'dump_images_cache':
     if (delDir(XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/imagecache", true)) {
         if (makeDir(XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/imagecache")) {
@@ -58,23 +55,23 @@ case 'dump_images_cache':
         redirect_header($currentFile, 3, _AJAXFM_AM_DUMP_IMAGES_CACHE_NOT_OK);
     }
     break;
-case 'installtinymce':
+case 'install_tinymce':
     installCustomTinymceSettings();
     redirect_header($currentFile, 3, _AJAXFM_AM_EDITORPLUGIN_INSTALLED_OK);
     break;
-case 'uninstalltinymce':
+case 'uninstall_tinymce':
     uninstallCustomTinymceSettings();
     redirect_header($currentFile, 3, _AJAXFM_AM_EDITORPLUGIN_UNINSTALLED_OK);
     break;
-case 'activate':
+case 'activate_extension':
     activateExtension($extension);
     redirect_header($currentFile, 3, _AJAXFM_AM_EXTENSION_ACTIVATED);
     break;
-case 'desactivate':
+case 'desactivate_extension':
     desactivateExtension($extension);
     redirect_header($currentFile, 3, _AJAXFM_AM_EXTENSION_DISABLED);
     break;
-case 'install':
+case 'install_extension':
     $source = XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['xoopsModule']->getVar('dirname') . '/install/textsanitizer.extension' .  '/' . $extension;
     $destination = XOOPS_ROOT_PATH . '/class/textsanitizer/' . $extension;
     if(!file_exists($source)) {
@@ -130,7 +127,7 @@ case 'default':
             echo "</td>";
             echo "<td>";
             echo "  <form action='" . $currentFile . "' method='post'>";
-            echo "  <input type='hidden' name='step' value='install' />";
+            echo "  <input type='hidden' name='op' value='install_extension' />";
             echo "  <input type='hidden' name='extension' value='" . $extension . "' />";
             echo "  <input class='formButton' value='" . _AJAXFM_AM_INSTALL_EXTENSION . "'' type='submit' />";
             echo "  </form>";
@@ -144,7 +141,7 @@ case 'default':
                 echo "</td>";
                 echo "<td>";
                 echo "  <form action='" . $currentFile . "' method='post'>";
-                echo "  <input type='hidden' name='step' value='activate' />";
+                echo "  <input type='hidden' name='op' value='activate_extension' />";
                 echo "  <input type='hidden' name='extension' value='" . $extension . "' />";
                 echo "  <input class='formButton' value='" . _AJAXFM_AM_ACTIVATE_EXTENSION . "'' type='submit' />";
                 echo "  </form>";
@@ -157,7 +154,7 @@ case 'default':
                 echo "</td>";
                 echo "<td>";
                 echo "  <form action='" . $currentFile . "' method='post'>";
-                echo "  <input type='hidden' name='step' value='desactivate' />";
+                echo "  <input type='hidden' name='op' value='desactivate_extension' />";
                 echo "  <input type='hidden' name='extension' value='" . $extension . "' />";
                 echo "  <input class='formButton' value='" . _AJAXFM_AM_DISABLE_EXTENSION . "' type='submit' />";
                 echo "</form>";
@@ -195,7 +192,7 @@ case 'default':
 		echo "</td>";
 		echo "<td>";
 		echo "  <form action='" . $currentFile . "' method='post'>";
-		echo "  <input type='hidden' name='step' value='installtinymce' />";
+		echo "  <input type='hidden' name='op' value='install_tinymce' />";
 		echo "  <input type='hidden' name='extension' value='" . $extension . "' />";
 		echo "  <input class='formButton' value='" . _AJAXFM_AM_INSTALL_EDITORPLUGIN . "'' type='submit' />";
 		echo "  </form>";
@@ -206,7 +203,7 @@ case 'default':
 		echo "</td>";
 		echo "<td>";
 		echo "  <form action='" . $currentFile . "' method='post'>";
-		echo "  <input type='hidden' name='step' value='uninstalltinymce' />";
+		echo "  <input type='hidden' name='op' value='uninstall_tinymce' />";
 		echo "  <input type='hidden' name='extension' value='" . $extension . "' />";
 		echo "  <input class='formButton' value='" . _AJAXFM_AM_UNINSTALL_EDITORPLUGIN . "' type='submit' />";
 		echo "</form>";
@@ -247,7 +244,7 @@ case 'default':
             echo "</td>";
             echo "<td>";
             echo "  <form action='" . $currentFile . "' method='post'>";
-            echo "  <input type='hidden' name='step' value='activate' />";
+            echo "  <input type='hidden' name='op' value='activate_extension' />";
             echo "  <input type='hidden' name='extension' value='" . $extension . "' />";
             echo "  <input class='formButton' value='" . _AJAXFM_AM_ACTIVATE_EXTENSION . "'' type='submit' />";
             echo "  </form>";
@@ -260,7 +257,7 @@ case 'default':
             echo "</td>";
             echo "<td>";
             echo "  <form action='" . $currentFile . "' method='post'>";
-            echo "  <input type='hidden' name='step' value='desactivate' />";
+            echo "  <input type='hidden' name='op' value='desactivate_extension' />";
             echo "  <input type='hidden' name='extension' value='" . $extension . "' />";
             echo "  <input class='formButton' value='" . _AJAXFM_AM_DISABLE_EXTENSION . "' type='submit' />";
             echo "</form>";
@@ -294,7 +291,7 @@ case 'default':
         echo _AJAXFM_AM_IMAGE_PHP_SMART_DESC;
         echo "<br />";
         echo "<form action='" . $currentFile . "' method='post'>";
-        echo "<input type='hidden' name='step' value='dump_images_cache' />";
+        echo "<input type='hidden' name='op' value='dump_images_cache' />";
         echo "<input class='formButton' value='" . _AJAXFM_AM_DUMP_IMAGES_CACHE . "'' type='submit' />";
         echo "</form>";
     }
@@ -302,5 +299,5 @@ case 'default':
 	
     xoops_cp_footer();
     break;
-} // switch ( $step )
+} // switch ( $op )
 ?>
