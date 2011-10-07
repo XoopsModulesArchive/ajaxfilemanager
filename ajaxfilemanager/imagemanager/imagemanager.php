@@ -185,6 +185,7 @@ if ($op == 'upload') {
     $form->addElement(new XoopsFormHidden('imgcat_id', $imgcat_id));
     $form->addElement(new XoopsFormHidden('op', 'doupload'));
     $form->addElement(new XoopsFormHidden('target', $target));
+    $form->addElement(new XoopsFormHidden('editor', $editor));
     $form->addElement(new XoopsFormButton('', 'img_button', _SUBMIT, 'submit'));
     $form->assign($xoopsTpl);
     $xoopsTpl->assign('lang_close', _CLOSE);
