@@ -123,28 +123,35 @@ $editorConfigs["editor"] = $ajaxfilemanagerModuleConfig['text_editor'];
 $editor = new XoopsFormEditor('', "content", $editorConfigs);
 $form->addElement($editor, true);
 
-// MAMBA wrote: "use a patch", and so... here you are "the patch" ;-)
-// $getValueJS = $editor->renderGetValueJS();
-switch ($editorConfigs["editor"]) {
-case 'editarea' :
-    $getValueJS = "editAreaLoader.getValue(&quot;" . $editorConfigs["name"] ."&quot;)";
-    break;
-case 'codemirror' :
-    $getValueJS = "editor_" . $editorConfigs["name"] .".mirror.getCode()";
-    break;
-case 'tinymce' :
-    $getValueJS = "tinyMCE.get(&quot;" . $editorConfigs["name"] ."&quot;).getContent()";
-    break;
-case 'ckeditor' :
-    $getValueJS = "CKEDITOR.instances." . $editorConfigs["name"] .".getData()";
-    break;
-case 'dhtmltextarea' :
-case 'textarea' :
-default :
-    $getValueJS = "document.getElementById(\"" . $editorConfigs["name"] ."\").value"; // DEBUG
-    //$getValueJS = "$(\"#" . $editorConfigs["name"] ."\").val()"; // jQuery // DEBUG
-    }
-// MAMBA wrote: "use a patch", and so... here you are "the patch" ;-)
+if ((method_exists($editor, 'renderGetValueJS')) and ($editor->renderGetValueJS() != '')) {
+    $getValueJS = $editor->renderGetValueJS();
+} else {
+    // MAMBA wrote: "use a patch", and so... here you are "the patch" ;-)
+    // $getValueJS = $editor->renderGetValueJS();
+    switch ($editorConfigs["editor"]) {
+    case 'editarea' :
+        $getValueJS = "editAreaLoader.getValue(&quot;" . $editorConfigs["name"] ."&quot;)";
+        break;
+    case 'codemirror' :
+        $getValueJS = "editor_" . $editorConfigs["name"] .".mirror.getCode()";
+        break;
+    case 'codemirror2' :
+        $getValueJS = "codemirror2_editor[&quot;" . $editorConfigs["name"] . "&quot;].mirror.getValue()";
+        break;
+    case 'tinymce' :
+        $getValueJS = "tinyMCE.get(&quot;" . $editorConfigs["name"] ."&quot;).getContent()";
+        break;
+    case 'ckeditor' :
+        $getValueJS = "CKEDITOR.instances." . $editorConfigs["name"] .".getData()";
+        break;
+    case 'dhtmltextarea' :
+    case 'textarea' :
+    default :
+        $getValueJS = "document.getElementById(\"" . $editorConfigs["name"] ."\").value"; // DEBUG
+        //$getValueJS = "$(\"#" . $editorConfigs["name"] ."\").val()"; // jQuery // DEBUG
+        }
+    // MAMBA wrote: "use a patch", and so... here you are "the patch" ;-)
+}
 
 $buttonSave = new XoopsFormButton ('', '_save', 'Save', 'button');
 $buttonSave->setExtra("onclick='javascript:save(\"" . $editorConfigs["name"] . "\", " . $getValueJS .");'");

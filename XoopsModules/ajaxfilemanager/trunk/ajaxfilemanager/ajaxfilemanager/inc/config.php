@@ -143,7 +143,7 @@ define('CONFIG_URL_DOWNLOAD', 'ajax_download.php');
 //$editor_handler = XoopsEditorHandler::getInstance();
 //$checkedEditor = $editor_handler->get($ajaxfilemanagerModuleConfig['text_editor']);
 //if (!method_exists($checkedEditor, 'renderGetValueJS')) {
-if (in_array($ajaxfilemanagerModuleConfig['text_editor'], array('editarea', 'codemirror', 'tinymce', 'ckeditor', 'dhtmltextarea', 'textarea'))) {
+if (in_array($ajaxfilemanagerModuleConfig['text_editor'], array('editarea', 'codemirror', 'codemirror2', 'tinymce', 'ckeditor', 'dhtmltextarea', 'textarea'))) {
     define('CONFIG_URL_TEXT_EDITOR', 'xoops_ajax_text_editor.php');
 } else {
     define('CONFIG_URL_TEXT_EDITOR', 'ajax_text_editor.php');
