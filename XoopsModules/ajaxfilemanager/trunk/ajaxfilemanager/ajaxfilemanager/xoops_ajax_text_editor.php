@@ -15,7 +15,7 @@
  * @author          luciorota <lucio.rota@gmail.com>
  * @package         ajaxfilemanager
  * @since           0.1
- * @version         $Id: xoops_ajax_text_editor.php 6335 2011-03-09 21:27:37Z luciorota $
+ * @version         $Id$
  */
 
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . "inc" . DIRECTORY_SEPARATOR . "config.php");
