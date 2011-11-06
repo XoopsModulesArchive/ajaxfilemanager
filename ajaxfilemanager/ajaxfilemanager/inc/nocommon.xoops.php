@@ -12,7 +12,7 @@
  * @copyright The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license http://www.fsf.org/copyleft/gpl.html GNU public license
  * @package kernel
- * @version $Id: nocommon.xoops.php 6335 2011-03-09 21:27:37Z luciorota $
+ * @version $Id$
  */
 defined('XOOPS_MAINFILE_INCLUDED') or die('Restricted access');
 

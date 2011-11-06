@@ -14,7 +14,7 @@
  * @package         ajaxfilemanager
  * @since           0.1
  * @author          luciorota <lucio.rota@gmail.com>
- * @version         $Id: config.php 6335 2011-03-09 21:27:37Z luciorota $
+ * @version         $Id$
  */
 
 /**
