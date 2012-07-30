@@ -5,22 +5,8 @@
 <meta http-equiv="content-language" content="<{$xoops_langcode}>" />
 <title><{$xoops_sitename}> <{$lang_imgmanager}></title>
 <{$image_form.javascript}>
-<style type="text/css" media="all">
-body {margin: 0;}
-img {border: 0;}
-table {width: 100%; margin: 0;}
-a:link {color: #3a76d6; font-weight: bold; background-color: transparent;}
-a:visited {color: #9eb2d6; font-weight: bold; background-color: transparent;}
-a:hover {color: #e18a00; background-color: transparent;}
-table td {background-color: white; font-size: 12px; padding: 0; border-width: 0; vertical-align: top; font-family: Verdana, Arial, Helvetica, sans-serif;}
-table#imagenav td {vertical-align: bottom; padding: 5px;}
-td.body {padding: 5px; vertical-align: middle;}
-td.caption {border: 0; background-color: #2F5376; color:white; font-size: 12px; padding: 5px; vertical-align: top; text-align:left; font-family: Verdana, Arial, Helvetica, sans-serif;}
-table#imageform {border: 1px solid silver;}
-table#header td {width: 100%; background-color: #2F5376; vertical-align: middle;}
-table#header td#headerbar {border-bottom: 1px solid silver; background-color: #dddddd;}
-div#footer {text-align:right; padding: 5px;}
-</style>
+<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl xoops.css}>" />
+<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl modules/system/css/imagemanager.css}>" />
 
 <{php}> 
 $language = $GLOBALS['xoopsConfig']['language'];
@@ -33,33 +19,35 @@ echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"language/$
 
 <body onload="window.resizeTo(<{$xsize}>, <{$ysize}>);">
 
-  <table cellspacing="0" id="imagenav">
+    <table cellspacing="0" id="imagenav">
     <tr>
-      <td align="left"><a href="imagemanager.php?target=<{$target}>&amp;editor=<{$editor}>&amp;cat_id=<{$show_cat}>" title="<{$lang_imgmanager}>"><{$lang_imgmanager}></a></td>
+        <td id="addimage" class="txtleft">
+            <a href="imagemanager.php?target=<{$target}>&amp;editor=<{$editor}>&amp;cat_id=<{$show_cat}>" title="<{$lang_imgmanager}>">
+        <{$lang_imgmanager}></a></td>
     </tr>
-  </table>
-
-  <form name="<{$image_form.name}>" id="<{$image_form.name}>" action="<{$image_form.action}>" method="<{$image_form.method}>" <{$image_form.extra}>>
-    <table id="imageform" cellspacing="0">
-    <!-- start of form elements loop -->
-    <{foreach item=element from=$image_form.elements}>
-      <{if $element.hidden != true}>
-      <tr valign="top">
-        <td class="caption"><{$element.caption}></td>
-        <td class="body"><{$element.body}></td>
-      </tr>
-      <{else}>
-      <{$element.body}>
-      <{/if}>
-    <{/foreach}>
-    <!-- end of form elements loop -->
     </table>
-  </form>
+  
+    <form name="<{$image_form.name}>" id="<{$image_form.name}>" action="<{$image_form.action}>" method="<{$image_form.method}>" <{$image_form.extra}>>
+        <table id="imageform" cellspacing="">
+        <!-- start of form elements loop -->
+    <{foreach item=element from=$image_form.elements}>
+    <{if $element.hidden != true}>
+        <tr valign="top">
+            <td class="caption"><{$element.caption}></td>
+            <td class="body"><{$element.body}></td>
+        </tr>
+    <{else}>
+        <{$element.body}>
+    <{/if}>
+    <{/foreach}>
+        <!-- end of form elements loop -->
+        </table>
+    </form>
 
 
-  <div id="footer">
-    <input value="<{$lang_close}>" type="button" onclick="javascript:window.close();" />
-  </div>
+    <div id="footer">
+        <input value="<{$lang_close}>" type="button" onclick="javascript:window.close();" />
+        </div>
 
-  </body>
+</body>
 </html>

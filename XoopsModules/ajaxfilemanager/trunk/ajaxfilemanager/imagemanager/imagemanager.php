@@ -171,7 +171,8 @@ if ($op == 'upload') {
     $xoopsTpl->assign('show_cat', $imgcat_id);
     $xoopsTpl->assign('lang_imgmanager', _IMGMANAGER);
     $xoopsTpl->assign('sitename', htmlspecialchars($xoopsConfig['sitename'], ENT_QUOTES));
-    $xoopsTpl->assign('target', htmlspecialchars($_GET['target'], ENT_QUOTES));
+    $xoopsTpl->assign('target', $target);
+    $xoopsTpl->assign('editor', $editor);
     include_once $GLOBALS['xoops']->path('class/xoopsformloader.php');
     $form = new XoopsThemeForm('', 'image_form', 'imagemanager.php', 'post', true);
     $form->setExtra('enctype="multipart/form-data"');
