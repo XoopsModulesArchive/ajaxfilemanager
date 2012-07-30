@@ -26,22 +26,8 @@ function appendCode(addCode,appendToValue) {
 }
 //-->
 </script>
-<style type="text/css" media="all">
-body {margin: 0;}
-img {border: 0;}
-table {width: 100%; margin: 0;}
-a:link {color: #3a76d6; font-weight: bold; background-color: transparent;}
-a:visited {color: #9eb2d6; font-weight: bold; background-color: transparent;}
-a:hover {color: #e18a00; background-color: transparent;}
-table td {background-color: white; font-size: 12px; padding: 0; border-width: 0; vertical-align: top; font-family: Verdana, Arial, Helvetica, sans-serif;}
-table#imagenav td {vertical-align: bottom; padding: 5px;}
-table#imagemain td {border-right: 1px solid silver; border-bottom: 1px solid silver; padding: 5px; vertical-align: middle;}
-table#imagemain th {border: 0; background-color: #2F5376; color:white; font-size: 12px; padding: 5px; vertical-align: top; text-align:center; font-family: Verdana, Arial, Helvetica, sans-serif;}
-table#header td {width: 100%; background-color: #2F5376; vertical-align: middle;}
-table#header td#headerbar {border-bottom: 1px solid silver; background-color: #dddddd;}
-div#pagenav {text-align:center;}
-div#footer {text-align:right; padding: 5px;}
-</style>
+<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl xoops.css}>" />
+<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl modules/system/css/imagemanager.css}>" />
 
 <{php}> 
 $language = $GLOBALS['xoopsConfig']['language'];
@@ -53,61 +39,63 @@ echo "<link rel=\"stylesheet\" type=\"text/css\" media=\"all\" href=\"language/$
 </head>
 
 <body onload="window.resizeTo(<{$xsize}>, <{$ysize}>);">
-
-  <form action="imagemanager.php" method="get">
-    <table cellspacing="0" id="imagenav">
-      <tr>
-        <td>
-          <select name="cat_id" onchange="location='imagemanager.php?target=<{$target}>&amp;editor=<{$editor}>&amp;cat_id='+this.options[this.selectedIndex].value"><{$cat_options}></select> <input type="hidden" name="target" value="<{$target}>" /><input type="submit" value="<{$lang_go}>" />
-        </td>
-
+    <form action="imagemanager.php" method="get">
+        <table cellspacing="0" id="imagenav">
+        <tr>
+            <td>
+                <select name="cat_id" onchange="location='imagemanager.php?target=<{$target}>&amp;editor=<{$editor}>&amp;cat_id='+this.options[this.selectedIndex].value"><{$cat_options}></select> <input type="hidden" name="target" value="<{$target}>" /><input type="submit" value="<{$lang_go}>" />
+            </td>
         <{if $show_cat > 0}>
-        <td align="right"><a href="imagemanager.php?target=<{$target}>&amp;editor=<{$editor}>&amp;op=upload&amp;imgcat_id=<{$show_cat}>" title="<{$lang_addimage}>"><{$lang_addimage}></a></td>
+            <td id="addimage" class="txtright">
+                <a href="imagemanager.php?target=<{$target}>&amp;editor=<{$editor}>&amp;op=upload&amp;imgcat_id=<{$show_cat}>" title="<{$lang_addimage}>"><{$lang_addimage}></a>
+            </td>
         <{/if}>
+        </tr>
+        </table>
+    </form>
+    <div id="pagenav"><{$pagenav}></div>
 
-      </tr>
+<{if $image_total > 0}>
+  
+        <table cellspacing="0" id="imagemain">
+        <tr>
+            <th><{$lang_imagename}></th>
+            <th><{$lang_image}></th>
+            <th><{$lang_imagemime}></th>
+            <th><{$lang_align}></th>
+        </tr>
+
+<{section name=i loop=$images}>
+        <tr class="txtcenter">
+            <td><input type="hidden" name="image_id[]" value="<{$images[i].id}>" /><{$images[i].nicename}></td>
+            <td><img style="max-width:200px;" src="<{$images[i].src}>" alt="" /></td>
+            <td><{$images[i].mimetype}></td>
+            <td>
+        <{if ($editor == 'bbcode')}>
+                <a href="#" title="" onclick="javascript:appendCode('<{$images[i].lxcode}>', true);"><img src="<{$xoops_url}>/images/alignleft.gif" alt="Left" /></a>
+                &nbsp;
+                <a href="#" title="" onclick="javascript:appendCode('<{$images[i].xcode}>', true);"><img src="<{$xoops_url}>/images/aligncenter.gif" alt="Center" /></a>
+                &nbsp;
+                <a href="#" title="" onclick="javascript:appendCode('<{$images[i].rxcode}>', true);"><img src="<{$xoops_url}>/images/alignright.gif" alt="Right" /></a>
+        <{/if}>
+        <{if ($editor == 'src')}>
+                <a href="#" title="" onclick="javascript:appendCode('<{$images[i].src}>', false);"><img src="<{$xoops_url}>/images/aligncenter.gif" alt="Center" /></a>
+        <{/if}>
+            </td>
+        </tr>
+<{/section}>
     </table>
-  </form>
 
-  <{if $image_total > 0}>
+<{else}>
 
-  <table cellspacing="0" id="imagemain">
-    <tr>
-      <th><{$lang_imagename}></th>
-      <th><{$lang_image}></th>
-      <th><{$lang_imagemime}></th>
-      <th><{$lang_align}></th>
-    </tr>
+    <div id="welcomenot"></div>
 
-    <{section name=i loop=$images}>
-    <tr align="center">
-      <td><input type="hidden" name="image_id[]" value="<{$images[i].id}>" /><{$images[i].nicename}></td>
-      <td><img src="<{$images[i].src}>" alt="" /></td>
-      <td><{$images[i].mimetype}></td>
-      <td>
-  <{if ($editor == 'bbcode')}>
-        <a href="#" title="" onclick="javascript:appendCode('<{$images[i].lxcode}>', true);"><img src="<{$xoops_url}>/images/alignleft.gif" alt="Left" /></a>
-        &nbsp;
-        <a href="#" title="" onclick="javascript:appendCode('<{$images[i].xcode}>', true);"><img src="<{$xoops_url}>/images/aligncenter.gif" alt="Center" /></a>
-        &nbsp;
-        <a href="#" title="" onclick="javascript:appendCode('<{$images[i].rxcode}>', true);"><img src="<{$xoops_url}>/images/alignright.gif" alt="Right" /></a>
-  <{/if}>
-  <{if ($editor == 'src')}>
-        <a href="#" title="" onclick="javascript:appendCode('<{$images[i].src}>', false);"><img src="<{$xoops_url}>/images/aligncenter.gif" alt="Center" /></a>
-  <{/if}>
-      </td>
+<{/if}>
 
-    </tr>
-    <{/section}>
-  </table>
+    <div id="pagenav"><{$pagenav}></div>
 
-  <{/if}>
-
-  <div id="pagenav"><{$pagenav}></div>
-
-  <div id="footer">
-    <input value="<{$lang_close}>" type="button" onclick="javascript:window.close();" />
-  </div>
-
-  </body>
+    <div id="footer">
+        <input value="<{$lang_close}>" type="button" onclick="javascript:window.close();" />
+        </div>
+</body>
 </html>
