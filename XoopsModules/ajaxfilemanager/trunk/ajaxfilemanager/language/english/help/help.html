@@ -1,570 +1,141 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
-  <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+    <title></title>
 </head>
-
 <body>
 <h1>Help</h1>
-
 <h2>Install</h2>
-
+<br />
 <h3>IN PROGRESS</h3>
 
-<p></p>
-
 <h2>How to...</h2>
-
+<br />
 <h3>Popup Ajax Image Manager</h3>
-
-<p>You can upload, download, delete, rename, copy, cut and paste files.<br>
-You can create, delete, rename, copy, cut and paste folders.<br>
-You can edit images, text files, html files... </p>
-
+<p>You can upload, download, delete, rename, copy, cut and paste files.<br />You can create, delete, rename, copy, cut and paste folders.<br />You can edit images, text files, html files... </p>
+<br />
 <h3>Textsanitizer [video] tag/extension</h3>
-<span style="color: red; font-weight: bold;">You MUST TRY IT!</span> 
-
-<p>With this extension you can insert a <span style="font-weight: bold;">Flash
-FLV video</span> into your page.<br>
-You can use <span style="font-weight: bold;">[video] tag</span> in any Xoops
-dhtmltextarea filed, if properly installed and activated.</p>
-
+<span style="color: red; font-weight: bold;">You MUST TRY IT!</span>
+<p>With this extension you can insert a <span style="font-weight: bold;">Flash FLV video</span> into your page.<br />You can use <span style="font-weight: bold;">[video] tag</span> in any Xoops dhtmltextarea filed, if properly installed and activated.</p>
 <h4>How to install</h4>
-
-<p>Is possible to install this textsanitizer extension from Ajaxfilemanager
-administrative menu / Extensions Manager. </p>
-
+<p>Is possible to install this textsanitizer extension from Ajaxfilemanager administrative menu / Extensions Manager.</p>
 <h4>Syntax</h4>
-
-<p>[video <span style="color: blue;">options</span>]<span
-style="color: blue;">video_url</span>[/video] </p>
-
+<p>[video <span style="color: blue;">options</span>]<span  style="color: blue;">video_url</span>[/video]</p>
 <p>Where: </p>
 <ul>
-  <li><span style="color: blue;">options</span> are writen as
-    opt1=val1,opt2=val2, ...</li>
-  <li><span style="color: blue;">video</span> is .flv video absolute url</li>
+    <li><span style="color: blue;">options</span> are writen as opt1=val1,opt2=val2, ...</li>
+    <li><span style="color: blue;">video</span> is .flv video absolute url</li>
 </ul>
-
 <h4>Exemples</h4>
 <ul>
-  <li>[video <span style="color: blue;">width=100,height=100</span>]<span
-    style="color: blue;">my_video_url</span>[/video] will insert a 100x100
-  video</li>
-  <li>[video]<span style="color: blue;">my_video_url</span>[/video] will insert
-    a default sizes video</li>
+    <li>[video <span style="color: blue;">width=100,height=100</span>]<span style="color: blue;">my_video_url</span>[/video] will insert a 100x100 video</li>
+    <li>[video]<span style="color: blue;">my_video_url</span>[/video] will insert a default sizes video</li>
 </ul>
-
+<br />
 <h3>Textsanitizer [gmap] tag/extension</h3>
-<span style="color: red; font-weight: bold;">You MUST TRY IT!</span> 
-
-<p>With this extension you can insert a <span style="font-weight: bold;">Google
-KML map</span> into your page.</p>
-
-<p>You can use <span style="font-weight: bold;">[gmap] tag</span> in any Xoops
-dhtmltextarea filed, if extention is properly installed and activated.<br>
-Instead of developing your own page with Google Maps API, it's possible to
-write a KML file and send it to Google Maps.<br>
-Google Maps understands a small subset of KML 2.0, and implements markers,
-polylines, polygons, info windows and a sidebar. A simple KML file contains an
-XML header, a KML header and a &lt;Document&gt;...&lt;/Document&gt; structure.
-That &lt;Document&gt; can contain a series of &lt;Placemark&gt;s which each
-describe one marker or polyline. <br>
-</p>
-
+<span style="color: red; font-weight: bold;">You MUST TRY IT!</span>
+<p>With this extension you can insert a <span style="font-weight: bold;">Google KML map</span> into your page.</p>
+<p>You can use <span style="font-weight: bold;">[gmap] tag</span> in any Xoops dhtmltextarea filed, if extention is properly installed and activated.<br />Instead of developing your own page with Google Maps API, it's possible to write a KML file and send it to Google Maps.<br />Google Maps understands a small subset of KML 2.0, and implements markers, polylines, polygons, info windows and a sidebar. A simple KML file contains an XML header, a KML header and a &lt;Document&gt;...&lt;/Document&gt; structure. That &lt;Document&gt; can contain a series of &lt;Placemark&gt;s which each describe one marker or polyline.</p>
 <p>Here's what a basic XML file looks like</p>
-<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>&lt;kml xmlns="http://earth.google.com/kml/2.0"&gt;<br>&lt;Document&gt;<br>  &lt;name&gt;KML Example file&lt;/name&gt;<br>  &lt;description&gt;Simple markers&lt;/description&gt;<br><br>  &lt;Placemark&gt;<br>    &lt;name&gt;Marker 1&lt;/name&gt;<br>    &lt;description&gt;Some stuff to put in the first info window&lt;/description&gt;<br>    &lt;Point&gt;<br>      &lt;coordinates&gt;-122.1,37.4,0&lt;/coordinates&gt;<br>    &lt;/Point&gt;<br>  &lt;/Placemark&gt;<br><br>&lt;/Document&gt;<br>&lt;/kml&gt;<br></pre>
+<div class="xoopsCode">&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br />
+&lt;kml xmlns="http://earth.google.com/kml/2.0"&gt;<br />
+&lt;Document&gt;<br />
+&lt;name&gt;KML Example file&lt;/name&gt;<br />
+&lt;description&gt;Simple markers&lt;/description&gt;<br />
+<br />
+&lt;Placemark&gt;<br />
+&lt;name&gt;Marker 1&lt;/name&gt;<br />
+&lt;description&gt;Some stuff to put in the first info
+window&lt;/description&gt;<br />
+&lt;Point&gt;<br />
+&lt;coordinates&gt;-122.1,37.4,0&lt;/coordinates&gt;<br />
+&lt;/Point&gt;<br />
+&lt;/Placemark&gt;<br />
+<br />
+&lt;/Document&gt;<br />
+&lt;/kml&gt;<br />
+</div>
 <ul>
-  <li>The whole file must be syntactically valid XML. The case of the tags is
-    significant.</li>
-  <li>The Document name is displayed in the title bar and in bold in the
-    sidebar.</li>
-  <li>The Document description is displayed in the sidebar.</li>
-  <li>The Placemark name is displayed in the sidebar and in bold in the info
-    window.</li>
-  <li>The Placemark description is displayed in the info window.</li>
-  <li>The coordinates are in the order longitude, latitude, altitude. (Note
-    that this is the opposite order from GLatLng() in the Google Maps API) The
-    altitude value is not used.</li>
-  <li>The map <span style="font-weight: bold;">will be automatically centred
-    and zoomed</span> in such a way as to contain all the placemarks.</li>
-  <li><span style="font-weight: bold;">KML files can't be sent from your local
-    disk</span> with URLs that begin with "file://" they need to be on a real
-    web server.</li>
+    <li>The whole file must be syntactically valid XML. The case of the tags is significant.</li>
+    <li>The Document name is displayed in the title bar and in bold in the sidebar.</li>
+    <li>The Document description is displayed in the sidebar.</li>
+    <li>The Placemark name is displayed in the sidebar and in bold in the info window.</li>
+    <li>The Placemark description is displayed in the info window.</li>
+    <li>The coordinates are in the order longitude, latitude, altitude. (Note that this is the opposite order from GLatLng() in the Google Maps API) The altitude value is not used.</li>
+    <li>The map <span style="font-weight: bold;">will be automatically centred and zoomed</span> in such a way as to contain all the placemarks.</li>
+    <li><span style="font-weight: bold;">KML files can't be sent from your local disk</span> with URLs that begin with "file://" they need to be on a real web server.</li>
 </ul>
-
-<p>You can <span style="font-weight: bold;">generate KML files using Google
-Earth</span>.</p>
-
-<h4>How to install<br>
-</h4>
-
-<p>Is possible to install this textsanitizer extension from Ajaxfilemanager
-administrative menu / Extensions Manager.</p>
-
+<p>You can <span style="font-weight: bold;">generate KML files using Google Earth</span>.</p>
+<h4>How to install</h4>
+<p>Is possible to install this textsanitizer extension from Ajaxfilemanager administrative menu / Extensions Manager.</p>
 <h4>Syntax</h4>
-
-<p>[gmap <span style="color: blue;">options</span>]<span
-style="color: blue;">kml_url</span>[/video] </p>
-
-<p>Where: </p>
+<p>[gmap <span style="color: blue;">options</span>]<span style="color: blue;">kml_url</span>[/video] </p>
+<p>Where:</p>
 <ul>
-  <li><span style="color: blue;">options</span> are writen as
-    opt1=val1,opt2=val2, ...</li>
-  <li><span style="color: blue;">kml_url</span> is Google Maps .kml file
-    absolute url</li>
+    <li><span style="color: blue;">options</span> are writen as opt1=val1,opt2=val2, ...</li>
+    <li><span style="color: blue;">kml_url</span> is Google Maps .kml file absolute url</li>
 </ul>
-
 <h4>Exemples</h4>
 <ul>
-  <li>[gmap <span style="color: blue;">width=100,height=100</span>]<span
-    style="color: blue;">my_kml_url</span>[/gmapo] will insert a 100x100
-  gmap</li>
-  <li>[gmap<span style="color: blue;"></span>]<span
-    style="color: blue;">my_kml_url</span>[/gmap] will insert a default sizes
-    gmap</li>
+    <li>[gmap <span style="color: blue;">width=100,height=100</span>]<span style="color: blue;">my_kml_url</span>[/gmap] will insert a 100x100 gmap</li>
+    <li>[gmap<span style="color: blue;"></span>]<span style="color: blue;">my_kml_url</span>[/gmap] will insert a default sizes gmap</li>
 </ul>
-
-
-        <h3>image.php</h3>
-        <p>
-This module uses an enhanced "image.php" script version. This enhanced
-version is very useful in many cases, for example when you need a
-smallest version of a uplaoded image. The new "image.php" script uses
-some "on fly" resize features... with a very interesting cache
-system.&nbsp; ;-) </p>
-        <p>
-            <span style="color: red; font-weight: bold;">
-                You MUST TRY IT!
-            </span>
-            <br>
-        </p>
-        <p>
-            Parameters need to be passed in through the URL's query string:
-        </p>
-        <ul>
-            <li>
-            <span style="color: blue;">image_id</span> OR <span style="color: blue;">id</span>
-            New Image Manager Xoops module image id;</li>
-            <li>
-            <span style="color: blue;">image</span>    path relative to XOOPS_MAIN_PATH, path of local image starting with "/" (e.g. /images/toast.jpg);</li>
-            <li>
-            <span style="color: blue;">width</span>
-            maximum width of final image in pixels (e.g. 700);</li>
-            <li>
-            <span style="color: blue;">heigh</span>
-            t maximum height of final image in pixels (e.g. 700);</li>
-            <li>
-            <span style="color: blue;">color</span>
-            (optional) background hex color for filling transparent PNGs (e.g. 900 or 16a942);</li>
-            <li>
-            <span style="color: blue;">
-                cropratio
-            </span>
-            (optional) ratio of width to height to crop final image (e.g. 1:1 or 3:2);</li>
-            <li>
-            <span style="color: blue;">
-                nocache
-            </span>
-            (optional) does not read image from the cache;</li>
-
-            <li>
-            <span style="color: blue;">
-                noservercache
-            </span>
-            (optional); 
-            <span style="color: red;">
-                // STILL TO DO
-            </span></li>
-            <li>
-            <span style="color: blue;">
-
-                nobrowsercache
-            </span>
-            (optional); 
-            <span style="color: red;">
-                // STILL TO DO
-            </span></li>
-            <li>
-            <span style="color: blue;">
-                quality
-            </span>
-            (optional, 0-100, default: 90) quality of output image;</li>
-
-            <li>
-            <span style="color: blue;">
-                filter
-            </span>
-(optional, PHP5+ imagefilter 2nd, 3rd, 4th, 5th arguments, more info on
-php.net manual) a filter or an array of filters;</li>
-  <li><span style="color: blue;">radius</span> (optional, 1, 2, 3 or 4 integer values, CW) round corner radius<br>
-  </li>
-
-        </ul>
-        <h4>Examples</h4>
-        <span style="font-weight: bold;">
-            Resizing a JPEG
-        </span>
-        :
-        <br>
-        &lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-
-        =image-name.jpg?
-        <span style="color: blue;">
-            width
-        </span>
-        =100&amp;
-        <span style="color: blue;">
-            height
-        </span>
-        =100" alt="Don't forget your alt text" /&gt; 
-        <br>
-
-        <span style="font-weight: bold;">
-            Resizing and cropping a JPEG into a square
-        </span>
-        :
-        <br>
-        &lt;img src="/image.php/image-name.jpg?
-        <span style="color: blue;">
-            width
-        </span>
-        =100&amp;
-
-        <span style="color: blue;">
-            height
-        </span>
-        =100&amp;
-        <span style="color: blue;">
-            cropratio
-        </span>
-        =1:1" alt="Don't forget your alt text" /&gt; 
-        <br>
-
-        <span style="font-weight: bold;">
-            Matting a PNG with #990000
-        </span>
-        :
-        <br>
-        &lt;img src="/image.php/image-name.png?
-        <span style="color: blue;">
-            color
-        </span>
-        =900&amp;
-
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png" alt="Don't forget your alt text" /&gt; 
-        <br>
-        <span style="font-weight: bold;">
-            Apply a filter
-        </span>
-        :
-        <br>
-
-        &lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png&amp;
-        <span style="color: blue;">
-            filter
-        </span>
-        =IMG_FILTER_COLORIZE,128,60,256" alt="Don't forget your alt text" /&gt;
-
-        <br>
-        <span style="font-weight: bold;">
-            Apply more filters (array)
-        </span>
-        :
-        <br>
-        &lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png&amp;
-
-        <span style="color: blue;">
-            filter[]
-        </span>
-        =IMG_FILTER_GRAYSCALE&amp;
-        <span style="color: blue;">
-            filter[]
-        </span>
-        =IMG_FILTER_COLORIZE,128,60,256" alt="Don't forget your alt text" /&gt;
-        <br>
-
-<span style="font-weight: bold;">Round the image corners </span>:
-        <br>
-<span style="font-style: italic;">All corners with same radius</span><br>
-&lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png&amp; <span style="color: blue;">radius
-        </span>
-        =20" alt="Don't forget your alt text" /&gt;
-
-        <br>
-<span style="font-style: italic;">Left and right corners with different radius (20 for left corners and 40 for right corners)</span><br>
-
-&lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png&amp; <span style="color: blue;">radius
-        </span>
-        =20,40" alt="Don't forget your alt text" /&gt;
-
-        <br>
-<span style="font-style: italic;">4 corners, 4 radius, clockwise order</span><br>
-
-
-&lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png&amp; <span style="color: blue;">radius
-        </span>
-        =20,40,0,10" alt="Don't forget your alt text" /&gt;
-
-        <br>
-
-
-        <span style="font-weight: bold;"></span><br>
-</body></html>
-
-            <span style="color: blue;">
-            </span>
-            image.php</h3>
-        <p>
-This module uses an enhanced "image.php" script version. This enhanced
-version is very useful in many cases, for example when you need a
-smallest version of a uplaoded image. The new "image.php" script uses
-some "on fly" resize features... with a very interesting cache
-system.&nbsp; ;-) </p>
-        <p>
-            <span style="color: red; font-weight: bold;">
-
-                You MUST TRY IT!
-            </span>
-            <br>
-        </p>
-        <p>
-            Parameters need to be passed in through the URL's query string:
-        </p>
-        <ul>
-            <li>
-            <span style="color: blue;">
-
-                image_id
-            </span>
-            OR 
-            <span style="color: blue;">
-                id
-            </span>
-            New Image Manager Xoops module image id;</li>
-            <li>
-            <span style="color: blue;">
-                image
-            </span>
-
-            path relative to XOOPS_MAIN_PATH, path of local image starting with "/" (e.g. /images/toast.jpg);</li>
-            <li>
-            <span style="color: blue;">
-                width
-            </span>
-            maximum width of final image in pixels (e.g. 700);</li>
-            <li>
-            <span style="color: blue;">
-
-                heigh
-            </span>
-            t maximum height of final image in pixels (e.g. 700);</li>
-            <li>
-            <span style="color: blue;">
-                color
-            </span>
-            (optional) background hex color for filling transparent PNGs (e.g. 900 or 16a942);</li>
-            <li>
-
-            <span style="color: blue;">
-                cropratio
-            </span>
-            (optional) ratio of width to height to crop final image (e.g. 1:1 or 3:2);</li>
-            <li>
-            <span style="color: blue;">
-                nocache
-            </span>
-            (optional) does not read image from the cache;</li>
-
-            <li>
-            <span style="color: blue;">
-                noservercache
-            </span>
-            (optional); 
-            <span style="color: red;">
-                // STILL TO DO
-            </span></li>
-            <li>
-            <span style="color: blue;">
-
-                nobrowsercache
-            </span>
-            (optional); 
-            <span style="color: red;">
-                // STILL TO DO
-            </span></li>
-            <li>
-            <span style="color: blue;">
-                quality
-            </span>
-            (optional, 0-100, default: 90) quality of output image;</li>
-
-            <li>
-            <span style="color: blue;">
-                filter
-            </span>
-(optional, PHP5+ imagefilter 2nd, 3rd, 4th, 5th arguments, more info on
-php.net manual) a filter or an array of filters;</li>
-  <li><span style="color: blue;">radius</span> (optional, 1, 2, 3 or 4 integer values, CW) round corner radius<br>
-  </li>
-
-        </ul>
-        <h4>Examples</h4>
-        <span style="font-weight: bold;">
-            Resizing a JPEG
-        </span>
-        :
-        <br>
-        &lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-
-        =image-name.jpg?
-        <span style="color: blue;">
-            width
-        </span>
-        =100&amp;
-        <span style="color: blue;">
-            height
-        </span>
-        =100" alt="Don't forget your alt text" /&gt; 
-        <br>
-
-        <span style="font-weight: bold;">
-            Resizing and cropping a JPEG into a square
-        </span>
-        :
-        <br>
-        &lt;img src="/image.php/image-name.jpg?
-        <span style="color: blue;">
-            width
-        </span>
-        =100&amp;
-
-        <span style="color: blue;">
-            height
-        </span>
-        =100&amp;
-        <span style="color: blue;">
-            cropratio
-        </span>
-        =1:1" alt="Don't forget your alt text" /&gt; 
-        <br>
-
-        <span style="font-weight: bold;">
-            Matting a PNG with #990000
-        </span>
-        :
-        <br>
-        &lt;img src="/image.php/image-name.png?
-        <span style="color: blue;">
-            color
-        </span>
-        =900&amp;
-
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png" alt="Don't forget your alt text" /&gt; 
-        <br>
-        <span style="font-weight: bold;">
-            Apply a filter
-        </span>
-        :
-        <br>
-
-        &lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png&amp;
-        <span style="color: blue;">
-            filter
-        </span>
-        =IMG_FILTER_COLORIZE,128,60,256" alt="Don't forget your alt text" /&gt;
-
-        <br>
-        <span style="font-weight: bold;">
-            Apply more filters (array)
-        </span>
-        :
-        <br>
-        &lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png&amp;
-
-        <span style="color: blue;">
-            filter[]
-        </span>
-        =IMG_FILTER_GRAYSCALE&amp;
-        <span style="color: blue;">
-            filter[]
-        </span>
-        =IMG_FILTER_COLORIZE,128,60,256" alt="Don't forget your alt text" /&gt;
-        <br>
-
-<span style="font-weight: bold;">Round the image corners </span>:
-        <br>
-<span style="font-style: italic;">All corners with same radius</span><br>
-&lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png&amp; <span style="color: blue;">radius
-        </span>
-        =20" alt="Don't forget your alt text" /&gt;
-
-        <br>
-<span style="font-style: italic;">Left and right corners with different radius (20 for left corners and 40 for right corners)</span><br>
-
-&lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png&amp; <span style="color: blue;">radius
-        </span>
-        =20,40" alt="Don't forget your alt text" /&gt;
-
-        <br>
-<span style="font-style: italic;">4 corners, 4 radius, clockwise order</span><br>
-
-
-&lt;img src="/image.php?
-        <span style="color: blue;">
-            image
-        </span>
-        =/path/to/image.png&amp; <span style="color: blue;">radius
-        </span>
-        =20,40,0,10" alt="Don't forget your alt text" /&gt
+<br />
+<h3>image.php</h3>
+<p>This module uses an enhanced "image.php" script version. This enhanced version is very useful in many cases, for example when you need a smallest version of a uplaoded image. The new "image.php" script uses some "on fly" resize features... with a very interesting cache system.&nbsp; ;-)</p>
+<p><span style="color: red; font-weight: bold;"> You MUST TRY IT!</span>
+</p>
+<br />
+<p>Parameters need to be passed in through the URL's query string:</p>
+<ul>
+    <li><span style="color: blue;">image_id</span> OR <span style="color: blue;">id</span> New Image Manager Xoops module image id;</li>
+    <li><span style="color: blue;">image</span> path relative to XOOPS_MAIN_PATH, path of local image starting with "/" (e.g. /images/toast.jpg);</li>
+    <li><span style="color: blue;">width</span> maximum width of final image in pixels (e.g. 700);</li>
+    <li><span style="color: blue;">height</span> maximum height of final image in pixels (e.g. 700);</li>
+    <li><span style="color: blue;">color</span> (optional) background hex color for filling transparent PNGs (e.g. 900 or 16a942);</li>
+    <li><span style="color: blue;">cropratio</span> (optional) ratio of width to height to crop final image (e.g. 1:1 or 3:2);</li>
+    <li><span style="color: blue;">nocache</span> (optional) does not read image from the cache;</li>
+    <li><span style="color: blue;">noservercache</span> (optional); <span style="color: red;">// STILL TO DO</span></li>
+    <li><span style="color: blue;">nobrowsercache</span> (optional); <span style="color: red;">// STILL TO DO</span></li>
+    <li><span style="color: blue;">quality</span> (optional, 0-100, default: 90) quality of output image;</li>
+    <li><span style="color: blue;">filter</span>(optional, PHP5+ imagefilter 2nd, 3rd, 4th, 5th arguments, more info on php.net manual) a filter or an array of filters;</li>
+    <li><span style="color: blue;">radius</span> (optional, 1, 2, 3 or 4 integer values, CW) round corner radius</li>
+</ul>
+<h4>Examples</h4>
+<span style="font-weight: bold;">Resizing a JPEG</span>:
+<br />
+&lt;img src="/image.php?<span style="color: blue;">image</span>=image-name.jpg&amp;<span style="color: blue;">width</span>=100&amp;<span style="color: blue;">height</span>=100" alt="Don't forget your alt text" /&gt;
+<br />
+<span style="font-weight: bold;">Resizing and cropping a JPEG into a square</span>:
+<br />
+&lt;img src="/image.php/image-name.jpg?<span style="color: blue;">width</span>=100&amp;<span style="color: blue;">height</span>=100&amp;<span style="color: blue;">cropratio</span>=1:1" alt="Don't forget your alt text" /&gt;
+<br />
+<span style="font-weight: bold;">Matting a PNG with #990000</span>:
+<br />
+&lt;img src="/image.php/image-name.png?<span style="color: blue;">color</span>=900&amp;<span style="color: blue;">image</span>=/path/to/image.png" alt="Don't forget your alt text" /&gt;
+<br />
+<span style="font-weight: bold;">Apply a filter</span>:
+<br />
+&lt;img src="/image.php?<span style="color: blue;">image</span>=/path/to/image.png&amp;<span style="color: blue;">filter</span>=IMG_FILTER_COLORIZE,128,60,256" alt="Don't forget your alt text" /&gt;
+<br />
+<span style="font-weight: bold;">Apply more filters (array)</span>:
+<br />
+&lt;img src="/image.php? <span style="color: blue;">image</span>=/path/to/image.png&amp;<span style="color: blue;">filter[]</span>=IMG_FILTER_GRAYSCALE&amp;<span style="color: blue;">filter[]</span>=IMG_FILTER_COLORIZE,128,60,256" alt="Don't forget your alt text" /&gt;
+<br />
+<span style="font-weight: bold;">Round the image corners</span>:
+<br />
+<span style="font-style: italic;">All corners with same radius</span>:
+<br />
+&lt;img src="/image.php?<span style="color: blue;">image</span>=/path/to/image.png&amp;<span style="color: blue;">radius</span>=20" alt="Don't forget your alt text" /&gt;
+<br />
+<span style="font-style: italic;">Left and right corners with different radius (20 for left corners and 40 for right corners)</span>
+<br />
+&lt;img src="/image.php? <span style="color: blue;">image</span>=/path/to/image.png&amp;<span style="color: blue;">radius</span>=20,40" alt="Don't forget your alt text" /&gt;
+<br />
+<span style="font-style: italic;">4 corners, 4 radius, clockwise order</span>
+<br />
+&lt;img src="/image.php?<span style="color: blue;">image</span>=/path/to/image.png&amp;<span style="color: blue;">radius</span>=20,40,0,10" alt="Don't forget your alt text" /&gt;
+<br />
 </body>
 </html>

@@ -48,17 +48,17 @@ function xoops_module_install_ajaxfilemanager(&$xoopsModule) {
     $msg = '';
     // Create ajaxfilemanager main upload directory
     $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager";
-	if (!makeDir($dir))
-        $msg.= sprintf(_AJAXFM_MI_WARNING_DIRNOTCREATED, $dir);
+	if (!ajaxfilemanager_makeDir($dir))
+        $msg.= sprintf(_MI_AJAXFM_WARNING_DIRNOTCREATED, $dir);
     $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/uploaded";
-	if (!makeDir($dir))
-        $msg.= sprintf(_AJAXFM_MI_WARNING_DIRNOTCREATED, $dir);
+	if (!ajaxfilemanager_makeDir($dir))
+        $msg.= sprintf(_MI_AJAXFM_WARNING_DIRNOTCREATED, $dir);
     $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/session";
-	if (!makeDir($dir))
-        $msg.= sprintf(_AJAXFM_MI_WARNING_DIRNOTCREATED, $dir);
+	if (!ajaxfilemanager_makeDir($dir))
+        $msg.= sprintf(_MI_AJAXFM_WARNING_DIRNOTCREATED, $dir);
     $dir = XOOPS_ROOT_PATH . "/uploads/ajaxfilemanager/imagecache";
-	if (!makeDir($dir))
-        $msg.= sprintf(_AJAXFM_MI_WARNING_DIRNOTCREATED, $dir);
+	if (!ajaxfilemanager_makeDir($dir))
+        $msg.= sprintf(_MI_AJAXFM_WARNING_DIRNOTCREATED, $dir);
     if (empty($msg))
         return $ret;
     else

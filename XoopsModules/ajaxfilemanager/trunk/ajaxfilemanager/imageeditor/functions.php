@@ -3,7 +3,7 @@
  * Create a new directory that contains the file index.html
  *
  */
-function makeDir($dir, $perm = 0777) {
+function ajaxfilemanager_makeDir($dir, $perm = 0777) {
     if (!is_dir($dir)){
         if (!@mkdir($dir, $perm)){
             return false;

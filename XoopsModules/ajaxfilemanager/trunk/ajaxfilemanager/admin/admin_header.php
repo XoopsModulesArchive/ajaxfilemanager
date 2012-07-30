@@ -20,15 +20,47 @@
 // Include xoops admin header
 include "../../../include/cp_header.php";
 
-include_once(XOOPS_ROOT_PATH."/class/xoopsmodule.php");
+include_once(XOOPS_ROOT_PATH."/kernel/module.php");
 include_once XOOPS_ROOT_PATH."/class/xoopstree.php";
 include_once XOOPS_ROOT_PATH."/class/xoopsformloader.php";
 include_once XOOPS_ROOT_PATH."/class/tree.php";
 include_once XOOPS_ROOT_PATH."/class/xoopslists.php";
 include_once XOOPS_ROOT_PATH."/class/pagenav.php";
-include_once XOOPS_ROOT_PATH."/class/xoopstopic.php";
 include_once XOOPS_ROOT_PATH."/class/xoopsform/grouppermform.php";
+
+// Include module functions
 include_once("../include/functions.php");
+
+
+
+$pathDir = $GLOBALS['xoops']->path('/Frameworks/moduleclasses/moduleadmin');
+$globalLanguage = $GLOBALS['xoopsConfig']['language'];
+
+if ( file_exists($pathDir . '/language/' . $globalLanguage . '/main.php')){
+	include_once $pathDir . '/language/' . $globalLanguage . '/main.php';        
+} else {
+	include_once $pathDir . '/language/english/main.php';        
+}
+    
+if ( file_exists($pathDir . '/moduleadmin.php')){
+	include_once $pathDir . '/moduleadmin.php';
+	//return true;
+} else {
+	xoops_cp_header();
+	echo xoops_error(_AM_AJAXFM_NOFRAMEWORKS);
+	xoops_cp_footer();
+	//return false;
+}
+
+$dirname = basename(dirname(dirname( __FILE__ ) ));
+$module_handler =& xoops_gethandler('module');
+$xoopsModule = & $module_handler->getByDirname($dirname); 
+$moduleInfo =& $module_handler->get($xoopsModule->getVar('mid'));
+$pathImageIcon = XOOPS_URL .'/'. $moduleInfo->getInfo('icons16');
+$pathImageAdmin = XOOPS_URL .'/'. $moduleInfo->getInfo('icons32');
+$pathImageModule = XOOPS_URL . '/modules/'. $GLOBALS['xoopsModule']->getVar('dirname') .'/images';
+
+
 
 $myts =& MyTextSanitizer::getInstance();
 

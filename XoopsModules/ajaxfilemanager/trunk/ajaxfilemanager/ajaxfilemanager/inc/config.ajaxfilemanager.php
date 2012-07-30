@@ -14,13 +14,13 @@
  * @package         ajaxfilemanager
  * @since           0.1
  * @author          luciorota <lucio.rota@gmail.com>
- * @version         $Id$
+ * @version         $Id: config.ajaxfilemanager.php 6335 2011-03-09 21:27:37Z luciorota $
  */
 
 /**
  * Load Module config
  */
-include_once XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
+include_once XOOPS_ROOT_PATH . '/kernel/module.php';
 xoops_loadLanguage('main', 'ajaxfilemanager');
 $ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
 if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
@@ -63,7 +63,7 @@ if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
     $groups = is_object($GLOBALS['xoopsUser']) ? $GLOBALS['xoopsUser']->getGroups() : XOOPS_GROUP_ANONYMOUS;
 
     $permAccess = ($gpermHandler->checkRight('ajaxfilemanager_extra', 1, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
-    if (!$permAccess) exit(_AJAXFM_MD_NO_PERMISSION);
+    if (!$permAccess) exit(_MA_AJAXFM_NO_PERMISSION);
     $permDelete = ($gpermHandler->checkRight('ajaxfilemanager_extra', 4, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;
     define('CONFIG_OPTIONS_DELETE', $permDelete);
     $permCut = ($gpermHandler->checkRight('ajaxfilemanager_extra', 8, $groups, $ajaxfilemanagerModule->mid())) ? true : false ;

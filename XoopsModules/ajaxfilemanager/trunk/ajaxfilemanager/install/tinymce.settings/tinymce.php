@@ -20,7 +20,6 @@
  */
 
 return array(
-
 	"file_browser_callback" => "ajaxfilemanager",
 	"callback" => "function ajaxfilemanager(field_name, url, type, win) {
 			var ajaxfilemanagerurl = '" . XOOPS_URL . "/modules/ajaxfilemanager/ajaxfilemanager/ajaxfilemanager.php?editor=tinymce&config=ajaxfilemanager&language=" . _LANGCODE . "';
@@ -49,8 +48,9 @@ return array(
                 input : field_name
             });
 		}",
-	
+        
     "theme"     => "advanced",
+    
     // language code of the default language pack to use with TinyMCE. These codes are in ISO-639-1 format
     "language" => "en",
 

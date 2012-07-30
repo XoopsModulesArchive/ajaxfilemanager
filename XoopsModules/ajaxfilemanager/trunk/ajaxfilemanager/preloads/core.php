@@ -33,7 +33,7 @@ class AjaxfilemanagerCorePreload extends XoopsPreloadItem
         /**
          * Load Module config
          */
-        include_once XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
+        include_once XOOPS_ROOT_PATH . '/kernel/module.php';
         $ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
         if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
             $config_handler =& xoops_gethandler('config');

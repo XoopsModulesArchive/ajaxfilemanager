@@ -14,7 +14,7 @@
  * @package         ajaxfilemanager
  * @since           0.1
  * @author          luciorota <lucio.rota@gmail.com>
- * @version         $Id$
+ * @version         $Id: formxoopsimage.php 6335 2011-03-09 21:27:37Z luciorota $
  */
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
