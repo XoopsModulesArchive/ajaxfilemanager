@@ -82,10 +82,10 @@ class XoopsImageEditor
         $this->_undoDirectory =     $this->_tempPath . '/undo/';
 
         // create directories if not exists
-        makeDir($this->_originalDirectory);
-        makeDir($this->_originalDirectory);
-        makeDir($this->_activeDirectory);
-        makeDir($this->_undoDirectory);
+        ajaxfilemanager_makeDir($this->_originalDirectory);
+        ajaxfilemanager_makeDir($this->_originalDirectory);
+        ajaxfilemanager_makeDir($this->_activeDirectory);
+        ajaxfilemanager_makeDir($this->_undoDirectory);
     }
 
     /**

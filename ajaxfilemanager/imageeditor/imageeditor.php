@@ -151,8 +151,8 @@ if ($op == 'saveas') {
     if (isset($_POST['resize_image']) && ($_POST['resize_image'] == true)) {
         // calculates the available memory for upload // IN PROGRESS
         // temporary solution 
-        $memoryAvailable = @round((letToNum(ini_get('memory_limit')) - memory_get_usage())/3);
-        $maxUploadSize = min(letToNum(ini_get('post_max_size')), letToNum(ini_get('upload_max_filesize')), $memoryAvailable);
+        $memoryAvailable = @round((ajaxfilemanager_letToNum(ini_get('memory_limit')) - memory_get_usage())/3);
+        $maxUploadSize = min(ajaxfilemanager_letToNum(ini_get('post_max_size')), ajaxfilemanager_letToNum(ini_get('upload_max_filesize')), $memoryAvailable);
         $maxFileSize = $maxUploadSize;
         $uploader = new XoopsMediaUploader(XOOPS_UPLOAD_PATH, array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'), $maxFileSize);
     } else {

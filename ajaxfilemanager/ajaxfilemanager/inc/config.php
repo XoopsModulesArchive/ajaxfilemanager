@@ -14,7 +14,7 @@
  * @package         ajaxfilemanager
  * @since           0.1
  * @author          luciorota <lucio.rota@gmail.com>
- * @version         $Id$
+ * @version         $Id: config.php 6335 2011-03-09 21:27:37Z luciorota $
  */
 
 /**
@@ -29,7 +29,7 @@ error_reporting(0);
  * Load Module config
  */
 xoops_loadLanguage('main', 'ajaxfilemanager');
-include_once XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
+include_once XOOPS_ROOT_PATH . '/kernel/module.php';
 $ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
 if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
     $config_handler =& xoops_gethandler('config');

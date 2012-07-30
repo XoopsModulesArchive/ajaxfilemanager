@@ -18,7 +18,7 @@
  */
 
 include "../../../mainfile.php";
-include_once XOOPS_ROOT_PATH . '/class/xoopsmodule.php';
+include_once XOOPS_ROOT_PATH . '/kernel/module.php';
 include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 include XOOPS_ROOT_PATH . "/header.php";
 $currentFile = basename(__FILE__);

@@ -22,7 +22,7 @@
 * @param   integer    $ret     numerical size
 * @return  string     $size    letteral size
 **/
-function numToLet($size) {
+function ajaxfilemanager_numToLet($size) {
     if($size>0) {
         $unit=array('B','KB','MB','GB','TB','PB');
         return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i];
@@ -39,7 +39,7 @@ function numToLet($size) {
 * @param   string     $size    letteral size
 * @return  integer    $ret     numerical size
 **/
-function letToNum($size) { 
+function ajaxfilemanager_letToNum($size) { 
     $l = substr($size, -1);
     $ret = substr($size, 0, -1);
     switch(strtoupper($l)) {
@@ -71,7 +71,7 @@ function letToNum($size) {
  * it just keeps going through all of the directories in the folder you specify.
  *
  */
-function getDir($path = '.', $level = 0) {
+function ajaxfilemanager_getDir($path = '.', $level = 0) {
     $ret = array();
     $ignore = array('cgi-bin', '.', '..');
     // Directories to ignore when listing output. Many hosts will deny PHP access to the cgi-bin.
@@ -106,7 +106,7 @@ function getDir($path = '.', $level = 0) {
  * Create a new directory that contains the file index.html
  *
  */
-function makeDir($dir, $perm = 0777) {
+function ajaxfilemanager_makeDir($dir, $perm = 0777) {
     if (!is_dir($dir)){
         if (!@mkdir($dir, $perm)){
             return false;
@@ -129,14 +129,14 @@ function makeDir($dir, $perm = 0777) {
  * Returns TRUE on success or FALSE on failure
  *
  */
-function copyDir($source, $destination) {
+function ajaxfilemanager_copyDir($source, $destination) {
     if (!$dirHandler = opendir($source))
         return false;
     @mkdir($destination);
     while(false !== ( $file = readdir($dirHandler)) ) {
         if (( $file != '.' ) && ( $file != '..' )) {
             if ( is_dir($source . '/' . $file) ) {
-                if (!copyDir($source . '/' . $file, $destination . '/' . $file))
+                if (!ajaxfilemanager_copyDir($source . '/' . $file, $destination . '/' . $file))
                     return false;
             }
             else {
@@ -158,13 +158,13 @@ function copyDir($source, $destination) {
  * $if_not_empty: if FALSE it delete directory only if false
  * Returns TRUE on success or FALSE on failure
  */
-function delDir($dir, $if_not_empty = true) {
+function ajaxfilemanager_delDir($dir, $if_not_empty = true) {
     if (!file_exists($dir)) return true;
     if ($if_not_empty == true) {
         if (!is_dir($dir)) return unlink($dir);
         foreach (scandir($dir) as $item) {
             if ($item == '.' || $item == '..') continue;
-            if (!delDir($dir . '/' . $item)) return false;
+            if (!ajaxfilemanager_delDir($dir . '/' . $item)) return false;
         }
     } else {
         // NOP
@@ -179,7 +179,7 @@ function delDir($dir, $if_not_empty = true) {
  *
  */
 
-function extensionInstalled($extension) {
+function ajaxfilemanager_extensionInstalled($extension) {
     return file_exists(XOOPS_ROOT_PATH . '/class/textsanitizer/' . $extension . '/' . $extension . '.php');
 }
 function extensionActivated($extension) {
@@ -190,17 +190,17 @@ function extensionActivated($extension) {
         return $conf['extensions'][$extension];
     }
 }
-function activateExtension($extension) {
+function ajaxfilemanager_activateExtension($extension) {
     $conf = include XOOPS_ROOT_PATH . '/class/textsanitizer/config.php';
     $conf['extensions'][$extension] = 1;
     file_put_contents(XOOPS_ROOT_PATH . '/class/textsanitizer/config.php', "<?php\rreturn \$config = " . var_export($conf, true) . "\r?>");
 }
-function desactivateExtension($extension) {
+function ajaxfilemanager_desactivateExtension($extension) {
     $conf = include XOOPS_ROOT_PATH . '/class/textsanitizer/config.php';
     $conf['extensions'][$extension] = 0;
     file_put_contents(XOOPS_ROOT_PATH . '/class/textsanitizer/config.php', "<?php\rreturn \$config = " . var_export($conf, true) . "\r?>");
 }
-function listExtensions($source) {
+function ajaxfilemanager_listExtensions($source) {
     if (!$dirHandler = opendir($source))
         return false;
     $extensions = array();
@@ -215,7 +215,7 @@ function listExtensions($source) {
     return $extensions;
 }
 
-function installCustomTinymceSettings() {
+function ajaxfilemanager_installCustomTinymceSettings() {
 	// load Tinymce settings
 	if (!($conf = @include( $GLOBALS['xoops']->path('var/configs/tinymce.php')))) {
 		$conf = include XOOPS_ROOT_PATH . '/class/xoopseditor/tinymce/settings.php';
@@ -260,14 +260,14 @@ function installCustomTinymceSettings() {
 		file_put_contents( $GLOBALS['xoops']->path('var/configs/tinymce.bak.php'), "<?php\rreturn \$config = " . var_export($backconf, true) . "\r?>");
 	return true;
 }
-function uninstallCustomTinymceSettings() {
+function ajaxfilemanager_uninstallCustomTinymceSettings() {
 	$conf = @include( $GLOBALS['xoops']->path('var/configs/tinymce.php'));
     $backconf = @include( $GLOBALS['xoops']->path('var/configs/tinymce.bak.php'));
     $conf = @array_merge($conf, $backconf);
     file_put_contents( $GLOBALS['xoops']->path('var/configs/tinymce.php'), "<?php\rreturn \$config = " . var_export($conf, true) . "\r?>");
     unlink( $GLOBALS['xoops']->path('var/configs/tinymce.bak.php'));
 }
-function installedCustomTinymceSettings() {
+function ajaxfilemanager_installedCustomTinymceSettings() {
 	if (!($conf = @include( $GLOBALS['xoops']->path('var/configs/tinymce.php'))))
 		return false;
 	if (!isset($conf['file_browser_callback']))

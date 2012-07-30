@@ -27,21 +27,17 @@ $currentFile = basename(__FILE__);
 // render start here
 xoops_cp_header();
 
-// main admin menu
-include (XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/admin/menu.php');
-echo moduleAdminTabMenu($adminmenu, $currentFile);
-
 echo '<div style="clear:both"> </div>';
 echo '<fieldset>';
 echo '<iframe' .
     ' style="width:100%;height:600px;border:none;"' .
     ' src="' . XOOPS_URL . '/modules/' . $xoopsModule->dirname() . '/ajaxfilemanager/ajaxfilemanager.php?editor=ajaxfilemanager&amp;config=ajaxfilemanager&amp;language=' . _LANGCODE . '" >';
-echo '<p>' . _AJAXFM_AM_INDEX_NOIFRAME . '</p>';
+echo '<p>' . _AM_AJAXFM_INDEX_NOIFRAME . '</p>';
 echo '</iframe>';
 echo '</fieldset>';
 echo '<br/>';
 
 echo '</fieldset>';
 
-xoops_cp_footer();
+include "admin_footer.php";
 ?>

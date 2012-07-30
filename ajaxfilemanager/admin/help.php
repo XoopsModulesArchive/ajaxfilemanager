@@ -56,14 +56,14 @@ if (file_exists(XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar('dirname') 
     $file = XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar('dirname') . "/language/english/help/help.html";
 }
 if (is_readable($file)) {
-    echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AJAXFM_AM_ABOUT_HELP . "</legend>";
+    echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_AJAXFM_ABOUT_HELP . "</legend>";
     echo "<div style='padding: 8px;'>";
     echo "<div>" . implode('', file($file)) . "</div>";
     echo "</div>";
     echo "</fieldset>";
     echo "<br clear=\"all\" />";
 } else {
-    echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AJAXFM_AM_ABOUT_HELP . "</legend>";
+    echo "<fieldset><legend style='font-weight: bold; color: #900;'>" . _AM_AJAXFM_ABOUT_HELP . "</legend>";
     echo "<div style='padding: 8px;'>";
     echo "<div>warning: help.html file not found!</div>";
     echo "</div>";

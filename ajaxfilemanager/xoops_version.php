@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Ajax File Manager
@@ -13,63 +12,88 @@
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
  * @package         ajaxfilemanager
- * @since           0.1
+ * @since           1.0
  * @author          luciorota <lucio.rota@gmail.com>
  * @version         $Id$
  */
+if (!defined('XOOPS_ROOT_PATH')){ exit(); }
+$dirname = basename( dirname( __FILE__ ) ) ;
+include_once XOOPS_ROOT_PATH . "/modules/{$dirname}/include/functions.php";
+xoops_load('XoopsLists');
 
-if (!defined('XOOPS_ROOT_PATH')) die('XOOPS root path not defined');
-$moduleDirname = basename( dirname( __FILE__ ) ) ;
-
-$modversion['name'] = _AJAXFM_MI_NAME;
-$modversion['version'] = 0.01;
-$modversion['description'] = _AJAXFM_MI_DESC;
+$modversion['name'] = _MI_AJAXFM_NAME;
+$modversion['version'] = '1.0';
+$modversion['description'] = _MI_AJAXFM_DESC;
 $modversion['author'] = 'Rota Lucio';
 $modversion['author_mail'] = 'lucio.rota@gmail.com';
 $modversion['author_website_url'] = 'http://luciorota.altervista.org';
 $modversion['author_website_name'] = 'http://luciorota.altervista.org';
-$modversion['credits'] = 'The XOOPS Project';
+$modversion['credits'] = 'The XOOPS Project, <a href=http://www.phpletter.com/">PHPletter.com Open Source Development Team</a>';
 //$modversion['help'] = 'help.html';
 $modversion['help'] = 'page=help';
 $modversion['license'] = 'GPL see LICENSE';
 $modversion['license_url'] = 'http://www.gnu.org/licenses/gpl.html';
-$modversion['official'] = 0;
-$modversion['image'] = 'images/filemanager_slogo.png';
-$modversion['release_info'] = 'RC';
-$modversion['release_file'] = 'RC';
+    
+$modversion['release_info'] = 'beta';
+$modversion['release_file'] = XOOPS_URL . "/modules/{$dirname}/docs/RC";
+$modversion['release_date'] = "2012/07/30"; // 'Y/m/d'
+    
 $modversion['manual'] = 'Help';
-$modversion['manual_file'] = 'help.html';
-$modversion['dirname'] = $dirname;
-
-$modversion['system_menu'] = 0;
-
-//about
-$modversion['status_version'] = 'RC';
-$modversion['release_date'] = '2011/10/07';
-$modversion['release'] = strtotime('2011/10/07'); // 'YYYY/MM/DD' format
-$modversion['demo_site_url'] = 'IN PROGRESS';
-$modversion['demo_site_name'] = 'IN PROGRESS';
-$modversion['forum_site_url'] = 'IN PROGRESS';
-$modversion['forum_site_name'] = 'IN PROGRESS';
-$modversion['module_website_url'] = 'IN PROGRESS';
-$modversion['module_website_name'] = 'IN PROGRESS';
-$modversion['module_status'] = 'In progress';
-$modversion["author_website_url"] = 'http://luciorota.altervista.org/xoops/';
-$modversion["author_website_name"] = 'luciorota.altervista.org/xoops';
-$modversion['min_php']=5.2;
-$modversion['min_xoops']= 'XOOPS 2.4.5';
+$modversion['manual_file'] = XOOPS_URL . "/modules/{$dirname}/docs/help.html";
+$modversion['min_php'] = '5.2';
+$modversion['min_xoops'] = '2.5.5'; // 'XOOPS 2.5';
+$modversion['min_admin']= '1.1';
+$modversion['min_db']= array('mysql'=>'5.0.7', 'mysqli'=>'5.0.7');
+$modversion['image'] = 'images/filemanager_slogo.png';
+$modversion['dirname'] = "{$dirname}";
+$modversion['official'] = false;
+    
+$modversion['dirmoduleadmin'] = "Frameworks/moduleclasses";
+$modversion['icons16'] = "modules/{$dirname}/images/icons/16x16";
+$modversion['icons32'] = "modules/{$dirname}/images/icons/32x32";
+    
+//About
+$modversion['demo_site_url'] = '';
+$modversion['demo_site_name'] = '';
+$modversion['forum_site_url'] = '';
+$modversion['forum_site_name'] = '';
+$modversion['module_website_url'] = '';
+$modversion['module_website_name'] = '';
+//$modversion['support_site_url']	= "http://www.xoops.org";
+//$modversion['support_site_name'] = "www.xoops.org";
+$modversion['release'] = "release";
+$modversion['module_status'] = 'beta'; //"Stable";
 
 // Admin things
-$modversion['hasAdmin'] = 1;
+$modversion['hasAdmin'] = true;
+// Admin system menu
+$modversion['system_menu'] = true;
 $modversion['adminindex'] = "admin/index.php";
 $modversion['adminmenu'] = "admin/menu.php";
+
+// Mysql file
 
 // Scripts to run upon installation or update
 $modversion['onInstall'] = 'include/install_function.php';
 $modversion['onUpdate'] = 'include/update_function.php';
 $modversion['onUninstall'] = 'include/uninstall_function.php';
 
-// Mysql file
+// Main menu
+$modversion['hasMain'] = false;
+
+
+
+// Blocks
+    
+
+    
+// Search
+$modversion['hasSearch'] = false;
+
+
+
+// Comments
+$modversion['hasComments'] = false;
 
 
 
@@ -100,254 +124,89 @@ $modversion['templates'][$i]['file'] = 'ajaxfm_video.js';
 $modversion['templates'][$i]['description'] = '';
 
 
-// Blocks
+
+// Preferences/Config
+$i = 0;
+$i++;
+$modversion['config'][$i]['name']           = 'break_filemanager'; 
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_BREAK_FILEMANAGER';
+$modversion['config'][$i]['description']    = '';
+$modversion['config'][$i]['formtype']       = 'line_break'; 
+$modversion['config'][$i]['valuetype']      = 'textbox'; 
+$modversion['config'][$i]['default']        = 'head';
+$modversion['config'][$i]["category"]       = 'global';
+$i++;
+$modversion['config'][$i]['name']           = 'upload_valid_exts';
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_VALIDEXTS';
+$modversion['config'][$i]['description']    = '_MI_AJAXFM_VALIDEXTS_DESC';
+$modversion['config'][$i]['formtype']       = 'textbox';
+$modversion['config'][$i]['valuetype']      = 'text';
+$modversion['config'][$i]['default']        = 'jpg,png,gif,html,htm,js,mp3,flv,kml,txt,pdf,zip';
+$modversion['config'][$i]['category']       = 'global';
+$i++;
+$modversion['config'][$i]['name']           = 'upload_max_size';
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_MAXSIZE';
+$modversion['config'][$i]['description']    = '_MI_AJAXFM_MAXSIZE_DESC';
+$modversion['config'][$i]['formtype']       = 'textbox';
+$modversion['config'][$i]['valuetype']      = 'int';
+$modversion['config'][$i]['default']        = 1000; // 1MB
+$modversion['config'][$i]['category']       = 'global';
+$i++;
+$modversion['config'][$i]['name']           = 'default_pagination_limit';
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_DEFAULTPAGINATIONLIMIT';
+$modversion['config'][$i]['description']    = '_MI_AJAXFM_DEFAULTPAGINATIONLIMIT_DESC';
+$modversion['config'][$i]['formtype']       = 'select';
+$modversion['config'][$i]['valuetype']      = 'int';
+$modversion['config'][$i]['default']        = 20;
+$modversion['config'][$i]['options']        = array(5 => 5, 10 => 10, 20 => 20, 30 => 30, 50 => 50, 80 => 80, 150 => 150, 999 => 999);
+$modversion['config'][$i]['category']       = 'global';
+$i++;
+$modversion['config'][$i]['name']           = 'default_view';
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_VIEW';
+$modversion['config'][$i]['description']    = '_MI_AJAXFM_VIEW_DESC';
+$modversion['config'][$i]['formtype']       = 'select';
+$modversion['config'][$i]['valuetype']      = 'text';
+$modversion['config'][$i]['default']        = 'thumbnail';
+$modversion['config'][$i]['options']        = array('_MI_AJAXFM_VIEW1' => 'detail', '_MI_AJAXFM_VIEW2' => 'thumbnail');
+$modversion['config'][$i]['category']       = 'global';
+$i++;
+$modversion['config'][$i]['name']           = 'text_editor';
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_TEXTEDITOR';
+$modversion['config'][$i]['description']    = '_MI_AJAXFM_TEXTEDITOR_DESC';
+$modversion['config'][$i]['formtype']       = 'select';
+$modversion['config'][$i]['valuetype']      = 'text';
+$modversion['config'][$i]['default']        = 'dhtmltextarea';
+$modversion['config'][$i]['options']        = XoopsLists::getDirListAsArray(XOOPS_ROOT_PATH . '/class/xoopseditor');
+$modversion['config'][$i]['category']       = 'global';
+$i++;
+$modversion['config'][$i]['name']           = 'navigation_mode';
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_NAVIGATIONMODE';
+$modversion['config'][$i]['description']    = '_MI_AJAXFM_NAVIGATIONMODE_DESC';
+$modversion['config'][$i]['formtype']       = 'select';
+$modversion['config'][$i]['valuetype']      = 'text';
+$modversion['config'][$i]['default']        = 'secure';
+$modversion['config'][$i]['options']        = array('_MI_AJAXFM_NAVIGATIONMODE1' => 'secure', '_MI_AJAXFM_NAVIGATIONMODE2' => 'dangerous', '_MI_AJAXFM_NAVIGATIONMODE4' => 'themes_directory', '_MI_AJAXFM_NAVIGATIONMODE3' => 'kamikaze');
+$modversion['config'][$i]['category']       = 'global';
+$i++;
+$modversion['config'][$i]['name']           = 'break_imagemanager';
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_BREAK_IMAGEMANAGER'; 
+$modversion['config'][$i]['description']    = ''; 
+$modversion['config'][$i]['formtype']       = 'line_break';
+$modversion['config'][$i]['valuetype']      = 'textbox';
+$modversion['config'][$i]['default']        = 'head';
+$i++;
+$modversion['config'][$i]['name']           = 'standard_imagemanager';
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_XOOPSIMAGEMANAGER';
+$modversion['config'][$i]['description']    = '_MI_AJAXFM_XOOPSIMAGEMANAGER_DESC';
+$modversion['config'][$i]['formtype']       = 'select';
+$modversion['config'][$i]['valuetype']      = 'text';
+$modversion['config'][$i]['default']        = 'standard';
+$modversion['config'][$i]['options']        = array('_MI_AJAXFM_XOOPSIMAGEMANAGER1' => 'standard', '_MI_AJAXFM_XOOPSIMAGEMANAGER2' => 'enhanced', '_MI_AJAXFM_XOOPSIMAGEMANAGER3' => 'ajaxfilemanager');
+$modversion['config'][$i]['category']       = 'extra';
 
 
-
-// Configs
-/* XOOPS 2.5.0+
-$modversion['config'][] = array(
-    'name'      => 'break', 
-    'title'         => '_AJAXFM_MI_PREFERENCE_BREAK_GLOBAL', 
-    'description'   => '', 
-    'formtype'      => 'line_break', 
-    'valuetype'     => 'textbox', 
-    'default'       => 'head'
-    );
-*/
-$modversion['config'][] = array(
-    "name"          => 'upload_valid_exts',
-    "title"         => '_AJAXFM_MI_VALIDEXTS',
-    "description"   => '_AJAXFM_MI_VALIDEXTS_DESC',
-    "formtype"      => 'textbox',
-    "valuetype"     => 'text',
-    "default"       => 'jpg,png,gif,html,htm,js,mp3,flv,kml,txt,pdf,zip',
-    "category"       => 'global'
-    );
-$modversion['config'][] = array(
-    "name"          => 'upload_max_size',
-    "title"         => '_AJAXFM_MI_MAXSIZE',
-    "description"   => '_AJAXFM_MI_MAXSIZE_DESC',
-    "formtype"      => 'textbox',
-    "valuetype"     => 'int',
-    "default"       => 1000, // 1MB
-    "category"       => 'global'
-    );
-$modversion['config'][] = array(
-    "name"          => 'default_pagination_limit',
-    "title"         => '_AJAXFM_MI_DEFAULTPAGINATIONLIMIT',
-    "description"   => '_AJAXFM_MI_DEFAULTPAGINATIONLIMIT_DESC',
-    "formtype"      => 'select',
-    "valuetype"     => 'int',
-    "default"       => 20,
-    "options"       => array(5 => 5, 10 => 10, 20 => 20, 30 => 30, 50 => 50, 80 => 80, 150 => 150, 999 => 999),
-    "category"       => 'global'
-    );
-$modversion['config'][] = array(
-    "name"          => 'default_view',
-    "title"         => '_AJAXFM_MI_VIEW',
-    "description"   => '_AJAXFM_MI_VIEW_DESC',
-    "formtype"      => 'select',
-    "valuetype"     => 'text',
-    "default"       => 'thumbnail',
-    "options"       => array('_AJAXFM_MI_VIEW1' => 'detail', '_AJAXFM_MI_VIEW2' => 'thumbnail'),
-    "category"       => 'global'
-    );
-include_once (XOOPS_ROOT_PATH . '/class/xoopslists.php');
-$modversion['config'][] = array(
-    "name"          => 'text_editor',
-    "title"         => '_AJAXFM_MI_TEXTEDITOR',
-    "description"   => '_AJAXFM_MI_TEXTEDITOR_DESC',
-    "formtype"      => 'select',
-    "valuetype"     => 'text',
-    "default"       => 'dhtmltextarea',
-    "options"       => XoopsLists::getDirListAsArray(XOOPS_ROOT_PATH . '/class/xoopseditor'),
-    "category"       => 'global'
-    );
-$modversion['config'][] = array(
-    "name"          => 'navigation_mode',
-    "title"         => '_AJAXFM_MI_NAVIGATIONMODE',
-    "description"   => '_AJAXFM_MI_NAVIGATIONMODE_DESC',
-    "formtype"      => 'select',
-    "valuetype"     => 'text',
-    "default"       => 'secure',
-    "options"       => array('_AJAXFM_MI_NAVIGATIONMODE1' => 'secure', '_AJAXFM_MI_NAVIGATIONMODE2' => 'dangerous', '_AJAXFM_MI_NAVIGATIONMODE4' => 'themes_directory', '_AJAXFM_MI_NAVIGATIONMODE3' => 'kamikaze'),
-    "category"       => 'global'
-    );
-/* XOOPS 2.5.0+
-$modversion['config'][] = array(
-    'name'      => 'break', 
-    'title'         => '_AJAXFM_MI_PREFERENCE_BREAK_EXTRA', 
-    'description'   => '', 
-    'formtype'      => 'line_break', 
-    'valuetype'     => 'textbox', 
-    'default'       => 'head'
-    );
-*/
-$modversion['config'][] = array(
-    "name"          => 'standard_imagemanager',
-    "title"         => '_AJAXFM_MI_XOOPSIMAGEMANAGER',
-    "description"   => '_AJAXFM_MI_XOOPSIMAGEMANAGER_DESC',
-    "formtype"      => 'select',
-    "valuetype"     => 'text',
-    "default"       => 'standard',
-    "options"       => array('_AJAXFM_MI_XOOPSIMAGEMANAGER1' => 'standard', '_AJAXFM_MI_XOOPSIMAGEMANAGER2' => 'enhanced', '_AJAXFM_MI_XOOPSIMAGEMANAGER3' => 'ajaxfilemanager'),
-    "category"       => 'extra'
-    );
-// FTP SUPPORT IN NEXT RELEASES, MAYBE...
-/*
-// FTP CONFIG
- if (function_exists('ftp_connect')) {
-    $modversion['config'][] = array(
-        'name'      => 'break', 
-        'title'         => '_AJAXFM_MI_PREFERENCE_BREAK_FTP', 
-        'description'   => '', 
-        'formtype'      => 'line_break', 
-        'valuetype'     => 'textbox', 
-        'default'       => 'head'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_enabled',
-        "title"         => '_AJAXFM_MI_FTPENABLED',
-        "description"   => '_AJAXFM_MI_FTPENABLED_DESC',
-        "formtype"      => 'yesno',
-        "valuetype"     => 'int',
-        "default"       => false, // ftp not enabled
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_serverhost',
-        "title"         => '_AJAXFM_MI_FTPSERVERHOST',
-        "description"   => '_AJAXFM_MI_FTPSERVERHOST_DESC',
-        "formtype"      => 'textbox',
-        "valuetype"     => 'text',
-        "default"       => '',
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_serverport',
-        "title"         => '_AJAXFM_MI_FTPSERVERPORT',
-        "description"   => '_AJAXFM_MI_FTPSERVERPORT_DESC',
-        "formtype"      => 'textbox',
-        "valuetype"     => 'int',
-        "default"       => 21, // default ftp port
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_servertimeout',
-        "title"         => '_AJAXFM_MI_FTPSERVERTIMEOUT',
-        "description"   => '_AJAXFM_MI_FTPSERVERTIMEOUT_DESC',
-        "formtype"      => 'textbox',
-        "valuetype"     => 'int',
-        "default"       => 90,
-        "category"       => 'ftp'
-        );
-    if (function_exists('ftp_ssl_connect')) {
-        $ftp_connectiontype_options = array('_AJAXFM_MI_FTPCONNECTIONTYPE1' => 'ftp', '_AJAXFM_MI_FTPCONNECTIONTYPE2' => 'ssl');
-    }else {
-        $ftp_connectiontype_options = array('_AJAXFM_MI_FTPCONNECTIONTYPE1' => 'ftp');
-    }
-    $modversion['config'][] = array(
-        "name"          => 'ftp_connectiontype',
-        "title"         => '_AJAXFM_MI_FTPCONNECTIONTYPE',
-        "description"   => '_AJAXFM_MI_FTPCONNECTIONTYPE_DESC',
-        "formtype"      => 'select',
-        "valuetype"     => 'text',
-        "default"       => 'ftp',
-        "options"       => $ftp_connectiontype_options,
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_connectionpassive',
-        "title"         => '_AJAXFM_MI_FTPCONNECTIONPASSIVE',
-        "description"   => '_AJAXFM_MI_FTPCONNECTIONPASSIVE_DESC',
-        "formtype"      => 'yesno',
-        "valuetype"     => 'int',
-        "default"       => true,
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_username',
-        "title"         => '_AJAXFM_MI_FTPUSERNAME',
-        "description"   => '_AJAXFM_MI_FTPUSERNAME_DESC',
-        "formtype"      => 'textbox',
-        "valuetype"     => 'text',
-        "default"       => '',
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_password',
-        "title"         => '_AJAXFM_MI_FTPPASSWORD',
-        "description"   => '_AJAXFM_MI_FTPPASSWORD_DESC',
-        "formtype"      => 'password',
-        "valuetype"     => 'text',
-        "default"       => '',
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_xoopsrootpath',
-        "title"         => '_AJAXFM_MI_FTPXOOPSROOTPATH',
-        "description"   => '_AJAXFM_MI_FTPXOOPSROOTPATH_DESC',
-        "formtype"      => 'textbox',
-        "valuetype"     => 'text',
-        "default"       => XOOPS_ROOT_PATH,
-        "category"       => 'ftp'
-        );
-    // FTP THROUGH PROXY CONFIG
-    $modversion['config'][] = array(
-        "name"          => 'ftp_proxy',
-        "title"         => '_AJAXFM_MI_FTPPROXY',
-        "description"   => '_AJAXFM_MI_FTPPROXY_DESC',
-        "formtype"      => 'select',
-        "valuetype"     => 'text',
-        "default"       => 'none',
-        "options"       => array(_AJAXFM_MI_FTPPROXY1 => 'none', _AJAXFM_MI_FTPPROXY2 => 'http', _AJAXFM_MI_FTPPROXY3 => 'sock5'),
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_proxyaddress',
-        "title"         => '_AJAXFM_MI_FTPPROXYADDRESS',
-        "description"   => '_AJAXFM_MI_FTPPROXYADDRESS_DESC',
-        "formtype"      => 'textbox',
-        "valuetype"     => 'text',
-        "default"       => '',
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_proxyport',
-        "title"         => '_AJAXFM_MI_FTPPROXYPORT',
-        "description"   => '_AJAXFM_MI_FTPPROXYPORT_DESC',
-        "formtype"      => 'textbox',
-        "valuetype"     => 'int',
-        "default"       => null,
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_proxyusername',
-        "title"         => '_AJAXFM_MI_FTPPROXYUSERNAME',
-        "description"   => '_AJAXFM_MI_FTPPROXYUSERNAME_DESC',
-        "formtype"      => 'textbox',
-        "valuetype"     => 'text',
-        "default"       => '',
-        "category"       => 'ftp'
-        );
-    $modversion['config'][] = array(
-        "name"          => 'ftp_proxypassword',
-        "title"         => '_AJAXFM_MI_FTPPROXYPASSWORD',
-        "description"   => '_AJAXFM_MI_FTPPROXYPASSWORD_DESC',
-        "formtype"      => 'password',
-        "valuetype"     => 'text',
-        "default"       => '',
-        "category"       => 'ftp'
-        );
-	}
-*/
-// FTP SUPPORT IN NEXT RELEASES, MAYBE...
-
-// Comments
-$modversion["hasComments"] = 0;
 
 // Notification
-$modversion["hasNotification"] = 0;
+$modversion["hasNotification"] = false;
 $modversion["notification"] = array();
 ?>

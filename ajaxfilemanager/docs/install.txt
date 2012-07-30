@@ -1,4 +1,3 @@
 Read Me First
 =============
-
-in progress
+Install this module usually in system/modules
