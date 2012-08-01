@@ -1,22 +1,64 @@
 <?php
 /**
- * Ajax File Manager
+ * ****************************************************************************
+ *  - A Project by Developers TEAM For Xoops - ( http://www.xoops.org )
+ * ****************************************************************************
+ *  AJAXFILEMANAGER - MODULE FOR XOOPS
+ *  Copyright (c) 2007 - 2012
+ *  Rota Lucio ( http://luciorota.altervista.org/xoops/ )
  *
- * You may not change or alter any portion of this comment or credits
- * of supporting developers from this source code or any supporting source code
- * which is considered copyrighted (c) material of the original comment or credit authors.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  You may not change or alter any portion of this comment or credits
+ *  of supporting developers from this source code or any supporting
+ *  source code which is considered copyrighted (c) material of the
+ *  original comment or credit authors.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  ---------------------------------------------------------------------------
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
  * @package         ajaxfilemanager
- * @since           0.1
+ * @since           1.0
  * @author          luciorota <lucio.rota@gmail.com>
  * @version         $Id$
  */
 
+ function ajaxfilemanager_checkModuleAdmin() {
+    if ( file_exists($GLOBALS['xoops']->path('/Frameworks/moduleclasses/moduleadmin/moduleadmin.php'))){
+        include_once $GLOBALS['xoops']->path('/Frameworks/moduleclasses/moduleadmin/moduleadmin.php');
+        return true;
+    } else {
+        echo xoops_error("Error: You don't use the Frameworks \"admin module\". Please install this Frameworks");
+        return false;
+    }
+}
+
+
+
+function ajaxfilemanager_CleanVars(&$global, $key, $default = '', $type = 'int') {
+    switch ($type) {
+        case 'array':
+            $ret = (isset($global[$key]) && is_array($global[$key])) ? $global[$key] : $default;
+            break;
+        case 'date':
+            $ret = (isset($global[$key])) ? strtotime($global[$key]) : $default;
+            break;
+        case 'string':
+            $ret = (isset($global[$key])) ? filter_var($global[$key], FILTER_SANITIZE_MAGIC_QUOTES) : $default;
+            break;
+        case 'int': default:
+            $ret = (isset($global[$key])) ? filter_var($global[$key], FILTER_SANITIZE_NUMBER_INT) : $default;
+            break;
+    }
+    if ($ret === false) {
+        return $default;
+    }
+    return $ret;
+}
+ 
 /**
 * This function transforms a numerical size (like 2048) to a lettteral size (like 2MB)
 * @param   integer    $ret     numerical size
@@ -278,4 +320,3 @@ function ajaxfilemanager_installedCustomTinymceSettings() {
 		return false;
 	return true;
 }
-?>
