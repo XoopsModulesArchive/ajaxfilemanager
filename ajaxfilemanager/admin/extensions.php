@@ -1,18 +1,27 @@
 <?php
 /**
- * Ajax File Manager
+ * ****************************************************************************
+ *  - A Project by Developers TEAM For Xoops - ( http://www.xoops.org )
+ * ****************************************************************************
+ *  AJAXFILEMANAGER - MODULE FOR XOOPS
+ *  Copyright (c) 2007 - 2012
+ *  Rota Lucio ( http://luciorota.altervista.org/xoops/ )
  *
- * You may not change or alter any portion of this comment or credits
- * of supporting developers from this source code or any supporting source code
- * which is considered copyrighted (c) material of the original comment or credit authors.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  You may not change or alter any portion of this comment or credits
+ *  of supporting developers from this source code or any supporting
+ *  source code which is considered copyrighted (c) material of the
+ *  original comment or credit authors.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  ---------------------------------------------------------------------------
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
  * @package         ajaxfilemanager
- * @since           0.1
+ * @since           1.0
  * @author          luciorota <lucio.rota@gmail.com>
  * @version         $Id$
  */
@@ -97,17 +106,31 @@ case 'default':
         echo '<p>' . sprintf(_AM_AJAXFM_EXTENSION_WARNING1, $extensionsPath, $extensionsPath) . '</p>';
         echo '<p>' . sprintf(_AM_AJAXFM_EXTENSION_WARNING2, $extensionsPath, $extensionsPath) . '</p>';
     }
-
-    echo "<h3>" . _AM_AJAXFM_EXTENSIONS_MANAGER . "</h3>";
-
+    //
     // Ajax File Manager extensions
+    //
+    echo "<h3>" . _AM_AJAXFM_EXTENSIONS_MANAGER . "</h3>";
+    echo "<div style='width:50%;float:right;'>";
+    // Test dhtmltextarea
+        $editor_configs = array();
+        $editor_configs['name'] = 'test_dhtmltextarea_standard';
+        $editor_configs['value'] = _AM_AJAXFM_EDITORPLUGIN_TEST_DHTMLTEXTAREA;
+        $editor_configs['rows'] = 20;
+        $editor_configs['cols'] = 160;
+        $editor_configs['width'] = '100%';
+        $editor_configs['height'] = '400px';
+        $editor_configs['editor'] = 'dhtmltextarea';
+    $dhtmltextarea =  new XoopsFormEditor(_AM_AJAXFM_EDITORPLUGIN_TEST_DHTMLTEXTAREA, 'test_dhtmltextarea_standard', $editor_configs);
+    echo $dhtmltextarea->render();
+    echo "</div>";
+    //
+    echo "<div style='width:50%;'>";
 	echo "<fieldset>";
     echo "<legend style='font-weight:bold; color:#990000;'>" . _AM_AJAXFM_EXTRA_EXTENSION_INFO . '</legend>';
     $source = XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['xoopsModule']->getVar('dirname') . '/install/textsanitizer.extensions';
     $extraExtensions = ajaxfilemanager_listExtensions($source);
-
     echo _AM_AJAXFM_EXTRA_EXTENSION_INFO_DESC;
-    echo "<table class='' style='width:50%;float:left;'>";
+    echo "<table class=''>";
     echo "<tbody>";
     echo "<tr>";
     echo "<th>" . _AM_AJAXFM_EXTENSION . "</th>";
@@ -115,7 +138,6 @@ case 'default':
     echo "<th>" . _AM_AJAXFM_EXTENSION_ACTION . "</th>";
     echo "</tr>";
     $class = 0;
-
     foreach ($extraExtensions as $extension) {
         $class++;
         echo "<tr class='" . (($class&1)?'odd':'even') . "'>";
@@ -164,32 +186,15 @@ case 'default':
     }
     echo "</tbody>";
     echo "</table>";
-    echo "<div style='width:50%;float:left;'>";
-    // Test dhtmltextarea
-        $editor_configs = array();
-        $editor_configs['name'] = 'test_dhtmltextarea_extra';
-        $editor_configs['value'] = _AM_AJAXFM_EDITORPLUGIN_TEST_DHTMLTEXTAREA;
-        $editor_configs['rows'] = 20;
-        $editor_configs['cols'] = 160;
-        $editor_configs['width'] = '100%';
-        $editor_configs['height'] = '400px';
-        $editor_configs['editor'] = 'dhtmltextarea';
-    $dhtmltextarea =  new XoopsFormEditor(_AM_AJAXFM_EDITORPLUGIN_TEST_DHTMLTEXTAREA, 'test_dhtmltextarea_extra', $editor_configs);
-    echo $dhtmltextarea->render();
-    echo "</div>";
-    echo "<div style='clear:both'></div>";
     echo "</fieldset>";
-
     echo "<br />";
-
 	// Standard or extra Xoops extensions
     echo "<fieldset>";
     echo "<legend style='font-weight:bold; color:#990000;'>" . _AM_AJAXFM_EXTENSION_INFO . "</legend>";
     $extensionsPath = XOOPS_ROOT_PATH . '/class/textsanitizer';
     $extensions = ajaxfilemanager_listExtensions($extensionsPath);
     $extensions = array_diff($extensions, $extraExtensions);
-
-    echo "<table class='' style='width:50%;float:left;'>";
+    echo "<table class=''>";
     echo "<tbody>";
     echo "<tr>";
     echo "<th>" . _AM_AJAXFM_EXTENSION . "</th>";
@@ -232,27 +237,30 @@ case 'default':
     }
     echo "</tbody>";
     echo "</table>";
-    echo "<div style='width:50%;float:left;'>";
-    // Test dhtmltextarea
+    echo "</fieldset>";
+    echo "</div>";
+    echo "<div style='clear:both'></div>";
+
+    echo "<br />";
+    //
+    // Ajax File Manager editors plugins
+    //
+    echo "<h3>" . _AM_AJAXFM_PLUGINS_MANAGER . "</h3>";
+    // Test tinymce
+    echo "<div style='width:50%;float:right;'>";
         $editor_configs = array();
-        $editor_configs['name'] = 'test_dhtmltextarea_standard';
-        $editor_configs['value'] = _AM_AJAXFM_EDITORPLUGIN_TEST_DHTMLTEXTAREA;
+        $editor_configs['name'] = 'test_tinymce';
+        $editor_configs['value'] = _AM_AJAXFM_EDITORPLUGIN_TEST_TINYMCE;
         $editor_configs['rows'] = 20;
         $editor_configs['cols'] = 160;
         $editor_configs['width'] = '100%';
         $editor_configs['height'] = '400px';
-        $editor_configs['editor'] = 'dhtmltextarea';
-    $dhtmltextarea =  new XoopsFormEditor(_AM_AJAXFM_EDITORPLUGIN_TEST_DHTMLTEXTAREA, 'test_dhtmltextarea_standard', $editor_configs);
-    echo $dhtmltextarea->render();
+        $editor_configs['editor'] = 'tinymce';
+    $tinymce =  new XoopsFormEditor(_AM_AJAXFM_EDITORPLUGIN_TEST_TINYMCE, 'test_tinymce', $editor_configs);
+    echo $tinymce->render();
     echo "</div>";
-    echo "<div style='clear:both'></div>";
-    echo "</fieldset>";
-
-    echo "<br />";
-
-    echo "<h3>" . _AM_AJAXFM_PLUGINS_MANAGER . "</h3>";
-
-    // Ajax File Manager editors plugins
+    //
+    echo "<div style='width:50%;'>";
 	echo "<fieldset>";
     echo "<legend style='font-weight:bold; color:#990000;'>" . _AM_AJAXFM_EDITORPLUGIN_INFO . "</legend>";
     echo "<table class=''>";
@@ -295,33 +303,22 @@ case 'default':
 	echo "</tr>";
     echo "</tbody>";
     echo "</table>";
-    // Test tinymce
-        $editor_configs = array();
-        $editor_configs['name'] = 'test_tinymce';
-        $editor_configs['value'] = _AM_AJAXFM_EDITORPLUGIN_TEST_TINYMCE;
-        $editor_configs['rows'] = 20;
-        $editor_configs['cols'] = 160;
-        $editor_configs['width'] = '100%';
-        $editor_configs['height'] = '400px';
-        $editor_configs['editor'] = 'tinymce';
-    $tinymce =  new XoopsFormEditor(_AM_AJAXFM_EDITORPLUGIN_TEST_TINYMCE, 'test_tinymce', $editor_configs);
-    echo $tinymce->render();
     echo "</fieldset>";
+    echo "</div>";
+    echo "<div style='clear:both'></div>";
 
     echo "<br />";
-
-    echo "<h3>" . _AM_AJAXFM_EXTRA_MANAGER . "</h3>";
-
+    //
 	// Standard or enhanced image.php in xoops root path?
+	//
+    echo "<h3>" . _AM_AJAXFM_EXTRA_MANAGER . "</h3>";
     echo "<fieldset>";
     echo "<legend style='font-weight:bold; color:#990000;'>" . _AM_AJAXFM_IMAGE_PHP_INFO . "</legend>";
     $extensionsPath = XOOPS_ROOT_PATH . '/class/textsanitizer';
-
     $originalImagePhp = XOOPS_ROOT_PATH . '/image.php';
     $enhancedImagePhp = XOOPS_ROOT_PATH . '/modules/' . $GLOBALS['xoopsModule']->getVar('dirname') . '/image.php';
     $crcOriginalImagePhp = strtoupper(dechex(crc32(file_get_contents($originalImagePhp))));
     $crcEnhancedImagePhp = strtoupper(dechex(crc32(file_get_contents($enhancedImagePhp))));
-
     if ($crcOriginalImagePhp != $crcEnhancedImagePhp) {
         // files not the same
         echo _AM_AJAXFM_IMAGE_PHP_NO_SMART;
@@ -342,4 +339,3 @@ case 'default':
     include "admin_footer.php";
     break;
 } // switch ( $op )
-?>

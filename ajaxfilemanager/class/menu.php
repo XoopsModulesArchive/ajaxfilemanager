@@ -1,25 +1,29 @@
 <?php
 /**
  * ****************************************************************************
- * Module g�n�r� par TDMCreate de la TDM "http://www.tdmxoops.net"
+ *  - A Project by Developers TEAM For Xoops - ( http://www.xoops.org )
  * ****************************************************************************
- * test - MODULE FOR XOOPS AND IMPRESS CMS
- * Copyright (c) Mamba (www.xoops.org)
+ *  AJAXFILEMANAGER - MODULE FOR XOOPS
+ *  Copyright (c) 2007 - 2012
+ *  Rota Lucio ( http://luciorota.altervista.org/xoops/ )
  *
- * You may not change or alter any portion of this comment or credits
- * of supporting developers from this source code or any supporting source code
- * which is considered copyrighted (c) material of the original comment or credit authors.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  You may not change or alter any portion of this comment or credits
+ *  of supporting developers from this source code or any supporting
+ *  source code which is considered copyrighted (c) material of the
+ *  original comment or credit authors.
  *
- * @copyright       Mamba (www.xoops.org)
- * @license         GPL
- * @package         test
- * @author          Mamba (www.xoops.org)
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  ---------------------------------------------------------------------------
  *
- * Version : 1.00:
- * ****************************************************************************
+ * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
+ * @package         ajaxfilemanager
+ * @since           1.0
+ * @author          luciorota <lucio.rota@gmail.com>
+ * @version         $Id$
  */
  
 class testMenu
@@ -211,5 +215,3 @@ class testMenu
 		echo $this->render();
 	}
 }
-	
-?>
