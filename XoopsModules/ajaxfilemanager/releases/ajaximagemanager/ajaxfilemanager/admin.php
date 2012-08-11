@@ -61,7 +61,7 @@ include_once XOOPS_ROOT_PATH."/modules/system/constants.php";
 $error = false;
 if ($admintest != 0) {
     if (isset($fct) && $fct != '') {
-        $fct = preg_replace("/[^a-z0-9_\-]/i", "", $fct);
+        $fct = preg_replace("/[^a-z0-9_\-]/i","", $fct);
         if (file_exists(XOOPS_ROOT_PATH."/modules/system/admin/".$fct."/xoops_version.php")) {
         
             if (file_exists(XOOPS_ROOT_PATH."/modules/system/language/".$xoopsConfig['language']."/admin/".$fct.".php")) {

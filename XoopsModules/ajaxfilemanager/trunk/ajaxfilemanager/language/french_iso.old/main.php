@@ -1,9 +1,9 @@
 <?php
 // admin/index.php
-define("_MA_AJAXFM_NO_PERMISSION", "Désolé, mais vous ne pouvez accéder au gestionnaire de fichier Ajax");
+define("_MA_AJAXFM_NO_PERMISSION","DÃ©solÃ©, mais vous ne pouvez accÃ©der au gestionnaire de fichier Ajax");
 
 /**
- * @translation     Communauté Francophone des Utilisateurs de Xoops
+ * @translation     CommunautÃ© Francophone des Utilisateurs de Xoops
  * @specification   _LANGCODE: fr
  * @specification   _CHARSET: ISO-8859-1
  *

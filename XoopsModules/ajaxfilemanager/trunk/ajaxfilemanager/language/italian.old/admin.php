@@ -1,8 +1,8 @@
 <?php
 // admin/index.php
-define("_AM_AJAXFM_INDEX_INFO", "Informazioni modulo");
-define("_AM_AJAXFM_INDEX_SCONFIG", "<b>Informazioni ottenute dalle preferenze del modulo:</b>");
-define("_AM_AJAXFM_INDEX_NOIFRAME", "Siamo spiacenti, il vostro browser non supporta gli ifremes.");
+define("_AM_AJAXFM_INDEX_INFO","Informazioni modulo");
+define("_AM_AJAXFM_INDEX_SCONFIG","<b>Informazioni ottenute dalle preferenze del modulo:</b>");
+define("_AM_AJAXFM_INDEX_NOIFRAME","Siamo spiacenti, il vostro browser non supporta gli ifremes.");
 define('_AM_AJAXFM_WARNING_DIRNOTEXIST', "<strong style='color:red;'>ATTENZIONE: la directory %s directory non esiste!</strong>");
 define('_AM_AJAXFM_WARNING_DIRCREATEIT', "Crea!");
 define('_AM_AJAXFM_DIRCREATED', "la directory %s &egrave; stata creata correttemente!");
@@ -10,25 +10,25 @@ define('_AM_AJAXFM_DIRNOTCREATED', "<strong style='color:red;'>ATTENZIONE: non &
 
 define('_MI_AJAXFM_FTPSUPPORT', "Supporto FTP");
 
-define("_AM_AJAXFM_INDEX_SERVERSTATUS", "Stato del server");
-define("_AM_AJAXFM_INDEX_SPHPINI", "<b>Informazioni ottenute da configurazione PHP:</b>");
-define("_AM_AJAXFM_INDEX_SERVERPATH", "Percorso assoluto di XOOPS sul server (XOOPS_ROOT_PATH): ");
-define("_AM_AJAXFM_INDEX_SAFEMODESTATUS", "Stato 'Safe Mode': ");
-define("_AM_AJAXFM_INDEX_REGISTERGLOBALS", "Stato 'Register Globals': ");
-define("_AM_AJAXFM_INDEX_MAGICQUOTESGPC", "Stato 'magic_quotes_gpc': ");
-define("_AM_AJAXFM_INDEX_SERVERUPLOADSTATUS", "Stato 'Server Uploads': ");
-define("_AM_AJAXFM_INDEX_MAXUPLOADSIZE", "Dimensioni massime Upload ('upload_max_filesize'): ");
-define("_AM_AJAXFM_INDEX_MAXPOSTSIZE", "Dimensioni massime Post ('post_max_size'): ");
-define("_AM_AJAXFM_INDEX_SAFEMODEPROBLEMS", " (Potrebbe causare problemi)");
-define("_AM_AJAXFM_INDEX_GDLIBSTATUS", "Supporto libreria GD: ");
-define("_AM_AJAXFM_INDEX_ZIPLIBSTATUS", "Supporto libreria Zip (classe ZipArchive): ");
-define("_AM_AJAXFM_INDEX_GDLIBVERSION", "Versione libreria GD: ");
-define("_AM_AJAXFM_INDEX_GDON", "<b>Abilitato</b>");
-define("_AM_AJAXFM_INDEX_GDOFF", "<b>Sidabilitato</b>");
-define("_AM_AJAXFM_INDEX_ZIPON", "<b>Abilitato</b>");
-define("_AM_AJAXFM_INDEX_ZIPOFF", "<b>Disabilitato</b>");
-define("_AM_AJAXFM_INDEX_OFF", "<b>OFF</b>");
-define("_AM_AJAXFM_INDEX_ON", "<b>ON</b>");
+define("_AM_AJAXFM_INDEX_SERVERSTATUS","Stato del server");
+define("_AM_AJAXFM_INDEX_SPHPINI","<b>Informazioni ottenute da configurazione PHP:</b>");
+define("_AM_AJAXFM_INDEX_SERVERPATH","Percorso assoluto di XOOPS sul server (XOOPS_ROOT_PATH): ");
+define("_AM_AJAXFM_INDEX_SAFEMODESTATUS","Stato 'Safe Mode': ");
+define("_AM_AJAXFM_INDEX_REGISTERGLOBALS","Stato 'Register Globals': ");
+define("_AM_AJAXFM_INDEX_MAGICQUOTESGPC","Stato 'magic_quotes_gpc': ");
+define("_AM_AJAXFM_INDEX_SERVERUPLOADSTATUS","Stato 'Server Uploads': ");
+define("_AM_AJAXFM_INDEX_MAXUPLOADSIZE","Dimensioni massime Upload ('upload_max_filesize'): ");
+define("_AM_AJAXFM_INDEX_MAXPOSTSIZE","Dimensioni massime Post ('post_max_size'): ");
+define("_AM_AJAXFM_INDEX_SAFEMODEPROBLEMS"," (Potrebbe causare problemi)");
+define("_AM_AJAXFM_INDEX_GDLIBSTATUS","Supporto libreria GD: ");
+define("_AM_AJAXFM_INDEX_ZIPLIBSTATUS","Supporto libreria Zip (classe ZipArchive): ");
+define("_AM_AJAXFM_INDEX_GDLIBVERSION","Versione libreria GD: ");
+define("_AM_AJAXFM_INDEX_GDON","<b>Abilitato</b>");
+define("_AM_AJAXFM_INDEX_GDOFF","<b>Sidabilitato</b>");
+define("_AM_AJAXFM_INDEX_ZIPON","<b>Abilitato</b>");
+define("_AM_AJAXFM_INDEX_ZIPOFF","<b>Disabilitato</b>");
+define("_AM_AJAXFM_INDEX_OFF","<b>OFF</b>");
+define("_AM_AJAXFM_INDEX_ON","<b>ON</b>");
 
 
 
@@ -105,21 +105,21 @@ define('_AM_AJAXFM_IMAGE_PHP_NO_SMART_DESC', "<span style=\"color:red;\">If you 
 
 
 //admin/about.php
-define("_AM_AJAXFM_ABOUT_AUTHOR", "Autore");
-define("_AM_AJAXFM_ABOUT_CHANGELOG", "Change log");
-define("_AM_AJAXFM_ABOUT_CREDITS", "Crediti");
-define("_AM_AJAXFM_ABOUT_LICENSE", "Licenza");
-define("_AM_AJAXFM_ABOUT_MODULEINFOS", "Informazioni sul modulo");
-define("_AM_AJAXFM_ABOUT_MODULEWEBSITE", "Sito web di supporto");
-define("_AM_AJAXFM_ABOUT_AUTHORINFOS", "Informazioni sull'autore");
-define("_AM_AJAXFM_ABOUT_AUTHORWEBSITE", "Sito web");
-define("_AM_AJAXFM_ABOUT_AUTHOREMAIL", "Email");
-define("_AM_AJAXFM_ABOUT_RELEASEDATE", "Data di rilascio");
-define("_AM_AJAXFM_ABOUT_STATUS", "Stato");
-define("_AM_AJAXFM_ABOUT_DESCRIPTION", "Descrizione del modulo &quot;description.html&quot;");
+define("_AM_AJAXFM_ABOUT_AUTHOR","Autore");
+define("_AM_AJAXFM_ABOUT_CHANGELOG","Change log");
+define("_AM_AJAXFM_ABOUT_CREDITS","Crediti");
+define("_AM_AJAXFM_ABOUT_LICENSE","Licenza");
+define("_AM_AJAXFM_ABOUT_MODULEINFOS","Informazioni sul modulo");
+define("_AM_AJAXFM_ABOUT_MODULEWEBSITE","Sito web di supporto");
+define("_AM_AJAXFM_ABOUT_AUTHORINFOS","Informazioni sull'autore");
+define("_AM_AJAXFM_ABOUT_AUTHORWEBSITE","Sito web");
+define("_AM_AJAXFM_ABOUT_AUTHOREMAIL","Email");
+define("_AM_AJAXFM_ABOUT_RELEASEDATE","Data di rilascio");
+define("_AM_AJAXFM_ABOUT_STATUS","Stato");
+define("_AM_AJAXFM_ABOUT_DESCRIPTION","Descrizione del modulo &quot;description.html&quot;");
 
 
 
 //admin/help.php
-define("_AM_AJAXFM_ABOUT_HELP", "Aiuto del modulo &quot;help.html&quot;");
+define("_AM_AJAXFM_ABOUT_HELP","Aiuto del modulo &quot;help.html&quot;");
 ?>
