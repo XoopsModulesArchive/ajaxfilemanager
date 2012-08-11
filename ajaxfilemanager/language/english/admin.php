@@ -1,33 +1,33 @@
 <?php
 // admin/index.php
-define("_AM_AJAXFM_INDEX_INFO", "Module informations");
-define("_AM_AJAXFM_INDEX_SCONFIG", "Information taken from module preferences");
-define("_AM_AJAXFM_INDEX_NOIFRAME", "Sorry, your browser does not support iframes.");
+define("_AM_AJAXFM_INDEX_INFO","Module informations");
+define("_AM_AJAXFM_INDEX_SCONFIG","Information taken from module preferences");
+define("_AM_AJAXFM_INDEX_NOIFRAME","Sorry, your browser does not support iframes.");
 define('_AM_AJAXFM_WARNING_DIRNOTEXIST', "<strong style='color:red;'>WARNING: %s directory not exist!</strong>");
 define('_AM_AJAXFM_WARNING_DIRCREATEIT', "Create it!");
 define('_AM_AJAXFM_DIRCREATED', "%s directory created!");
 define('_AM_AJAXFM_DIRNOTCREATED', "<strong style='color:red;'>WARNING: %s directory not created!</strong>");
 
-define("_AM_AJAXFM_INDEX_SERVERSTATUS", "Server status");
-define("_AM_AJAXFM_INDEX_SPHPINI", "Information taken from php.ini file");
-define("_AM_AJAXFM_INDEX_SPHPINIPATH", "Server Path to php.ini: %s");
-define("_AM_AJAXFM_INDEX_XOOPSPATH", "Server Path to XOOPS Root: %s");
-define("_AM_AJAXFM_INDEX_SAFEMODESTATUS", "Safe Mode Status: %s");
-define("_AM_AJAXFM_INDEX_REGISTERGLOBALS", "Register Globals: %s");
-define("_AM_AJAXFM_INDEX_MAGICQUOTESGPC", "'magic_quotes_gpc' Status: %s");
-define("_AM_AJAXFM_INDEX_SERVERUPLOADSTATUS", "Server Uploads Status: %s");
-define("_AM_AJAXFM_INDEX_MAXUPLOADSIZE", "Max Upload Size Permitted: %s");
-define("_AM_AJAXFM_INDEX_MAXPOSTSIZE", "Max Post Size Permitted: %s");
-define("_AM_AJAXFM_INDEX_SAFEMODEPROBLEMS", " (This May Cause Problems)");
-define("_AM_AJAXFM_INDEX_GDLIBSTATUS", "GD Library Support: %s");
-define("_AM_AJAXFM_INDEX_ZIPLIBSTATUS", "Zip Library Support (ZipArchive class): %s");
-define("_AM_AJAXFM_INDEX_GDLIBVERSION", "GD Library Version: %s");
-define("_AM_AJAXFM_INDEX_GDON", "<b>Enabled</b>");
-define("_AM_AJAXFM_INDEX_GDOFF", "<b>Disabled</b>");
-define("_AM_AJAXFM_INDEX_ZIPON", "<b>Enabled</b>");
-define("_AM_AJAXFM_INDEX_ZIPOFF", "<b>Disabled</b>");
-define("_AM_AJAXFM_INDEX_OFF", "<b>OFF</b>");
-define("_AM_AJAXFM_INDEX_ON", "<b>ON</b>");
+define("_AM_AJAXFM_INDEX_SERVERSTATUS","Server status");
+define("_AM_AJAXFM_INDEX_SPHPINI","Information taken from php.ini file");
+define("_AM_AJAXFM_INDEX_SPHPINIPATH","Server Path to php.ini: %s");
+define("_AM_AJAXFM_INDEX_XOOPSPATH","Server Path to XOOPS Root: %s");
+define("_AM_AJAXFM_INDEX_SAFEMODESTATUS","Safe Mode Status: %s");
+define("_AM_AJAXFM_INDEX_REGISTERGLOBALS","Register Globals: %s");
+define("_AM_AJAXFM_INDEX_MAGICQUOTESGPC","'magic_quotes_gpc' Status: %s");
+define("_AM_AJAXFM_INDEX_SERVERUPLOADSTATUS","Server Uploads Status: %s");
+define("_AM_AJAXFM_INDEX_MAXUPLOADSIZE","Max Upload Size Permitted: %s");
+define("_AM_AJAXFM_INDEX_MAXPOSTSIZE","Max Post Size Permitted: %s");
+define("_AM_AJAXFM_INDEX_SAFEMODEPROBLEMS"," (This May Cause Problems)");
+define("_AM_AJAXFM_INDEX_GDLIBSTATUS","GD Library Support: %s");
+define("_AM_AJAXFM_INDEX_ZIPLIBSTATUS","Zip Library Support (ZipArchive class): %s");
+define("_AM_AJAXFM_INDEX_GDLIBVERSION","GD Library Version: %s");
+define("_AM_AJAXFM_INDEX_GDON","<b>Enabled</b>");
+define("_AM_AJAXFM_INDEX_GDOFF","<b>Disabled</b>");
+define("_AM_AJAXFM_INDEX_ZIPON","<b>Enabled</b>");
+define("_AM_AJAXFM_INDEX_ZIPOFF","<b>Disabled</b>");
+define("_AM_AJAXFM_INDEX_OFF","<b>OFF</b>");
+define("_AM_AJAXFM_INDEX_ON","<b>ON</b>");
 
 
 
@@ -110,25 +110,25 @@ define('_AM_AJAXFM_EDITORPLUGIN_TEST_DHTMLTEXTAREA', "Test dhtmltextarea editor"
 define('_AM_AJAXFM_EDITORPLUGIN_TEST_TINYMCE', "Test tinymce editor");
 
 //admin/about.php
-define("_AM_AJAXFM_ABOUT_AUTHOR", "Author");
-define("_AM_AJAXFM_ABOUT_CHANGELOG", "Change log");
-define("_AM_AJAXFM_ABOUT_CREDITS", "Credits");
-define("_AM_AJAXFM_ABOUT_LICENSE", "License");
-define("_AM_AJAXFM_ABOUT_MODULEINFOS", "Module Informations");
-define("_AM_AJAXFM_ABOUT_MODULEWEBSITE", "Support Web Site");
-define("_AM_AJAXFM_ABOUT_AUTHORINFOS", "Author Informations");
-define("_AM_AJAXFM_ABOUT_AUTHORWEBSITE", "Web Site");
-define("_AM_AJAXFM_ABOUT_AUTHOREMAIL", "Email");
-define("_AM_AJAXFM_ABOUT_RELEASEDATE", "Date of launch");
-define("_AM_AJAXFM_ABOUT_STATUS", "Status");
-define("_AM_AJAXFM_ABOUT_DESCRIPTION", "Module Description &quot;description.html&quot;");
+define("_AM_AJAXFM_ABOUT_AUTHOR","Author");
+define("_AM_AJAXFM_ABOUT_CHANGELOG","Change log");
+define("_AM_AJAXFM_ABOUT_CREDITS","Credits");
+define("_AM_AJAXFM_ABOUT_LICENSE","License");
+define("_AM_AJAXFM_ABOUT_MODULEINFOS","Module Informations");
+define("_AM_AJAXFM_ABOUT_MODULEWEBSITE","Support Web Site");
+define("_AM_AJAXFM_ABOUT_AUTHORINFOS","Author Informations");
+define("_AM_AJAXFM_ABOUT_AUTHORWEBSITE","Web Site");
+define("_AM_AJAXFM_ABOUT_AUTHOREMAIL","Email");
+define("_AM_AJAXFM_ABOUT_RELEASEDATE","Date of launch");
+define("_AM_AJAXFM_ABOUT_STATUS","Status");
+define("_AM_AJAXFM_ABOUT_DESCRIPTION","Module Description &quot;description.html&quot;");
 
 
 
 //admin/help.php
-define("_AM_AJAXFM_ABOUT_HELP", "Module Help &quot;help.html&quot;");
+define("_AM_AJAXFM_ABOUT_HELP","Module Help &quot;help.html&quot;");
 
 //Error NoFrameworks
 define("_AM_AJAXFM_NOFRAMEWORKS","Error: You don&#39;t use the Frameworks \"admin module\". Please install this Frameworks");
-define("_AM_AJAXFM_MAINTAINEDBY", "is maintained by the");
+define("_AM_AJAXFM_MAINTAINEDBY","is maintained by the");
 ?>
