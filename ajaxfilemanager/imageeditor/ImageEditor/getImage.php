@@ -32,7 +32,7 @@ if ( DIRECTORY_SEPARATOR != "/" ) {
     $currentPath = str_replace( DIRECTORY_SEPARATOR, "/", $currentPath);
 }
 $xoops_root_path = substr($currentPath, 0, strpos(strtolower($currentPath), '/modules/ajaxfilemanager/imageeditor'));
-define ('XOOPS_ROOT_PATH', $xoops_root_path);
+define('XOOPS_ROOT_PATH', $xoops_root_path);
 // get xoops rooth path - end
 
 $tempPath = XOOPS_ROOT_PATH . '/modules/ajaxfilemanager/imageeditor/ImageEditor';
