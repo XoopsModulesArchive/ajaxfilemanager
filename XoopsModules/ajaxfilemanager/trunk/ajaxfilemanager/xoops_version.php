@@ -1,22 +1,13 @@
 <?php
 /**
- * ****************************************************************************
- *  - A Project by Developers TEAM For Xoops - ( http://www.xoops.org )
- * ****************************************************************************
- *  AJAXFILEMANAGER - MODULE FOR XOOPS
- *  Copyright (c) 2007 - 2012
- *  Rota Lucio ( http://luciorota.altervista.org/xoops/ )
+ * Ajax File Manager
  *
- *  You may not change or alter any portion of this comment or credits
- *  of supporting developers from this source code or any supporting
- *  source code which is considered copyrighted (c) material of the
- *  original comment or credit authors.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *  ---------------------------------------------------------------------------
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
@@ -25,14 +16,13 @@
  * @author          luciorota <lucio.rota@gmail.com>
  * @version         $Id$
  */
- 
 if (!defined('XOOPS_ROOT_PATH')){ exit(); }
 $dirname = basename( dirname( __FILE__ ) ) ;
 include_once XOOPS_ROOT_PATH . "/modules/{$dirname}/include/functions.php";
 xoops_load('XoopsLists');
 
 $modversion['name'] = _MI_AJAXFM_NAME;
-$modversion['version'] = '1.0';
+$modversion['version'] = '1.1';
 $modversion['description'] = _MI_AJAXFM_DESC;
 $modversion['author'] = 'Rota Lucio';
 $modversion['author_mail'] = 'lucio.rota@gmail.com';
@@ -46,7 +36,7 @@ $modversion['license_url'] = 'http://www.gnu.org/licenses/gpl.html';
     
 $modversion['release_info'] = 'beta';
 $modversion['release_file'] = XOOPS_URL . "/modules/{$dirname}/docs/RC";
-$modversion['release_date'] = "2012/08/01"; // 'Y/m/d'
+$modversion['release_date'] = "2013/003/31"; // 'Y/m/d'
     
 $modversion['manual'] = 'Help';
 $modversion['manual_file'] = XOOPS_URL . "/modules/{$dirname}/docs/help.html";
@@ -83,14 +73,10 @@ $modversion['adminmenu'] = "admin/menu.php";
 
 // Mysql file
 
-
-
 // Scripts to run upon installation or update
 $modversion['onInstall'] = 'include/install_function.php';
 $modversion['onUpdate'] = 'include/update_function.php';
 $modversion['onUninstall'] = 'include/uninstall_function.php';
-
-
 
 // Main menu
 $modversion['hasMain'] = false;
@@ -217,7 +203,21 @@ $modversion['config'][$i]['valuetype']      = 'text';
 $modversion['config'][$i]['default']        = 'standard';
 $modversion['config'][$i]['options']        = array('_MI_AJAXFM_XOOPSIMAGEMANAGER1' => 'standard', '_MI_AJAXFM_XOOPSIMAGEMANAGER2' => 'enhanced', '_MI_AJAXFM_XOOPSIMAGEMANAGER3' => 'ajaxfilemanager');
 $modversion['config'][$i]['category']       = 'extra';
-
+$i++;
+$modversion['config'][$i]['name']           = 'break_plugins';
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_BREAK_PLUGINS';
+$modversion['config'][$i]['description']    = '';
+$modversion['config'][$i]['formtype']       = 'line_break';
+$modversion['config'][$i]['valuetype']      = 'textbox';
+$modversion['config'][$i]['default']        = 'head';
+$i++;
+$modversion['config'][$i]['name']           = 'jwplayer_license_key';
+$modversion['config'][$i]['title']          = '_MI_AJAXFM_JWPLAYER_LICENSE_KEY';
+$modversion['config'][$i]['description']    = '_MI_AJAXFM_JWPLAYER_LICENSE_KEY_DESC';
+$modversion['config'][$i]['formtype']       = 'textbox';
+$modversion['config'][$i]['valuetype']      = 'text';
+$modversion['config'][$i]['default']        = '';
+$modversion['config'][$i]['category']       = 'global';
 
 
 // Notification

@@ -1,27 +1,18 @@
 <?php
 /**
- * ****************************************************************************
- *  - A Project by Developers TEAM For Xoops - ( http://www.xoops.org )
- * ****************************************************************************
- *  AJAXFILEMANAGER - MODULE FOR XOOPS
- *  Copyright (c) 2007 - 2012
- *  Rota Lucio ( http://luciorota.altervista.org/xoops/ )
+ * Ajax File Manager
  *
- *  You may not change or alter any portion of this comment or credits
- *  of supporting developers from this source code or any supporting
- *  source code which is considered copyrighted (c) material of the
- *  original comment or credit authors.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *  ---------------------------------------------------------------------------
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
  * @license         http://www.fsf.org/copyleft/gpl.html& ...  public license
  * @package         ajaxfilemanager
- * @since           1.0
+ * @since           0.1
  * @author          luciorota <lucio.rota@gmail.com>
  * @version         $Id$
  */
@@ -76,6 +67,15 @@ EOH;
     {
         static $isJwplayerJsLoaded = false;
         static $jwplayerId = 0;
+        /**
+         * Load Module config
+         */
+        include_once XOOPS_ROOT_PATH . '/kernel/module.php';
+        $ajaxfilemanagerModule = XoopsModule::getByDirname('ajaxfilemanager');
+        if ($ajaxfilemanagerModule->getVar('hasconfig') == 1) {
+            $config_handler =& xoops_gethandler('config');
+            $ajaxfilemanagerModuleConfig = $config_handler->getConfigsByCat(0, $ajaxfilemanagerModule->getVar('mid'));
+        }
 
         if ( !isset($GLOBALS['xoTheme']) || !is_object($GLOBALS['xoTheme'])  ) {
             include_once $GLOBALS['xoops']->path( "/class/theme.php" );
@@ -83,20 +83,20 @@ EOH;
             }
         if(!$isJwplayerJsLoaded ) {
             $isJwplayerJsLoaded = true;
-            $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/class/textsanitizer/video/jwplayer/swfobject.js');
+            $GLOBALS['xoTheme']->addScript(XOOPS_URL . '/class/textsanitizer/video/jwplayer/jwplayer.js');
+            $GLOBALS['xoTheme']->addScript('', '', 'jwplayer.key="' . $ajaxfilemanagerModuleConfig['jwplayer_license_key'] . '"');
         }
-        //error_log(print_r($GLOBALS,true));
-        //if (!preg_match("/^http:\/\/(www\.)?youtube\.com\/watch\?v=(.*)/i", $url, $matches)) {
-        //    trigger_error("Not matched: {$url} {$width} {$height}", E_USER_WARNING);
-        //    return "";
-        //}
+        // set default options
         $parsArray = array(
             'name' => 'Jwplayer_' . $jwplayerId++,
             'style' => '',
-            'width' => 200,
-            'height' => 200,
-            'autostart' => 'true',
+            'width' => 480,
+            'height' => 270,
+            'autostart' => 'false',
             'allowfullscreen' => 'true',
+            'repeat' => 'false',
+            'image' => '',
+            'skin' => XOOPS_URL . '/class/textsanitizer/video/jwplayer/jwplayer-skins-free/five.xml',
             );
         if (!empty($arg)) {
             $argArray = explode(',', $arg);
@@ -107,19 +107,22 @@ EOH;
         }
 
         require_once $GLOBALS['xoops']->path('class/template.php');
-
+        // render javascript code
         $xoopsJsTpl = new XoopsTpl();
         $xoopsJsTpl->assign('video_id', $parsArray['name']);
         $xoopsJsTpl->assign('video_width', $parsArray['width']);
         $xoopsJsTpl->assign('video_height', $parsArray['height']);
-        $xoopsJsTpl->assign('video_allowfullscreen', $parsArray['allowfullscreen']);
-        $xoopsJsTpl->assign('video_url', $url);
         $xoopsJsTpl->assign('video_autostart', $parsArray['autostart']);
+        $xoopsJsTpl->assign('video_allowfullscreen', $parsArray['allowfullscreen']);
+        $xoopsJsTpl->assign('video_repeat', $parsArray['repeat']);
+        $xoopsJsTpl->assign('video_image', $parsArray['image']);
+        $xoopsJsTpl->assign('video_skin', $parsArray['skin']);
+        $xoopsJsTpl->assign('video_url', $url);
         $xoopsJsTpl->assign('video_parsArray', $parsArray); // array of parameters
         $js = $xoopsJsTpl->fetch('db:ajaxfm_video.js');
         unset($xoopsJsTpl);
         $GLOBALS['xoTheme']->addScript('', '', $js);
-
+        // render html code
         $xoopsHtmlTpl = new XoopsTpl();
         $xoopsHtmlTpl->assign('video_id', $parsArray['name']);
         $xoopsHtmlTpl->assign('video_style', $parsArray['style']);
@@ -129,3 +132,4 @@ EOH;
         return $html;
     }
 }
+?>
