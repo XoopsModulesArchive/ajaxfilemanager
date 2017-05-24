@@ -71,7 +71,7 @@ $pathImageModule = XOOPS_URL . '/modules/'. $GLOBALS['xoopsModule']->getVar('dir
 
 
 
-$myts =& MyTextSanitizer::getInstance();
+$myts = MyTextSanitizer::getInstance();
 
 if ( $xoopsUser ) {
     $xoopsModule = XoopsModule::getByDirname('ajaxfilemanager');
