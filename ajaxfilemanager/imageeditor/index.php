@@ -12,7 +12,7 @@ xoops_cp_header();
 echo "<h3>DEMO IMAGE EDITOR</h3>";
 $path = "C:/Users/lucio/Desktop/logo_caritas.jpg";
 
-//$myts =& MyTextSanitizer::getInstance();
+//$myts = MyTextSanitizer::getInstance();
 //$path = $myts->addSlashes($path);
 
 echo '<img onmouseover="style.cursor=&quot;hand&quot;" onclick="openWithSelfMain(&quot;http://localhost/xoops.245/modules/ajaxfilemanager/imageeditor/imageeditor.php?editor=bbcode&amp;path=' . $path . '&quot;,&quot;imgeditor&quot;,800,600);" title="Inside images" alt="Inside images" src="http://localhost/xoops.245/modules/ajaxfilemanager/imageeditor/images/imageeditor.gif" style="">';

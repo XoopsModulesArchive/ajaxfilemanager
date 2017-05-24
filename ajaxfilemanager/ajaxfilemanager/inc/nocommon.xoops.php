@@ -47,7 +47,7 @@ require_once XOOPS_ROOT_PATH . DS . 'class' . DS . 'xoopsload.php';
  *  Create Instance of Preload Object
  */
 XoopsLoad::load('preload');
-$xoopsPreload =& XoopsPreload::getInstance();
+$xoopsPreload = XoopsPreload::getInstance();
 $xoopsPreload->triggerEvent('core.include.common.start');
 
 /**
@@ -73,8 +73,8 @@ $xoopsSecurity->checkSuperglobals();
  * Create Instantance XoopsLogger Object
  */
 XoopsLoad::load('xoopslogger');
-$xoopsLogger =& XoopsLogger::getInstance();
-$xoopsErrorHandler =& XoopsLogger::getInstance();
+$xoopsLogger = XoopsLogger::getInstance();
+$xoopsErrorHandler = XoopsLogger::getInstance();
 $xoopsLogger->startTime();
 $xoopsLogger->startTime('XOOPS Boot');
 
